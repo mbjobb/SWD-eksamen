@@ -1,0 +1,16 @@
+git namespace Shipping_Management_Application.IntegrationTests
+{
+    public class Tests
+    {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
+        }
+    }
+}
