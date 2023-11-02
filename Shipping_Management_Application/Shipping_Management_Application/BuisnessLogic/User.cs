@@ -15,9 +15,6 @@ namespace Shipping_Management_Application
 
         public List<Order> Orders { get; private set; }
 
-        public Order placeOrder()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Presentation\" />
+    
   </ItemGroup>
 
 </Project>

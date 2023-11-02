@@ -15,10 +15,10 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Shipping_Management_Application.User" Collapsed="true">
+  <Class Name="Shipping_Management_Application.User">
     <Position X="18.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAABAAAAAIAAAAAAAAAAIAQAACAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAIAQAACAAAAAA=</HashCode>
       <FileName>BuisnessLogic\User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -41,6 +41,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shipping_Management_Application.UserController">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAIAQAAAABgAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UserController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Shipping_Management_Application.ITransportFactory" Collapsed="true">

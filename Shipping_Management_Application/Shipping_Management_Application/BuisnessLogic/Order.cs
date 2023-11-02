@@ -7,26 +7,27 @@ namespace Shipping_Management_Application
 {
     public class Order
     {
-        public readonly int _orderId;
-        public readonly int _userId;
-        public readonly DateTime _orderDate;
+        private readonly int _orderId;
+        private readonly int _userId;
+        private readonly DateTime _orderDate = DateTime.Now;
 
-        public Order(int orderId, int userId, DateTime orderDate)
+        public Order(int quantity, string shippingAdress, int orderId, int userId)
         {
-            _orderId = orderId;
-            _userId = userId;
-            _orderDate = orderDate;
+            Quantity = quantity;
+            ShippingAdress = shippingAdress ?? throw new ArgumentNullException(nameof(shippingAdress));
+            OrderId = orderId;
+            UserId = userId;
         }
 
         public int Quantity { get; set; }
         public string ShippingAdress { get; set; }
-        public string OrderStatus { get; set; }
+        public string OrderStatus { get; set; } = "Order placed";
+        public int OrderId { get; init; }
+        public int UserId { get; init; }
 
-        public int OrderId => _orderId;
+        
 
-        public int UserId => _userId;
-
-        public DateTime OrderDate => _orderDate;
+        
 
         public void PlanDelivery()
         {
