@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="Shipping_Management_Application.Logistics">
-    <Position X="10" Y="1" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Logistics.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Shipping_Management_Application.Order" Collapsed="true">
-    <Position X="12.5" Y="0.5" Width="1.5" />
+    <Position X="17" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>GAAAAGAAAAACAAAAAAAAAAgAAAAAAAQIAAAAgAEAAAA=</HashCode>
-      <FileName>Order.cs</FileName>
+      <FileName>BuisnessLogic\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shipping_Management_Application.Truck" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAA=</HashCode>
+      <FileName>BuisnessLogic\Truck.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Shipping_Management_Application.User" Collapsed="true">
+    <Position X="18.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAABAAAAAIAAAAAAAAAAIAQAACAAAAAA=</HashCode>
+      <FileName>BuisnessLogic\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shipping_Management_Application.LogisticsFactory" Collapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Factories\Logistics\LogisticsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shipping_Management_Application.RoadLogistics" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\Logistics\RoadLogistics.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Program" Collapsed="true">
-    <Position X="14.25" Y="1" Width="1.5" />
+    <Position X="18.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.RoadLogistics">
-    <Position X="10" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>RoadLogistics.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Shipping_Management_Application.Truck" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAA=</HashCode>
-      <FileName>Truck.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Shipping_Management_Application.User" Collapsed="true">
-    <Position X="16" Y="2.75" Width="3.25" />
-    <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAABAAAAAIAAAAAAAAAAIAQAACAAAAAA=</HashCode>
-      <FileName>User.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="Shipping_Management_Application.ITransportFactory">
-    <Position X="13" Y="5" Width="4.25" />
+  <Interface Name="Shipping_Management_Application.ITransportFactory" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ITransportFactory.cs</FileName>
+      <FileName>Factories\Transport\ITransport.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

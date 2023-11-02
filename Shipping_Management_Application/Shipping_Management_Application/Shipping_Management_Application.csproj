@@ -9,9 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="BuisnessLogic\" />
-    <Folder Include="Factories\Logistics\" />
-    <Folder Include="Factories\Transport\" />
     <Folder Include="Presentation\" />
   </ItemGroup>
 

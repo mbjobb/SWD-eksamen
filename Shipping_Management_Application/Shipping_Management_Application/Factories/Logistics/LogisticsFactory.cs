@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Shipping_Management_Application
 {
-    public abstract class Logistics
+    public abstract class LogisticsFactory
     {
         public abstract ITransportFactory CreateTransport();
 

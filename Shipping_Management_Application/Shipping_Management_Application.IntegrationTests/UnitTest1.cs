@@ -1,4 +1,4 @@
-git namespace Shipping_Management_Application.IntegrationTests
+namespace Shipping_Management_Application.IntegrationTests
 {
     public class Tests
     {
