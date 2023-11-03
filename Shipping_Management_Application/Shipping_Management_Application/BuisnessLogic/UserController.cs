@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Shipping_Management_Application.BuisnessLogic
+namespace Shipping_Management_Application
 {
     public class UserController
     {
-
+        
 
         public Order PlaceOrder()
         {
@@ -16,27 +16,27 @@ namespace Shipping_Management_Application.BuisnessLogic
 
         public List<User> GetUsers()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public User GetUserById()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public User CreateUser()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public void UpdateUserById()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public void DeleteUserById()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }

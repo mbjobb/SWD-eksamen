@@ -1,6 +1,4 @@
-﻿using Shipping_Management_Application.Factories.Logistics;
-
-namespace Shipping_Management_Application
+﻿namespace Shipping_Management_Application
 {
     public class RoadLogistics : LogisticsFactory
     {
