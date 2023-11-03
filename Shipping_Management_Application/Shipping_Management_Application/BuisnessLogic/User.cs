@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Shipping_Management_Application
+namespace Shipping_Management_Application.BuisnessLogic
 {
     public class User
     {
@@ -15,6 +15,6 @@ namespace Shipping_Management_Application
 
         public List<Order> Orders { get; private set; }
 
-        
+
     }
 }

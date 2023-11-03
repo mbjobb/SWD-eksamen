@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Shipping_Management_Application
+namespace Shipping_Management_Application.Factories.Logistics
 {
     public abstract class LogisticsFactory
     {
