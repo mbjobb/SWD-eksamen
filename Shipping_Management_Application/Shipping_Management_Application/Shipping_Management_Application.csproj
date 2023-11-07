@@ -7,12 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="BuisnessLogic\" />
-    <Folder Include="Factories\Logistics\" />
-    <Folder Include="Factories\Transport\" />
-    <Folder Include="Presentation\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
