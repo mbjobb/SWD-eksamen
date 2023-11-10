@@ -43,60 +43,86 @@ namespace Shipping_Management_Application.Data
             OpenConnection();
 
             try
-            { 
-            string userTable = @"CREATE TABLE IF NOT EXISTS User (
-                                        Id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                                        Username TEXT, 
-                                        Password TEXT )";
-
-            //string orderTable = @"CREATE TABLE IF NOT EXISTS Orders (
-            //                            Id INTEGER PRIMARY KEY AUTOINCREMENT, 
-            //                            UserId INTEGER, 
-            //                            Details TEXT, 
-            //                            Weight REAL, 
-            //                            DeliveryMethod TEXT, 
-            //                            Price REAL, 
-            //                            FOREIGN KEY(UserId) REFERENCES Users(Id))";
-           
-            using (var command = new SqliteCommand(userTable, _connection))
             {
-                command.ExecuteNonQuery();
-            }
+                string userTable = @"CREATE TABLE IF NOT EXISTS User(
+                                Id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                                Username TEXT, 
+                                Password TEXT,
+                              Role TEXT NOT NULL DEFAULT 'customer'
+                            );";
+
+                //string orderTable = @"CREATE TABLE IF NOT EXISTS Orders (
+                //                            Id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                //                            UserId INTEGER, 
+                //                            Details TEXT, 
+                //                            Weight REAL, 
+                //                            DeliveryMethod TEXT, 
+                //                            Price REAL, 
+                //                            FOREIGN KEY(UserId) REFERENCES Users(Id))";
+
+                using (var command = new SqliteCommand(userTable, _connection))
+                {
+                    command.ExecuteNonQuery();
+                }
 
             }
             finally
             {
-            CloseConnection();
-                
+                CloseConnection();
+
             }
 
 
         }
-        
-         
-        public void CreateAdmin(Admin user)
-        {
-            using (var connection = new SqliteConnection(GetConnectionString()))
-            {
 
-                string query = "SELECT COUNT(1) FROM User WHERE UserName = @UserName";
-                SqliteCommand command = new SqliteCommand(@query, connection);
-                command.Parameters.AddWithValue("@UserName", user);
+
+        public void CheckAndInsertAdminToDb(Admin adminUserToCheck, Admin adminUserToInsert, string role)
+        {
+            string query_check = "SELECT COUNT(1) FROM User WHERE UserName = @UserName AND Password=@Password"; //Check Db for data. In this case UserName/Admin UserName
+            string query_insert = "INSERT INTO User (UserName, Password,Role) VALUES (@UserName, @Password,@Role)"; //If data does not exists add Admin to the Db
+            using (SqliteConnection connection = new SqliteConnection(GetConnectionString()))
+            {
+                SqliteCommand command = new SqliteCommand(query_check, connection);
+                command.Parameters.AddWithValue("@UserName", adminUserToCheck.UserName);
+                command.Parameters.AddWithValue("@Password", adminUserToCheck.Password);
                 try
                 {
-                connection.Open();
-                    int count = (int)command.ExecuteScalar();
-                    if (count > 0) { Console.WriteLine("it lives!"); } else { Console.WriteLine("it does not live =("); }
+                    connection.Open();
+                    long count = (long)command.ExecuteScalar();
 
-                }catch (Exception ex) { Console.WriteLine("error and stuff" + ex.Message); }
+                    // if (count > 0) { Console.WriteLine("it lives!"); } else { Console.WriteLine("it does not live "); }
+
+                    if (count > 0) { Console.WriteLine("it lives!"); }
+                    else
+                    {  //If Admin does not exist in Database , add the following admin as Admin.
+                        command.CommandText = query_insert;
+                        command.Parameters.Clear();
+                        command.Parameters.AddWithValue("@UserName", adminUserToInsert.UserName); // New UserName
+                        command.Parameters.AddWithValue("@Password", adminUserToInsert.Password); // New Password
+                        command.Parameters.AddWithValue("@Role", role);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            Console.WriteLine("New record inserted successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No record was inserted.");
+                        }
+                    }
 
 
-                //string query = "INSERT INTO User ( UserName, Password) " + "VALUES (@UserName, @Password)";
+                }
+                catch (Exception ex) { Console.WriteLine("error and stuff" + ex.Message); }
+
+
+
 
             }
 
-            
         }
+
 
 
         public void AddUser(IUserEntity user)

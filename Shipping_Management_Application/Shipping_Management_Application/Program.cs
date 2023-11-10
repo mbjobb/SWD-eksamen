@@ -7,51 +7,29 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
-
+            //////////////////////////////////////////////////////////////////////////////////ADMIN
             DbConfig config = new DbConfig("User.db");
             DatabaseHandler dbHandler = new DatabaseHandler(config);
-            Admin admin = new Admin("derp", "derpson");
 
-            dbHandler.CreateTables();
-            dbHandler.CreateAdmin(admin);
+            //Save super Admin username & password here
+            string AdminUserName = "Admin";
+            string AdminPassword = "Admin1234";
+
+            Admin adminUserToCheck = new Admin(AdminUserName, AdminPassword);//Check if Admin exist in the database
+            Admin adminUserToInsert = new Admin(AdminUserName, AdminPassword); //If Admin does not exist then add the Admin data in to the database
+            string role = "Administrator";
 
 
+            dbHandler.CheckAndInsertAdminToDb(adminUserToCheck, adminUserToInsert, role); // Check if admin already exist if not add admin to the Database
+            dbHandler.CreateTables(); //Create the Database
 
-            //Admin admin = new("saro", "saro");
-            Admin admin1 = new("henrik", "henrik");
-            Admin admin2 = new("martin", "martin");
+            //////////////////////////////////////////////////////////////////////////////////ADMIN
+
+
             AdminController adminController = new AdminController();
             List<Admin> admins = adminController.GetAllAdmins();
 
-            admins.Add(admin);
-            admins.Add(admin1);
-            admins.Add(admin2);
 
-            Console.WriteLine("Admins er opprettet og lagt til i listen.");
-
-            var oldAdminUserName = admin.UserName;
-            var updatedAdmin = adminController.UpdateAdminName(admins, oldAdminUserName, "Ahmad");
-            if (updatedAdmin != null)
-            {
-                Console.WriteLine($"You updated {oldAdminUserName} to {updatedAdmin.UserName}");
-            }
-
-            foreach (Admin item in admins)
-            {
-                if (item != null)
-                {
-                    Console.WriteLine(item);
-                }
-                else
-                {
-                    Console.WriteLine("Admin-objektet er null.");
-                }
-            }
-
-            if (admins.Count == 0)
-            {
-                Console.WriteLine("Ingen admin-objekter i listen.");
-            }
         }
     }
 }
