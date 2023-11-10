@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Shipping_Management_Application/Shipping_Management_Application.UnitTests
