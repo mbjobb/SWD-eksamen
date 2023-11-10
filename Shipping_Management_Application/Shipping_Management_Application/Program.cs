@@ -9,13 +9,15 @@ namespace Shipping_Management_Application
         {
 
             DbConfig config = new DbConfig("User.db");
-            DatabaseHandler dbHandler = new DatabaseHandler(config); 
+            DatabaseHandler dbHandler = new DatabaseHandler(config);
+            Admin admin = new Admin("derp", "derpson");
 
             dbHandler.CreateTables();
+            dbHandler.CreateAdmin(admin);
 
 
 
-            Admin admin = new("saro", "saro");
+            //Admin admin = new("saro", "saro");
             Admin admin1 = new("henrik", "henrik");
             Admin admin2 = new("martin", "martin");
             AdminController adminController = new AdminController();

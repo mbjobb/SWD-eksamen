@@ -72,8 +72,31 @@ namespace Shipping_Management_Application.Data
 
 
         }
+        
          
-    
+        public void CreateAdmin(Admin user)
+        {
+            using (var connection = new SqliteConnection(GetConnectionString()))
+            {
+
+                string query = "SELECT COUNT(1) FROM User WHERE UserName = @UserName";
+                SqliteCommand command = new SqliteCommand(@query, connection);
+                command.Parameters.AddWithValue("@UserName", user);
+                try
+                {
+                connection.Open();
+                    int count = (int)command.ExecuteScalar();
+                    if (count > 0) { Console.WriteLine("it lives!"); } else { Console.WriteLine("it does not live =("); }
+
+                }catch (Exception ex) { Console.WriteLine("error and stuff" + ex.Message); }
+
+
+                //string query = "INSERT INTO User ( UserName, Password) " + "VALUES (@UserName, @Password)";
+
+            }
+
+            
+        }
 
 
         public void AddUser(IUserEntity user)
