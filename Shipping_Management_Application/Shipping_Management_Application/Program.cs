@@ -1,4 +1,5 @@
 ﻿using Shipping_Management_Application.BuisnessLogic.AdminFolder;
+using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application
 {
@@ -6,6 +7,14 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
+
+            DbConfig config = new DbConfig("User.db");
+            DatabaseHandler dbHandler = new DatabaseHandler(config); 
+
+            dbHandler.CreateTables();
+
+
+
             Admin admin = new("saro", "saro");
             Admin admin1 = new("henrik", "henrik");
             Admin admin2 = new("martin", "martin");

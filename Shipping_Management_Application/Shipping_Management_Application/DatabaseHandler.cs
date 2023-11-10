@@ -41,47 +41,40 @@ namespace Shipping_Management_Application.Data
         public void CreateTables()
         {
             OpenConnection();
-            using (var transaction = _connection.BeginTransaction())
-            {
-                try
-                {
-                    string userTable = @"CREATE TABLE IF NOT EXISTS User (
+
+            try
+            { 
+            string userTable = @"CREATE TABLE IF NOT EXISTS User (
                                         Id INTEGER PRIMARY KEY AUTOINCREMENT, 
                                         Username TEXT, 
-                                        Password TEXT, )";
+                                        Password TEXT )";
 
-                    string orderTable = @"CREATE TABLE IF NOT EXISTS Orders (
-                                        Id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                                        UserId INTEGER, 
-                                        Details TEXT, 
-                                        Weight REAL, 
-                                        DeliveryMethod TEXT, 
-                                        Price REAL, 
-                                        FOREIGN KEY(UserId) REFERENCES Users(Id))";
-
-                    using (var command = new SqliteCommand(userTable, _connection, transaction))
-                    {
-                        command.ExecuteNonQuery();
-                    }
-
-                    using (var command = new SqliteCommand(orderTable, _connection, transaction))
-                    {
-                        command.ExecuteNonQuery();
-                    }
-
-                    transaction.Commit();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    throw;
-                }
-                finally
-                {
-                    CloseConnection();
-                }
+            //string orderTable = @"CREATE TABLE IF NOT EXISTS Orders (
+            //                            Id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            //                            UserId INTEGER, 
+            //                            Details TEXT, 
+            //                            Weight REAL, 
+            //                            DeliveryMethod TEXT, 
+            //                            Price REAL, 
+            //                            FOREIGN KEY(UserId) REFERENCES Users(Id))";
+           
+            using (var command = new SqliteCommand(userTable, _connection))
+            {
+                command.ExecuteNonQuery();
             }
+
+            }
+            finally
+            {
+            CloseConnection();
+                
+            }
+
+
         }
+         
+    
+
 
         public void AddUser(IUserEntity user)
         {

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="BuisnessLogic\NewFolder\" />
+    <Folder Include="DataSource\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +19,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shipping_Management_Application.UnitTests\Shipping_Management_Application.UnitTests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="User.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
