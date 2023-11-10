@@ -123,7 +123,7 @@ namespace Shipping_Management_Application.IntegrationTests
             var defaultPassword = admin.Password;
 
             //Assert
-            defaultUserName.Should().Be("Superadmin");
+            defaultUserName.Should().Be("superadmin");
             defaultPassword.Should().Be("superadmin");
 
         }

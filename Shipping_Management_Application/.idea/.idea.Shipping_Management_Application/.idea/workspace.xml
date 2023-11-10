@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15fda130-e380-42a6-8196-4ced200d7814" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shipping_Management_Application/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shipping_Management_Application/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shipping_Management_Application.IntegrationTests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shipping_Management_Application.IntegrationTests/UnitTest1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shipping_Management_Application/BuisnessLogic/AdminFolder/Admin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shipping_Management_Application/BuisnessLogic/AdminFolder/Admin.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shipping_Management_Application/BuisnessLogic/AdminFolder/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shipping_Management_Application/BuisnessLogic/AdminFolder/AdminController.cs" afterDir="false" />
@@ -21,10 +22,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="torsdagstart" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ec97cd5a18060599d27312234225bbe3e91916887e62d4cb711f3e77f5d84b/String.Manipulation.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -39,7 +43,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;torsdagstart&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;torsdagstart__2__electric__booggaloo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,7 +89,8 @@
       <option name="presentableId" value="Default" />
       <updated>1699536043110</updated>
       <workItem from="1699536044185" duration="11598000" />
-      <workItem from="1699623701718" duration="1298000" />
+      <workItem from="1699623701718" duration="3698000" />
+      <workItem from="1699628208510" duration="2530000" />
     </task>
     <servers />
   </component>

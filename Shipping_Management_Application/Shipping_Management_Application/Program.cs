@@ -13,8 +13,9 @@ namespace Shipping_Management_Application
             adminController.GetAdminByUserName("Saro");
 
             adminController.UpdateAdminName("Saro", "Martin");
+            Console.WriteLine(adminController.CreateAdmin("Henrik", "Henrik"));
 
-          
+
 
 
 
