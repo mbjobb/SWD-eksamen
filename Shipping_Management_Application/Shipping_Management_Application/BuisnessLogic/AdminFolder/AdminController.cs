@@ -2,27 +2,32 @@
 
 namespace Shipping_Management_Application.BuisnessLogic.AdminFolder;
 
-public class AdminController : UserController
-{
+public class AdminController : UserController{
     public Admin Admin { get; private set; }
 
-    public List<Admin> _admins = new();
+    private readonly List<Admin> _admins = new();
 
-    public AdminController()
-    {
+    public AdminController(){
     }
 
-    public AdminController(Admin admin, List<Admin> admins)
-    {
-        this.Admin = admin;
+    public AdminController(Admin admin, List<Admin> admins){
+        Admin = admin;
         _admins = admins;
     }
 
     // Method to add an admin
-    public void AddAdmin(Admin admin)
-    {
+    public Admin? AddAdmin(Admin admin){
         _admins.Add(admin);
-
+        Console.WriteLine("Admin has been added");
+        return admin;
+    }
+    
+    // Method to create a new admin
+    public string CreateAdmin(string adminUserName, string password){
+        Admin admin = new(adminUserName, password);
+        AddAdmin(admin);
+        Console.WriteLine("Admin created");
+        return admin.UserName;
     }
 
     // Method to remove an admin
@@ -37,33 +42,25 @@ public class AdminController : UserController
     }
 
     // Method to get all admins
-    public List<Admin> GetAllAdmins()
-    {
-        return _admins;
+    public List<Admin>? GetAllAdmins(){
+        foreach (Admin admin in _admins){
+            Console.WriteLine($"Admin name: {admin.UserName}");
+        }
+        return null;
     }
+    
     // Method to get an admin by username from a list
-    public Admin? GetAdmin(List<Admin> admins, string userName)
-    {
-        foreach (Admin admin in admins)
+    public Admin? GetAdminByUserName (string userName){
+        foreach (Admin admin in _admins)
         {
-            if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
-            {
-                return admin;
+            if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)){
+                Console.WriteLine($"Admin name: {admin.UserName}");
             }
         }
         return null;
     }
-
-
-
-    // Method to create a new admin
-    public string CreateAdmin(string userName, string password)
-    {
-        Admin admin = new(userName, password);
-        AddAdmin(admin);
-        Console.WriteLine("Admin created");
-        return admin.UserName;
-    }
+    
+    
 
     // Method to check if an admin exists
     public bool IsAdmin(List<Admin> admins, string userName)
@@ -71,22 +68,17 @@ public class AdminController : UserController
         return admins.Any(admin => admin.UserName.Equals(userName));
     }
     // Method to Update AdminUserName
-    public Admin? UpdateAdminName(List<Admin> admins, string userName, string newUserName)
-    {
-        Admin? updateAdmin = GetAdmin(admins, userName);
-        if (updateAdmin != null)
-        {
-            if (updateAdmin.UserName.ToUpper() == userName.ToUpper() && newUserName.ToUpper() == newUserName.ToUpper())
-            {
-                userName = userName.ToLower();
+    public Admin? UpdateAdminName(string oldUserName, string newUserName){
+        Admin? updateAdmin = GetAdminByUserName(oldUserName);
+        if (updateAdmin != null){
+            if (updateAdmin.UserName.ToUpper() == oldUserName.ToUpper() && newUserName.ToUpper() == newUserName.ToUpper()){
+                oldUserName = oldUserName.ToLower();
                 newUserName = newUserName.ToLower();
             }
 
             if (!string.IsNullOrEmpty(newUserName))
             {
-                if (IsUserNameAvailable(admins, newUserName))
-
-                {
+                if (IsUserNameAvailable(_admins, newUserName)){
                     return null;
                 }
                 else
@@ -106,13 +98,46 @@ public class AdminController : UserController
         }
     }
     //Method for superAdmin to Genareate Admin, Connection To DB
-
-
-
-
+    
     // Helper method to check if a username is available
-    private bool IsUserNameAvailable(List<Admin> admins, string userName)
-    {
+    private bool IsUserNameAvailable(List<Admin> admins, string userName){
         return admins.Any(admin => admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
+    }
+
+    /** Create a method to replace av username/password from big letters to small **/
+
+    public Admin? replaceAdminUserNameAndPassword(string oldUserName, string oldPassword){
+        
+        var updateAdmin = _admins.FirstOrDefault(admin => admin.UserName.Equals(oldUserName.ToLower()) 
+                                                          && admin.Password.Equals(oldPassword.ToLower()));
+        
+        
+        /**
+        if (updateAdmin != null){
+            if (updateAdmin.UserName.ToUpper() == oldUserName.ToUpper() && newUserName.ToUpper() == newUserName.ToUpper()){
+                oldUserName = oldUserName.ToLower();
+                newUserName = newUserName.ToLower();
+            }
+
+            if (!string.IsNullOrEmpty(newUserName))
+            {
+                if (IsUserNameAvailable(_admins, newUserName)){
+                    return null;
+                }
+                else
+                {
+                    updateAdmin.UserName = newUserName;
+                    return updateAdmin;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }**/
     }
 }

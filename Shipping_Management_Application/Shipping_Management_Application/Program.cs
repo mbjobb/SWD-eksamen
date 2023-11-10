@@ -4,8 +4,35 @@ namespace Shipping_Management_Application
 {
     public class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
+
+            AdminController adminController = new();
+            //adminController.CreateAdmin("Henrik", "1234");
+            adminController.CreateAdmin("Saro", "12345");
+            //adminController.GetAllAdmins();
+            adminController.GetAdminByUserName("Saro");
+
+            adminController.UpdateAdminName("Saro", "Martin");
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /**
             Admin admin = new("saro", "saro");
             Admin admin1 = new("henrik", "henrik");
             Admin admin2 = new("martin", "martin");
@@ -18,29 +45,23 @@ namespace Shipping_Management_Application
 
             Console.WriteLine("Admins er opprettet og lagt til i listen.");
 
-            var oldAdminUserName = admin.UserName;
-            var updatedAdmin = adminController.UpdateAdminName(admins, oldAdminUserName, "Ahmad");
-            if (updatedAdmin != null)
-            {
+            string oldAdminUserName = admin.UserName;
+            Admin? updatedAdmin = adminController.UpdateAdminName(admins, oldAdminUserName, "Ahmad");
+            if (updatedAdmin != null){
                 Console.WriteLine($"You updated {oldAdminUserName} to {updatedAdmin.UserName}");
             }
 
-            foreach (Admin item in admins)
-            {
-                if (item != null)
-                {
+            foreach (Admin item in admins){
+                if (true){
                     Console.WriteLine(item);
                 }
-                else
-                {
-                    Console.WriteLine("Admin-objektet er null.");
-                }
+                throw new ArgumentNullException();
             }
 
             if (admins.Count == 0)
             {
                 Console.WriteLine("Ingen admin-objekter i listen.");
-            }
+            }**/
         }
     }
 }

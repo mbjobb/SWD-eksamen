@@ -18,7 +18,7 @@ namespace Shipping_Management_Application.IntegrationTests
         public AdminController adminController = new();
 
         [Test]
-        public void ShoudAdminsListSizeEquels2()
+        public void ShouldAdminsListSizeEquels2()
         {
 
             // Arrange   We Get our Variables
@@ -123,8 +123,8 @@ namespace Shipping_Management_Application.IntegrationTests
             var defaultPassword = admin.Password;
 
             //Assert
-            defaultUserName.Should().Be("admin");
-            defaultPassword.Should().Be("admin");
+            defaultUserName.Should().Be("Superadmin");
+            defaultPassword.Should().Be("superadmin");
 
         }
         [Test]
@@ -139,7 +139,7 @@ namespace Shipping_Management_Application.IntegrationTests
             admins.Add(new Admin("henrik", "henrik"));
             var adminToUpdate = admins[0].UserName;
             Console.WriteLine($" Old AdminUserName was {adminToUpdate}");
-            var updatedAdmin = adminController.UpdateAdminName(admins, adminToUpdate, "MARTIN");
+            var updatedAdmin = adminController.UpdateAdminName( adminToUpdate, "martin");
 
             Console.WriteLine($"Updated Admin: {updatedAdmin}");
 
