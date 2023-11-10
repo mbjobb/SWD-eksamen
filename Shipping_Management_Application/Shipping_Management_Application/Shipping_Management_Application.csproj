@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    
+    <Folder Include="BuisnessLogic\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shipping_Management_Application.UnitTests\Shipping_Management_Application.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Shipping_Management_Application
+﻿namespace Shipping_Management_Application.BuisnessLogic.User
 {
     public class User
     {
@@ -15,6 +9,6 @@ namespace Shipping_Management_Application
 
         public List<Order> Orders { get; private set; }
 
-        
+
     }
 }

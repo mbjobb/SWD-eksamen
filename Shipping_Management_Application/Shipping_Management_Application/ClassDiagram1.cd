@@ -3,7 +3,7 @@
   <Class Name="Shipping_Management_Application.Order" Collapsed="true">
     <Position X="17" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GAAAAGAAAAACAAAAAAAAAAgAAAAAAAQIAAAAgAEAAAA=</HashCode>
+      <HashCode>EAAAAGAAAAACAAAAAAAAAAgAAAAAAAQIAAAAgAEAAAA=</HashCode>
       <FileName>BuisnessLogic\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -11,7 +11,7 @@
     <Position X="17" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAA=</HashCode>
-      <FileName>BuisnessLogic\Truck.cs</FileName>
+      <FileName>Factories\Transport\Truck.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -20,13 +20,6 @@
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAIAQAACAAAAAA=</HashCode>
       <FileName>BuisnessLogic\User.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Shipping_Management_Application.LogisticsFactory" Collapsed="true">
-    <Position X="14.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Factories\Logistics\LogisticsFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.RoadLogistics" Collapsed="true">
@@ -46,8 +39,15 @@
   <Class Name="Shipping_Management_Application.UserController">
     <Position X="12.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAIAQAAAABgAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UserController.cs</FileName>
+      <HashCode>IAAAAAAIAUAAAAAgAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BuisnessLogic\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shipping_Management_Application.LogisticsFactory" Collapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Factories\Logistics\LogisticsFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Shipping_Management_Application.ITransportFactory" Collapsed="true">

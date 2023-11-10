@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Shipping_Management_Application
+﻿namespace Shipping_Management_Application
 {
     public class Order
     {
@@ -25,9 +20,9 @@ namespace Shipping_Management_Application
         public int OrderId { get; init; }
         public int UserId { get; init; }
 
-        
 
-        
+
+
 
         public void PlanDelivery()
         {
