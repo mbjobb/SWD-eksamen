@@ -1,13 +1,14 @@
 ﻿namespace Shipping_Management_Application.BuisnessLogic.User
 {
-    public class User
+    public class User : IUserEntity
     {
-        public readonly int _userId;
-        public double UserBalance { get; private set; }
-        public string UserEmail { get; set; }
-        internal string UserName { get; set; }
+        public long Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
 
-        public List<Order> Orders { get; private set; }
+
+
+
 
 
     }
