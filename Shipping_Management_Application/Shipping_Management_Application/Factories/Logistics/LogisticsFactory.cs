@@ -1,4 +1,6 @@
-﻿namespace Shipping_Management_Application
+﻿using Shipping_Management_Application.Factories.Transport;
+
+namespace Shipping_Management_Application.Factories.Logistics
 {
     public abstract class LogisticsFactory
     {

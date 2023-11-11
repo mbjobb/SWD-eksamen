@@ -1,4 +1,4 @@
-﻿namespace Shipping_Management_Application
+﻿namespace Shipping_Management_Application.Factories.Transport
 {
     public class Truck : ITransportFactory
     {

@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.BuisnessLogic
 {
@@ -27,7 +26,7 @@ namespace Shipping_Management_Application.BuisnessLogic
             Role = role;
         }
 
-        
+
 
 
         public long Id { get; set; }

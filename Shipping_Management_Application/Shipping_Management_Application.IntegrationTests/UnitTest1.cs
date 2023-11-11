@@ -11,8 +11,8 @@ namespace Shipping_Management_Application.IntegrationTests
         public void Setup()
         {
         }
-        public Admin Admin = new Admin("derp", "derp123");
-        
+        public Admin Admin = new("derp", "derp123");
+
         public AdminController adminController = new();
 
         [Test]
@@ -33,7 +33,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new Admin("derp", "derp123");
+            Admin admin = new("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -54,7 +54,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new Admin("derp", "derp123");
+            Admin admin = new("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -73,7 +73,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new Admin("derp", "derp123");
+            Admin admin = new("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -92,7 +92,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new Admin("derp", "derp123");
+            Admin admin = new("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -114,7 +114,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
 
-            Admin admin = new Admin("derp", "derp123");
+            Admin admin = new("derp", "derp123");
 
             // Act
             var defaultUserName = admin.UserName;
@@ -129,8 +129,8 @@ namespace Shipping_Management_Application.IntegrationTests
         public void ShouldUpdateAdminNameByUserName()
         {
             // Arrange 
-            List<Admin> admins = new List<Admin>();
-            Admin? admin = new Admin("derp", "derp123");
+            List<Admin> admins = new();
+            Admin? admin = new("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));

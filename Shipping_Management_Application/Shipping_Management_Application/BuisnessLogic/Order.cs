@@ -1,9 +1,8 @@
 ﻿using Shipping_Management_Application.Data;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Shipping_Management_Application
+namespace Shipping_Management_Application.BuisnessLogic
 {
     public class Order
     {

@@ -9,7 +9,7 @@ namespace Shipping_Management_Application.BuisnessLogic.User
         {
         }
 
-        List<Order> _orders = new List<Order>();
+        List<Order> _orders = new();
         public string FirstName { get; set; }
     }
 }
