@@ -11,10 +11,8 @@ namespace Shipping_Management_Application.IntegrationTests
         public void Setup()
         {
         }
-        public Admin Admin()
-        {
-            return new Admin();
-        }
+        public Admin Admin = new Admin("derp", "derp123");
+        
         public AdminController adminController = new();
 
         [Test]
@@ -35,7 +33,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new();
+            Admin admin = new Admin("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -56,7 +54,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new();
+            Admin admin = new Admin("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -75,7 +73,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new();
+            Admin admin = new Admin("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -94,7 +92,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new();
-            Admin admin = new();
+            Admin admin = new Admin("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));
@@ -116,7 +114,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
 
-            Admin admin = new();
+            Admin admin = new Admin("derp", "derp123");
 
             // Act
             var defaultUserName = admin.UserName;
@@ -132,7 +130,7 @@ namespace Shipping_Management_Application.IntegrationTests
         {
             // Arrange 
             List<Admin> admins = new List<Admin>();
-            Admin? admin = new();
+            Admin? admin = new Admin("derp", "derp123");
 
             // Act
             admins.Add(new Admin("saro", "samall"));

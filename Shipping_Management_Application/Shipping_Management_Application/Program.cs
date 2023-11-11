@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application
@@ -10,61 +11,69 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
-            using (var dataContext = new DataContext())
-            {
-                var customers = new List<Customer>
-                {
-                    new Customer
-                    {
-                        FirstName = "John",
-                        LastName = "Doe",
-                        Address = "123 Main Street",
-                        City = "Anytown",
-                        Region = "Someregion",
-                        PostalCode = "54321",
-                        Country = "Somecountry",
-                        Phone = "555-1234",
-                        Email = "john@example.com"
-                    },
-                    new Customer
-                    {
-                        FirstName = "Alice",
-                        LastName = "Smith",
-                        Address = "456 Oak Avenue",
-                        City = "Sometown",
-                        Region = "Anotherregion",
-                        PostalCode = "12345",
-                        Country = "Othercountry",
-                        Phone = "555-5678",
-                        Email = "alice@example.com"
-                    }
-                };
 
-                try
-                {
-                    dataContext.AddRange(customers);
-                    Console.WriteLine("Added");
-                    int affectedRows = dataContext.SaveChanges();
-                    Console.WriteLine($"saved {affectedRows} changes");
-                    Console.WriteLine("Saved");
+            using DataContext context = new DataContext();
+            Admin admin = new("saro", "dårlig passord");
+            User user = new("martin", "dårlig passord");
+            context.Add(admin);
+            context.Add(user);
+            //context.SaveChanges();
 
-                    IList<string?> customerNames = dataContext.Customers.Select(s => s.FirstName).ToList();
+    //        using (var dataContext = new DataContext())
+    //        {
+    //            var customers = new List<Customer>
+    //            {
+    //                new Customer
+    //                {
+    //                    FirstName = "John",
+    //                    LastName = "Doe",
+    //                    Address = "123 Main Street",
+    //                    City = "Anytown",
+    //                    Region = "Someregion",
+    //                    PostalCode = "54321",
+    //                    Country = "Somecountry",
+    //                    Phone = "555-1234",
+    //                    Email = "john@example.com"
+    //                },
+    //                new Customer
+    //                {
+    //                    FirstName = "Alice",
+    //                    LastName = "Smith",
+    //                    Address = "456 Oak Avenue",
+    //                    City = "Sometown",
+    //                    Region = "Anotherregion",
+    //                    PostalCode = "12345",
+    //                    Country = "Othercountry",
+    //                    Phone = "555-5678",
+    //                    Email = "alice@example.com"
+    //                }
+    //            };
 
-                    foreach (string customerName in customerNames)
-                    {
-                        Console.WriteLine(customerName);
-                    }
-                }
-                catch (DbUpdateException ex)
-                {
-                    Console.WriteLine($"Failed to save changes: {ex.InnerException?.Message}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                }
-            }
-        }
+    //            try
+    //            {
+    //                dataContext.AddRange(customers);
+    //                Console.WriteLine("Added");
+    //                int affectedRows = dataContext.SaveChanges();
+    //                Console.WriteLine($"saved {affectedRows} changes");
+    //                Console.WriteLine("Saved");
+
+    //                IList<string?> customerNames = dataContext.Users.Select(s => s.FirstName).ToList();
+
+    //                foreach (string customerName in customerNames)
+    //                {
+    //                    Console.WriteLine(customerName);
+    //                }
+    //            }
+    //            catch (DbUpdateException ex)
+    //            {
+    //                Console.WriteLine($"Failed to save changes: {ex.InnerException?.Message}");
+    //            }
+    //            catch (Exception ex)
+    //            {
+    //                Console.WriteLine($"An error occurred: {ex.Message}");
+    //            }
+    //        }
+      }
     }
 }
 

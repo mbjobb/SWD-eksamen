@@ -1,14 +1,14 @@
-﻿namespace Shipping_Management_Application.BuisnessLogic.User
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Shipping_Management_Application.BuisnessLogic.User
 {
-    public class User
+    public class User : UserEntity
     {
-        public readonly int _userId;
-        public double UserBalance { get; private set; }
-        public string UserEmail { get; set; }
-        internal string UserName { get; set; }
+        [SetsRequiredMembers]
+        public User(string userName, string password) : base(userName, password)
+        {
+        }
 
-        public List<Order> Orders { get; private set; }
-
-
+        public string FirstName { get; set; }
     }
 }

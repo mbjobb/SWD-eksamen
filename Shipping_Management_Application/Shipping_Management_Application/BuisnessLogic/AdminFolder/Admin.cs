@@ -1,45 +1,14 @@
+using Shipping_Management_Application.BuisnessLogic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
-public class Admin
+public class Admin : UserEntity
 {
-    // Interface Fields
-    // public long Id { get; set; }
-    //public string Name { get; set; }
-    //public string Password { get; set; }
-    [Key]
-    private readonly long _adminId;
-    private string _userName;
-    private string _password;
 
 
-    // Add admin to Database
-    // private AdminDb _adminDb = new AdminDb(); // Kommenterte ut, vurder å inkludere hvis nødvendig
 
-    // Default constructor
-    public Admin()
+    [SetsRequiredMembers]
+    public Admin(string userName, string password, string role = "Admin") : base(userName, password, role)
     {
-        _userName = "admin";
-        _password = "admin";
     }
-
-    // Constructor with parameters
-    public Admin(string name, string password)
-    {
-        _userName = name;
-        _password = password;
-    }
-
-    // Property for username
-    // Property for password
-
-
-    public long AdminId => _adminId;
-
-    public string UserName { get => _userName; set => _userName = value; }
-    public string Password { get => _password; set => _password = value; }
-
-
-    // ToString method
-    public override string ToString() => $"ID: {_adminId}\nUserName: {_userName}\nPassword: {_password}";
-
 }

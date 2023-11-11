@@ -1,1 +1,2 @@
-﻿noe i folderen
+﻿add-migration -StartupProject Shipping_Management_Application -Project Shipping_Management_Application InitialCreation
+update-database -StartupProject Shipping_Management_Application -Project Shipping_Management_Application
