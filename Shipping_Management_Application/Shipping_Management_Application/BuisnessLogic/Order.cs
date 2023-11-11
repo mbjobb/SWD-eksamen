@@ -1,32 +1,54 @@
-﻿namespace Shipping_Management_Application
+﻿using Shipping_Management_Application.Data;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Shipping_Management_Application
 {
     public class Order
     {
-        private readonly int _orderId;
-        private readonly int _userId;
-        private readonly DateTime _orderDate = DateTime.Now;
-
-        public Order(int quantity, string shippingAdress, int orderId, int userId)
-        {
-            Quantity = quantity;
-            ShippingAdress = shippingAdress ?? throw new ArgumentNullException(nameof(shippingAdress));
-            OrderId = orderId;
-            UserId = userId;
-        }
+        [Key]
+        public int OrderId { get; set; }
 
         public int Quantity { get; set; }
-        public string ShippingAdress { get; set; }
-        public string OrderStatus { get; set; } = "Order placed";
-        public int OrderId { get; init; }
-        public int UserId { get; init; }
+        public string? ShippingAddress { get; set; }
+        public string? OrderStatus { get; set; } = "Order placed";
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+        [Key, ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+        List<Order> _orders = new();
 
-
-
-
+        public Order(int quantity, string shippingAddress, int customerId)
+        {
+            Quantity = quantity;
+            ShippingAddress = shippingAddress ?? throw new ArgumentNullException(nameof(shippingAddress));
+            CustomerId = customerId;
+        }
 
         public void PlanDelivery()
         {
             throw new NotImplementedException();
+        }
+        // method to ckeck isorderplaced -> true hvis "Order placed": false
+        public bool IsOrderPlaced()
+        {
+            return OrderStatus == "Order placed";
+        }
+        //method to getallorders
+        public List<Order> GetAllOrders()
+        {
+
+            foreach (Order order in _orders)
+            {
+                Console.WriteLine(order);
+            }
+            return _orders;
+        }
+        //method tostring 
+        public override string ToString()
+        {
+            return $"Order ID: {OrderId}, Quantity: {Quantity}, Status: {OrderStatus}";
         }
     }
 }

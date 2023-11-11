@@ -1,10 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 public class Admin
 {
     // Interface Fields
     // public long Id { get; set; }
     //public string Name { get; set; }
     //public string Password { get; set; }
-
+    [Key]
     private readonly long _adminId;
     private string _userName;
     private string _password;
