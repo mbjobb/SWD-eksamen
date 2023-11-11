@@ -11,27 +11,37 @@ namespace Shipping_Management_Application.Data
         public int CustomerId { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
+        [StringLength(100)]
         public string? FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name is required")]
+        [StringLength(100)]
         public string? LastName { get; set; }
 
         [Required(ErrorMessage = "Address is required")]
+        [StringLength(100)]
         public string? Address { get; set; }
 
         [Required(ErrorMessage = "City is required")]
+        [StringLength(50)]
         public string? City { get; set; }
 
         [Required(ErrorMessage = "Region is required")]
+        [StringLength(50)]
         public string? Region { get; set; }
 
         [Required(ErrorMessage = "Postal code is required")]
+        [StringLength (20)]
+        [Display(Name = "PostalCode")]
         public string? PostalCode { get; set; }
 
         [Required(ErrorMessage = "Country is required")]
+        [StringLength(50)]
         public string? Country { get; set; }
 
         [Required(ErrorMessage = "Phone is required")]
+        [Phone]
+        [Display(Name ="Phone Number")]
         public string? Phone { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
