@@ -4,6 +4,8 @@ namespace Shipping_Management_Application.BuisnessLogic.AdminFolder;
 
 public class AdminController : UserController
 {
+    // TODO: redo all of this
+
     public Admin Admin { get; private set; }
 
     public List<Admin> _admins = new();

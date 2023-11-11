@@ -15,9 +15,11 @@ namespace Shipping_Management_Application
             using DataContext context = new DataContext();
             Admin admin = new("saro", "dårlig passord");
             User user = new("martin", "dårlig passord");
+            Order order = new(1, "derpveien 3", 1);
+            context.Add(order);
             context.Add(admin);
             context.Add(user);
-            //context.SaveChanges();
+            context.SaveChanges();
 
     //        using (var dataContext = new DataContext())
     //        {

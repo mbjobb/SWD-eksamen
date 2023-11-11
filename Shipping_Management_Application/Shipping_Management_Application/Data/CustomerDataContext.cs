@@ -11,27 +11,27 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.Data
 {
-    public class DataContext:DbContext
+    public class CustomerDataContext:DbContext
     {
         //Makes the db aware of the base class
         public DbSet<UserEntity> UserEntities => Set<UserEntity>();
-        //tabel for Admin
-        public DbSet<Admin> Admins => Set<Admin>();
         //tabel for users
         public DbSet<User> Users=> Set<User>();
         //table for Order
-        //public DbSet<Order> Orders => Set<Order>();
+        public DbSet<Order> Orders => Set<Order>();
 
         //Override OnConfiguring from DbContextClass to get optionsBuilder object to create connection_string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=data.db");
+            optionsBuilder.UseSqlite("Data Source=Customerdata.db");
             
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>().HasKey(u=> u.Id);
+            modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
+            //modelBuilder.Entity<UserEntity>().;
+            modelBuilder.Entity<Order>().HasKey(o => o.OrderId);
         }
 
     }
