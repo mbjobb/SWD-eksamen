@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.ViewPanel
 {
-    internal class OrderRegistrationViewPanel
+    public class OrderRegistrationViewPanel
     {
+        // switch case and using OrderRegistration.cs and showing for Admin and Customer In Console
+       
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.ViewPanel
 {
-    internal class CustomerViewPanel
+    public class CustomerViewPanel
     {
+        //viewpanel for Customer <--> OrderRegistration.cs 
     }
 }

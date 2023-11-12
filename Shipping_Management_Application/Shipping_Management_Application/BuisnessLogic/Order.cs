@@ -49,5 +49,31 @@ namespace Shipping_Management_Application.BuisnessLogic
         {
             return $"Order ID: {OrderId}, Quantity: {Quantity}, Status: {OrderStatus}";
         }
+        //method to Print order 
+        public void PrintOrder()
+        {
+            Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
+            Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
+            Console.WriteLine($"--------------------  Customer    : {Customer.FirstName}           --------------------");
+            Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
+            Console.WriteLine($"--------------------  Quantity    : {Quantity}           --------------------");
+            Console.WriteLine($"--------------------  Address     : {ShippingAddress}    --------------------");
+            Console.WriteLine($"--------------------  OrderStatus : {OrderStatus}        --------------------"); 
+            Console.WriteLine($"--------------------  OrderDate   : {OrderDate}          --------------------");
+            Console.WriteLine($"-----------------------------------------------------------------------------");
+
+            Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(4)}   --------------------");
+
+
+        }
+        //Method to genreate serialnumber to order 
+        public string GenerateSerialNumberToOrder(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Character set for random string
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+           
     }
 }

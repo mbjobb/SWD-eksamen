@@ -8,6 +8,6 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class AdminViewPanel
     {
-        //viewpanel for admin 
+        //viewpanel for admin <--> OrderRegistration.cs
     }
 }
