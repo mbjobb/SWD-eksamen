@@ -6,6 +6,7 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class UserLogin
     {
+        private UserRegistration registration = new();
         //method to showLogin page for customer and admin 
         public void ShowLoginPage()
         {
@@ -44,11 +45,16 @@ namespace Shipping_Management_Application.ViewPanel
 
                 if (user != null)
                 {
+                    
                     return "User exists in the database!";
                 }
                 else
                 {
-                    return "User does not exist in the database!";
+                    //Method to register user to database
+                    Console.WriteLine("Welcome to Registration page! ");
+                    Thread.Sleep(2000);
+                    var res = registration.UserRegisterPanel();
+                    return res;
                 }
             }
         }

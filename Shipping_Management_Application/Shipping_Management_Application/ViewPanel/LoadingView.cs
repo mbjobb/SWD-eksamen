@@ -5,6 +5,7 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class LoadingView
     {
+        //method to write Loading.....
         public void Print(string text)
         {
             Console.Write($"{text}\n");
@@ -17,7 +18,7 @@ namespace Shipping_Management_Application.ViewPanel
             loadingThread.Start();
             loadingThread.Join();
         }
-
+        //mthedo to delate text.... buu this not warking
         private void ClearLine(string text)
         {
             Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop);
