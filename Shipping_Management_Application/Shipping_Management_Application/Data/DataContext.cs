@@ -13,7 +13,6 @@ namespace Shipping_Management_Application.Data
         //tabel for users
         public DbSet<User> Users => Set<User>();
 
-        public IEnumerable<object> UserEntity { get; internal set; }
 
         //table for Order
         //public DbSet<Order> Orders => Set<Order>();

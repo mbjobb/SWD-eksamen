@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using System.Diagnostics.Metrics;
+using System;
 
 namespace Shipping_Management_Application.BuisnessLogic.AdminFolder;
 
@@ -9,12 +11,13 @@ public class AdminController : UserController
     // TODO: redo all of this
 
     public Admin Admin { get; private set; }
-    private List<UserEntity> admins { get;  set; }
+    private List<Admin> admins { get; set; }
+
 
     // Create Admin and add => sending to Database
     public void CreateAdmin(string userName, string password)
     {
-        //Dtabase Connection
+        //Database Connection
         using (DataContext dataContext = new())
         {
             try
@@ -29,7 +32,13 @@ public class AdminController : UserController
                 }
                 else
                 {
-                    Console.WriteLine("You must enter a 'userName' and 'password'");
+                  
+                    for (int count = 3; count > 0; count--)
+                    {
+                        Console.WriteLine("You must enter a 'userName' and 'password'");
+                        Console.WriteLine($"You have {count} Attempts");
+                        return;
+                    }
                 }
             }
             catch (Exception e)
@@ -39,23 +48,20 @@ public class AdminController : UserController
         }
     }
     // Method to get all admins
-    public List<UserEntity> GetAllAdmins()
+    public List<Admin> GetAllAdmins()
     {
-        //Dtabase Connection
+        //Database Connection
         using (DataContext dataContext = new())
         {
 
-            //admins => UserEntity.Equals("Admin", StringComparison.OrdinalIgnoreCase);
+            // try to find out all admins in usertabel where rolle = "Admin"
             try
             {
-                IQueryable<Admin> admins1 = dataContext.UserEntities
-                                    .Where(u => u.Role == "Admin")
-                                    .Select(u => new Admin(u.UserName, u.Password, "Admin"));
-                admins = admins1
-                    .ToList();
+                admins = dataContext.UserEntities
+                        .Where(u => u.Role == "Admin")
+                        .Select(u => new Admin(u.UserName, u.Password, "Admin"))
+                         .ToList();
             }
-
-
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -63,86 +69,126 @@ public class AdminController : UserController
         }
         return admins;
 
-    } 
-    // Method to get an admin by username from a list
-    public Admin? GetAdmin(List<Admin> admins, string userName)
-    {
-        foreach (Admin admin in admins)
-        {
-            if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
-            {
-                return admin;
-            }
-        }
-        return null;
     }
-
-
-
-
-    // Method to remove an admin
-    public Admin RemoveAdmin(List<Admin> admins, string userName)
+    //Method to remove an Admin by Id
+    public void RemoveAdminById(int id)
     {
-        Admin adminToRemove = admins.FirstOrDefault(a => a.UserName.Equals(userName));
-        if (adminToRemove != null)
+        using (DataContext dataContext = new DataContext())
         {
-            admins.Remove(adminToRemove);
-        }
-        return adminToRemove;
-    }
-
-  
-   
-
-
-    // Method to check if an admin exists
-    public bool IsAdmin(List<Admin> admins, string userName)
-    {
-        return admins.Any(admin => admin.UserName.Equals(userName));
-    }
-    // Method to Update AdminUserName
-    public Admin? UpdateAdminName(List<Admin> admins, string userName, string newUserName)
-    {
-        Admin? updateAdmin = GetAdmin(admins, userName);
-        if (updateAdmin != null)
-        {
-            if (updateAdmin.UserName.ToUpper() == userName.ToUpper() && newUserName.ToUpper() == newUserName.ToUpper())
+            try
             {
-                userName = userName.ToLower();
-                newUserName = newUserName.ToLower();
-            }
-
-            if (!string.IsNullOrEmpty(newUserName))
-            {
-                if (IsUserNameAvailable(admins, newUserName))
-
+                var admin = dataContext.Admins.FirstOrDefault(a => a.Id == id);
+                if (admin != null)
                 {
-                    return null;
+                    dataContext.Admins.Remove(admin);
+                    dataContext.SaveChanges();
+                    Console.WriteLine("Admin removed! ");
                 }
                 else
                 {
-                    updateAdmin.UserName = newUserName;
-                    return updateAdmin;
+                    //If the admin ID is not found, give the admin 3 attempts to enter a valid admin ID
+                    for (int count = 3; count > 0; count--)
+                    {
+                        Console.WriteLine("Admin not found! Try again.");
+                        Console.WriteLine($"You have {count} Attempts");
+                        return;
+                    }
+                    Console.WriteLine("You can look for the admin you want to remove!");
+                    GetAllAdmins();
+                    return;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                Console.WriteLine(ex.Message);
             }
         }
-        else
+    }
+
+    // Update username and password an admin 
+    public void UpdateAdminInfo(int id, string newUserName, string newPassword)
+    {
+        using (DataContext dataContext = new DataContext())
         {
-            return null;
+            try
+            {
+                // try to found admin by id and set username to newusername an password to newpassword
+                var admin = dataContext.Admins.FirstOrDefault(a => a.Id == id);
+                if (admin != null)
+                {
+                    admin.UserName = newUserName;
+                    admin.Password = newPassword;
+                    dataContext.SaveChanges();
+                    Console.WriteLine("Admin information updated!");
+                }
+                else
+                {
+                    Console.WriteLine("Admin not found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
-    //Method for superAdmin to Genareate Admin, Connection To DB
-
-
-
-
-    // Helper method to check if a username is available
-    private bool IsUserNameAvailable(List<Admin> admins, string userName)
-    {
-        return admins.Any(admin => admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
-    }
 }
+
+    //// Method to get an admin by username from a list
+    //public Admin? GetAdmin(List<Admin> admins, string userName)
+    //{
+    //    foreach (Admin admin in admins)
+    //    {
+    //        if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
+    //        {
+    //            return admin;
+    //        }
+    //    }
+    //    return null;
+    //}
+    //// Helper method to check if a username is available
+    //private bool IsUserNameAvailable(List<Admin> admins, string userName)
+    //{
+    //    return admins.Any(admin => admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
+    //}
+    //// Method to check if an admin exists
+    //public bool IsAdmin(List<Admin> admins, string userName)
+    //{
+    //    return admins.Any(admin => admin.UserName.Equals(userName));
+    //}
+//    // Method to Update AdminUserName
+//    public Admin? UpdateAdminName(List<Admin> admins, string userName, string newUserName)
+//    {
+//        Admin? updateAdmin = GetAdmin(admins, userName);
+//        if (updateAdmin != null)
+//        {
+//            if (updateAdmin.UserName.ToUpper() == userName.ToUpper() && newUserName.ToUpper() == newUserName.ToUpper())
+//            {
+//                userName = userName.ToLower();
+//                newUserName = newUserName.ToLower();
+//            }
+
+//            if (!string.IsNullOrEmpty(newUserName))
+//            {
+//                if (IsUserNameAvailable(admins, newUserName))
+
+//                {
+//                    return null;
+//                }
+//                else
+//                {
+//                    updateAdmin.UserName = newUserName;
+//                    return updateAdmin;
+//                }
+//            }
+//            else
+//            {
+//                return null;
+//            }
+//        }
+//        else
+//        {
+//            return null;
+//        }
+//    }  
+//}
