@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.ViewPanel
 {
-    internal class AdminViewPanel
+    public class AdminViewPanel
     {
+        //viewpanel for admin 
     }
 }

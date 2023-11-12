@@ -1,4 +1,6 @@
-﻿using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.BuisnessLogic.AdminFolder;
 
@@ -7,42 +9,61 @@ public class AdminController : UserController
     // TODO: redo all of this
 
     public Admin Admin { get; private set; }
+    private List<UserEntity> admins { get;  set; }
 
-    public List<Admin> _admins = new();
-
-    public AdminController()
+    // Create Admin and add => sending to Database
+    public void CreateAdmin(string userName, string password)
     {
-    }
-
-    public AdminController(Admin admin, List<Admin> admins)
-    {
-        this.Admin = admin;
-        _admins = admins;
-    }
-
-    // Method to add an admin
-    public void AddAdmin(Admin admin)
-    {
-        _admins.Add(admin);
-
-    }
-
-    // Method to remove an admin
-    public Admin RemoveAdmin(List<Admin> admins, string userName)
-    {
-        Admin adminToRemove = admins.FirstOrDefault(a => a.UserName.Equals(userName));
-        if (adminToRemove != null)
+        //Dtabase Connection
+        using (DataContext dataContext = new())
         {
-            admins.Remove(adminToRemove);
+            try
+            {
+                // if password / username not null -> adding admin to database
+                if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+                {
+                    var newAdmin = new Admin(userName, password);
+                    dataContext.Add(newAdmin);
+                    dataContext.SaveChanges();
+                    Console.WriteLine("Admin Added to Database!");
+                }
+                else
+                {
+                    Console.WriteLine("You must enter a 'userName' and 'password'");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
-        return adminToRemove;
     }
-
     // Method to get all admins
-    public List<Admin> GetAllAdmins()
+    public List<UserEntity> GetAllAdmins()
     {
-        return _admins;
-    }
+        //Dtabase Connection
+        using (DataContext dataContext = new())
+        {
+
+            //admins => UserEntity.Equals("Admin", StringComparison.OrdinalIgnoreCase);
+            try
+            {
+                IQueryable<Admin> admins1 = dataContext.UserEntities
+                                    .Where(u => u.Role == "Admin")
+                                    .Select(u => new Admin(u.UserName, u.Password, "Admin"));
+                admins = admins1
+                    .ToList();
+            }
+
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        return admins;
+
+    } 
     // Method to get an admin by username from a list
     public Admin? GetAdmin(List<Admin> admins, string userName)
     {
@@ -58,14 +79,21 @@ public class AdminController : UserController
 
 
 
-    // Method to create a new admin
-    public string CreateAdmin(string userName, string password)
+
+    // Method to remove an admin
+    public Admin RemoveAdmin(List<Admin> admins, string userName)
     {
-        Admin admin = new(userName, password);
-        AddAdmin(admin);
-        Console.WriteLine("Admin created");
-        return admin.UserName;
+        Admin adminToRemove = admins.FirstOrDefault(a => a.UserName.Equals(userName));
+        if (adminToRemove != null)
+        {
+            admins.Remove(adminToRemove);
+        }
+        return adminToRemove;
     }
+
+  
+   
+
 
     // Method to check if an admin exists
     public bool IsAdmin(List<Admin> admins, string userName)
