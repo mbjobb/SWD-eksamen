@@ -4,14 +4,17 @@ using System.Threading;
 
 public class MainViewPanel
 {
+    InfoAboutOurApp _infoAboutOurApp = new();
     public void MainView()
     {
         LoadingView loadingView = new();
         UserLogin userLogin = new();
         // show welcom text
         loadingView.Print("Loading...");
-        Console.WriteLine("Welcome to Our Shipping Management. We are here to help you take care of your orders!");//we write more info about our application
+        _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
         Thread.Sleep(4000);
+        _infoAboutOurApp.About();
+        Thread.Sleep(5000);
 
 
         // menu
@@ -53,6 +56,8 @@ public class MainViewPanel
                         if (input.ToLower() == "yes")
                         {
                             Console.WriteLine("Exiting....\n Program finished");
+                            _infoAboutOurApp.EndProgram();
+                            Thread.Sleep(7000);
                             return;
                         }
                         else if (input.ToLower() == "no")
@@ -64,6 +69,7 @@ public class MainViewPanel
                             Console.WriteLine("Please enter 'yes' to exit or 'no' to return to the main menu.");
                         }
                     }
+                    
                     break;
 
                 default:
