@@ -12,6 +12,9 @@ namespace Shipping_Management_Application.Data
         public DbSet<Admin> Admins => Set<Admin>();
         //tabel for users
         public DbSet<User> Users => Set<User>();
+        // tabel for orders
+       // public DbSet<Order> Orders => Set<Order>();
+        //public DbSet<Customer> customers => Set<Customer>();
 
 
         //table for Order
@@ -27,6 +30,12 @@ namespace Shipping_Management_Application.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
+            modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(u => u.Password).IsUnique();
+            //modelBuilder.Entity<Order>().HasKey(o => new { o.OrderId, o.CustomerId});
+            //modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
+
+
         }
 
     }

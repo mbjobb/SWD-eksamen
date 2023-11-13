@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.BuisnessLogic
 {
@@ -17,6 +18,10 @@ namespace Shipping_Management_Application.BuisnessLogic
         {
             UserName = userName;
             Password = password;
+        }
+        protected UserEntity()
+        {
+            
         }
 
         //constructor with role, used for creating admins

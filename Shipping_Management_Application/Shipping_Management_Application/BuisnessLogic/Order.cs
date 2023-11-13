@@ -54,15 +54,15 @@ namespace Shipping_Management_Application.BuisnessLogic
         {
             Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
             Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
-            Console.WriteLine($"--------------------  Customer    : {Customer.FirstName}           --------------------");
+            Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
             Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
             Console.WriteLine($"--------------------  Quantity    : {Quantity}           --------------------");
             Console.WriteLine($"--------------------  Address     : {ShippingAddress}    --------------------");
             Console.WriteLine($"--------------------  OrderStatus : {OrderStatus}        --------------------"); 
             Console.WriteLine($"--------------------  OrderDate   : {OrderDate}          --------------------");
             Console.WriteLine($"-----------------------------------------------------------------------------");
-
-            Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(4)}   --------------------");
+            // call to GenerateSerialNumberToOrder() to generateSerialnumber by 8 chars 
+            Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(8)}   --------------------");
 
 
         }
@@ -71,6 +71,7 @@ namespace Shipping_Management_Application.BuisnessLogic
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Character set for random string
             var random = new Random();
+            // return new string from chars by input length size and using random class to generate random string!
             return new string(Enumerable.Repeat(chars, length)
             .Select(s => s[random.Next(s.Length)]).ToArray());
         }

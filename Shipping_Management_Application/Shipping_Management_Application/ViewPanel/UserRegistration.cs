@@ -1,12 +1,17 @@
-﻿using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
 using System;
+using System.Linq;
 
 namespace Shipping_Management_Application.ViewPanel
 {
     public class UserRegistration
     {
-        //Method to UserRegistration
+        User _user;
+        UserEntity _userEntity;
+        CustomerRegistration _customerRegistration;
+
         public string UserRegisterPanel()
         {
             Console.WriteLine("Welcome to the registration page! Please follow the instructions.");
@@ -15,28 +20,47 @@ namespace Shipping_Management_Application.ViewPanel
             Console.WriteLine("Enter password");
             string _password = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(_userName) && !string.IsNullOrEmpty(_password))
+            // We check if the user is an admin
+            Console.WriteLine("Are you an Admin? (yes or no)");
+            string _userInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password) || _userInput.ToLower() == "no")
             {
-                using (DataContext context = new DataContext())
+                _user = new User(_userName, _password);
+                _user.Role = "Customer";
+
+                using (DataContext context = new())
                 {
-                    try
+                    var existingUser = context.Users.FirstOrDefault(u => u.UserName == _userName);
+                    if (existingUser != null)
                     {
-                        var newUser = new User (_userName, _password);
-                        context.Users.Add(newUser);
-                        context.SaveChanges();
-                        Console.WriteLine("User added to the database!");
+                        Console.WriteLine("User already exists.");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("An error to adding the user: " + ex.Message);
+                    
+                        Console.WriteLine("i am here");
+                        context.Add(_user);
+                        //  it must Debug 
+                        Console.WriteLine("added");
+                        context.SaveChanges();
+                        Console.WriteLine("saved");
+                        Console.WriteLine("User added to the database!");
+                        // Registre Customer if not found in database
+                        _customerRegistration = new CustomerRegistration();
+                        _customerRegistration.RegisterCustomer();
+
                     }
                 }
             }
             else
             {
-                Console.WriteLine("Please Enter username and password to register.");
+                _user = new(_userName, _password);
+                _user.Role = "admin";
+                Console.WriteLine(_user.UserName, _user.Role);
             }
-            return "Registration Is secsusfulld";
+
+            return "Registration Is successful";
         }
     }
 }

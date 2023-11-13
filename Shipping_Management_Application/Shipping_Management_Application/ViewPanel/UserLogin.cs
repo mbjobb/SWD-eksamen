@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
+using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.ViewPanel
 {
     public class UserLogin
     {
+        
         private UserRegistration registration = new();
+        private CustomerRegistration _customerRegistration = new();
         //method to showLogin page for customer and admin 
         public void ShowLoginPage()
         {

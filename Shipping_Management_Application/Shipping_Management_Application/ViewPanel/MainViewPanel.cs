@@ -5,11 +5,12 @@ using System.Threading;
 public class MainViewPanel
 {
     InfoAboutOurApp _infoAboutOurApp = new();
+    LoadingView loadingView = new();
+    UserLogin userLogin = new();
     public void MainView()
     {
-        LoadingView loadingView = new();
-        UserLogin userLogin = new();
-        // show welcom text
+        _infoAboutOurApp.HeaderComponent("Shipping Management");
+        // show welcome Message
         loadingView.Print("Loading...");
         _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
         Thread.Sleep(4000);
@@ -17,13 +18,13 @@ public class MainViewPanel
         Thread.Sleep(5000);
 
 
-        // menu
+        // menu 
         while (true)
         {
-            Console.WriteLine("Enter your Choice! 1, 2, or 3");
-            Console.WriteLine("1. LogIn for Customer");
-            Console.WriteLine("2. LogIn for Admin");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
+            Console.WriteLine("----------- 1. LogIn for Customer");
+            Console.WriteLine("----------- 2. LogIn for Admin");
+            Console.WriteLine("----------- 3. Exit");
 
             var userInput = Console.ReadLine();
 
@@ -77,6 +78,7 @@ public class MainViewPanel
                     break;
             }
         }
+        
     }
 
     // Method to check Is user Input is valid or not 
