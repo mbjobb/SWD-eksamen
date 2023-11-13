@@ -11,8 +11,8 @@ using Shipping_Management_Application.Data;
 namespace Shipping_Management_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231111171322_MyMigration")]
-    partial class MyMigration
+    [Migration("20231113204557_FirstCreation")]
+    partial class FirstCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,83 +20,16 @@ namespace Shipping_Management_Application.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            modelBuilder.Entity("Admin", b =>
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
                 {
-                    b.Property<long>("AdminId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("AdminId");
-
-                    b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Region")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Shipping_Management_Application.Order", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("OrderStatus")
                         .HasColumnType("TEXT");
@@ -107,14 +40,116 @@ namespace Shipping_Management_Application.Migrations
                     b.Property<string>("ShippingAddress")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("CustomerId");
+                    b.HasKey("CustomerId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Shipping_Management_Application.Order", b =>
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.UserEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserEntities");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("UserEntity");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("Admin", b =>
+                {
+                    b.HasBaseType("Shipping_Management_Application.BuisnessLogic.UserEntity");
+
+                    b.HasDiscriminator().HasValue("Admin");
+                });
+
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.User", b =>
+                {
+                    b.HasBaseType("Shipping_Management_Application.BuisnessLogic.UserEntity");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasDiscriminator().HasValue("User");
+                });
+
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
                 {
                     b.HasOne("Shipping_Management_Application.Data.Customer", "Customer")
                         .WithMany("Orders")
@@ -123,6 +158,17 @@ namespace Shipping_Management_Application.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.User", b =>
+                {
+                    b.HasOne("Shipping_Management_Application.Data.Customer", "customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("customer");
                 });
 
             modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>

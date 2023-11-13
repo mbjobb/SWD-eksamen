@@ -13,8 +13,8 @@ namespace Shipping_Management_Application.Data
         //tabel for users
         public DbSet<User> Users => Set<User>();
         // tabel for orders
-        // public DbSet<Order> Orders => Set<Order>();
-        //public DbSet<Customer> customers => Set<Customer>();
+        public DbSet<Order> Orders => Set<Order>();
+        public DbSet<Customer> Customers => Set<Customer>();
 
 
         
@@ -29,8 +29,12 @@ namespace Shipping_Management_Application.Data
         {
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
+            modelBuilder.Entity<Customer>();
 
-            
+
+
+
+
         }
 
     }

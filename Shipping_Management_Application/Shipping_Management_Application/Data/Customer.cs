@@ -1,4 +1,5 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.User;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -9,6 +10,7 @@ namespace Shipping_Management_Application.Data
         // We use DataAnnotations to manage and validate input data
         [Key]
         public int CustomerId { get; set; }
+        //public User User { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
         [StringLength(100)]

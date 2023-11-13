@@ -15,7 +15,7 @@ namespace Shipping_Management_Application.ViewPanel
         UserLogin userLogin = new();
         public void MainView()
         {
-            _infoAboutOurApp.HeaderComponent();
+            _infoAboutOurApp.HeaderComponent("app");
             // show welcome Message
             loadingView.Print("Loading...");
             _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
