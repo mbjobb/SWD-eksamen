@@ -9,23 +9,23 @@ namespace Shipping_Management_Application.ViewPanel
     public class InfoAboutOurApp
     {
         //Method to HeaderComponent for Application
-        public void HeaderComponent(string appName)
+        public void HeaderComponent(string appName = "Shipping Management")
         {
             Console.WriteLine($"-------- {appName.ToUpper()}--------- Date : {"Year : " + DateTime.Now.Year + " Time: " + DateTime.Now.ToString("HH:mm:ss")} ---------");
         
         }
        
-        public void WelcomeMesseag()
+        public void WelcomeMesseag(string messeag = "Welcome to our Application")
         {
-            System.Console.WriteLine("Welcome to our Application");
+            System.Console.WriteLine(messeag);
         }
-        public void About()
+        public void About(string messeag = "Comming info about our App, Martin og Ifrem have to write about Application")
         {
-            System.Console.WriteLine("Martin og Ifrem have to write about Application");
+            System.Console.WriteLine(messeag);
         }
-        public void EndProgram()
+        public void EndProgram(string messeag = "Martin og Ifrem have to write text")
         {
-            System.Console.WriteLine("Martin og Ifrem have to write text");
+            System.Console.WriteLine(messeag);
 
         }
 

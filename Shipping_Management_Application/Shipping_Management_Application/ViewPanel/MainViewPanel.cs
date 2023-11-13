@@ -9,7 +9,7 @@ public class MainViewPanel
     UserLogin userLogin = new();
     public void MainView()
     {
-        _infoAboutOurApp.HeaderComponent("Shipping Management");
+        _infoAboutOurApp.HeaderComponent();
         // show welcome Message
         loadingView.Print("Loading...");
         _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
@@ -22,7 +22,7 @@ public class MainViewPanel
         while (true)
         {
             Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
-            Console.WriteLine("----------- 1. LogIn for Customer");
+            Console.WriteLine("----------- 1. LogIn for Customer"); // if Customer
             Console.WriteLine("----------- 2. LogIn for Admin");
             Console.WriteLine("----------- 3. Exit");
 
