@@ -24,31 +24,11 @@ namespace Shipping_Management_Application.Data
         {
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             //modelBuilder.Entity<UserEntity>().;
+            //modelBuilder.Entity<User>().HasMany<Order>(o)
             modelBuilder.Entity<Order>().HasKey(o => o.OrderId);
+
+            
         }
 
     }
 }
-//foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
-//{
-//    MethodInfo? method = entityType.ClrType.GetMethod("OnModelCreating",
-//    BindingFlags.Static | BindingFlags.NonPublic);
-//    if (method is not null)
-//    {
-//        method.Invoke(null, new object[] { modelBuilder });
-//    }
-//}
-
-//protected override void OnModelCreating(ModelBuilder modelBuilder)
-//{
-//    modelBuilder.Entity<Admin>().HasKey(a => a.AdminId);
-//    modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
-//    modelBuilder.Entity<Order>()
-//        .HasKey(o => o.OrderId)
-//        .HasOne(o => o.Customer)  
-//        .WithMany(c => c.Orders)  
-//        .HasForeignKey(o => o.CustomerId);
-//    // Add additional configurations for relationships or other constraints
-
-//    base.OnModelCreating(modelBuilder);
-//}

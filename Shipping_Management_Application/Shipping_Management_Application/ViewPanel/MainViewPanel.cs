@@ -34,7 +34,7 @@ public class MainViewPanel
                     {
                         Console.WriteLine("LogIn for Customer");
                         loadingView.Print("Loading...");
-                        // comming method -> CustomerViewPanel()
+                        // comming method -> CustomerViewPanel() 
                         userLogin.ShowLoginPage();
                         break;
                     }

@@ -33,6 +33,9 @@ namespace Shipping_Management_Application.ViewPanel
             {
                 string result = IsUserInDatabase(userNameInput);
                 Console.WriteLine(result);
+                //Testing Debuging
+                //bool result = true;
+                //registration.UserRegisterPanel();
             }
             catch (Exception ex)
             {
@@ -57,6 +60,16 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("Welcome to Registration page! ");
                     Thread.Sleep(2000);
                     var res = registration.UserRegisterPanel();
+                    try{
+                        context.Add(res);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(" An error :" + e.Message);
+                    }
+                    Console.WriteLine("You Can to try to login with your UserName and Password! ");
+                    ShowLoginPage();
                     return res;
                 }
             }

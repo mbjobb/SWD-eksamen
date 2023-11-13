@@ -13,7 +13,7 @@ namespace Shipping_Management_Application.BuisnessLogic
         public string? ShippingAddress { get; set; }
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
-        [Key, ForeignKey("Customer")]
+        [Key,ForeignKey("Customer")]
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         List<Order> _orders = new();

@@ -11,8 +11,9 @@ namespace Shipping_Management_Application.ViewPanel
             Console.Write($"{text}\n");
             Thread loadingThread = new(() =>
             {
-                Thread.Sleep(3000);
                 ClearLine(text);
+                Thread.Sleep(3000);
+                
             });
 
             loadingThread.Start();

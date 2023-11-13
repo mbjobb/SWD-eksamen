@@ -13,13 +13,11 @@ namespace Shipping_Management_Application.Data
         //tabel for users
         public DbSet<User> Users => Set<User>();
         // tabel for orders
-       // public DbSet<Order> Orders => Set<Order>();
+        // public DbSet<Order> Orders => Set<Order>();
         //public DbSet<Customer> customers => Set<Customer>();
 
 
-        //table for Order
-        //public DbSet<Order> Orders => Set<Order>();
-
+        
         //Override OnConfiguring from DbContextClass to get optionsBuilder object to create connection_string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,36 +28,10 @@ namespace Shipping_Management_Application.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
-            modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
-            modelBuilder.Entity<User>().HasIndex(u => u.Password).IsUnique();
-            //modelBuilder.Entity<Order>().HasKey(o => new { o.OrderId, o.CustomerId});
-            //modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
+            modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
 
-
+            
         }
 
     }
 }
-//foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
-//{
-//    MethodInfo? method = entityType.ClrType.GetMethod("OnModelCreating",
-//    BindingFlags.Static | BindingFlags.NonPublic);
-//    if (method is not null)
-//    {
-//        method.Invoke(null, new object[] { modelBuilder });
-//    }
-//}
-
-//protected override void OnModelCreating(ModelBuilder modelBuilder)
-//{
-//    modelBuilder.Entity<Admin>().HasKey(a => a.AdminId);
-//    modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
-//    modelBuilder.Entity<Order>()
-//        .HasKey(o => o.OrderId)
-//        .HasOne(o => o.Customer)  
-//        .WithMany(c => c.Orders)  
-//        .HasForeignKey(o => o.CustomerId);
-//    // Add additional configurations for relationships or other constraints
-
-//    base.OnModelCreating(modelBuilder);
-//}
