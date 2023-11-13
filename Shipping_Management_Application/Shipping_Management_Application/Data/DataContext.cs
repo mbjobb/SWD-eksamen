@@ -29,7 +29,22 @@ namespace Shipping_Management_Application.Data
         {
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
-            modelBuilder.Entity<Customer>();
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Customer)
+                .WithOne(c => c.User)
+                .HasForeignKey<Customer>(c => c.CustomerId);
+
+            //modelBuilder.Entity<Customer>()
+            //    .HasOne(c => c.User)
+            //    .WithOne(c => c.Customer)
+            //    .HasForeignKey<User>(u => u.Id);
+
+
+
+            //.HasOne(c => c.User)
+            //.WithOne(u => u.Customer)
+            //.HasForeignKey<User>(c => c.;
+
 
 
 

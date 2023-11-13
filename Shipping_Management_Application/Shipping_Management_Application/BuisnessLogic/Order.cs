@@ -14,11 +14,11 @@ namespace Shipping_Management_Application.BuisnessLogic
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
         [Key,ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+        public long CustomerId { get; set; }
         public Customer Customer { get; set; }
         List<Order> _orders = new();
 
-        public Order(int quantity, string shippingAddress, int customerId)
+        public Order(int quantity, string shippingAddress, long customerId)
         {
             Quantity = quantity;
             ShippingAddress = shippingAddress ?? throw new ArgumentNullException(nameof(shippingAddress));

@@ -9,9 +9,9 @@ namespace Shipping_Management_Application.Data
     {
         // We use DataAnnotations to manage and validate input data
         [Key]
-        public int CustomerId { get; set; }
-        //public User User { get; set; }
-
+        public long CustomerId { get; set; }
+        public User User { get; set; }
+        
         [Required(ErrorMessage = "First name is required")]
         [StringLength(100)]
         public string? FirstName { get; set; }

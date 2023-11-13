@@ -19,7 +19,7 @@ namespace Shipping_Management_Application.Migrations
 
             modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<long>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
@@ -75,8 +75,7 @@ namespace Shipping_Management_Application.Migrations
 
             modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<long>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
@@ -138,11 +137,6 @@ namespace Shipping_Management_Application.Migrations
                 {
                     b.HasBaseType("Shipping_Management_Application.BuisnessLogic.UserEntity");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasIndex("CustomerId");
-
                     b.HasDiscriminator().HasValue("User");
                 });
 
@@ -157,20 +151,26 @@ namespace Shipping_Management_Application.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.User", b =>
+            modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
                 {
-                    b.HasOne("Shipping_Management_Application.Data.Customer", "customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
+                    b.HasOne("Shipping_Management_Application.BuisnessLogic.User.User", "User")
+                        .WithOne("Customer")
+                        .HasForeignKey("Shipping_Management_Application.Data.Customer", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("customer");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.User", b =>
+                {
+                    b.Navigation("Customer")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
