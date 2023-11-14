@@ -12,6 +12,7 @@ namespace Shipping_Management_Application.Data
         [Key]
         public long CustomerId { get; set; }
         public User User { get; set; }
+        public ICollection<User> Users { get; set; }
         
         [Required(ErrorMessage = "First name is required")]
         [StringLength(100)]
