@@ -4,6 +4,7 @@ using FluentAssertions.Execution;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.AdminFolder;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Factories.Transport;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
@@ -225,6 +226,55 @@ namespace Shipping_Management_Application.IntegrationTests
         //    }
         //    Console.Write("Passed test");
         //}
+
+        // Test Method DeliverOrderByCountry()
+        [Test]
+        public void Deliver_MethodShouldReturn_DeliverByTruck_IfCountryIsEquelToNorway()
+        {
+            // Arrange
+            Truck transport = new();
+            string inputCountry = "tyskland";
+           
+            // Act
+            var res = transport.DeliverOrderByCountry(inputCountry);
+
+            // Assert
+            res.Should().NotBeNull();
+            Assert.IsTrue(res.Equals(inputCountry));
+            
+
+
+        }
+
+        // test for DeliverTo() ----> string Input -->Country 
+        [Test]
+
+        public void ShouldDeliverTo_WorksWhenWeSendInAneCountry()
+        {
+            // Arrange
+            Truck transport = new();
+
+            // Act
+            string inputCountry = "Norway"; // endret til "Norwa" for å matche kommentaren
+            var res = transport.DeliverTo(inputCountry);
+            var expectedOutput = $"{inputCountry}";
+
+            // Assert
+            res.Should().NotBeNull();
+            res.Should().Be(expectedOutput);
+            //    // Arrange
+            //    Truck transport = new();
+
+            //    // Act
+            //    string _object = "Norwa";
+            //    var res = transport.DeliverTo(_object);
+            //    var OutPut = $"{_object}";
+
+            //    // Assert
+            //    res.Should().NotBeNull();
+            //    res.Should().Be(OutPut);
+        }
+
 
 
     }

@@ -20,15 +20,16 @@ DATABASE
 Welcome to Registration page!
 Welcome to the registration page! Please follow the instructions.
 Enter UserName:
-Admin
+Admin --> Admin by default 
 Enter password
-Admin
+Admin   
 Are you an Admin? (yes or no)
-yes
-Admin
- An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
+yes  ---> yes
+Admin     
+Error from Db -------
+An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
 You Can to try to login with your UserName and Password!
-Welcome to the login page!
+Welcome to the login page! 
  Enter your username and password
 UserName:
 Admin
@@ -67,6 +68,8 @@ Enter Phone Number:
 33333
 Enter Email:
 2sssssd
+
+Error from DB ---> Customer.CustomerId
 An error to adding the customer: The value of 'Customer.CustomerId' is unknown when attempting to save changes. This is because the property is also part of a foreign key for which the principal entity in the relationship is not known.
  An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
 You Can to try to login with your UserName and Password!
@@ -87,6 +90,8 @@ saro
 Are you an Admin? (yes or no)
 yes
 saro
+
+error from db --> entity type 'string' 
  An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
 You Can to try to login with your UserName and Password!
 Welcome to the login page!
@@ -128,9 +133,11 @@ Enter Phone Number:
 222
 Enter Email:
 edede
-An error to adding the customer: The value of 'Customer.CustomerId' is unknown when attempting to save changes. This is because the property is also part of a foreign key for which the principal entity in the relationship is not known.
- An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
+An error to adding the customer: The value of 'Customer.CustomerId' is unknown when attempting to save changes. 
+This is because the property is also part of a foreign key for which the principal entity in the relationship is 
+not known. 
+An error :The entity type 'string' was not found. Ensure that the entity type has been added to the model.
 You Can to try to login with your UserName and Password!
 Welcome to the login page!
- Enter your username and password
+Enter your username and password
 UserName:
