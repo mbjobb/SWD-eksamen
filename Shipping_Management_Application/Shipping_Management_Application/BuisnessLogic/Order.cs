@@ -13,20 +13,24 @@ namespace Shipping_Management_Application.BuisnessLogic
         public string? ShippingAddress { get; set; } = "Norway";
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
-        [Key,ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+
+        [ForeignKey("Customer")]
+        public long CustomerId { get; set; }
+
         public Customer Customer { get; set; }
         public string? SerialNumber { get; set; }
         List<Order> _orders = new();
+        
+        public Order() { 
+        }
 
-        public Order(int quantity, string shippingAddress, long customerId)
+        public Order(int quantity, string shippingAddress, int customerId)
         {
             Quantity = quantity;
             ShippingAddress = shippingAddress ?? throw new ArgumentNullException(nameof(shippingAddress));
             CustomerId = customerId;
             SerialNumber = GenerateSerialNumberToOrder(4); // GenerateSerialNumber Automeat
         }
-
         public void PlanDelivery()
         {
             throw new NotImplementedException();

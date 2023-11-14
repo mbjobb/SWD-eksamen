@@ -10,7 +10,8 @@
 
                 MainViewPanel mainViewPanel = new();
                 mainViewPanel.MainView();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

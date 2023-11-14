@@ -32,4 +32,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="data.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

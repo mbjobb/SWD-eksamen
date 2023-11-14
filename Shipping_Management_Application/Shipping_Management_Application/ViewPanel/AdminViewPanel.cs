@@ -15,7 +15,8 @@ namespace Shipping_Management_Application.ViewPanel
         //Call bak CURD methods <--> 
         public void AdminViewPage()
         {
-            InfoAboutOurApp.HeaderComponent();
+
+            _infoAboutOurApp.HeaderComponent();
             RunAdminView();
 
 

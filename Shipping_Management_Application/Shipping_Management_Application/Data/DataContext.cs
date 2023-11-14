@@ -27,12 +27,19 @@ namespace Shipping_Management_Application.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Customer)
                 .WithOne(c => c.User)
                 .HasForeignKey<Customer>(c => c.CustomerId);
+
+            //modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
+            //modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany().HasForeignKey(o => o.CustomerId);
+
+
+
 
             //modelBuilder.Entity<Customer>()
             //    .HasOne(c => c.User)
