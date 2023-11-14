@@ -16,7 +16,6 @@ namespace Shipping_Management_Application.BuisnessLogic
 
         [ForeignKey("Customer")]
         public long CustomerId { get; set; }
-
         public Customer Customer { get; set; }
         public string? SerialNumber { get; set; }
         List<Order> _orders = new();

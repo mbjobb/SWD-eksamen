@@ -14,29 +14,25 @@ namespace Shipping_Management_Application.BuisnessLogic
 
         //default constuctor
         [SetsRequiredMembers]
-        protected UserEntity(string userName, string password)
+        protected UserEntity(string? userName, string? passWord)
         {
             UserName = userName;
-            Password = password;
+            Password = passWord;
         }
-        protected UserEntity()
-        {
+        protected UserEntity(){
             
         }
 
         //constructor with role, used for creating admins
         [SetsRequiredMembers]
-        protected UserEntity(string userName, string password, string role) : this(userName, password)
+        protected UserEntity(string? userName, string? password, string role) : this(userName, password)
         {
             Role = role;
         }
-
-
-
-
+        
         public long Id { get; set; }
-        public required string UserName { get; set; }
-        public required string Password { get; set; }
+        public required string? UserName { get; set; }
+        public required string? Password { get; set; }
         public string Role { get; set; } = "Customer";//sets default value to "Customer"
     }
 }

@@ -16,21 +16,18 @@ namespace Shipping_Management_Application.ViewPanel
             Console.WriteLine("Welcome to the login page! \n Enter your username and password");
             Console.WriteLine("UserName: ");
             string userNameInput = Console.ReadLine();
-            if (string.IsNullOrEmpty(userNameInput))
-            {
+            if (string.IsNullOrEmpty(userNameInput)){
                 Console.WriteLine("Please enter a username");
                 return;
             }
             Console.WriteLine("Enter password: ");
             string passwordInput = Console.ReadLine();
-            if (string.IsNullOrEmpty(passwordInput))
-            {
+            if (string.IsNullOrEmpty(passwordInput)){
                 Console.WriteLine("Please enter a password");
                 return;
             }
 
-            try
-            {
+            try{
                 Console.WriteLine("I am HER");
                 IsUserInDatabase(userNameInput);
                 Console.WriteLine("End");

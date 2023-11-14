@@ -1,12 +1,13 @@
 ﻿using Shipping_Management_Application.Data;
 using System;
+using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.User;
 
 namespace Shipping_Management_Application.ViewPanel
 {
     public class CustomerRegistration
     {
         Customer _customer;
-
         // Method to register customer
         public void RegisterCustomer()
         {
@@ -31,6 +32,13 @@ namespace Shipping_Management_Application.ViewPanel
             string phone = Console.ReadLine();
             Console.WriteLine("Enter Email:");
             string email = Console.ReadLine();
+            
+            // Add prompts for userName and password
+            Console.WriteLine("Enter Username:");
+            string? userName = Console.ReadLine();
+            Console.WriteLine("Enter Password:");
+            string? password = Console.ReadLine();
+            
             //check out is alle staff is not null
             bool CustomerLogik = !string.IsNullOrEmpty(firstName) && 
                                  !string.IsNullOrEmpty(lastName)  && 
@@ -44,17 +52,27 @@ namespace Shipping_Management_Application.ViewPanel
 
             if (CustomerLogik)
             {
-                using (DataContext context = new DataContext())
-                {
-                    try
-                    {
-                        _customer = new Customer(firstName, lastName, address, city, region, postalCode, country, phone, email);
+                using (DataContext context = new()){
+                    using var transaction = context.Database.BeginTransaction();
+                    try{
+                        UserEntity userEntity = new User(userName, password);
+                        context.UserEntities.Add(userEntity);
+                        context.SaveChanges();
+                        
+                        _customer = new Customer(firstName, lastName, address, city, region, postalCode, country, phone, email){
+                            CustomerId = userEntity.Id,
+                            User = new User(userName, password)
+                        };
+                        
                         context.Add(_customer);
                         context.SaveChanges();
+                        
+                        transaction.Commit();
                         Console.WriteLine("Customer added to the database!");
                     }
                     catch (Exception ex)
                     {
+                        transaction.Rollback();
                         Console.WriteLine("An error to adding the customer: " + ex.Message);
                     }
                 }

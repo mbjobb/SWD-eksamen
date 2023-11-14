@@ -1,4 +1,5 @@
-﻿using Shipping_Management_Application.Factories.Transport;
+﻿/**
+using Shipping_Management_Application.Factories.Transport;
 
 namespace Shipping_Management_Application.Factories.Logistics
 {
@@ -10,3 +11,4 @@ namespace Shipping_Management_Application.Factories.Logistics
         }
     }
 }
+**/

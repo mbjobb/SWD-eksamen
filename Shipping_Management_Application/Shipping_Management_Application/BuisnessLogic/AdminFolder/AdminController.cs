@@ -15,7 +15,7 @@ public class AdminController : UserController
 
 
     // Create Admin and add => sending to Database
-    public void CreateAdmin(string userName, string password)
+    public void CreateAdmin(string? userName, string? password)
     {
         //Database Connection
         using (DataContext dataContext = new())
@@ -106,7 +106,7 @@ public class AdminController : UserController
     }
 
     // Update username and password an admin 
-    public void UpdateAdminInfo(int id, string newUserName, string newPassword)
+    public void UpdateAdminInfo(int id, string? newUserName, string? newPassword)
     {
         using (DataContext dataContext = new DataContext())
         {

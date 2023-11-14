@@ -7,6 +7,7 @@ using Shipping_Management_Application.Data;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
+using Shipping_Management_Application.Factories.Transport;
 
 namespace Shipping_Management_Application.IntegrationTests
 {
@@ -164,7 +165,7 @@ namespace Shipping_Management_Application.IntegrationTests
         //public void ShouldPrintOrderMethodWork()
         //{
         //    // Arrange 
-        //    Customer minKunde = new("Saro", "Ismailzada", "Lørenveien 35", "Oslo","Løren" ,"0585","Norway", "0047 91285784", "sarosamall@yahoo.com");
+        //    Customer minKunde = new("Saro", "Ismailzada", "Lï¿½renveien 35", "Oslo","Lï¿½ren" ,"0585","Norway", "0047 91285784", "sarosamall@yahoo.com");
 
         //    // Act
         //    Order minOrdre = new(1,"Urtegata 9", minKunde.CustomerId = 1);
@@ -204,6 +205,20 @@ namespace Shipping_Management_Application.IntegrationTests
             // Assert
            //generatedSerialNumbers.Count().Should().Be(9999);
            
+        }
+
+        [Test]
+        public void DeliverByCountry_ShouldCallAirDelivery_WhenOutsideOfNorway(){
+            // Arrange
+            Truck transport = new();
+            var country = "denmark";
+            
+            // Act
+            var result = transport.DeliverOrderByCountry(country);
+            
+            // Assert
+            StringAssert.Contains("Plane", result);
+            Console.WriteLine(transport);
         }
 
         //[Test]

@@ -7,7 +7,7 @@ public class Admin : UserEntity
 
 
     [SetsRequiredMembers]
-    public Admin(string userName, string password, string role = "Admin") : base(userName, password, role)
+    public Admin(string? userName, string? password, string role = "Admin") : base(userName, password, role)
     {
     }
 }

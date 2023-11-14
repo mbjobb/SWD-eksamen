@@ -13,8 +13,7 @@ namespace Shipping_Management_Application.Migrations
         {
             migrationBuilder.CreateTable(
                 name: "UserEntities",
-                columns: table => new
-                {
+                columns: table => new{
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(type: "TEXT", nullable: false),
@@ -22,15 +21,13 @@ namespace Shipping_Management_Application.Migrations
                     Role = table.Column<string>(type: "TEXT", nullable: false),
                     Discriminator = table.Column<string>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_UserEntities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Customers",
-                columns: table => new
-                {
+                columns: table => new {
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
@@ -42,8 +39,7 @@ namespace Shipping_Management_Application.Migrations
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Customers", x => x.CustomerId);
                     table.ForeignKey(
                         name: "FK_Customers_UserEntities_CustomerId",
@@ -52,13 +48,13 @@ namespace Shipping_Management_Application.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
+            
             migrationBuilder.CreateTable(
                 name: "Orders",
-                columns: table => new
-                {
+                columns: table => new {
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: false),
+                    OrderId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false),
                     ShippingAddress = table.Column<string>(type: "TEXT", nullable: true),
                     OrderStatus = table.Column<string>(type: "TEXT", nullable: true),

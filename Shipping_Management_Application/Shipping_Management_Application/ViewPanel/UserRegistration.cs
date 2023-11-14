@@ -16,31 +16,27 @@ namespace Shipping_Management_Application.ViewPanel
         {
             Console.WriteLine("Welcome to the registration page! Please follow the instructions.");
             Console.WriteLine("Enter UserName: ");
-            string _userName = Console.ReadLine();
+            string? userName = Console.ReadLine();
             Console.WriteLine("Enter password");
-            string _password = Console.ReadLine();
+            string? password = Console.ReadLine();
 
             // We check if the user is an admin
             Console.WriteLine("Are you an Admin? (yes or no)");
-            string _userInput = Console.ReadLine();
+            string? userInput = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password) || _userInput.ToLower() == "no")
-            {
-                _user = new User(_userName, _password);
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) || userInput?.ToLower() == "no"){
+                _user = new User(userName, password);
                 _user.Role = "Customer";
 
                 using (DataContext context = new())
                 {
-                    var existingUser = context.Users.FirstOrDefault(u => u.UserName == _userName);
-                    if (existingUser != null)
-                    {
+                    var existingUser = context.Users.FirstOrDefault(u => u.UserName == userName);
+                    if (existingUser != null){
                         Console.WriteLine("User already exists.");
                     }
-                    else
-                    {
-                    
+                    else{
                         Console.WriteLine("i am here");
-                        context.Add(_user);
+                        context.Users.Add(_user);
                         //  it must Debug 
                         Console.WriteLine("added");
                         context.SaveChanges();
@@ -49,17 +45,14 @@ namespace Shipping_Management_Application.ViewPanel
                         // Registre Customer if not found in database
                         _customerRegistration = new CustomerRegistration();
                         _customerRegistration.RegisterCustomer();
-
                     }
                 }
             }
-            else
-            {
-                _user = new(_userName, _password);
+            else{
+                _user = new(userName, password);
                 _user.Role = "admin";
                 Console.WriteLine(_user.UserName, _user.Role);
             }
-
             return "Registration Is successful";
         }
     }

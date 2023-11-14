@@ -60,7 +60,7 @@ namespace Shipping_Management_Application.Data
 
         }
         [JsonConstructor]
-
+        
         public Customer(string? firstName, string? lastName, string? address, string? city, string? region, string? postalCode, string? country, string? phone, string? email)
         {
 
