@@ -30,10 +30,10 @@ namespace Shipping_Management_Application.Data
 
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
-            modelBuilder.Entity<User>();
-            //.HasOne(u => u.Customer)
-            //.WithOne(c => c.User)
-            //.HasForeignKey<Customer>(c => c.CustomerId);
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Customer)
+                .WithOne(c => c.User)
+                .HasForeignKey<Customer>(c => c.CustomerId);
 
             //modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
             //modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany().HasForeignKey(o => o.CustomerId);
@@ -46,7 +46,7 @@ namespace Shipping_Management_Application.Data
             //    .WithOne(c => c.Customer)
             //    .HasForeignKey<User>(u => u.Id);
 
-            modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne().HasForeignKey<Customer>(c => c.CustomerId);
+
 
             //.HasOne(c => c.User)
             //.WithOne(u => u.Customer)
