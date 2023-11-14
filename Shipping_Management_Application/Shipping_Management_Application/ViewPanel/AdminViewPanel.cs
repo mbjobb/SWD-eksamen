@@ -15,7 +15,7 @@ namespace Shipping_Management_Application.ViewPanel
         //Call bak CURD methods <--> 
         public void AdminViewPage()
         {
-            _infoAboutOurApp.HeaderComponent();
+            InfoAboutOurApp.HeaderComponent();
             RunAdminView();
 
 
@@ -63,7 +63,7 @@ namespace Shipping_Management_Application.ViewPanel
                             if (input.ToLower() == "yes")
                             {
                                 Console.WriteLine("Exiting....\n Program finished");
-                                _infoAboutOurApp.EndProgram();
+                               //infoAboutOurApp.EndProgram();
                                 Thread.Sleep(7000);
                                 return;
                             }

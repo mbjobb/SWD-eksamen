@@ -32,13 +32,4 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Customerdata.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="data.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
