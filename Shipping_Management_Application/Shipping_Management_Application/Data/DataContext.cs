@@ -1,63 +1,34 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
+using System.Reflection;
 
 namespace Shipping_Management_Application.Data
 {
     public class DataContext : DbContext
     {
-        //Makes the db aware of the base class
-        public DbSet<UserEntity> UserEntities => Set<UserEntity>();
-        //tabel for Admin
-        public DbSet<Admin> Admins => Set<Admin>();
-        //tabel for users
-        public DbSet<User> Users => Set<User>();
-        // tabel for orders
-        public DbSet<Order> Orders => Set<Order>();
-        public DbSet<Customer> Customers => Set<Customer>();
 
+        public DbSet<User> users => Set<User>();
+        public DbSet<UserEntity> userEntities => Set<UserEntity>();
+        public DbSet<Order> orders => Set<Order>();
 
-        
-        //Override OnConfiguring from DbContextClass to get optionsBuilder object to create connection_string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=data.db");
-
+            optionsBuilder.UseSqlite(@"Data Source = data.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
-            modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
-            modelBuilder.Entity<User>();
-            //.HasOne(u => u.Customer)
-            //.WithOne(c => c.User)
-            //.HasForeignKey<Customer>(c => c.CustomerId);
-
-            //modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
-            //modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany().HasForeignKey(o => o.CustomerId);
-
-
-
-
-            //modelBuilder.Entity<Customer>()
-            //    .HasOne(c => c.User)
-            //    .WithOne(c => c.Customer)
-            //    .HasForeignKey<User>(u => u.Id);
-
-            modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne().HasForeignKey<Customer>(c => c.CustomerId);
-
-            //.HasOne(c => c.User)
-            //.WithOne(u => u.Customer)
-            //.HasForeignKey<User>(c => c.;
-
-
-
-
-
-
+            foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                MethodInfo? method = entityType.ClrType.GetMethod("OnModelCreating",
+                BindingFlags.Static | BindingFlags.NonPublic);
+                if (method is not null)
+                {
+                    method.Invoke(null, new object[] { modelBuilder });
+                }
+            }
         }
-
     }
 }

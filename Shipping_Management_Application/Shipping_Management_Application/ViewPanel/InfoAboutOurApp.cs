@@ -12,9 +12,9 @@ namespace Shipping_Management_Application.ViewPanel
         public void HeaderComponent(string appName = "Shipping Management")
         {
             Console.WriteLine($"-------- {appName.ToUpper()}--------- Date : {"Year : " + DateTime.Now.Year + " Time: " + DateTime.Now.ToString("HH:mm:ss")} ---------");
-        
+
         }
-       
+
         public void WelcomeMesseag(string messeag = "Welcome to our Application")
         {
             System.Console.WriteLine(messeag);

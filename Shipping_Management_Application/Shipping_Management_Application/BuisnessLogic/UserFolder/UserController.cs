@@ -1,15 +1,15 @@
 ﻿using Shipping_Management_Application.Data;
 
-namespace Shipping_Management_Application.BuisnessLogic.User
+namespace Shipping_Management_Application.BuisnessLogic.UserFolder
 {
     public class UserController
     {
         //Database Connection
-        DataContext dataContext;
+        DataContext2? dataContext;
 
         static void FindUserById(long id)
         {
-           // User? user = DabaseContext.User.First(u => u.id == Id);
+            // User? user = DabaseContext.User.First(u => u.id == Id);
         }
         //Method to CURD 
 

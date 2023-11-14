@@ -11,14 +11,14 @@ namespace Shipping_Management_Application.ViewPanel
         UserLogin _userLogin = new();
         CustomerRegistration _customerRegistration = new();
         //MainViewPanel _mainViewPanel = new MainViewPanel(); <--> Infinity loop 
-        InfoAboutOurApp _infoAboutOurApp = new();
+        //InfoAboutOurApp _infoAboutOurApp = new();
         // method for LogInDashboard for customer
         public void LogInDashboard()
         {
-            _infoAboutOurApp.HeaderComponent();
+            //_infoAboutOurApp.HeaderComponent();
 
-            bool res = true;
-            while (res)
+            //bool res = true;
+            while (true)
             {
                 Console.WriteLine("1. Sing In"); // retur ShowLoginPage
                 Console.WriteLine("2. Register"); // return customerRegistration()
@@ -26,37 +26,37 @@ namespace Shipping_Management_Application.ViewPanel
 
                 //menu
                 var userInput = Console.ReadLine();
-        
+
                 switch (userInput)
-                    {
-                        case "1":
-                            {
-                                Console.WriteLine("1");
-                                Console.WriteLine("Customer LogIn");
-                                _userLogin.ShowLoginPage();
-                                break;
-                            }
-                        case "2":
-                            {
-                                Console.WriteLine("2");
-                                Console.WriteLine("Sign Up Please");
-                                _customerRegistration.RegisterCustomer();
-                                break;
-                            }
-                        case "3":
-                            {
-                                //_mainViewPanel.MainView();
-                                break;
-
-                            }
-                        default:
-                            Console.WriteLine("Invalid choice ");
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("1");
+                            Console.WriteLine("Customer LogIn");
+                            _userLogin.ShowLoginPage();
                             break;
-                    } 
-                     break;
+                        }
+                    case "2":
+                        {
+                            Console.WriteLine("2");
+                            Console.WriteLine("Sign Up Please");
+                            _customerRegistration.RegisterCustomer();
+                            break;
+                        }
+                    case "3":
+                        {
+                            //_mainViewPanel.MainView();
+                            break;
 
+                        }
+                    default:
+                        Console.WriteLine("Invalid choice ");
+                        break;
                 }
-               
+                break;
+
+            }
+
         }
     }
 

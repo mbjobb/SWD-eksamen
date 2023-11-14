@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
 using Shipping_Management_Application.Data;
-using System.Diagnostics.Metrics;
 using System;
+using System.Diagnostics.Metrics;
 
 namespace Shipping_Management_Application.BuisnessLogic.AdminFolder;
 
@@ -10,15 +10,15 @@ public class AdminController : UserController
 {
     // TODO: redo all of this
 
-    public Admin Admin { get; private set; }
-    private List<Admin> admins { get; set; }
+    public Admin? Admin { get; private set; }
+    private List<Admin>? admins { get; set; }
 
 
     // Create Admin and add => sending to Database
     public void CreateAdmin(string userName, string password)
     {
         //Database Connection
-        using (DataContext dataContext = new())
+        using (DataContext2 dataContext = new())
         {
             try
             {
@@ -32,7 +32,7 @@ public class AdminController : UserController
                 }
                 else
                 {
-                  
+
                     for (int count = 3; count > 0; count--)
                     {
                         Console.WriteLine("You must enter a 'userName' and 'password'");
@@ -51,16 +51,16 @@ public class AdminController : UserController
     public List<Admin> GetAllAdmins()
     {
         //Database Connection
-        using (DataContext dataContext = new())
+        using (DataContext2 dataContext = new())
         {
 
             // try to find out all admins in usertabel where rolle = "Admin"
             try
             {
-                admins = dataContext.UserEntities
-                        .Where(u => u.Role == "Admin")
-                        .Select(u => new Admin(u.UserName, u.Password, "Admin"))
-                         .ToList();
+               //admins = dataContext.UserEntities
+               //         .Where(u => u.Role == "Admin")
+               //         .Select(u => new Admin(u.UserName, u.Password, "Admin"))
+               //          .ToList();
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ public class AdminController : UserController
     //Method to remove an Admin by Id
     public void RemoveAdminById(int id)
     {
-        using (DataContext dataContext = new DataContext())
+        using (DataContext2 dataContext = new DataContext2())
         {
             try
             {
@@ -108,7 +108,7 @@ public class AdminController : UserController
     // Update username and password an admin 
     public void UpdateAdminInfo(int id, string newUserName, string newPassword)
     {
-        using (DataContext dataContext = new DataContext())
+        using (DataContext2 dataContext = new DataContext2())
         {
             try
             {
@@ -134,28 +134,28 @@ public class AdminController : UserController
     }
 }
 
-    //// Method to get an admin by username from a list
-    //public Admin? GetAdmin(List<Admin> admins, string userName)
-    //{
-    //    foreach (Admin admin in admins)
-    //    {
-    //        if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
-    //        {
-    //            return admin;
-    //        }
-    //    }
-    //    return null;
-    //}
-    //// Helper method to check if a username is available
-    //private bool IsUserNameAvailable(List<Admin> admins, string userName)
-    //{
-    //    return admins.Any(admin => admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
-    //}
-    //// Method to check if an admin exists
-    //public bool IsAdmin(List<Admin> admins, string userName)
-    //{
-    //    return admins.Any(admin => admin.UserName.Equals(userName));
-    //}
+//// Method to get an admin by username from a list
+//public Admin? GetAdmin(List<Admin> admins, string userName)
+//{
+//    foreach (Admin admin in admins)
+//    {
+//        if (admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
+//        {
+//            return admin;
+//        }
+//    }
+//    return null;
+//}
+//// Helper method to check if a username is available
+//private bool IsUserNameAvailable(List<Admin> admins, string userName)
+//{
+//    return admins.Any(admin => admin.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
+//}
+//// Method to check if an admin exists
+//public bool IsAdmin(List<Admin> admins, string userName)
+//{
+//    return admins.Any(admin => admin.UserName.Equals(userName));
+//}
 //    // Method to Update AdminUserName
 //    public Admin? UpdateAdminName(List<Admin> admins, string userName, string newUserName)
 //    {

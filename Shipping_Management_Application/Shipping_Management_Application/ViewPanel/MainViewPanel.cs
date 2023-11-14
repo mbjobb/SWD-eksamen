@@ -4,19 +4,19 @@ using System.Threading;
 
 public class MainViewPanel
 {
-    InfoAboutOurApp _infoAboutOurApp = new();
+    //InfoAboutOurApp _infoAboutOurApp = new();
     LoadingView loadingView = new();
     UserLogin userLogin = new();
     LogInDashboardForCustomer _logInDashboardForCustomer = new();
     public void MainView()
     {
-        _infoAboutOurApp.HeaderComponent();
+        //_infoAboutOurApp.HeaderComponent();
         // show welcome Message
         loadingView.Print("Loading...");
-        _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
-        Thread.Sleep(4000);
-        _infoAboutOurApp.About();
-        Thread.Sleep(5000);
+        //_infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
+        //Thread.Sleep(4000);
+        //_infoAboutOurApp.About();
+        //Thread.Sleep(5000);
 
 
         // menu 
@@ -24,7 +24,7 @@ public class MainViewPanel
         {
             Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
             Console.WriteLine("----------- 1. Sign In / Register "); //if Customer
-            Console.WriteLine("----------- 2. Admin");
+            //Console.WriteLine("----------- 2. Admin");
             Console.WriteLine("----------- 3. Exit");
 
             var userInput = Console.ReadLine();
@@ -39,7 +39,7 @@ public class MainViewPanel
                         _logInDashboardForCustomer.LogInDashboard();
                         break;
                     }
-                        
+
 
                 case "2":
                     {
@@ -58,8 +58,8 @@ public class MainViewPanel
                         if (input.ToLower() == "yes")
                         {
                             Console.WriteLine("Exiting....\n Program finished");
-                            _infoAboutOurApp.EndProgram();
-                            Thread.Sleep(7000);
+                            //_infoAboutOurApp.EndProgram();
+                            //Thread.Sleep(7000);
                             return;
                         }
                         else if (input.ToLower() == "no")
@@ -71,7 +71,7 @@ public class MainViewPanel
                             Console.WriteLine("Please enter 'yes' to exit or 'no' to return to the main menu.");
                         }
                     }
-                    
+
                     break;
 
                 default:
@@ -79,7 +79,7 @@ public class MainViewPanel
                     break;
             }
         }
-        
+
     }
 
     // Method to check Is user Input is valid or not 

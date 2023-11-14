@@ -1,5 +1,5 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
 
 namespace Shipping_Management_Application.Data
 {
@@ -12,7 +12,7 @@ namespace Shipping_Management_Application.Data
 
         }
         //Method to read an object from database
-        public List<UserEntity> GetUsers(string role)
+        public List<UserEntity>? GetUsers(string role)
         {
             //GetUser by Role and add to different
             List<UserEntity> customers = new();
@@ -22,7 +22,7 @@ namespace Shipping_Management_Application.Data
         //Method to UpdateObject 
         public void UpdateObject(UserEntity user)
         {
-            
+
         }
         //Method to deleteObject from database 
         public void DeleteObject(UserEntity user)

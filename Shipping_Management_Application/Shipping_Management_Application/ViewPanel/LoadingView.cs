@@ -13,7 +13,7 @@ namespace Shipping_Management_Application.ViewPanel
             {
                 ClearLine(text);
                 Thread.Sleep(3000);
-                
+
             });
 
             loadingThread.Start();

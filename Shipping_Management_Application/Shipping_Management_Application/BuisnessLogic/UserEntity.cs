@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.BuisnessLogic
@@ -21,7 +22,7 @@ namespace Shipping_Management_Application.BuisnessLogic
         }
         protected UserEntity()
         {
-            
+
         }
 
         //constructor with role, used for creating admins
@@ -38,5 +39,13 @@ namespace Shipping_Management_Application.BuisnessLogic
         public required string UserName { get; set; }
         public required string Password { get; set; }
         public string Role { get; set; } = "Customer";//sets default value to "Customer"
+
+
+        protected void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Admin>(ueb => { ueb.ToTable("UserEnteties"); });
+            modelBuilder.Entity<User>(ueb => { ueb.ToTable("UserEnteties"); });
+
+        }
     }
 }

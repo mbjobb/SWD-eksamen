@@ -1,4 +1,7 @@
-﻿using Shipping_Management_Application.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
+using Shipping_Management_Application.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,29 +9,32 @@ namespace Shipping_Management_Application.BuisnessLogic
 {
     public class Order
     {
-        [Key]
-        public int OrderId { get; set; }
-
+        public long OrderId { get; set; }
+        //public long Id { get; set; }
         public int Quantity { get; set; }
         public string? ShippingAddress { get; set; } = "Norway";
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
+        public User User { get; set; } = null!;
+        public long UserId { get; set; }
 
-        [ForeignKey("Customer")]
-        public long CustomerId { get; set; }
+        //[ForeignKey("Customer")]
+        //public long CustomerId { get; set; }
 
-        public Customer Customer { get; set; }
+        //public Customer Customer { get; set; }
         public string? SerialNumber { get; set; }
         List<Order> _orders = new();
         
-        public Order() { 
+
+        public Order()
+        {
         }
 
-        public Order(int quantity, string shippingAddress, int customerId)
+        public Order(int quantity, string shippingAddress, long Id)
         {
             Quantity = quantity;
             ShippingAddress = shippingAddress ?? throw new ArgumentNullException(nameof(shippingAddress));
-            CustomerId = customerId;
+            User.Id = Id;
             SerialNumber = GenerateSerialNumberToOrder(4); // GenerateSerialNumber Automeat
         }
         public void PlanDelivery()
@@ -58,9 +64,9 @@ namespace Shipping_Management_Application.BuisnessLogic
         //method to Print order 
         public void PrintOrder()
         {
-            Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
-            Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
-            Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
+            Console.WriteLine($"--------------------- Thanks you  {User.FirstName} for you ordred! ");
+            //Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
+            //Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
             Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
             Console.WriteLine($"--------------------  Quantity    : {Quantity}           --------------------");
             Console.WriteLine($"--------------------  Address     : {ShippingAddress}    --------------------");
@@ -102,6 +108,11 @@ namespace Shipping_Management_Application.BuisnessLogic
 
 
 
+        }
+
+        protected  void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().HasOne<User>().WithMany(u => u.Orders);
         }
     }
 }

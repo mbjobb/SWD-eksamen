@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using Shipping_Management_Application.BuisnessLogic;
+﻿using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
+using System;
+using System.Linq;
 
 namespace Shipping_Management_Application.ViewPanel
 {
     public class UserLogin
     {
-        
+
         private UserRegistration registration = new();
         private CustomerRegistration _customerRegistration = new();
         //method to showLogin page for customer and admin 
@@ -49,13 +49,13 @@ namespace Shipping_Management_Application.ViewPanel
         public string IsUserInDatabase(string username)
         {
             Console.WriteLine("DATABASE");
-            using (DataContext context = new DataContext())
+            using (DataContext2 context = new DataContext2())
             {
                 var user = context.Users.FirstOrDefault(u => u.UserName.ToLower() == username.ToLower());
 
                 if (user != null)
                 {
-                    
+
                     return "User exists in the database!";
                 }
                 else
@@ -64,7 +64,8 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("Welcome to Registration page! ");
                     Thread.Sleep(2000);
                     var res = registration.UserRegisterPanel();
-                    try{
+                    try
+                    {
                         context.Add(res);
                         context.SaveChanges();
                     }

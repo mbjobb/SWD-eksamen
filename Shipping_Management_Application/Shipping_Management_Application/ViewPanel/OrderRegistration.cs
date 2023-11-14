@@ -1,5 +1,5 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +11,15 @@ namespace Shipping_Management_Application.ViewPanel
     public class OrderRegistration
     {
         //This class can used by Customer and Admin to doing CURD operation 
-        User _user { get; set; }
+        User? _user { get; set; }
         Order? _order { get; set; }
-        List<Order> _orders { get; set; }
+        List<Order>? _orders { get; set; }
 
         //Method to create an order from Customer and Admin
-        public void CreateOrder() {
+        public void CreateOrder()
+        {
             Console.WriteLine("Register your Order!");
-            
+
             //connection to db
 
         }

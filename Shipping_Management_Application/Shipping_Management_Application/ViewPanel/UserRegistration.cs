@@ -1,5 +1,5 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic.UserFolder;
 using Shipping_Management_Application.Data;
 using System;
 using System.Linq;
@@ -8,9 +8,9 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class UserRegistration
     {
-        User _user;
-        UserEntity _userEntity;
-        CustomerRegistration _customerRegistration;
+        User? _user;
+        UserEntity? _userEntity;
+        CustomerRegistration? _customerRegistration;
 
         public string UserRegisterPanel()
         {
@@ -26,10 +26,10 @@ namespace Shipping_Management_Application.ViewPanel
 
             if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password) || _userInput.ToLower() == "no")
             {
-                _user = new User(_userName, _password);
+                /// TODO: _user = new User(_userName, _password);
                 _user.Role = "Customer";
 
-                using (DataContext context = new())
+                using (DataContext2 context = new())
                 {
                     var existingUser = context.Users.FirstOrDefault(u => u.UserName == _userName);
                     if (existingUser != null)
@@ -38,7 +38,7 @@ namespace Shipping_Management_Application.ViewPanel
                     }
                     else
                     {
-                    
+
                         Console.WriteLine("i am here");
                         context.Add(_user);
                         //  it must Debug 
@@ -55,7 +55,7 @@ namespace Shipping_Management_Application.ViewPanel
             }
             else
             {
-                _user = new(_userName, _password);
+             //TODO:   _user = new(_userName, _password);
                 _user.Role = "admin";
                 Console.WriteLine(_user.UserName, _user.Role);
             }

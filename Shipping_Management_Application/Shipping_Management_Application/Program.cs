@@ -6,7 +6,7 @@
         {
             try
             {
-                Thread.Sleep(1000);
+
 
                 MainViewPanel mainViewPanel = new();
                 mainViewPanel.MainView();

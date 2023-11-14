@@ -1,5 +1,5 @@
-﻿add-migration -Context DataContext -StartupProject Shipping_Management_Application -Project Shipping_Management_Application InitialCreation
-update-database -Context DataContext -StartupProject Shipping_Management_Application -Project Shipping_Management_Application
+﻿add-migration -StartupProject Shipping_Management_Application -Project Shipping_Management_Application someCreation
+update-database  -StartupProject Shipping_Management_Application -Project Shipping_Management_Application
 
 
 Add-Migration AddNewModelOrRelationship -Context DataContext -StartupProject Shipping_Management_Application -Project Shipping_Management_Application

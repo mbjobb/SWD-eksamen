@@ -195,7 +195,7 @@ namespace Shipping_Management_Application.IntegrationTests
                 {
                     Console.WriteLine("NOT Duplicate serial number found");
                 }
-    
+
                 else
                 {
                     Console.WriteLine("Duplicate serial number found");
@@ -203,8 +203,8 @@ namespace Shipping_Management_Application.IntegrationTests
             }
 
             // Assert
-           //generatedSerialNumbers.Count().Should().Be(9999);
-           
+            //generatedSerialNumbers.Count().Should().Be(9999);
+
         }
 
         //[Test]
@@ -234,14 +234,14 @@ namespace Shipping_Management_Application.IntegrationTests
             // Arrange
             Truck transport = new();
             string inputCountry = "tyskland";
-           
+
             // Act
             var res = transport.DeliverOrderByCountry(inputCountry);
 
             // Assert
             res.Should().NotBeNull();
             Assert.IsTrue(res.Equals(inputCountry));
-            
+
 
 
         }
