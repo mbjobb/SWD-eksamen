@@ -1,5 +1,6 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Shipping_Management_Application.Data

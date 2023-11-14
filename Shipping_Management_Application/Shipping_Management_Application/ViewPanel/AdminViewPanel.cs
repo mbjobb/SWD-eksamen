@@ -8,14 +8,14 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class AdminViewPanel
     {
-        InfoAboutOurApp InfoAboutOurApp = new();
+        InfoAboutOurApp _infoAboutOurApp = new();
         LoadingView loadingView = new();
         UserLogin userLogin = new();
         //viewpanel for admin <--> OrderRegistration.cs
         //Call bak CURD methods <--> 
         public void AdminViewPage()
         {
-            InfoAboutOurApp.HeaderComponent();
+            _infoAboutOurApp.HeaderComponent();
             RunAdminView();
 
 
@@ -28,7 +28,7 @@ namespace Shipping_Management_Application.ViewPanel
                 Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
                 Console.WriteLine("----------- 1. Manage Order");// CURD needs ManageObjectViewPanel(UserEntity user)
                 Console.WriteLine("----------- 2. Manage Customer");//Have an method to view customers GetAllCustomer(), and Viewpanel();   
-                Console.WriteLine("----------- 3. Manage Modes");
+                Console.WriteLine("----------- 3. Find Order / Search Order by SerialNumber"); //crate method 
                 Console.WriteLine("----------- 4. Manage M");
                 Console.WriteLine("----------- 5. HomePage"); // go back to MainPanelViewPanel()
 
@@ -94,4 +94,3 @@ namespace Shipping_Management_Application.ViewPanel
         }
     }
     }
-}

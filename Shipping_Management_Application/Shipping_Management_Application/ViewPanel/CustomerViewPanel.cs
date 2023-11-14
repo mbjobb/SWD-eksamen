@@ -28,11 +28,11 @@ namespace Shipping_Management_Application.ViewPanel
             while (true)
             {
                 Console.WriteLine("----------- Enter your Choice! 1, 2, 3 or 4");
-                Console.WriteLine("----------- 1. Place Order"); // loading PlaceOrderViewPanel(){OrderRegistration.cs}
-                                                                 // loading TransportViewPanel- create transpot methods for order
-                Console.WriteLine("----------- 2. Manage Profile"); //Loading UserProfileViewPanel(string username);CURD methods
+                Console.WriteLine("----------- 1. Place Order"); // loading PlaceOrderViewPanel(){OrderRegistration.cs} -> return CustomerViewPanel();
+                                                                 // loading TransportViewPanel- create transpot methods for order Randomlig
+                Console.WriteLine("----------- 2. Manage Profile");//Loading UserProfileViewPanel(string username);CURD methods
                 Console.WriteLine("----------- 3. Orders History");//Method to List<Order> -> GetAllHistoryOrders()
-                Console.WriteLine("----------- 4. HomePage");
+                Console.WriteLine("----------- 4. LogOut");// Return MainViewPanel() ->Exit;
 
                 var userInput = Console.ReadLine();
 

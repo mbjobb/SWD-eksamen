@@ -31,9 +31,12 @@ namespace Shipping_Management_Application.ViewPanel
 
             try
             {
-                string result = IsUserInDatabase(userNameInput);
-                Console.WriteLine(result);
-                //Testing Debuging
+                Console.WriteLine("I am HER");
+                IsUserInDatabase(userNameInput);
+                Console.WriteLine("End");
+
+                //Console.WriteLine(result);
+                //Testing Debuging 
                 //bool result = true;
                 //registration.UserRegisterPanel();
             }
@@ -45,6 +48,7 @@ namespace Shipping_Management_Application.ViewPanel
         // method to check out for user in database
         public string IsUserInDatabase(string username)
         {
+            Console.WriteLine("DATABASE");
             using (DataContext context = new DataContext())
             {
                 var user = context.Users.FirstOrDefault(u => u.UserName.ToLower() == username.ToLower());

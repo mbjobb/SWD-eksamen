@@ -7,6 +7,7 @@ public class MainViewPanel
     InfoAboutOurApp _infoAboutOurApp = new();
     LoadingView loadingView = new();
     UserLogin userLogin = new();
+    LogInDashboardForCustomer _logInDashboardForCustomer = new();
     public void MainView()
     {
         _infoAboutOurApp.HeaderComponent();
@@ -22,8 +23,8 @@ public class MainViewPanel
         while (true)
         {
             Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
-            Console.WriteLine("----------- 1. LogIn for Customer"); // if Customer
-            Console.WriteLine("----------- 2. LogIn for Admin");
+            Console.WriteLine("----------- 1. Sign In / Register "); //if Customer
+            Console.WriteLine("----------- 2. Admin");
             Console.WriteLine("----------- 3. Exit");
 
             var userInput = Console.ReadLine();
@@ -35,7 +36,7 @@ public class MainViewPanel
                         Console.WriteLine("LogIn for Customer");
                         loadingView.Print("Loading...");
                         // comming method -> CustomerViewPanel() 
-                        userLogin.ShowLoginPage();
+                        _logInDashboardForCustomer.LogInDashboard();
                         break;
                     }
                         

@@ -10,12 +10,13 @@ namespace Shipping_Management_Application.BuisnessLogic
         public int OrderId { get; set; }
 
         public int Quantity { get; set; }
-        public string? ShippingAddress { get; set; }
+        public string? ShippingAddress { get; set; } = "Norway";
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
-        [Key,ForeignKey("Customer")]
+        [Key, ForeignKey("Customer")]
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public string? SerialNumber { get; set; }
         List<Order> _orders = new();
 
         public Order(int quantity, string shippingAddress, int customerId)
@@ -23,6 +24,7 @@ namespace Shipping_Management_Application.BuisnessLogic
             Quantity = quantity;
             ShippingAddress = shippingAddress ?? throw new ArgumentNullException(nameof(shippingAddress));
             CustomerId = customerId;
+            SerialNumber = GenerateSerialNumberToOrder(4); // GenerateSerialNumber Automeat
         }
 
         public void PlanDelivery()
@@ -58,23 +60,44 @@ namespace Shipping_Management_Application.BuisnessLogic
             Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
             Console.WriteLine($"--------------------  Quantity    : {Quantity}           --------------------");
             Console.WriteLine($"--------------------  Address     : {ShippingAddress}    --------------------");
-            Console.WriteLine($"--------------------  OrderStatus : {OrderStatus}        --------------------"); 
+            Console.WriteLine($"--------------------  OrderStatus : {OrderStatus}        --------------------");
             Console.WriteLine($"--------------------  OrderDate   : {OrderDate}          --------------------");
             Console.WriteLine($"-----------------------------------------------------------------------------");
             // call to GenerateSerialNumberToOrder() to generateSerialnumber by 8 chars 
-            Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(8)}   --------------------");
+            Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(4)}   --------------------");
 
 
         }
+        //
         //Method to genreate serialnumber to order 
-        public string GenerateSerialNumberToOrder(int length)
+        public string GenerateSerialNumberToOrder(int length, string ser = "")
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Character set for random string
             var random = new Random();
             // return new string from chars by input length size and using random class to generate random string!
-            return new string(Enumerable.Repeat(chars, length)
-            .Select(s => s[random.Next(s.Length)]).ToArray());
+            string serialNumber;
+            // serialnumber[0] = "A" add A-serialnumber 
+            HashSet<string> serialList = new();
+            // we check if serialNumber is Duplicate or not, we add all of serialNumber to serialList and we check....
+            do
+            {
+                serialNumber = new string(Enumerable.Repeat(chars, length)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+
+                if (!serialList.Contains(serialNumber))
+                {
+                    serialList.Add(serialNumber);
+                    return serialNumber;
+                }
+                else
+                {
+                    Console.WriteLine($"Duplicate serial number found  {serialNumber}");
+                }
+
+            } while (true);
+
+
+
         }
-           
     }
 }
