@@ -10,6 +10,7 @@ namespace Shipping_Management_Application.BuisnessLogic.User
         public User(string? userName, string? password, string role = "Customer") : base(userName, password, role){
             
         }
+        
         /**
         [SetsRequiredMembers]
         public User(string? userName, string? password) : base(userName, password){

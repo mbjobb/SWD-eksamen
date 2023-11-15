@@ -8,7 +8,7 @@ namespace Shipping_Management_Application.ViewPanel
     public class UserLogin
     {
         
-        private UserRegistration registration = new();
+        private UserRegistration registration = new(context: new DataContext());
         private CustomerRegistration _customerRegistration = new();
         //method to showLogin page for customer and admin 
         public void ShowLoginPage()

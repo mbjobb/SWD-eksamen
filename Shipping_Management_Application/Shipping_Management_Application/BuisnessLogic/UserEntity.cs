@@ -25,8 +25,7 @@ namespace Shipping_Management_Application.BuisnessLogic
 
         //constructor with role, used for creating admins
         [SetsRequiredMembers]
-        protected UserEntity(string? userName, string? password, string role) : this(userName, password)
-        {
+        protected UserEntity(string? userName, string? password, string role) : this(userName, password){
             Role = role;
         }
         

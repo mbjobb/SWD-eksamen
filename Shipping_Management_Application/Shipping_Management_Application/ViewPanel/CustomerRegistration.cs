@@ -8,6 +8,8 @@ namespace Shipping_Management_Application.ViewPanel
     public class CustomerRegistration
     {
         Customer _customer;
+
+        private User _user;
         // Method to register customer
         public void RegisterCustomer()
         {
@@ -33,11 +35,11 @@ namespace Shipping_Management_Application.ViewPanel
             Console.WriteLine("Enter Email:");
             string email = Console.ReadLine();
             
-            // Add prompts for userName and password
-            Console.WriteLine("Enter Username:");
+            Console.WriteLine("Enter Username: ");
             string? userName = Console.ReadLine();
-            Console.WriteLine("Enter Password:");
+            Console.WriteLine("Enter password");
             string? password = Console.ReadLine();
+            
             
             //check out is alle staff is not null
             bool CustomerLogik = !string.IsNullOrEmpty(firstName) && 
@@ -55,20 +57,21 @@ namespace Shipping_Management_Application.ViewPanel
                 using (DataContext context = new()){
                     using var transaction = context.Database.BeginTransaction();
                     try{
-                        UserEntity userEntity = new User(userName, password);
-                        context.UserEntities.Add(userEntity);
-                        context.SaveChanges();
-                        
+
+                        User user = new(userName, password);
+
                         _customer = new Customer(firstName, lastName, address, city, region, postalCode, country, phone, email){
-                            CustomerId = userEntity.Id,
-                            User = new User(userName, password)
+                            User = user
                         };
                         
-                        context.Add(_customer);
+                        // Add the new Customer to the context
+                        context.Customers.Add(_customer);
+                        // Save the Customer entity
                         context.SaveChanges();
-                        
+
+                        // Commit the transaction
                         transaction.Commit();
-                        Console.WriteLine("Customer added to the database!");
+                        Console.WriteLine("Customer and User added to the database!");
                     }
                     catch (Exception ex)
                     {

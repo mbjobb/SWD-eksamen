@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.ViewPanel
 {
@@ -11,7 +13,7 @@ namespace Shipping_Management_Application.ViewPanel
         UserLogin _userLogin = new();
         CustomerRegistration _customerRegistration = new();
 
-        private UserRegistration UserRegistration = new();
+        private UserRegistration UserRegistration = new(context: new DataContext());
         //MainViewPanel _mainViewPanel = new MainViewPanel(); <--> Infinity loop 
         InfoAboutOurApp _infoAboutOurApp = new();
         // method for LogInDashboard for customer
