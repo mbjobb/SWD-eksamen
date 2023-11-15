@@ -32,8 +32,8 @@ namespace Shipping_Management_Application
             Order order2 = new(customer.CustomerId);
             context.Add(order2);
             context.SaveChanges();
-            Console.WriteLine("derp");
-            Console.ReadLine();
+            //Console.WriteLine("derp");
+            //Console.ReadLine();
         }
     }
 }
