@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -32,6 +31,10 @@ namespace Shipping_Management_Application.Migrations
                 columns: table => new
                 {
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Adress = table.Column<string>(type: "TEXT", nullable: false),
+                    PostCode = table.Column<string>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -51,12 +54,10 @@ namespace Shipping_Management_Application.Migrations
                 {
                     OrderId = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    ShippingAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderStatus = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true)
+                    ShippingAdress = table.Column<string>(type: "TEXT", nullable: false),
+                    OrderStatus = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
