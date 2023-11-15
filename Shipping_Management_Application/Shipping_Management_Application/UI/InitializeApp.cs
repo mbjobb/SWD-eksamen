@@ -41,26 +41,6 @@ namespace Shipping_Management_Application.UI
             }
         }
 
-        public void OnLoggedIn(){
-            
-            using DataContext context = new();
-            Console.WriteLine("Welcome in user");
-            Console.WriteLine("Press 1 to place order");
-            
-            char input = UIController.ReadASingleKeyPress("12");
-
-            switch (input){
-                
-                case '1':{
-
-                    break;
-                }
-
-                case '2':{
-                    
-                    break;
-                }
-            }
-        }
+       
     }
 }
