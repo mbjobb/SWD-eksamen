@@ -1,6 +1,7 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.UI;
 using System;
 
 namespace Shipping_Management_Application
@@ -9,9 +10,9 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
-
-            TestingThings.Testing();
-
+            
+            //TestingThings.Testing();
+            new InitializeApp().OnStartup();
 
         }
 
