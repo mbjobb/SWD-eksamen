@@ -1,10 +1,10 @@
 
 using FluentAssertions;
 using FluentAssertions.Execution;
-using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.AdminFolder;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Factories.Transport;
+using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
@@ -184,7 +184,7 @@ namespace Shipping_Management_Application.IntegrationTests
         public void GenereateSerialNumbeShoudBeUniqe()
         {
             // Arrange
-            Order order = new Order(1, "Urtegata 9", 1);
+            OldOrder order = new OldOrder(1, "Urtegata 9", 1);
             var generatedSerialNumbers = new HashSet<string>();
 
             // Act

@@ -1,5 +1,4 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Shipping_Management_Application.BuisnessLogic.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +11,8 @@ namespace Shipping_Management_Application.OldStuff.ViewPanel
     {
         //This class can used by Customer and Admin to doing CURD operation 
         User _user { get; set; }
-        Order? _order { get; set; }
-        List<Order> _orders { get; set; }
+        OldOrder? _order { get; set; }
+        List<OldOrder> _orders { get; set; }
 
         //Method to create an order from Customer and Admin
         public void CreateOrder()
@@ -36,7 +35,7 @@ namespace Shipping_Management_Application.OldStuff.ViewPanel
 
         }
         //Method to ReadOrder from Database 
-        public List<Order> GetOrders()
+        public List<OldOrder> GetOrders()
         {
             //connection to db
             return _orders;

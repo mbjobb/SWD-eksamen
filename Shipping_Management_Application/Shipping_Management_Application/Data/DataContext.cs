@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.OldStuff;
 
 namespace Shipping_Management_Application.Data
 {
@@ -32,7 +33,6 @@ namespace Shipping_Management_Application.Data
 
             //Defines relationship between customer and order
             modelBuilder.Entity<Order>().HasOne(o =>  o.Customer).WithMany(c => c.Orders)
-                //.HasForeignKey(c => c.OrderId)
                 .HasPrincipalKey(c => c.CustomerId);
 
 

@@ -1,6 +1,6 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.OldStuff;
 using System;
 
 
@@ -28,10 +28,10 @@ namespace Shipping_Management_Application
             context.Add(customer);
             context.SaveChanges();
             
-            Order order = new(customer.CustomerId);
+            OldOrder order = new(customer.CustomerId);
             context.Add(order);
 
-            Order order2 = new(customer.CustomerId);
+            OldOrder order2 = new(customer.CustomerId);
             context.Add(order2);
             context.SaveChanges();
             Console.WriteLine("derp");
