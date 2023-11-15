@@ -12,7 +12,6 @@ namespace Shipping_Management_Application.ViewPanel
             Thread loadingThread = new(() =>
             {
                 ClearLine(text);
-                Thread.Sleep(3000);
                 
             });
 

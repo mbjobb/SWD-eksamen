@@ -19,9 +19,7 @@ namespace Shipping_Management_Application.ViewPanel
             // show welcome Message
             loadingView.Print("Loading...");
             _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
-            Thread.Sleep(4000);
             _infoAboutOurApp.About();
-            Thread.Sleep(5000);
 
 
             // menu 

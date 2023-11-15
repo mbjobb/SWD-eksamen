@@ -43,23 +43,20 @@ namespace Shipping_Management_Application.ViewPanel
             }
         }
         // method to check out for user in database
-        public string IsUserInDatabase(string username)
-        {
+        public string IsUserInDatabase(string username){
             Console.WriteLine("DATABASE");
-            using (DataContext context = new DataContext())
+            using (DataContext context = new ())
             {
                 var user = context.Users.FirstOrDefault(u => u.UserName.ToLower() == username.ToLower());
 
                 if (user != null)
                 {
-                    
                     return "User exists in the database!";
                 }
                 else
                 {
                     //Method to register user to database
                     Console.WriteLine("Welcome to Registration page! ");
-                    Thread.Sleep(2000);
                     var res = registration.UserRegisterPanel();
                     try{
                         context.Add(res);

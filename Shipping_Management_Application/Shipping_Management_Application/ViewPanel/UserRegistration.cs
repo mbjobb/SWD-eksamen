@@ -8,10 +8,50 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class UserRegistration
     {
-        User _user;
-        UserEntity _userEntity;
-        CustomerRegistration _customerRegistration;
+        public string UserRegisterPanel()
+        {
+            Console.WriteLine("Welcome to the registration page! Please follow the instructions.");
+            Console.WriteLine("Enter UserName: ");
+            string? userName = Console.ReadLine();
+            Console.WriteLine("Enter password");
+            string? password = Console.ReadLine();
 
+            // We check if the user is an admin
+            Console.WriteLine("Are you an Admin? (yes or no)");
+            string? userInput = Console.ReadLine();
+
+            using (DataContext context = new DataContext())
+            {
+                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+                {
+                    Console.WriteLine("Username and password cannot be empty.");
+                    return "Registration failed.";
+                }
+
+                bool isAdmin = userInput?.ToLower() == "yes";
+                User newUser = new User(userName, password)
+                {
+                    Role = isAdmin ? "admin" : "Customer"
+                };
+
+                var existingUser = context.Users.FirstOrDefault(u => u.UserName == userName);
+                if (existingUser != null)
+                {
+                    Console.WriteLine("User already exists.");
+                    return "Registration failed.";
+                }
+
+                context.Users.Add(newUser); // Add the new user to the Users set
+                context.SaveChanges(); // Save changes to the database
+
+                Console.WriteLine("User added to the database!");
+            }
+
+            return "Registration is successful.";
+        }
+    }
+    
+        /**
         public string UserRegisterPanel()
         {
             Console.WriteLine("Welcome to the registration page! Please follow the instructions.");
@@ -36,7 +76,7 @@ namespace Shipping_Management_Application.ViewPanel
                     }
                     else{
                         Console.WriteLine("i am here");
-                        context.Users.Add(_user);
+                        context.UserEntities.Add(_user);
                         //  it must Debug 
                         Console.WriteLine("added");
                         context.SaveChanges();
@@ -54,6 +94,6 @@ namespace Shipping_Management_Application.ViewPanel
                 Console.WriteLine(_user.UserName, _user.Role);
             }
             return "Registration Is successful";
-        }
+        }**/
     }
-}
+

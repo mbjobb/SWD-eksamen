@@ -10,6 +10,8 @@ namespace Shipping_Management_Application.ViewPanel
     {
         UserLogin _userLogin = new();
         CustomerRegistration _customerRegistration = new();
+
+        private UserRegistration UserRegistration = new();
         //MainViewPanel _mainViewPanel = new MainViewPanel(); <--> Infinity loop 
         InfoAboutOurApp _infoAboutOurApp = new();
         // method for LogInDashboard for customer
@@ -23,6 +25,7 @@ namespace Shipping_Management_Application.ViewPanel
                 Console.WriteLine("1. Sing In"); // retur ShowLoginPage
                 Console.WriteLine("2. Register"); // return customerRegistration()
                 Console.WriteLine("3. Exit"); //  return to mainviewpanel
+                Console.WriteLine("4. User registration");
 
                 //menu
                 var userInput = Console.ReadLine();
@@ -49,6 +52,12 @@ namespace Shipping_Management_Application.ViewPanel
                                 break;
 
                             }
+                        case "4":{
+                            Console.WriteLine("4");
+                            Console.WriteLine("Register user");
+                            UserRegistration.UserRegisterPanel();
+                            break;
+                        }
                         default:
                             Console.WriteLine("Invalid choice ");
                             break;

@@ -21,21 +21,20 @@ namespace Shipping_Management_Application.Data
         //Override OnConfiguring from DbContextClass to get optionsBuilder object to create connection_string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=data.db");
+            optionsBuilder.UseSqlite(@"Data Source=data.db");
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-            /**
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Customer)
                 .WithOne(c => c.User)
                 .HasForeignKey<Customer>(c => c.CustomerId);
-                **/
+                
+                
 
             //modelBuilder.Entity<Customer>().HasKey(c => c.CustomerId);
             //modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany().HasForeignKey(o => o.CustomerId);
