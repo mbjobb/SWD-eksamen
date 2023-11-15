@@ -49,8 +49,7 @@ namespace Shipping_Management_Application.ViewPanel
             {
                 var user = context.Users.FirstOrDefault(u => u.UserName.ToLower() == username.ToLower());
 
-                if (user != null)
-                {
+                if (user != null){
                     return "User exists in the database!";
                 }
                 else
