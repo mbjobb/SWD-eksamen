@@ -38,9 +38,7 @@ namespace Shipping_Management_Application.BuisnessLogic
             
             CustomerId = customerId;
         }
-
         
-
         public void PlanDelivery()
         {
             throw new NotImplementedException();
@@ -61,8 +59,7 @@ namespace Shipping_Management_Application.BuisnessLogic
             return _orders;
         }
         //method tostring 
-        public override string ToString()
-        {
+        public override string ToString(){
             return $"Order ID: {OrderId}, Quantity: {Quantity}, Status: {OrderStatus}";
         }
         //method to Print order 
@@ -79,8 +76,6 @@ namespace Shipping_Management_Application.BuisnessLogic
             Console.WriteLine($"-----------------------------------------------------------------------------");
             // call to GenerateSerialNumberToOrder() to generateSerialnumber by 8 chars 
             Console.WriteLine($"---------- SerialNumber: {GenerateSerialNumberToOrder(4)}   --------------------");
-
-
         }
         //
         //Method to genreate serialnumber to order 

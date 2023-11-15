@@ -23,9 +23,11 @@ namespace Shipping_Management_Application
             users.Add(user);
             context.AddRange(users);
             context.SaveChanges();
+            
             Customer customer = new(user.Id, "derp");
             context.Add(customer);
             context.SaveChanges();
+            
             Order order = new(customer.CustomerId);
             context.Add(order);
 
