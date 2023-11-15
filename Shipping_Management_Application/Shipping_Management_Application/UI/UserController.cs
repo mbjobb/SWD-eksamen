@@ -10,7 +10,7 @@ namespace Shipping_Management_Application.UI
 {
     internal class UserController
     {
-        public static User Login()
+        public static User? Login()
         {
            
             using DataContext context = new ();
@@ -20,9 +20,9 @@ namespace Shipping_Management_Application.UI
             Console.Write("Enter Password:");
             string? _password = Console.ReadLine();
 
-            User user = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
-            
-            return user;
+            CrudOperations.GetUserByUserNameAndPassword(_username, _password);
+
+            return null;
         }
 
         public static void RegisterUser()
