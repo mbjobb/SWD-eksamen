@@ -25,24 +25,41 @@ namespace Shipping_Management_Application.UI
             Console.WriteLine("Press 2 to sign up if you don't have a user");
 
             char input = UIController.ReadASingleKeyPress("12");
-
+            // TODO: check and fix switch case formatting
+            
             switch (input)
             {
                 case '1' :{
+                    UserController.Login();
                     break;
                 }
 
-                case '2' :{ 
-                        Console.Write("Enter Username:");
-                        string _username = Console.ReadLine();
-                        Console.Write("Enter Password:");
-                        string _password = Console.ReadLine();
-                        
-                        User user = new(_username, _password);
-                        context.Add(user);
-                        context.SaveChanges();
-                        break;
-                    }
+                case '2' :{
+                    UserController.RegisterUser();
+                    break;
+                 }
+            }
+        }
+
+        public void OnLoggedIn(){
+            
+            using DataContext context = new();
+            Console.WriteLine("Welcome in user");
+            Console.WriteLine("Press 1 to place order");
+            
+            char input = UIController.ReadASingleKeyPress("12");
+
+            switch (input){
+                
+                case '1':{
+
+                    break;
+                }
+
+                case '2':{
+                    
+                    break;
+                }
             }
         }
     }

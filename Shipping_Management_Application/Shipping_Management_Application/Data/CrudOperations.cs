@@ -3,32 +3,19 @@ using Shipping_Management_Application.BuisnessLogic.User;
 
 namespace Shipping_Management_Application.Data
 {
-    public class CrudOperations
+    public static class CrudOperations
     {
-        //CURD opereation by Object type
-        //method to create Object and send to database
-        public void CreateObject(UserEntity user)
-        {
+        public static User? GetUserByUserNameAndPassword(string? userName, string? password){
 
-        }
-        //Method to read an object from database
-        public List<UserEntity> GetUsers(string role)
-        {
-            //GetUser by Role and add to different
-            List<UserEntity> customers = new();
-            List<UserEntity> admins = new();  // Add, save and print list
-            return null; // for now
-        }
-        //Method to UpdateObject 
-        public void UpdateObject(UserEntity user)
-        {
+            using DataContext context = new DataContext();
+
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)){
+                throw new ArgumentNullException("userName");
+            }
             
+            User? user = context.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
+            Console.WriteLine($"Welcome {user?.UserName}");
+            return user;
         }
-        //Method to deleteObject from database 
-        public void DeleteObject(UserEntity user)
-        {
-
-        }
-
     }
 }
