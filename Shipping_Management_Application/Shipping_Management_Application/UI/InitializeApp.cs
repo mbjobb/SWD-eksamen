@@ -14,36 +14,35 @@ namespace Shipping_Management_Application.UI
     {
         public InitializeApp()
         {
-            ConsoleController.SetTitle("App Name");
+            UIController.SetTitle("App Name");
         }
 
         public void OnStartup()
         {
-            using DataContext context = new DataContext();
+            using DataContext context = new();
             Console.WriteLine("Welcome");
             Console.WriteLine("Press 1 to login to an existing user");
             Console.WriteLine("Press 2 to sign up if you don't have a user");
 
-            switch (ConsoleController.ReadASingleKeyPress("12"))
+            char input = UIController.ReadASingleKeyPress("12");
+
+            switch (input)
             {
+                case '1' :{
+                    break;
+                }
 
-                case (char)1:
-
-                case (char)2:
-                    {
+                case '2' :{ 
                         Console.Write("Enter Username:");
                         string _username = Console.ReadLine();
                         Console.Write("Enter Password:");
                         string _password = Console.ReadLine();
-
+                        
                         User user = new(_username, _password);
                         context.Add(user);
                         context.SaveChanges();
-
                         break;
-
                     }
-                
             }
         }
     }
