@@ -1,12 +1,40 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using System;
 
 
 namespace Shipping_Management_Application
 {
-    public class TestingThings
+    public static class TestingThings
     {
+        public static void Testing()
+        {
+            using DataContext context = new DataContext();
+            List<User> users = new()
+            {
+                new User("derp1", "derp"),
+                new User("derp2", "derp"),
+                new User("derp3", "derp"),
+
+
+            };
+            User user = new("derp", "derp");
+            users.Add(user);
+            context.AddRange(users);
+            context.SaveChanges();
+            Customer customer = new(user.Id, "derp");
+            context.Add(customer);
+            context.SaveChanges();
+            Order order = new(customer.CustomerId);
+            context.Add(order);
+
+            Order order2 = new(customer.CustomerId);
+            context.Add(order2);
+            context.SaveChanges();
+            Console.WriteLine("derp");
+            Console.ReadLine();
+        }
     }
 }
 

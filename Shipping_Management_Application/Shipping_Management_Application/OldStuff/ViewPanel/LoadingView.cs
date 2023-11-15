@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Shipping_Management_Application.ViewPanel
+namespace Shipping_Management_Application.OldStuff.ViewPanel
 {
     public class LoadingView
     {
@@ -13,7 +13,7 @@ namespace Shipping_Management_Application.ViewPanel
             {
                 ClearLine(text);
                 Thread.Sleep(3000);
-                
+
             });
 
             loadingThread.Start();

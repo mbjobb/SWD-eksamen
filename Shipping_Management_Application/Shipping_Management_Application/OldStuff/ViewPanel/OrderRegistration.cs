@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shipping_Management_Application.ViewPanel
+namespace Shipping_Management_Application.OldStuff.ViewPanel
 {
     public class OrderRegistration
     {
@@ -16,9 +16,10 @@ namespace Shipping_Management_Application.ViewPanel
         List<Order> _orders { get; set; }
 
         //Method to create an order from Customer and Admin
-        public void CreateOrder() {
+        public void CreateOrder()
+        {
             Console.WriteLine("Register your Order!");
-            
+
             //connection to db
 
         }

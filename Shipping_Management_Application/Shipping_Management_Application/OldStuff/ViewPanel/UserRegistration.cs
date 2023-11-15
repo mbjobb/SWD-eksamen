@@ -4,7 +4,7 @@ using Shipping_Management_Application.Data;
 using System;
 using System.Linq;
 
-namespace Shipping_Management_Application.ViewPanel
+namespace Shipping_Management_Application.OldStuff.ViewPanel
 {
     public class UserRegistration
     {
@@ -38,7 +38,7 @@ namespace Shipping_Management_Application.ViewPanel
                     }
                     else
                     {
-                    
+
                         Console.WriteLine("i am here");
                         context.Add(_user);
                         //  it must Debug 

@@ -6,21 +6,22 @@ namespace Shipping_Management_Application.BuisnessLogic
 {
     public class Order
     {
-        [Key]
-        public int OrderId { get; set; }
+        
+        public long OrderId { get; set; }
 
         public int Quantity { get; set; }
         public string? ShippingAddress { get; set; } = "Norway";
         public string? OrderStatus { get; set; } = "Order placed";
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
-        [ForeignKey("Customer")]
+        
         public long CustomerId { get; set; }
 
         public Customer Customer { get; set; }
         public string? SerialNumber { get; set; }
         List<Order> _orders = new();
-        
+        private long _orderId;
+
         public Order() { 
         }
 
@@ -31,6 +32,15 @@ namespace Shipping_Management_Application.BuisnessLogic
             CustomerId = customerId;
             SerialNumber = GenerateSerialNumberToOrder(4); // GenerateSerialNumber Automeat
         }
+
+        public Order(long customerId)
+        {
+            
+            CustomerId = customerId;
+        }
+
+        
+
         public void PlanDelivery()
         {
             throw new NotImplementedException();
@@ -60,7 +70,7 @@ namespace Shipping_Management_Application.BuisnessLogic
         {
             Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
             Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
-            Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
+            //Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
             Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
             Console.WriteLine($"--------------------  Quantity    : {Quantity}           --------------------");
             Console.WriteLine($"--------------------  Address     : {ShippingAddress}    --------------------");

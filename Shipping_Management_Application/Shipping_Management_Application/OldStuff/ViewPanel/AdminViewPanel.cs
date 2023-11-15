@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shipping_Management_Application.ViewPanel
+namespace Shipping_Management_Application.OldStuff.ViewPanel
 {
     public class AdminViewPanel
     {
@@ -64,7 +64,7 @@ namespace Shipping_Management_Application.ViewPanel
                             if (input.ToLower() == "yes")
                             {
                                 Console.WriteLine("Exiting....\n Program finished");
-                               //infoAboutOurApp.EndProgram();
+                                //infoAboutOurApp.EndProgram();
                                 Thread.Sleep(7000);
                                 return;
                             }
@@ -94,4 +94,4 @@ namespace Shipping_Management_Application.ViewPanel
             return input == "1" || input == "2" || input == "3";
         }
     }
-    }
+}

@@ -3,11 +3,11 @@ using System.Linq;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
 
-namespace Shipping_Management_Application.ViewPanel
+namespace Shipping_Management_Application.OldStuff.ViewPanel
 {
     public class UserLogin
     {
-        
+
         private UserRegistration registration = new();
         private CustomerRegistration _customerRegistration = new();
         //method to showLogin page for customer and admin 
@@ -55,7 +55,7 @@ namespace Shipping_Management_Application.ViewPanel
 
                 if (user != null)
                 {
-                    
+
                     return "User exists in the database!";
                 }
                 else
@@ -64,7 +64,8 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("Welcome to Registration page! ");
                     Thread.Sleep(2000);
                     var res = registration.UserRegisterPanel();
-                    try{
+                    try
+                    {
                         context.Add(res);
                         context.SaveChanges();
                     }
