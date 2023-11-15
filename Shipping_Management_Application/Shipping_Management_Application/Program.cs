@@ -10,6 +10,7 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
+
             
             //TestingThings.Testing();
             new InitializeApp().OnStartup();
