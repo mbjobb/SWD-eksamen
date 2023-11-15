@@ -24,6 +24,10 @@ namespace Shipping_Management_Application.Data
         
         
         public string? FirstName { get; set; }
+        public string? LastName { get; set;}
+        public string? Adress { get; set; } = "streetname int";
+        public int Postcode { get; set; }
+        public string? Email { get; set; } = $"+@example.com";
 
         
 

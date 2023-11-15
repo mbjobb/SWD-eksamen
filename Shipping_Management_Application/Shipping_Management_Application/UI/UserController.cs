@@ -20,7 +20,7 @@ namespace Shipping_Management_Application.UI
             Console.Write("Enter Password:");
             string? _password = Console.ReadLine();
 
-            CrudOperations.GetUserByUserNmaeAndPassword(_username, _password);
+            User user = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
             
             return user;
         }
