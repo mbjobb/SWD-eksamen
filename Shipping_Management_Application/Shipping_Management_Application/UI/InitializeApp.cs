@@ -15,11 +15,13 @@ namespace Shipping_Management_Application.UI
         public InitializeApp()
         {
             UIController.SetTitle("App Name");
+            FirstStart.CheckIfUserEntityTableIsEmpty();
         }
 
         public void OnStartup()
         {
             using DataContext context = new();
+            
             Console.WriteLine("Welcome");
             Console.WriteLine("Press 1 to login to an existing user");
             Console.WriteLine("Press 2 to sign up if you don't have a user");
