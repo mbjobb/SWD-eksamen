@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace Shipping_Management_Application.ViewPanel
 {
-    public class UserRegistration
-    {
-        public string UserRegisterPanel()
-        {
+    public class UserRegistration{
+        private User _user;
+        private CustomerRegistration _customerRegistration;
+        public string UserRegisterPanel(){
             Console.WriteLine("Welcome to the registration page! Please follow the instructions.");
             Console.WriteLine("Enter UserName: ");
             string? userName = Console.ReadLine();
@@ -20,35 +20,38 @@ namespace Shipping_Management_Application.ViewPanel
             Console.WriteLine("Are you an Admin? (yes or no)");
             string? userInput = Console.ReadLine();
 
-            using (DataContext context = new DataContext())
-            {
-                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
-                {
-                    Console.WriteLine("Username and password cannot be empty.");
-                    return "Registration failed.";
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) || userInput?.ToLower() == "no"){
+                _user = new User(userName, password); // Assuming 'User' is a concrete subclass of 'UserEntity'
+                _user.Role = "Customer";
+
+                using (DataContext context = new DataContext()){
+                    var existingUser = context.Users.FirstOrDefault(u => u.UserName == userName);
+                    if (existingUser != null){
+                        Console.WriteLine("User already exists.");
+                    }
+                    else
+                    {
+                        context.UserEntities.Add(_user);
+                        context.SaveChanges();
+                        Console.WriteLine("User added to the database!");
+                        // Register Customer if not found in database
+                        //_customerRegistration = new CustomerRegistration();
+                        //_customerRegistration.RegisterCustomer();
+                    }
                 }
-
-                bool isAdmin = userInput?.ToLower() == "yes";
-                User newUser = new User(userName, password)
-                {
-                    Role = isAdmin ? "admin" : "Customer"
-                };
-
-                var existingUser = context.Users.FirstOrDefault(u => u.UserName == userName);
-                if (existingUser != null)
-                {
-                    Console.WriteLine("User already exists.");
-                    return "Registration failed.";
-                }
-
-                context.Users.Add(newUser); // Add the new user to the Users set
-                context.SaveChanges(); // Save changes to the database
-
-                Console.WriteLine("User added to the database!");
             }
-
-            return "Registration is successful.";
+            else{
+                _user = new User(userName, password); // Using 'User' for admin as well
+                _user.Role = "admin";
+                using (DataContext context = new DataContext()){
+                    context.Users.Add(_user);
+                    context.SaveChanges();
+                }
+                Console.WriteLine("Admin registered successfully.");
+            }
+            return "Registration Is successful";
         }
+
     }
     
         /**
