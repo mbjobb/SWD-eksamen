@@ -28,13 +28,11 @@ namespace Shipping_Management_Application.Data
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
 
             //Defines relationship between user and customer
-            modelBuilder.Entity<Customer>().HasOne(c => c.User)
-                .WithOne(u => u.Customer)
-                .HasForeignKey<Customer>(c => c.CustomerId);
+            modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne(u => u.Customer).HasForeignKey<Customer>(c => c.CustomerId);
 
             //Defines relationship between customer and order
-            modelBuilder.Entity<Order>().HasOne(o =>  o.Customer)
-                .WithMany(c => c.Orders)
+            modelBuilder.Entity<Order>().HasOne(o =>  o.Customer).WithMany(c => c.Orders)
+                //.HasForeignKey(c => c.OrderId)
                 .HasPrincipalKey(c => c.CustomerId);
 
 
