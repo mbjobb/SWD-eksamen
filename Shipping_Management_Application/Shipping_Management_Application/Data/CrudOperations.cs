@@ -44,5 +44,10 @@ namespace Shipping_Management_Application.Data
             User? user = context.Users.FirstOrDefault(u => (u.Id == id));
             return user;
         }
+
+        public static bool CheckIfUserExists(string? username, string? password){
+            DataContext context = new();
+            return context.UserEntities.Any(u => u.UserName == username && u.Password == password);
+        }
     }
 }

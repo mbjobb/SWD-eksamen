@@ -16,13 +16,15 @@ namespace Shipping_Management_Application.UI{
         }
         
         public void OnStartup(){
-            while (true){
 
-
+            bool running = true;
+            while (running){
+                
                 using DataContext context = new();
                 Console.WriteLine("Welcome");
                 Console.WriteLine("Press 1 to login to an existing user");
                 Console.WriteLine("Press 2 to sign up if you don't have a user");
+                Console.WriteLine("Press 3 to exit");
 
                 char input = UIController.ReadASingleKeyPress("12");
                 // TODO: check and fix switch case formatting
@@ -35,6 +37,10 @@ namespace Shipping_Management_Application.UI{
 
                     case '2':{
                         UserController.RegisterUser();
+                        break;
+                    }
+                    case '3':{
+                        running = false;
                         break;
                     }
                 }

@@ -1,0 +1,31 @@
+using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.Data;
+
+namespace Shipping_Management_Application.UI{
+    public class InitializeLoggedIn{
+
+        public static void OnLoggedIn(){
+
+            bool running = true;
+            while (running){
+                
+                using DataContext context = new();
+                Console.WriteLine("Press 1 to place an order");
+                Console.WriteLine("Press 3 to exit");
+                
+                char input = UIController.ReadASingleKeyPress("12");
+
+                switch (input){
+                    case '1':{
+                        OrderController.PlaceOrder();
+                        break;
+                    }
+                    case '2':{
+                        running = false;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,11 +2,11 @@
 
 namespace Shipping_Management_Application.Factories.Logistics
 {
-    public class RoadLogistics /*: LogisticsFactory*/
+    public class RoadLogistics : LogisticsFactory
     {
-        //public override ITransportFactory CreateTransport()
-        //{
-        //    return new Truck();
-        //}
+        public override ITransport CreateTransport()
+        {
+           return new Truck();
+        }
     }
 }

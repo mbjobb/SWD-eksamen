@@ -10,17 +10,15 @@ namespace Shipping_Management_Application.Data
 {
     public class Customer{
         
-        
-
         public Customer(long customerId, string? name){
             CustomerId = customerId;
             Name = name;
         }
         [SetsRequiredMembers]
-        public Customer(long customerId, string? email, string name, string? adress, string? postCode) : this(customerId, email)
+        public Customer(long customerId, string? email, string? name, string? address, string? postCode) : this(customerId, email)
         {
             Name = name;
-            Adress = adress;
+            Adress = address;
             PostCode = postCode;
         }
 
@@ -32,7 +30,6 @@ namespace Shipping_Management_Application.Data
         public string? Adress { get; set; }
         public string? PostCode { get; set; }
         
-
     }
 
 
