@@ -10,7 +10,7 @@ namespace Shipping_Management_Application.BuisnessLogic.User
         [SetsRequiredMembers]
         public User(string userName, string password) : base(userName, password)
         {
-            //customer = new Customer();
+            
         }
        
         public User()
@@ -21,7 +21,7 @@ namespace Shipping_Management_Application.BuisnessLogic.User
 
        
 
-        List<Order> _orders = new();
+        
 
     }
 }

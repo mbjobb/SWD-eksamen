@@ -40,9 +40,15 @@ namespace Shipping_Management_Application.UI
             }
             using DataContext context = new();
             Console.WriteLine("Enter first name");
-            string? firstname = Console.ReadLine();
+            string? name = Console.ReadLine();
+            Console.WriteLine("Enter first email");
+            string? email = Console.ReadLine();
+            Console.WriteLine("Enter first adress");
+            string? adress = Console.ReadLine();
+            Console.WriteLine("Enter first post code");
+            string? postCode = Console.ReadLine();
 
-            Customer customer = new(user.Id, firstname);
+            Customer customer = new(user.Id, email, name, adress, postCode);
             context.Add(customer);
             context.SaveChanges();
         }

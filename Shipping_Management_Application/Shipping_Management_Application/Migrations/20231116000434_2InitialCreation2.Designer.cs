@@ -10,8 +10,8 @@ using Shipping_Management_Application.Data;
 namespace Shipping_Management_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231115231246_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20231116000434_2InitialCreation2")]
+    partial class _2InitialCreation2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,22 +83,15 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Adress")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostCode")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("CustomerId");

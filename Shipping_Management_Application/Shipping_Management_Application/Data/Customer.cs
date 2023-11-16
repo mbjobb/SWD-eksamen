@@ -10,25 +10,27 @@ namespace Shipping_Management_Application.Data
 {
     public class Customer{
         
-        public Customer(long customerId, string? firstName){
-            CustomerId = customerId;
-            FirstName = firstName;
-        }
         
-        // We use DataAnnotations to manage and validate input data
-        [Key]
+
+        public Customer(long customerId, string? name){
+            CustomerId = customerId;
+            Name = name;
+        }
+        [SetsRequiredMembers]
+        public Customer(long customerId, string? email, string name, string? adress, string? postCode) : this(customerId, email)
+        {
+            Name = name;
+            Adress = adress;
+            PostCode = postCode;
+        }
+
         public long CustomerId { get; set; }
         public User? User { get; set; }
         public ICollection<Order> Orders { get; set; }
-        public string Email { get; set; }
-        public string Name { get; set; }
-        public string Adress { get; set; }
-        public string PostCode { get; set; }
-
-
-
-        public string? FirstName { get; set; }
-
+        public string? Email { get; set; }
+        public string? Name { get; set; }
+        public string? Adress { get; set; }
+        public string? PostCode { get; set; }
         
 
     }

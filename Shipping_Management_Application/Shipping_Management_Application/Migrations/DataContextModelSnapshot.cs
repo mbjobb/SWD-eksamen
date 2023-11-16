@@ -80,22 +80,15 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Adress")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostCode")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("CustomerId");

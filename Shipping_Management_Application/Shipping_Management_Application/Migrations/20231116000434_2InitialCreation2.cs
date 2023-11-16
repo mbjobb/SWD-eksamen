@@ -5,7 +5,7 @@
 namespace Shipping_Management_Application.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreation : Migration
+    public partial class _2InitialCreation2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,11 +31,10 @@ namespace Shipping_Management_Application.Migrations
                 columns: table => new
                 {
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Adress = table.Column<string>(type: "TEXT", nullable: false),
-                    PostCode = table.Column<string>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true)
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Adress = table.Column<string>(type: "TEXT", nullable: true),
+                    PostCode = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

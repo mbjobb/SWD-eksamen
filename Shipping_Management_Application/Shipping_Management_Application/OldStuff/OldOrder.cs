@@ -67,7 +67,7 @@ namespace Shipping_Management_Application.OldStuff
         //method to Print order 
         public void PrintOrder()
         {
-            Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
+            //Console.WriteLine($"--------------------- Thanks you  {Customer.FirstName} for you ordred! ");
             Console.WriteLine($"--------------------  CustomerId  : {Customer.CustomerId}         --------------------");
             //Console.WriteLine($"--------------------  Customer    : {Customer.FirstName + Customer.LastName}           --------------------");
             Console.WriteLine($"--------------------  OrderId     : {OrderId}            --------------------");
