@@ -8,6 +8,8 @@ using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
+using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.UI;
 
 namespace Shipping_Management_Application.IntegrationTests
 {
@@ -178,6 +180,22 @@ namespace Shipping_Management_Application.IntegrationTests
         //    minKunde.Should().Be(minKunde.CustomerId = 1);
 
         //}
+        
+        [Test]
+        public void ProccessOrder_WithAddressAndAddressNumber_ReturnsCorrectPrice(){
+            
+            // Arrange
+            Order order = new Order(2){
+                ShippingAddress = "Urtegata 9"
+            };
+            int expectedPriceToDeliver = 900;
+            
+            // Act
+            OrderController.ProcessOrder(order);
+            
+            //Assert
+            Assert.That(order.Price, Is.EqualTo(expectedPriceToDeliver));
+        }
 
         [Test]
         //Test to check out serialnumber is not duplicate

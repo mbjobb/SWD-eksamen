@@ -21,7 +21,7 @@ namespace Shipping_Management_Application.UI{
                 LogisticsFactory logisticsFactory = new RoadLogistics();
                 ITransport transport = logisticsFactory.CreateTransport();
 
-                int cost = transport.DeliveryCost(order.ShippingAddress);
+                int cost = logisticsFactory.DeliveryCost(order.ShippingAddress);
                 order.Price = cost;
                 Console.WriteLine($"Delivery price for Order {order.OrderId}: {order.Price}");
 

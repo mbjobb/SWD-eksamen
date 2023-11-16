@@ -41,6 +41,7 @@ namespace Shipping_Management_Application.UI{
                     }
                     case '3':{
                         running = false;
+                        UIController.CloseApplication();
                         break;
                     }
                 }

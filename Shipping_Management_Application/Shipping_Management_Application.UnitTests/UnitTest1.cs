@@ -1,16 +1,10 @@
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
+
 namespace Shipping_Management_Application.UnitTests
 {
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
+    public class Tests{
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        
     }
+    
 }

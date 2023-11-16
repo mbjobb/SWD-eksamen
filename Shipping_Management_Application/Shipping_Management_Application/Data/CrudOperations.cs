@@ -27,8 +27,7 @@ namespace Shipping_Management_Application.Data
             } else return false;
         }
 
-        public static Admin CreateFirstAdmin()
-        {
+        public static Admin CreateFirstAdmin(){
 
             using DataContext context = new();
 
@@ -38,8 +37,7 @@ namespace Shipping_Management_Application.Data
             return admin;
         }
 
-        public static User GetUserById(long id) 
-        {
+        public static User GetUserById(long id){
             using DataContext context = new DataContext();
             User? user = context.Users.FirstOrDefault(u => (u.Id == id));
             return user;

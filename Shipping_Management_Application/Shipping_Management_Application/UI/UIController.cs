@@ -39,5 +39,9 @@ namespace Shipping_Management_Application.UI
 
             return Input;
         }
+
+        public static void CloseApplication(){
+            Environment.Exit(0);
+        }
     }
 }

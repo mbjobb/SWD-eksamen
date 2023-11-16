@@ -28,6 +28,7 @@ namespace Shipping_Management_Application
             context.Add(customer);
             context.SaveChanges();
             
+            /*@
             OldOrder order = new(customer.CustomerId);
             context.Add(order);
 
@@ -36,6 +37,8 @@ namespace Shipping_Management_Application
             context.SaveChanges();
             Console.WriteLine("derp");
             Console.ReadLine();
+            **/
+            
         }
     }
 }
