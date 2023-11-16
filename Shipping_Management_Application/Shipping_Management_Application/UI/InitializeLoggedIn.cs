@@ -7,7 +7,6 @@ namespace Shipping_Management_Application.UI{
 
         public static void OnLoggedIn(UserEntity user)
         {
-            //TODO: implement sign out
             
             bool running = true;
             while (running){
@@ -25,7 +24,8 @@ namespace Shipping_Management_Application.UI{
                     }
                     case '2':{
                         running = false;
-                        throw new NotImplementedException();
+                        UIController.ClearConsole();
+                        new InitializeApp().OnStartup();
                         break;
                     }
                 }
