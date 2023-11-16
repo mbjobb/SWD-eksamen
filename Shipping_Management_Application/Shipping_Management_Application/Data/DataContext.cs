@@ -26,7 +26,11 @@ namespace Shipping_Management_Application.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+                
+                
 
             //Defines relationship between user and customer
             modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne(u => u.Customer).HasForeignKey<Customer>(c => c.CustomerId);

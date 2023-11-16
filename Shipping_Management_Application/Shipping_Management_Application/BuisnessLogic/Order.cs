@@ -13,5 +13,10 @@ namespace Shipping_Management_Application.BuisnessLogic
         public Order(long customerId){
             CustomerId = customerId;
         }
+
+        public Order(long customerId, string shippingAddress) : this(customerId)
+        {
+            ShippingAddress = shippingAddress;
+        }
     }
 }

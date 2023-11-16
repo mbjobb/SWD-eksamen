@@ -1,4 +1,5 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
+﻿using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
 
@@ -27,13 +28,23 @@ namespace Shipping_Management_Application.UI{
         public static void RegisterUser(){
             using DataContext context = new ();
             Console.Write("Enter Username:");
-            string? _username = Console.ReadLine();
+            string _username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string? _password = Console.ReadLine();
+            string _password = Console.ReadLine();
             User user = new(_username, _password);
+            try
+            {
             context.Add(user);
             context.SaveChanges();
-            RegisterCustomer(user);
+            //RegisterCustomer(user);
+
+            }catch (Exception ex)
+            {
+
+                UIController.ClearConsole();
+                Console.WriteLine("Username already in use, try a different username");
+                RegisterUser();
+            }
         }
 
         public static void RegisterCustomer(User user){
