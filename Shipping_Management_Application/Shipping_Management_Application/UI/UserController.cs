@@ -6,7 +6,7 @@ using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.UI{
     internal class UserController{
-        public static User? Login(){
+        public static UserEntity? Login(){
             
             using DataContext context = new ();
             
@@ -16,8 +16,8 @@ namespace Shipping_Management_Application.UI{
             string? _password = Console.ReadLine();
 
             if (CrudOperations.CheckIfUserExists(_username, _password)){
-                CrudOperations.GetUserByUserNameAndPassword(_username, _password);
-                InitializeLoggedIn.OnLoggedIn();
+                UserEntity CurrentUser = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
+                InitializeLoggedIn.OnLoggedIn(CurrentUser);
             }
             else{
                 Console.WriteLine("User does not exist in our database");
@@ -36,7 +36,7 @@ namespace Shipping_Management_Application.UI{
             {
             context.Add(user);
             context.SaveChanges();
-            //RegisterCustomer(user);
+            RegisterCustomer(user);
 
             }catch (Exception ex)
             {

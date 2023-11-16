@@ -8,16 +8,20 @@ namespace Shipping_Management_Application.UI{
     
     public class OrderController{
 
-        public static void PlaceOrder(){
-
-            Order order = new(2){
+        public static void PlaceOrder(UserEntity user)
+        {
+            using DataContext context = new();
+            Order order = new(user.Id, "derp 12"){
                 ShippingAddress = "Urtegata 14"
             };
+            context.Orders.Add(order);
+            context.SaveChanges();
             ProcessOrder(order);
         }
         
         public static void ProcessOrder(Order order){
             try{
+                using DataContext context = new();
                 LogisticsFactory logisticsFactory = new RoadLogistics();
                 ITransport transport = logisticsFactory.CreateTransport();
 
@@ -28,6 +32,8 @@ namespace Shipping_Management_Application.UI{
                 transport.Deliver();
                 order.OrderStatus = "Delivered";
                 Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
+                context.Orders.Add(order);
+                context.SaveChanges();
 
                 // Add logic for updating the order in the database
             }

@@ -1,9 +1,11 @@
+using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.UI{
     public class InitializeOrder{
 
-        public static void OnOrdering(){
+        public static void OnOrdering(UserEntity user)
+        {
             //TODO: implement sign out
             
             bool running = true;
@@ -19,7 +21,7 @@ namespace Shipping_Management_Application.UI{
 
                 switch (input){
                     case '1':{
-                        OrderController.PlaceOrder();
+                        OrderController.PlaceOrder(user);
                         break;
                     }
                     case '2':{

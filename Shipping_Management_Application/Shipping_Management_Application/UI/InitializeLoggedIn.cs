@@ -1,15 +1,17 @@
 using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
 
 namespace Shipping_Management_Application.UI{
     public class InitializeLoggedIn{
 
-        public static void OnLoggedIn(){
+        public static void OnLoggedIn(UserEntity user)
+        {
             //TODO: implement sign out
             
             bool running = true;
             while (running){
-                
+                Console.WriteLine(user);
                 using DataContext context = new();
                 Console.WriteLine("Press 1 to place an order");
                 Console.WriteLine("Press 2 to sign out");
@@ -18,7 +20,7 @@ namespace Shipping_Management_Application.UI{
 
                 switch (input){
                     case '1':{
-                        OrderController.PlaceOrder();
+                        OrderController.PlaceOrder(user);
                         break;
                     }
                     case '2':{
