@@ -25,7 +25,7 @@ namespace Shipping_Management_Application.UI{
                     case '2':{
                         running = false;
                         UIController.ClearConsole();
-                        new InitializeApp().OnStartup();
+                        InitializeApp.OnStartup();
                         break;
                     }
                 }

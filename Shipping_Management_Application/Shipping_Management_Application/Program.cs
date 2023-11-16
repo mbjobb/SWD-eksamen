@@ -13,7 +13,7 @@ namespace Shipping_Management_Application
 
             
             //TestingThings.Testing();
-            new InitializeApp().OnStartup();
+            new InitializeApp();
 
         }
 

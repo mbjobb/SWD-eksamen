@@ -13,9 +13,10 @@ namespace Shipping_Management_Application.UI{
         public InitializeApp(){
             UIController.SetTitle("App Name");
             FirstStart.ChecksIfUserEntityTableIsEmpty();
+            OnStartup();
         }
         
-        public void OnStartup(){
+        public static void OnStartup(){
 
             bool running = true;
             while (running){
