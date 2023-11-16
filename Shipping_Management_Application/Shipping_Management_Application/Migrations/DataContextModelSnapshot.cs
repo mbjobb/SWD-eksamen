@@ -32,7 +32,7 @@ namespace Shipping_Management_Application.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ShippingAdress")
+                    b.Property<string>("ShippingAddress")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -66,6 +66,9 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("UserEntities");
 
