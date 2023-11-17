@@ -21,6 +21,7 @@ namespace Shipping_Management_Application.UI{
         
         public static void ProcessOrder(Order order){
             try{
+                
                 using DataContext context = new();
                 LogisticsFactory logisticsFactory = new RoadLogistics();
                 ITransport transport = logisticsFactory.CreateTransport();
@@ -32,13 +33,13 @@ namespace Shipping_Management_Application.UI{
                 transport.Deliver();
                 order.OrderStatus = "Delivered";
                 Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
-                context.Orders.Add(order);
+                context.Orders.Update(order);
                 context.SaveChanges();
 
                 // Add logic for updating the order in the database
             }
             catch (Exception ex){
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error: " + ex.ToString());
             }
         }
     }

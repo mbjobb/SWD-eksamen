@@ -15,9 +15,10 @@ namespace Shipping_Management_Application.Data
             Name = name;
         }
         [SetsRequiredMembers]
-        public Customer(long customerId, string? email, string? name, string? address, string? postCode) : this(customerId, email)
+        public Customer(long customerId, string? name, string? email, string? address, string? postCode) : this(customerId, email)
         {
             Name = name;
+            Email = email;
             Adress = address;
             PostCode = postCode;
         }

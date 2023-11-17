@@ -10,7 +10,6 @@ namespace Shipping_Management_Application.UI{
             
             bool running = true;
             while (running){
-                Console.WriteLine(user);
                 using DataContext context = new();
                 Console.WriteLine("Press 1 to place an order");
                 Console.WriteLine("Press 2 to sign out");

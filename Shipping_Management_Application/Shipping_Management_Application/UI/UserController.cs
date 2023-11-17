@@ -64,7 +64,7 @@ namespace Shipping_Management_Application.UI{
             Console.WriteLine("Enter first post code");
             string? postCode = Console.ReadLine();
 
-            Customer customer = new(user.Id, email, name, address, postCode);
+            Customer customer = new(user.Id, name, email, address, postCode);
             context.Add(customer);
             context.SaveChanges();
         }
