@@ -42,5 +42,17 @@ namespace Shipping_Management_Application.UI{
                 Console.WriteLine("Error: " + ex.ToString());
             }
         }
+
+        public static void PrintCurrentUsersOrders(UserEntity user)
+        {
+            using DataContext context = new();
+            IEnumerable<Order> Orders = CrudOperations.GetOrdersByUserId(user);
+            foreach (Order Order in Orders)
+            {
+                Console.WriteLine(Order);
+            }
+
+
+        }
     }
 }

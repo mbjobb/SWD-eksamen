@@ -27,12 +27,10 @@ namespace Shipping_Management_Application.UI{
                     case '2':{
                         running = false;
                         throw new NotImplementedException();
-                        break;
                     }
                     case '3':{
                         running = false;
                         throw new NotImplementedException();
-                        break;
                     }
                 }
             }

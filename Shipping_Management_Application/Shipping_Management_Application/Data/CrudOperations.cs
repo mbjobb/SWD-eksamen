@@ -39,13 +39,23 @@ namespace Shipping_Management_Application.Data
 
         public static User GetUserById(long id){
             using DataContext context = new DataContext();
+            
             User? user = context.Users.FirstOrDefault(u => (u.Id == id));
-            return user;
+            return user ?? throw new Exception();
+            
         }
 
         public static bool CheckIfUserExists(string? username, string? password){
             DataContext context = new();
             return context.UserEntities.Any(u => u.UserName == username && u.Password == password);
+        }
+
+        public static IEnumerable<Order> GetOrdersByUserId(UserEntity user) 
+        {
+            DataContext context = new();
+            IEnumerable<Order> OrderQuery = context.Orders
+                .Where(o => o.CustomerId == user.Id);
+            return OrderQuery;
         }
     }
 }

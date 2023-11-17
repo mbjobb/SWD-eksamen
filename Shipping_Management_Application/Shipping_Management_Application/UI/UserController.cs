@@ -16,8 +16,8 @@ namespace Shipping_Management_Application.UI{
             string? _password = Console.ReadLine();
 
             if (CrudOperations.CheckIfUserExists(_username, _password)){
-                UserEntity CurrentUser = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
-                InitializeLoggedIn.OnLoggedIn(CurrentUser);
+                UserEntity user = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
+                InitializeLoggedIn.OnLoggedIn(user);
             }
             else{
                 Console.WriteLine("User does not exist in our database");

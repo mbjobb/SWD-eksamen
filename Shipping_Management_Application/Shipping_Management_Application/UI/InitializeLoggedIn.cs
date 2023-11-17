@@ -5,23 +5,27 @@ using Shipping_Management_Application.Data;
 namespace Shipping_Management_Application.UI{
     public class InitializeLoggedIn{
 
-        public static void OnLoggedIn(UserEntity user)
+        public static void OnLoggedIn(UserEntity currentUser)
         {
             
             bool running = true;
             while (running){
                 using DataContext context = new();
                 Console.WriteLine("Press 1 to place an order");
-                Console.WriteLine("Press 2 to sign out");
+                Console.WriteLine("Press 2 to view orders");
+                Console.WriteLine("Press 3 to sign out");
                 
                 char input = UIController.ReadASingleKeyPress("12");
 
                 switch (input){
                     case '1':{
-                        OrderController.PlaceOrder(user);
+                        OrderController.PlaceOrder(currentUser);
+                        break;
+                    }case '2':{
+                        OrderController.PrintCurrentUsersOrders(currentUser);
                         break;
                     }
-                    case '2':{
+                    case '3':{
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup();
