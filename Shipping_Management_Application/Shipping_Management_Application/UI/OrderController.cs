@@ -11,6 +11,13 @@ namespace Shipping_Management_Application.UI{
         public static void PlaceOrder(UserEntity user)
         {
             using DataContext context = new();
+            
+            Customer customer = context.Customers.FirstOrDefault(c => c.User.Id == user.Id);
+
+            if (customer == null){
+                Console.WriteLine("You need to register as a customer to proceed");
+                UserController.RegisterCustomer(user);
+            }
             Order order = new(user.Id, "derp 12"){
                 ShippingAddress = "Urtegata 14"
             };

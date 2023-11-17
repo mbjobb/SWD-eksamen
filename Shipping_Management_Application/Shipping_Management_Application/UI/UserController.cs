@@ -36,7 +36,6 @@ namespace Shipping_Management_Application.UI{
             {
             context.Add(user);
             context.SaveChanges();
-            RegisterCustomer(user);
 
             }catch (Exception ex)
             {
@@ -47,7 +46,7 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        public static void RegisterCustomer(User user){
+        public static void RegisterCustomer(UserEntity user){
             
             if (user == null) {
                 Console.WriteLine("User not logged in.");
