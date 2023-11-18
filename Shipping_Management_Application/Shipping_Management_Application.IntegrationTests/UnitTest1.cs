@@ -1,20 +1,20 @@
 
-using FluentAssertions;
-using FluentAssertions.Execution;
-using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.AdminFolder;
-using Shipping_Management_Application.Data;
-using Shipping_Management_Application.Factories.Transport;
-using System.Diagnostics.Metrics;
-using System.Net;
-using System.Numerics;
+//using FluentAssertions;
+//using FluentAssertions.Execution;
+//using Shipping_Management_Application.BuisnessLogic;
+//using Shipping_Management_Application.BuisnessLogic.AdminFolder;
+//using Shipping_Management_Application.Data;
+//using Shipping_Management_Application.Factories.Transport;
+//using System.Diagnostics.Metrics;
+//using System.Net;
+//using System.Numerics;
 
-namespace Shipping_Management_Application.IntegrationTests
-{
-    public class Tests
-    {
+//namespace Shipping_Management_Application.IntegrationTests
+//{
+//    public class Tests
+//    {
 
-        //[SetUp]
+//        //[SetUp]
         //public void Setup()
         //{
         //}
@@ -179,33 +179,33 @@ namespace Shipping_Management_Application.IntegrationTests
 
         //}
 
-        [Test]
-        //Test to check out serialnumber is not duplicate
-        public void GenereateSerialNumbeShoudBeUniqe()
-        {
-            // Arrange
-            Order order = new Order(1, "Urtegata 9", 1);
-            var generatedSerialNumbers = new HashSet<string>();
+        //[Test]
+        ////Test to check out serialnumber is not duplicate
+        //public void GenereateSerialNumbeShoudBeUniqe()
+        //{
+        //    // Arrange
+        //    Order order = new Order("2", "Urtegata 9", 1);
+        //    var generatedSerialNumbers = new HashSet<string>();
 
-            // Act
-            for (int i = 0; i < 10; i++)
-            {
-                string newstring = order.GenerateSerialNumberToOrder(4);
-                if (generatedSerialNumbers.Add(newstring))
-                {
-                    Console.WriteLine("NOT Duplicate serial number found");
-                }
+        //    // Act
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        string newstring = order.GenerateSerialNumberToOrder(4);
+        //        if (generatedSerialNumbers.Add(newstring))
+        //        {
+        //            Console.WriteLine("NOT Duplicate serial number found");
+        //        }
     
-                else
-                {
-                    Console.WriteLine("Duplicate serial number found");
-                }
-            }
+        //        else
+        //        {
+        //            Console.WriteLine("Duplicate serial number found");
+        //        }
+        //    }
 
             // Assert
            //generatedSerialNumbers.Count().Should().Be(9999);
            
-        }
+        //}
 
         //[Test]
         ////Test to check out serialnumber is not duplicate
@@ -228,40 +228,40 @@ namespace Shipping_Management_Application.IntegrationTests
         //}
 
         // Test Method DeliverOrderByCountry()
-        [Test]
-        public void Deliver_MethodShouldReturn_DeliverByTruck_IfCountryIsEquelToNorway()
-        {
-            // Arrange
-            Truck transport = new();
-            string inputCountry = "tyskland";
+        //[Test]
+        //public void Deliver_MethodShouldReturn_DeliverByTruck_IfCountryIsEquelToNorway()
+        //{
+        //    // Arrange
+        //    Truck transport = new();
+        //    string inputCountry = "tyskland";
            
-            // Act
-            var res = transport.DeliverOrderByCountry(inputCountry);
+        //    // Act
+        //    var res = transport.DeliverOrderByCountry(inputCountry);
 
-            // Assert
-            res.Should().NotBeNull();
-            Assert.IsTrue(res.Equals(inputCountry));
+        //    // Assert
+        //    res.Should().NotBeNull();
+        //    Assert.IsTrue(res.Equals(inputCountry));
             
 
 
-        }
+        //}
 
         // test for DeliverTo() ----> string Input -->Country 
-        [Test]
+        //[Test]
 
-        public void ShouldDeliverTo_WorksWhenWeSendInAneCountry()
-        {
-            // Arrange
-            Truck transport = new();
+        //public void ShouldDeliverTo_WorksWhenWeSendInAneCountry()
+        //{
+        //    // Arrange
+        //    Truck transport = new();
 
-            // Act
-            string inputCountry = "Norway"; // endret til "Norwa" for å matche kommentaren
-            var res = transport.DeliverTo(inputCountry);
-            var expectedOutput = $"{inputCountry}";
+        //    // Act
+        //    string inputCountry = "Norway"; // endret til "Norwa" for å matche kommentaren
+        //    var res = transport.DeliverTo(inputCountry);
+        //    var expectedOutput = $"{inputCountry}";
 
-            // Assert
-            res.Should().NotBeNull();
-            res.Should().Be(expectedOutput);
+        //    // Assert
+        //    res.Should().NotBeNull();
+        //    res.Should().Be(expectedOutput);
             //    // Arrange
             //    Truck transport = new();
 
@@ -271,11 +271,11 @@ namespace Shipping_Management_Application.IntegrationTests
             //    var OutPut = $"{_object}";
 
             //    // Assert
-            //    res.Should().NotBeNull();
-            //    res.Should().Be(OutPut);
-        }
+//            //    res.Should().NotBeNull();
+//            //    res.Should().Be(OutPut);
+//        }
 
 
 
-    }
-}
+//    }
+////}

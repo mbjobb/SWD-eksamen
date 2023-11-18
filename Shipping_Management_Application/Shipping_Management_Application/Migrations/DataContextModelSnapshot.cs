@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shipping_Management_Application.Data;
+using ModelBuilder = Microsoft.EntityFrameworkCore.ModelBuilder;
 
 #nullable disable
 
@@ -19,20 +20,24 @@ namespace Shipping_Management_Application.Migrations
 
             modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
                 {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<long>("CustomerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("OrderStatus")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Quantity")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SerialNumber")
                         .HasColumnType("TEXT");
@@ -40,7 +45,14 @@ namespace Shipping_Management_Application.Migrations
                     b.Property<string>("ShippingAddress")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("CustomerId");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -56,7 +68,6 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
@@ -64,7 +75,6 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -124,6 +134,9 @@ namespace Shipping_Management_Application.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
@@ -151,7 +164,19 @@ namespace Shipping_Management_Application.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Shipping_Management_Application.BuisnessLogic.UserEntity", "user")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Shipping_Management_Application.BuisnessLogic.User.User", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Customer");
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>
@@ -174,8 +199,12 @@ namespace Shipping_Management_Application.Migrations
                 {
                     b.Navigation("Customer")
                         .IsRequired();
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
+
+      
     }
 }

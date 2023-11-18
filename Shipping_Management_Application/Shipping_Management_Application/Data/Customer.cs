@@ -1,5 +1,5 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.BuisnessLogic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -11,8 +11,13 @@ namespace Shipping_Management_Application.Data
         // We use DataAnnotations to manage and validate input data
         [Key]
         public long CustomerId { get; set; }
+
+        [InverseProperty("Customer")]
         public User User { get; set; }
-        
+
+        [ForeignKey("User")]
+        public long UserId { get; set; } // Navigation Property
+
         [Required(ErrorMessage = "First name is required")]
         [StringLength(100)]
         public string? FirstName { get; set; }
@@ -34,7 +39,7 @@ namespace Shipping_Management_Application.Data
         public string? Region { get; set; }
 
         [Required(ErrorMessage = "Postal code is required")]
-        [StringLength (20)]
+        [StringLength(20)]
         [Display(Name = "PostalCode")]
         public string? PostalCode { get; set; }
 
@@ -44,26 +49,21 @@ namespace Shipping_Management_Application.Data
 
         [Required(ErrorMessage = "Phone is required")]
         [Phone]
-        [Display(Name ="Phone Number")]
+        [Display(Name = "Phone Number")]
         public string? Phone { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string? Email { get; set; }
 
-        public List<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
-
-        [JsonConstructor]
         public Customer()
         {
-
         }
-        [JsonConstructor]
 
         public Customer(string? firstName, string? lastName, string? address, string? city, string? region, string? postalCode, string? country, string? phone, string? email)
         {
-
             FirstName = firstName;
             LastName = lastName;
             Address = address;
@@ -73,6 +73,8 @@ namespace Shipping_Management_Application.Data
             Country = country;
             Phone = phone;
             Email = email;
+           
+            
         }
 
         // ToString Method
@@ -80,8 +82,5 @@ namespace Shipping_Management_Application.Data
         {
             return $"Customer ID: {CustomerId}\nName: {FirstName} {LastName}\nAddress: {Address} \nCity: {City} \nRegion: {Region} \nPostalCode: {PostalCode}\nCountry: {Country}\nContact: {Phone} \nEmail: {Email}";
         }
-
     }
-
-
 }

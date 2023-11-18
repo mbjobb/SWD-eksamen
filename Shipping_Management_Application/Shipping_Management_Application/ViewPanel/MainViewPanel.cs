@@ -1,91 +1,93 @@
-﻿using Shipping_Management_Application.ViewPanel;
+﻿using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.User;
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 
-public class MainViewPanel
+namespace Shipping_Management_Application.ViewPanel
 {
-    InfoAboutOurApp _infoAboutOurApp = new();
-    LoadingView loadingView = new();
-    UserLogin userLogin = new();
-    LogInDashboardForCustomer _logInDashboardForCustomer = new();
-    public void MainView()
+    public class MainViewPanel
     {
-        _infoAboutOurApp.HeaderComponent();
-        // show welcome Message
-        loadingView.Print("Loading...");
-        _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
-        Thread.Sleep(4000);
-        _infoAboutOurApp.About();
-        Thread.Sleep(5000);
+        InfoAboutOurApp _infoAboutOurApp = new();
+        LoadingView _loadingView = new();
 
-
-        // menu 
-        while (true)
+        public void MainView()
         {
-            Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
-            Console.WriteLine("----------- 1. Sign In / Register "); //if Customer
-            Console.WriteLine("----------- 2. Admin");
-            Console.WriteLine("----------- 3. Exit");
+            _infoAboutOurApp.HeaderComponent();
+            // show welcome Message
+            _loadingView.Print("Loading...");
+            _infoAboutOurApp.WelcomeMesseag(); //we write more info about our application
+            Thread.Sleep(1000);
+            _infoAboutOurApp.About(); //we write more info about our application
+            Thread.Sleep(1000);
 
-            var userInput = Console.ReadLine();
 
-            switch (userInput)
+            // menu 
+            while (true)
             {
-                case "1":
-                    {
-                        Console.WriteLine("LogIn for Customer");
-                        loadingView.Print("Loading...");
-                        // comming method -> CustomerViewPanel() 
-                        _logInDashboardForCustomer.LogInDashboard();
-                        break;
-                    }
-                        
+                Console.WriteLine("----------- Enter your Choice! 1, 2, or 3");
+                Console.WriteLine("----------- 1. SignIn / Register "); //sign In for Customer , vise ny meny signIn eller register
+                Console.WriteLine("----------- 2. Admin");//sign In for Admin
+                Console.WriteLine("----------- 3. Exit");
 
-                case "2":
-                    {
-                        Console.WriteLine("LogIn for Admin");
-                        loadingView.Print("Loading...");
-                        // comming method -> AdminViewPanel()
-                        userLogin.ShowLoginPage();
-                        break;
-                    }
+                var userInput = Console.ReadLine(); // Get input from User, and saved i UserInput variabel
 
-                case "3":
-                    while (true)
-                    {
-                        Console.WriteLine("Do you want to Exit Program? (yes/no)");
-                        string input = Console.ReadLine().ToLower();
-                        if (input.ToLower() == "yes")
+                switch (userInput)
+                {
+                    case "1":
                         {
-                            Console.WriteLine("Exiting....\n Program finished");
-                            _infoAboutOurApp.EndProgram();
-                            Thread.Sleep(7000);
-                            return;
-                        }
-                        else if (input.ToLower() == "no")
-                        {
+                            Console.WriteLine("Sign In page for Customer");  // Case 1 for Customer 
+                            User user = new User("", "", "");
+                            SignInForCustomerViewPanel signInForCustomerViewPanel = new();
+                            signInForCustomerViewPanel.GetSingInViewPanel(user);
                             break;
                         }
-                        else
+                    case "2":
                         {
-                            Console.WriteLine("Please enter 'yes' to exit or 'no' to return to the main menu.");
+                            Console.WriteLine("Sign In page for Admin"); // Case 2 for Admin
+                            UserRegistration userRegistration = new();
+                            userRegistration.SignInAdmin();
+
+                            break;
                         }
-                    }
-                    
-                    break;
 
-                default:
-                    Console.WriteLine("Invalid option. Please enter 1, 2, or 3.");
-                    break;
+                    case "3":        // Case 3 for Exiting 
+                        while (true)
+                        {
+                            Console.WriteLine("Do you want to Exit Program? (yes/no)");
+                            string? input = Console.ReadLine();
+                            if (input?.ToLower() == "yes")
+                            {
+                                Console.WriteLine("Exiting....\nProgram finished");
+                                _infoAboutOurApp.EndProgram();
+                                Thread.Sleep(2000);
+                                return;
+                            }
+                            else if (input?.ToLower() == "no")
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter 'yes' to exit or 'no' to return to the main menu.");
+                            }
+                        }
+
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option. Please enter 1, 2, or 3.");
+                        break;
+                }
             }
+
         }
-        
-    }
 
-    // Method to check Is user Input is valid or not 
-    public bool IsValidInput(string input)
-    {
-        return input == "1" || input == "2" || input == "3";
-    }
+        // Method to check Is user Input is valid or not 
+        public static bool IsValidInput(string input)
+        {
+            return input == "1" || input == "2" || input == "3";
+        }
 
+    }
 }

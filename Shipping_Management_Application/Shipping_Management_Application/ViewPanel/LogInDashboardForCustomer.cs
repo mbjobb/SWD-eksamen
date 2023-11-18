@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,55 +10,57 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class LogInDashboardForCustomer
     {
-        UserLogin _userLogin = new();
-        CustomerRegistration _customerRegistration = new();
         //MainViewPanel _mainViewPanel = new MainViewPanel(); <--> Infinity loop 
         InfoAboutOurApp _infoAboutOurApp = new();
         // method for LogInDashboard for customer
-        public void LogInDashboard()
+        public void LogInDashboard(User user)
         {
             _infoAboutOurApp.HeaderComponent();
 
-            bool res = true;
-            while (res)
+            while (true)
             {
                 Console.WriteLine("1. Sing In"); // retur ShowLoginPage
                 Console.WriteLine("2. Register"); // return customerRegistration()
                 Console.WriteLine("3. Exit"); //  return to mainviewpanel
+               
 
                 //menu
                 var userInput = Console.ReadLine();
-        
+
                 switch (userInput)
-                    {
-                        case "1":
-                            {
-                                Console.WriteLine("1");
-                                Console.WriteLine("Customer LogIn");
-                                _userLogin.ShowLoginPage();
-                                break;
-                            }
-                        case "2":
-                            {
-                                Console.WriteLine("2");
-                                Console.WriteLine("Sign Up Please");
-                                _customerRegistration.RegisterCustomer();
-                                break;
-                            }
-                        case "3":
-                            {
-                                //_mainViewPanel.MainView();
-                                break;
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("1");
+                            Console.WriteLine("Customer LogIn");
+                            UserRegistration userRegistration = new();
+                            userRegistration.SignInCustomer();
 
-                            }
-                        default:
-                            Console.WriteLine("Invalid choice ");
                             break;
-                    } 
-                     break;
+                        }
+                    case "2":
+                        {
+                            Console.WriteLine("2");
+                            Console.WriteLine("Sign Up Please");
+                            CustomerRegistration _customerRegistration = new();
+                            _customerRegistration.RegisterCustomer(user);
+                            break;
+                        }
+                    case "3":
+                        {
+                            MainViewPanel mainViewPanel = new();
+                            mainViewPanel.MainView();
+                            break;
 
+                        }
+                    default:
+                        Console.WriteLine("Invalid choice ");
+                        break;
                 }
-               
+                break;
+
+            }
+
         }
     }
 

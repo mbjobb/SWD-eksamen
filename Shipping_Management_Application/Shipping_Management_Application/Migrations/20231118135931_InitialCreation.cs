@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Shipping_Management_Application.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstCreation : Migration
+    public partial class InitialCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,8 @@ namespace Shipping_Management_Application.Migrations
                 {
                     Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", nullable: true),
+                    Password = table.Column<string>(type: "TEXT", nullable: true),
                     Role = table.Column<string>(type: "TEXT", nullable: false),
                     Discriminator = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -32,6 +32,7 @@ namespace Shipping_Management_Application.Migrations
                 columns: table => new
                 {
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Address = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
@@ -57,23 +58,48 @@ namespace Shipping_Management_Application.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    OrderId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    OrderId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Quantity = table.Column<string>(type: "TEXT", nullable: true),
                     ShippingAddress = table.Column<string>(type: "TEXT", nullable: true),
                     OrderStatus = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
+                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<long>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.CustomerId);
+                    table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_UserEntities_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "UserEntities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_UserEntities_UserId",
+                        column: x => x.UserId,
+                        principalTable: "UserEntities",
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CustomerId",
+                table: "Orders",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
         }
 
         /// <inheritdoc />

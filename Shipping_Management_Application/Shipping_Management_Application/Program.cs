@@ -1,4 +1,7 @@
-﻿namespace Shipping_Management_Application
+﻿using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.ViewPanel;
+
+namespace Shipping_Management_Application
 {
     class Program
     {

@@ -11,7 +11,7 @@ public class AdminController : UserController
     // TODO: redo all of this
 
     public Admin Admin { get; private set; }
-    private List<Admin> admins { get; set; }
+    private List<Admin> admins { get; set; }    
 
 
     // Create Admin and add => sending to Database
@@ -20,12 +20,12 @@ public class AdminController : UserController
         //Database Connection
         using (DataContext dataContext = new())
         {
-            try
+            try   
             {
                 // if password / username not null -> adding admin to database
                 if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
                 {
-                    var newAdmin = new Admin(userName, password);
+                    var newAdmin = new Admin(userName, password,"Admin");
                     dataContext.Add(newAdmin);
                     dataContext.SaveChanges();
                     Console.WriteLine("Admin Added to Database!");
@@ -71,7 +71,7 @@ public class AdminController : UserController
 
     }
     //Method to remove an Admin by Id
-    public void RemoveAdminById(int id)
+    public void RemoveAdminById(int id) 
     {
         using (DataContext dataContext = new DataContext())
         {
@@ -134,7 +134,7 @@ public class AdminController : UserController
     }
 }
 
-    //// Method to get an admin by username from a list
+    //// Method to get an admin by username from a list 
     //public Admin? GetAdmin(List<Admin> admins, string userName)
     //{
     //    foreach (Admin admin in admins)
