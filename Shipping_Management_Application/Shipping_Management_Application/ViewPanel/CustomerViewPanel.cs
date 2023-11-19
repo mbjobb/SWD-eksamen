@@ -85,7 +85,8 @@ namespace Shipping_Management_Application.ViewPanel
                                 Console.WriteLine("Exiting....\n LogOut");
                                 _infoAboutOurApp.EndProgram();
                                 Thread.Sleep(2000);
-                                return;
+                                MainViewPanel mainViewPanel = new();
+                                mainViewPanel.MainView();
                             }
                             else if (input.ToLower() == "no")
                             {

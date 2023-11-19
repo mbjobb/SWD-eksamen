@@ -12,7 +12,7 @@ using ModelBuilder = Microsoft.EntityFrameworkCore.ModelBuilder;
 namespace Shipping_Management_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231118135931_InitialCreation")]
+    [Migration("20231118221645_InitialCreation")]
     partial class InitialCreation
     {
         /// <inheritdoc />
@@ -27,8 +27,14 @@ namespace Shipping_Management_Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Country")
+                        .HasColumnType("TEXT");
+
                     b.Property<long>("CustomerId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double?>("Dimensions")
+                        .HasColumnType("REAL");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
@@ -39,16 +45,22 @@ namespace Shipping_Management_Application.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantity")
+                    b.Property<string>("RecieverAddress")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Region")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SerialNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ShippingAddress")
+                    b.Property<string>("TypeOfGoods")
                         .HasColumnType("TEXT");
 
                     b.Property<long?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Weight")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("OrderId");

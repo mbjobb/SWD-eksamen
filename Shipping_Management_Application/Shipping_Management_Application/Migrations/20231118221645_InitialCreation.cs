@@ -60,12 +60,16 @@ namespace Shipping_Management_Application.Migrations
                 {
                     OrderId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Quantity = table.Column<string>(type: "TEXT", nullable: true),
-                    ShippingAddress = table.Column<string>(type: "TEXT", nullable: true),
+                    TypeOfGoods = table.Column<string>(type: "TEXT", nullable: true),
+                    Weight = table.Column<int>(type: "INTEGER", nullable: false),
+                    Dimensions = table.Column<double>(type: "REAL", nullable: true),
+                    RecieverAddress = table.Column<string>(type: "TEXT", nullable: true),
+                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
+                    Country = table.Column<string>(type: "TEXT", nullable: true),
+                    Region = table.Column<string>(type: "TEXT", nullable: true),
+                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true),
                     OrderStatus = table.Column<string>(type: "TEXT", nullable: true),
                     OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true),
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
                     UserId = table.Column<long>(type: "INTEGER", nullable: true)
                 },

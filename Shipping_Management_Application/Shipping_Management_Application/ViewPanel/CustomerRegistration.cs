@@ -80,7 +80,7 @@ namespace Shipping_Management_Application.ViewPanel
                         Thread.Sleep(2000);
                         Console.WriteLine( " Please SignIn ...");
                         UserRegistration userRegistration = new();
-                        userRegistration.SignInCustomer();
+                        userRegistration.SignInCustomerHowHaveSignUp();
                         //Console.WriteLine($" Welcome {_customer.FirstName} ");
                         //Console.WriteLine();
                         //CustomerViewPanel customerViewPanel = new();

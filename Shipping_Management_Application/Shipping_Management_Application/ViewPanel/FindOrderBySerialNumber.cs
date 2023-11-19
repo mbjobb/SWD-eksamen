@@ -3,6 +3,7 @@ using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
 using System;
+using System.Data.Common;
 using System.Linq;
 
 namespace Shipping_Management_Application.ViewPanel
@@ -25,16 +26,26 @@ namespace Shipping_Management_Application.ViewPanel
 
                 // Assuming there is a DbSet<Order> in your DataContext
                 Order? foundOrder = _dbContext.Orders
-                    .Include(o => o.Customer)
-                    .FirstOrDefault(o => o.SerialNumber == serialNumber && o.CustomerId == user.Id && user.Role == "Customer");
+                    .Include(o => o.user)
+                    .FirstOrDefault(o => o.SerialNumber == serialNumber);
 
-                if (foundOrder != null) 
+                if (foundOrder != null)
                 {
                     // Display order details
-                    Console.WriteLine($"Order ID: {foundOrder.OrderId}");
-                    Console.WriteLine($"Dimensions: {foundOrder.Dimensions}");
-                    Console.WriteLine($"RecieverAddress: {foundOrder.RecieverAddress}");
-                    Console.WriteLine($"Order Status: {foundOrder.OrderStatus}");
+                    Console.WriteLine("*******************************************************");
+                    Console.WriteLine($"------Order found with {foundOrder.SerialNumber}------");
+                    Console.WriteLine("*******************************************************");
+                    Console.WriteLine();
+                    Console.WriteLine($"Order ID:          {foundOrder.OrderId}");
+                    Console.WriteLine($"Reciver name:      {foundOrder.ReciverName}");
+                    Console.WriteLine($"Reciever Address:  {foundOrder.RecieverAddress}");
+                    Console.WriteLine($"Reciever Region:   {foundOrder.Region}");
+                    Console.WriteLine($"Reciever Country:  {foundOrder.Country}");
+                    Console.WriteLine($"Dimensions:        {foundOrder.Dimensions}");
+                    Console.WriteLine($"Order Status:      {foundOrder.OrderStatus}");
+                    Console.WriteLine($"SerialNumber:      {foundOrder.SerialNumber}");
+                    Console.WriteLine();
+                    Console.WriteLine("*******************************************************");
                     // Display other order details as needed
                 }
                 else
@@ -42,11 +53,12 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("Order not found with the specified serial number.");
                 }
             }
-            catch (Exception ex)
+            catch (DbException ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                // You might want to log or handle the exception in an appropriate way
+                return;
             }
+            
         }
     }
 }

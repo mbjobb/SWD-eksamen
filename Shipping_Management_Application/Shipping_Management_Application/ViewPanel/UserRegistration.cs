@@ -43,8 +43,9 @@ public class UserRegistration
                     else
                     {
                         Console.WriteLine("Please Try to signup!");
-                        MainViewPanel mainViewPanel = new();
-                        mainViewPanel.MainView();
+                        UserRegistration userRegistration = new();
+                        userRegistration.SignUpCustomer();
+
                     }
                 }
                 catch (Exception ex)
@@ -59,7 +60,7 @@ public class UserRegistration
 
 
     // Method for Customer registration
-    public string SignInCustomer()  
+    public string SignUpCustomer()  
  {
         Console.WriteLine("Welcome to the Customer registration page! Please follow the instructions.");
         do

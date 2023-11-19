@@ -34,7 +34,7 @@ namespace Shipping_Management_Application.ViewPanel
                             Console.WriteLine("1");
                             Console.WriteLine("Customer LogIn");
                             UserRegistration userRegistration = new();
-                            userRegistration.SignInCustomer();
+                            userRegistration.SignInCustomerHowHaveSignUp();
 
                             break;
                         }

@@ -34,10 +34,11 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("Order History:");
                     foreach (var order in orderHistory)
                     {
-                        Console.WriteLine($"Order ID: {order.OrderId}, Quantity: {order.Dimensions}, Status: {order.OrderStatus}");
+                        Console.WriteLine($"Order ID: {order.OrderId}, Dimensions: {order.Dimensions}, Status: {order.OrderStatus}");
                         // You can display other order details as needed
                         //order.PrintOrder();
                         Thread.Sleep(1000);
+                        Console.WriteLine();
                     }
                 }
                 else
