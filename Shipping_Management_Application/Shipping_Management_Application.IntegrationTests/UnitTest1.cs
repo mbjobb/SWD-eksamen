@@ -191,7 +191,7 @@ namespace Shipping_Management_Application.IntegrationTests
             int expectedPriceToDeliver = 900;
             
             // Act
-            OrderController.ProcessOrder(order);
+            OrderControllerUI.ProcessOrder(order);
             
             //Assert
             Assert.That(order.Price, Is.EqualTo(expectedPriceToDeliver));

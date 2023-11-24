@@ -21,7 +21,7 @@ namespace Shipping_Management_Application.UI{
 
                 switch (input){
                     case '1':{
-                        OrderController.PlaceOrder(user);
+                        OrderControllerUI.PlaceOrder(user);
                         break;
                     }
                     case '2':{

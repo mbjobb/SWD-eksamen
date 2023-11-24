@@ -44,18 +44,40 @@ namespace Shipping_Management_Application.Data
             return user ?? throw new Exception();
             
         }
+        public static Customer GetCustomerById(long id){
+            using DataContext context = new DataContext();
+            
+            Customer? customer = context.Customers.FirstOrDefault(c => (c.CustomerId == id));
+            return customer ?? throw new Exception();
+            
+        }
 
         public static bool CheckIfUserExists(string? username, string? password){
             DataContext context = new();
             return context.UserEntities.Any(u => u.UserName == username && u.Password == password);
         }
 
-        public static IEnumerable<Order> GetOrdersByUserId(UserEntity user) 
+        public static IEnumerable<Order> GetOrdersByUserId(long id) 
         {
             DataContext context = new();
             IEnumerable<Order> OrderQuery = context.Orders
-                .Where(o => o.CustomerId == user.Id);
+                .Where(o => o.CustomerId == id);
             return OrderQuery;
+        }
+        public static Order SaveOrder(Order order)
+        {
+            using DataContext context = new DataContext();
+            context.Orders.Add(order);
+            context.SaveChanges();
+            return order;
+        }
+        public static Order UpdateOrderStatus(Order order, string status) 
+        {
+            using DataContext context = new DataContext();
+            order.OrderStatus = status;
+            context.Orders.Update(order);
+            context.SaveChanges();
+            return order;
         }
     }
 }

@@ -19,10 +19,10 @@ namespace Shipping_Management_Application.UI{
 
                 switch (input){
                     case '1':{
-                        OrderController.PlaceOrder(currentUser);
+                        OrderControllerUI.PlaceOrder(currentUser);
                         break;
                     }case '2':{
-                        OrderController.PrintCurrentUsersOrders(currentUser);
+                        OrderControllerUI.PrintCurrentUsersOrders(currentUser);
                         break;
                     }
                     case '3':{
