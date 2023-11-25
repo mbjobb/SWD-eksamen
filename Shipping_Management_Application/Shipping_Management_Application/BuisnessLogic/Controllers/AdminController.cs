@@ -1,4 +1,5 @@
-﻿using Shipping_Management_Application.Data.Entities;
+﻿using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
     {
         public IEnumerable<UserEntity> GetAllUserEntities()
         {
-            IEnumerable<UserEntity> users = new List<UserEntity>();
+            IEnumerable<UserEntity> users = CrudOperations.GetAllUserEntities();
+            //Console.WriteLine(users);
             return users;
         }
     }

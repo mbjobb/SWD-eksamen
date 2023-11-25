@@ -19,6 +19,9 @@ namespace Shipping_Management_Application.Data.Entities
 
         }
 
-
+        public override string? ToString()
+        {
+            return $"{Id} {UserName} {Role}";
+        }
     }
 }

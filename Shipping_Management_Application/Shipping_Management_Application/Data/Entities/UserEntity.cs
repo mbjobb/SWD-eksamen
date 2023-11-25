@@ -38,5 +38,20 @@ namespace Shipping_Management_Application.Data.Entities
         public required string UserName { get; set; }
         public required string Password { get; set; }
         public string Role { get; set; } = "Customer";//sets default value to "Customer"
+
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string? ToString()
+        {
+            return $"{Id} {UserName} {Role}";
+        }
     }
 }
