@@ -31,7 +31,6 @@ namespace Shipping_Management_Application.UI
             else{
                 Console.WriteLine("User does not exist in our database");
             }
-            
         }
 
         public static UserEntity RegisterUser(){
@@ -55,9 +54,6 @@ namespace Shipping_Management_Application.UI
         }
 
         public static void RegisterCustomer(UserEntity user){
-            
-            
-            
             
             Console.WriteLine("Enter first name");
             string? name = Console.ReadLine();

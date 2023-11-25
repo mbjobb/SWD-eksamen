@@ -21,7 +21,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             Customer customer = CrudOperations.GetCustomerById(user.Id);
             return customer;
         }
-        public  Order CreateOrder(UserEntity user, string shippingAddress)
+        public Order CreateOrder(UserEntity user, string shippingAddress)
         {
             Order order = new(user.Id, shippingAddress);
             CrudOperations.SaveOrder(order);

@@ -1,20 +1,107 @@
 
 using FluentAssertions;
 using FluentAssertions.Execution;
-using Shipping_Management_Application.BuisnessLogic.AdminFolder;
+
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Factories.Transport;
 using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
+using Microsoft.Data.Sqlite;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.UI;
 using Shipping_Management_Application.Data.Entities;
 
-namespace Shipping_Management_Application.IntegrationTests
-{
-    public class Tests
-    {
+namespace Shipping_Management_Application.IntegrationTests{
+    
+    public class DbConnectionTest{
+        private string? _dbConnectionString;
+
+        [SetUp]
+        public void Setup(){
+            _dbConnectionString = "Data Source=data.db";
+        }
+
+        [Test]
+        public void WillConnectToDatabase(){ 
+            SqliteConnection sqliteConnection = new("Data Source=data.db"); 
+            try{ 
+                sqliteConnection.Open();
+                Console.WriteLine("Database connected!");
+                Assert.IsTrue(true); 
+            }
+            catch (Exception e){ 
+                Console.WriteLine("Failed to connect"); 
+                Assert.IsTrue(false);
+            }
+        }
+        
+        [Test]
+        public void WillNotConnectToDatabase(){ 
+            SqliteConnection sqliteConnection = new("Data Source=databadsase.db"); 
+            try{ 
+                sqliteConnection.Open(); 
+                Console.WriteLine("Database connected!"); 
+                Assert.IsTrue(false);
+            }
+            catch (Exception e){ 
+                Console.WriteLine(e.Message); 
+            }
+        }
+    }
+
+    public class UserTest{
+        private DataContext? _context;
+        
+        [SetUp]
+        public void Setup(){
+            _context = new();
+        }
+
+        [Test]
+        public void AddUserToDatabase_ShouldAddUser(){
+            User user = new("User", "User123");
+
+            _context?.Users.Add(user);
+            _context?.SaveChanges();
+
+            try{
+                User findUser = _context?.Users.FirstOrDefault(u => u.UserName == user.UserName)!;
+                Assert.IsNotNull(findUser);
+            }
+            catch (Exception e){
+                Console.WriteLine("Failed to add user " + e.Message);
+            }
+        }
+    }
+
+    public class OrderTest{
+        
+        [SetUp]
+        public void Setup(){
+            
+        }
+        
+        [Test]
+        public void CreatingOrder_ShouldCreateOrder(){
+            User user = new("Customer", "password123");
+            CrudOperations.CreateUser(user);
+            
+            Customer customer = new(user.Id, "Customer", "c@gmail.om", "Address123", "1111");
+            CrudOperations.CreateCustomer(customer);
+            
+            Order order = new(customer.CustomerId, "Urtegata 17");
+            CrudOperations.SaveOrder(order);
+            
+            Assert.IsNotNull(order);
+        }
+    }
+}
+
+      
+    public class Tests{
 
         //[SetUp]
         //public void Setup()
@@ -264,4 +351,4 @@ namespace Shipping_Management_Application.IntegrationTests
 
 
 
-    }
+    

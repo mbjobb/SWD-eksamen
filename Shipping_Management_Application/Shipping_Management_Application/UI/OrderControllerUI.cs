@@ -11,8 +11,7 @@ namespace Shipping_Management_Application.UI
 
         //TODO: make constructor instance an interface
         public static OrderController orderController = new OrderController();
-        public static void PlaceOrder(UserEntity user)
-        {
+        public static void PlaceOrder(UserEntity user){
             
             Customer customer = orderController.GetCustomer(user);
 
@@ -36,8 +35,6 @@ namespace Shipping_Management_Application.UI
                 InitializeLoggedIn.OnLoggedIn(user);
 
             }
-
-
         }
         
         public static void ProcessOrder(Order order){
@@ -56,17 +53,13 @@ namespace Shipping_Management_Application.UI
                 //Logic for updating status in db, function takes Order order and string status as arguments
                 orderController.UpdateOrderStatus(order, "Delivered");
                 Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
-                
-
-                
             }
             catch (Exception ex){
                 Console.WriteLine("Error: " + ex.ToString());
             }
         }
 
-        public static void PrintCurrentUsersOrders(UserEntity user)
-        {
+        public static void PrintCurrentUsersOrders(UserEntity user){
             
             IEnumerable<Order> Orders = orderController.GetAllCustomerOrders(user);
             foreach (Order Order in Orders)
