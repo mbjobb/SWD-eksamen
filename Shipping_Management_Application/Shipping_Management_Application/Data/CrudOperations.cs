@@ -97,7 +97,8 @@ namespace Shipping_Management_Application.Data
         public static IEnumerable<UserEntity> GetAllUserEntities()
         {
             using DataContext context = new DataContext();
-            return context.UserEntities;
+            IEnumerable<UserEntity> userEntities = context.UserEntities.ToList();
+            return userEntities;
         }
     }
 }

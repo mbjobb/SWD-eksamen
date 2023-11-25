@@ -24,7 +24,7 @@ namespace Shipping_Management_Application.UI
                         OrderControllerUI.PrintCurrentUsersOrders(user);
                         break;
                     }
-                    case '3':{
+                    case '9':{
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup();

@@ -13,9 +13,9 @@ namespace Shipping_Management_Application.UI
 
             
             Console.Write("Enter Username:");
-            string? username = Console.ReadLine();
+            string username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string? password = Console.ReadLine();
+            string password = Console.ReadLine();
 
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
             LoginAuthentication loginAuthentication = new LoginAuthentication();

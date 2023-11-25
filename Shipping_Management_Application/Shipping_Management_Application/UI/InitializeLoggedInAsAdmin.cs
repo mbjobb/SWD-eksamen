@@ -14,7 +14,7 @@ namespace Shipping_Management_Application.UI
             while (running){
 
                 Console.WriteLine("Press 1 to manage users");
-                Console.WriteLine("Press 2 to view all orders");
+                Console.WriteLine("Press 2 to view  orders");
                 Console.WriteLine("Press 9 to sign out");
                 
                 
@@ -22,8 +22,9 @@ namespace Shipping_Management_Application.UI
 
                 switch (input){
                     case '1':{
-                            
-                            IEnumerable<UserEntity> users = AdminController.GetAllUserEntities();
+
+                            AdminControllerUi.ManageUsers();
+                            //Console.WriteLine(AdminController.GetAllUserEntities());
                             break;
                     }case '2':{
                         OrderControllerUI.PrintCurrentUsersOrders(user);
