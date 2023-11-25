@@ -1,4 +1,5 @@
 ﻿using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,18 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             CrudOperations.CreateCustomer(customer);
             return customer;
             
+        }
+
+        internal UserEntity CreateUser(string username, string password)
+        {
+            UserEntity user = new User(username, password);
+            CrudOperations.CreateUser(user);
+            return user;
+        }
+        internal UserEntity FindUserByUsernameAndPassword(string username, string password)
+        {
+            UserEntity user = CrudOperations.GetUserByUserNameAndPassword(username, password);
+            return user;
         }
     }
 }

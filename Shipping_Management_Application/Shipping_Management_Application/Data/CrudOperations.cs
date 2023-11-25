@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.Data
 {
@@ -85,6 +85,12 @@ namespace Shipping_Management_Application.Data
         {
             using DataContext context = new DataContext();
             context.Customers.Add(customer);
+            context.SaveChanges();
+        }
+        public static void CreateUser(UserEntity user)
+        {
+            using DataContext context = new DataContext();
+            context.UserEntities.Add(user);
             context.SaveChanges();
         }
     }

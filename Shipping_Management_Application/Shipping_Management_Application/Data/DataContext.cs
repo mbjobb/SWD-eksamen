@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.OldStuff;
 
 namespace Shipping_Management_Application.Data

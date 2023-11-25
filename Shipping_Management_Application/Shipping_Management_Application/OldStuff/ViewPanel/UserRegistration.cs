@@ -1,6 +1,6 @@
 ﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using System;
 using System.Linq;
 

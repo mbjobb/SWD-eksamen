@@ -1,4 +1,4 @@
-﻿using Shipping_Management_Application.BuisnessLogic.User;
+﻿using Shipping_Management_Application.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

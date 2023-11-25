@@ -1,6 +1,4 @@
-﻿using Shipping_Management_Application.Data;
-
-namespace Shipping_Management_Application.BuisnessLogic
+﻿namespace Shipping_Management_Application.Data.Entities
 {
     public class Order
     {
@@ -10,7 +8,8 @@ namespace Shipping_Management_Application.BuisnessLogic
         public string ShippingAddress { get; set; }
         public string OrderStatus { get; set; } = "Order placed";
         public int Price { get; set; }
-        public Order(long customerId){
+        public Order(long customerId)
+        {
             CustomerId = customerId;
         }
 

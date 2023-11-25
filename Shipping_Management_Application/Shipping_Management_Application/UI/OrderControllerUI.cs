@@ -1,12 +1,13 @@
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.Factories.Logistics;
 using ITransport = Shipping_Management_Application.Factories.Transport.ITransport;
 
-namespace Shipping_Management_Application.UI{
-    
+namespace Shipping_Management_Application.UI
+{
+
     public class OrderControllerUI{
 
         //TODO: make constructor instance an interface

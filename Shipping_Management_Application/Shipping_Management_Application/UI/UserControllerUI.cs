@@ -1,31 +1,31 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using System.Security.AccessControl;
 
-namespace Shipping_Management_Application.UI{
+namespace Shipping_Management_Application.UI
+{
     internal class UserControllerUI{
         public static UserController userController = new UserController();
         public static void Login(){
             
-            using DataContext context = new ();
+
             
             Console.Write("Enter Username:");
-            string? _username = Console.ReadLine();
+            string? username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string? _password = Console.ReadLine();
+            string? password = Console.ReadLine();
 
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
             LoginAuthentication loginAuthentication = new LoginAuthentication();
-            bool isAuthenticated = loginAuthentication.Authentication(_username, _password);
+            bool isAuthenticated = loginAuthentication.Authentication(username, password);
 
 
-            if (CrudOperations.CheckIfUserExists(_username, _password) && isAuthenticated)
+            if (CrudOperations.CheckIfUserExists(username, password) && isAuthenticated)
             {
-                UserEntity user = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
-                Console.WriteLine(user);
+                UserEntity user = userController.FindUserByUsernameAndPassword(username, password);
                 InitializeLoggedIn.OnLoggedIn(user);
             }
             else{
@@ -34,17 +34,15 @@ namespace Shipping_Management_Application.UI{
             
         }
 
-        public static void RegisterUser(){
-            using DataContext context = new ();
+        public static UserEntity RegisterUser(){
             Console.Write("Enter Username:");
-            string _username = Console.ReadLine();
+            string username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string _password = Console.ReadLine();
-            User user = new(_username, _password);
+            string password = Console.ReadLine();
+            User user = new(username, password);
             try
             {
-            context.Add(user);
-            context.SaveChanges();
+            userController.CreateUser(username,password);
 
             }catch (Exception ex)
             {
@@ -53,6 +51,7 @@ namespace Shipping_Management_Application.UI{
                 Console.WriteLine("Username already in use, try a different username");
                 RegisterUser();
             }
+            return user;
         }
 
         public static void RegisterCustomer(UserEntity user){

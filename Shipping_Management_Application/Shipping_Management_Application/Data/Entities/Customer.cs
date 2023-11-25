@@ -1,16 +1,16 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.User;
-using Shipping_Management_Application.OldStuff;
+﻿using Shipping_Management_Application.OldStuff;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
-namespace Shipping_Management_Application.Data
+namespace Shipping_Management_Application.Data.Entities
 {
-    public class Customer{
-        
-        public Customer(long customerId, string? name){
+    public class Customer
+    {
+
+        public Customer(long customerId, string? name)
+        {
             CustomerId = customerId;
             Name = name;
         }
@@ -30,7 +30,7 @@ namespace Shipping_Management_Application.Data
         public string? Name { get; set; }
         public string? Adress { get; set; }
         public string? PostCode { get; set; }
-        
+
     }
 
 

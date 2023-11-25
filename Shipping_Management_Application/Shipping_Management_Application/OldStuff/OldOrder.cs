@@ -1,4 +1,4 @@
-﻿using Shipping_Management_Application.Data;
+﻿using Shipping_Management_Application.Data.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

@@ -8,8 +8,8 @@ using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
-using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.UI;
+using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.IntegrationTests
 {
