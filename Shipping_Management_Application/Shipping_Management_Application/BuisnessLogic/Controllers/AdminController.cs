@@ -11,7 +11,8 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
     {
         public IEnumerable<UserEntity> GetAllUserEntities()
         {
-
+            IEnumerable<UserEntity> users = new List<UserEntity>();
+            return users;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shipping_Management_Application.Data.Entities;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Shipping_Management_Application.Data
 {
@@ -17,6 +18,7 @@ namespace Shipping_Management_Application.Data
             Console.WriteLine($"Welcome {user?.UserName}");
             return user;
         }
+       
 
         public static bool IsUserEntitiesTableEmpty()
         {
@@ -91,6 +93,11 @@ namespace Shipping_Management_Application.Data
             using DataContext context = new DataContext();
             context.UserEntities.Add(user);
             context.SaveChanges();
+        }
+        public static IEnumerable<UserEntity> GetAllUserEntities()
+        {
+            using DataContext context = new DataContext();
+            return context.UserEntities;
         }
     }
 }

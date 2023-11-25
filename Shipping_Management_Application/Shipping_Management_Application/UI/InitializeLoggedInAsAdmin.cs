@@ -1,9 +1,12 @@
+using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.UI
 {
     public class InitializeLoggedInAsAdmin{
+        internal static AdminController AdminController = new AdminController();
+        public static OrderController orderController = new OrderController();
 
         public static void OnLoggedIn(UserEntity user)
         {
@@ -11,7 +14,7 @@ namespace Shipping_Management_Application.UI
             while (running){
 
                 Console.WriteLine("Press 1 to manage users");
-                Console.WriteLine("Press 2 to view customer orders");
+                Console.WriteLine("Press 2 to view all orders");
                 Console.WriteLine("Press 9 to sign out");
                 
                 
@@ -19,13 +22,14 @@ namespace Shipping_Management_Application.UI
 
                 switch (input){
                     case '1':{
-
-                        break;
+                            
+                            IEnumerable<UserEntity> users = AdminController.GetAllUserEntities();
+                            break;
                     }case '2':{
                         OrderControllerUI.PrintCurrentUsersOrders(user);
                         break;
                     }
-                    case '3':{
+                    case '9':{
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup();

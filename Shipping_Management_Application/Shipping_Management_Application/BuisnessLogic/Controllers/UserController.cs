@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
-    internal class UserController
+    public class UserController
     {
-        internal Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode)
+        public Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode)
         {
             Customer customer = new Customer(id, name, email, address, postCode);
             CrudOperations.CreateCustomer(customer);
@@ -18,16 +18,21 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             
         }
 
-        internal UserEntity CreateUser(string username, string password)
+        public UserEntity CreateUser(string username, string password)
         {
             UserEntity user = new User(username, password);
             CrudOperations.CreateUser(user);
             return user;
         }
-        internal UserEntity FindUserByUsernameAndPassword(string username, string password)
+        public UserEntity FindUserByUsernameAndPassword(string username, string password)
         {
             UserEntity user = CrudOperations.GetUserByUserNameAndPassword(username, password);
             return user;
+        }
+        public bool UsernameAndPasswordMatchFoundInDB(string username, string password)
+        {
+            bool matchFound = CrudOperations.CheckIfUserExists(username, password);
+            return matchFound;
         }
     }
 }

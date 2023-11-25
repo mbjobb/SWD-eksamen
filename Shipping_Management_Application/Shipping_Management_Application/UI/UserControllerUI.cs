@@ -20,11 +20,12 @@ namespace Shipping_Management_Application.UI
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
             LoginAuthentication loginAuthentication = new LoginAuthentication();
             bool isAuthenticated = loginAuthentication.Authentication(username, password);
+            bool matchFound = userController.UsernameAndPasswordMatchFoundInDB(username, password);
 
-
-            if (CrudOperations.CheckIfUserExists(username, password) && isAuthenticated)
+            if (matchFound && isAuthenticated)
             {
                 UserEntity user = userController.FindUserByUsernameAndPassword(username, password);
+                if (user.Role == "Admin") { InitializeLoggedInAsAdmin.OnLoggedIn(user); }
                 InitializeLoggedIn.OnLoggedIn(user);
             }
             else{
