@@ -1,7 +1,8 @@
-using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 
-namespace Shipping_Management_Application.UI{
+namespace Shipping_Management_Application.UI
+{
     public class InitializeOrder{
 
         public static void OnOrdering(UserEntity user)

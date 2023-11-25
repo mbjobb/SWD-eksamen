@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.Data

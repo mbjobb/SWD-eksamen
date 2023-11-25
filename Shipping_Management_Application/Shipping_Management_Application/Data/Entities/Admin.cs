@@ -1,4 +1,4 @@
-using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.Data.Entities;
 using System.Diagnostics.CodeAnalysis;
 
 public class Admin : UserEntity

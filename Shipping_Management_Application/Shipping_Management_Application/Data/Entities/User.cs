@@ -1,5 +1,4 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.OldStuff;
+﻿using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.Data.Entities

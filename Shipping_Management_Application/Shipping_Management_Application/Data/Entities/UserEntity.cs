@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Shipping_Management_Application.BuisnessLogic
+namespace Shipping_Management_Application.Data.Entities
 {
     public abstract class UserEntity
     {
@@ -21,7 +21,7 @@ namespace Shipping_Management_Application.BuisnessLogic
         }
         protected UserEntity()
         {
-            
+
         }
 
         //constructor with role, used for creating admins
