@@ -10,4 +10,19 @@ public class Admin : UserEntity
     public Admin(string userName, string password, string role = "Admin") : base(userName, password, role)
     {
     }
+
+    public override bool Equals(object? obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override string? ToString()
+    {
+        return $"{Id} {UserName}";
+    }
 }

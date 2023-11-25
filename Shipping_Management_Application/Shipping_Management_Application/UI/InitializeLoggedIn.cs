@@ -7,7 +7,6 @@ namespace Shipping_Management_Application.UI{
 
         public static void OnLoggedIn(UserEntity currentUser)
         {
-            
             bool running = true;
             while (running){
                 using DataContext context = new();

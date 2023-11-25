@@ -10,7 +10,7 @@ namespace Shipping_Management_Application.UI{
     public class OrderControllerUI{
 
         //TODO: make constructor instance an interface
-        public static OrderControllerBase orderController = new OrderController();
+        public static OrderController orderController = new OrderController();
         public static void PlaceOrder(UserEntity user)
         {
             
@@ -18,7 +18,7 @@ namespace Shipping_Management_Application.UI{
 
             if (customer == null){
                 Console.WriteLine("You need to register as a customer to proceed");
-                UserController.RegisterCustomer(user);
+                UserControllerUI.RegisterCustomer(user);
             }
             //TODO: decide on how we are handling exceptions so it's consistant throughout the code base
             try
@@ -42,9 +42,6 @@ namespace Shipping_Management_Application.UI{
         
         public static void ProcessOrder(Order order){
             try{
-                
-                using DataContext context = new();
-
 
                 LogisticsFactory logisticsFactory = new RoadLogistics();
                 ITransport transport = logisticsFactory.CreateTransport();

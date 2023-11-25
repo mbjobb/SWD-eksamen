@@ -32,12 +32,12 @@ namespace Shipping_Management_Application.UI{
 
                 switch (input){
                     case '1':{
-                        UserController.Login();
+                        UserControllerUI.Login();
                         break;
                     }
 
                     case '2':{
-                        UserController.RegisterUser();
+                        UserControllerUI.RegisterUser();
                         break;
                     }
                     case '3':{

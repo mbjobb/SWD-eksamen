@@ -1,19 +1,20 @@
-﻿using Shipping_Management_Application.BuisnessLogic;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 
 namespace Shipping_Management_Application.Data
 {
     public static class CrudOperations
     {
-        public static User? GetUserByUserNameAndPassword(string? userName, string? password){
+        public static UserEntity? GetUserByUserNameAndPassword(string? userName, string? password){
 
             using DataContext context = new DataContext();
 
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)){
                 throw new ArgumentNullException("userName");
             }
-            
-            User? user = context.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
+
+            UserEntity? user = context.UserEntities.FirstOrDefault(u => u.UserName == userName && u.Password == password);
             Console.WriteLine($"Welcome {user?.UserName}");
             return user;
         }
@@ -44,11 +45,12 @@ namespace Shipping_Management_Application.Data
             return user ?? throw new Exception();
             
         }
+        //Todo: was here
         public static Customer GetCustomerById(long id){
             using DataContext context = new DataContext();
             
             Customer? customer = context.Customers.FirstOrDefault(c => (c.CustomerId == id));
-            return customer ?? throw new Exception();
+            return customer;
             
         }
 
@@ -78,6 +80,12 @@ namespace Shipping_Management_Application.Data
             context.Orders.Update(order);
             context.SaveChanges();
             return order;
+        }
+        public static void CreateCustomer(Customer customer)
+        {
+            using DataContext context = new DataContext();
+            context.Customers.Add(customer);
+            context.SaveChanges();
         }
     }
 }

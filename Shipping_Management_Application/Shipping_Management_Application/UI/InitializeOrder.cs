@@ -12,7 +12,7 @@ namespace Shipping_Management_Application.UI{
             while (running){
                 
                 using DataContext context = new();
-                Console.WriteLine("Choose a delivery method");
+                Console.WriteLine("Choose a delivery modes");
                 Console.WriteLine("Press 1 to order by air");
                 Console.WriteLine("Press 2 to order by land");
                 Console.WriteLine("Press 3 to order by sea");

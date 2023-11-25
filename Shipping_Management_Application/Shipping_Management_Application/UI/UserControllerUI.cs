@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shipping_Management_Application.BuisnessLogic;
+using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
-
+using System.Security.AccessControl;
 
 namespace Shipping_Management_Application.UI{
-    internal class UserController{
-        public static UserEntity? Login(){
+    internal class UserControllerUI{
+        public static UserController userController = new UserController();
+        public static void Login(){
             
             using DataContext context = new ();
             
@@ -15,14 +17,21 @@ namespace Shipping_Management_Application.UI{
             Console.Write("Enter Password:");
             string? _password = Console.ReadLine();
 
-            if (CrudOperations.CheckIfUserExists(_username, _password)){
+            //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
+            LoginAuthentication loginAuthentication = new LoginAuthentication();
+            bool isAuthenticated = loginAuthentication.Authentication(_username, _password);
+
+
+            if (CrudOperations.CheckIfUserExists(_username, _password) && isAuthenticated)
+            {
                 UserEntity user = CrudOperations.GetUserByUserNameAndPassword(_username, _password);
+                Console.WriteLine(user);
                 InitializeLoggedIn.OnLoggedIn(user);
             }
             else{
                 Console.WriteLine("User does not exist in our database");
             }
-            return null;
+            
         }
 
         public static void RegisterUser(){
@@ -48,12 +57,9 @@ namespace Shipping_Management_Application.UI{
 
         public static void RegisterCustomer(UserEntity user){
             
-            if (user == null) {
-                Console.WriteLine("User not logged in.");
-                return;
-            }
             
-            using DataContext context = new();
+            
+            
             Console.WriteLine("Enter first name");
             string? name = Console.ReadLine();
             Console.WriteLine("Enter first email");
@@ -63,9 +69,8 @@ namespace Shipping_Management_Application.UI{
             Console.WriteLine("Enter first post code");
             string? postCode = Console.ReadLine();
 
-            Customer customer = new(user.Id, name, email, address, postCode);
-            context.Add(customer);
-            context.SaveChanges();
+            Customer customer = userController.CreateCustomer(user.Id, name, email, address, postCode);
+
         }
     }
 }
