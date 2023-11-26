@@ -30,8 +30,7 @@ namespace Shipping_Management_Application.UI
                 return input;
             }
         }
-
-
+        
         public static string ReadAStringInput(string? validInput = null) 
         {
             string Input = null;
