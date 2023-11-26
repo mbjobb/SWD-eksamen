@@ -7,7 +7,7 @@ namespace Shipping_Management_Application.Data.Entities
     {
 
         /// <summary>
-        /// Dependancy injection start. 1/x
+        /// Dependancy injection start. 1/6 
         /// Here we have UserEntity as the base/parent/super- class for all
         /// current and future "user" objects.(ps, maybe we should change the
         /// name of the User class)
@@ -18,6 +18,7 @@ namespace Shipping_Management_Application.Data.Entities
         /// well as a foreign key for the customer object; username and 
         /// password which is needed for logging in; and lastly a role which
         /// can be used to manage permissions.
+        /// <see cref="Admin"/>
         /// </summary>
 
         public long Id { get; set; }

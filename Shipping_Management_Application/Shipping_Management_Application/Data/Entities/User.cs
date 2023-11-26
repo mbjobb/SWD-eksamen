@@ -6,10 +6,11 @@ namespace Shipping_Management_Application.Data.Entities
     public class User : UserEntity
     {
         /// <summary>
-        /// Dependancy injection continued. 3/x
+        /// Dependancy injection continued. 3/6
         /// The customer object is the second derived type of UserEntity, and 
         /// it has a property not included in the base type, namely the 
         /// "Customer" member.
+        /// <see cref="UI.UserControllerUI"/>
         /// </summary>
 
         public Customer Customer { get; set; }

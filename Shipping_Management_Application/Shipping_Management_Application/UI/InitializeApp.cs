@@ -14,7 +14,7 @@ namespace Shipping_Management_Application.UI{
             public static IUserController userController = new UserController();
         public InitializeApp(){
             /// <summary>
-            /// Facade pattern continued.
+            /// Facade pattern continued. 2/2
             /// This is essentially a wrapper, allowing us to initialize the 
             /// program with a single line, as seen in  Program.cs.
             /// The method calls here are also mostly to wrapeprs, meaning we

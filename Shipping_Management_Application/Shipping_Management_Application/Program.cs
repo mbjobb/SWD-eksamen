@@ -18,9 +18,10 @@ namespace Shipping_Management_Application
             //TestingThings.Testing();
 
             /// <summary>
-            /// Facade pattern start.
+            /// Facade pattern start. 1/2
             /// Used to define the flow of the program without
             /// dictating the actual implimentation
+            /// <see cref="UI.InitializeApp"/>
             /// </summary>
             
             new InitializeApp();

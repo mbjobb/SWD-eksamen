@@ -4,6 +4,13 @@ using Shipping_Management_Application.Data.Entities;
 namespace Shipping_Management_Application.UI
 {
     public class InitializeLoggedIn{
+        /// <summary>
+        /// Dependancy injection continued. 5/6
+        /// Since we pass a reference to the base object rather than its 
+        /// concrete implimentation we end up with a loose, rather than tight; 
+        /// coupling.
+        /// <see cref="OrderControllerUI"/>
+        /// </summary>
 
         public static void OnLoggedIn(UserEntity user)
         {

@@ -8,6 +8,14 @@ namespace Shipping_Management_Application.UI
 {
 
     public class OrderControllerUI{
+
+        /// <summary>
+        /// Dependancy injection continued. 6/6
+        /// Here we are using the constructor dependancy injection pattern,
+        /// and by instantiating an Order controller from its interface, rather
+        /// than its concrete implementation. 
+        /// </summary>
+
         public static IOrderController orderController = new OrderController();
         //TODO: make constructor instance an interface
         public static void PlaceOrder(UserEntity user){

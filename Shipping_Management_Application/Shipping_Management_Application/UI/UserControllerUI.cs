@@ -8,9 +8,12 @@ namespace Shipping_Management_Application.UI
 {
     internal class UserControllerUI{
         /// <summary>
-        /// Dependancy injection continued 4/x
+        /// Dependancy injection continued 4/6
         /// This is where the actual dependency injection starts to happen.
-        /// Login() creates a 
+        /// Login() creates a object derived from the UserEntity base class,
+        /// and that derived object is then passed as an argument for further
+        /// method calls, thus method dependancy injection is accomplished.
+        /// <see cref="InitializeLoggedIn"/>
         /// </summary>
 
         public static void Login(IUserController userController){
