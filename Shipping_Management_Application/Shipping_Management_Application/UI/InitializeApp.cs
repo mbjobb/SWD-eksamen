@@ -37,7 +37,7 @@ namespace Shipping_Management_Application.UI{
                 Console.WriteLine("Welcome");
                 Console.WriteLine("Press 1 to login to an existing user");
                 Console.WriteLine("Press 2 to sign up if you don't have a user");
-                Console.WriteLine("Press 3 to exit");
+                Console.WriteLine("Press 9 to exit");
 
                 char input = UIController.ReadASingleKeyPress("12");
                 // TODO: check and fix switch case formatting
@@ -52,7 +52,7 @@ namespace Shipping_Management_Application.UI{
                         UserControllerUI.RegisterUser(userController);
                         break;
                     }
-                    case '3':{
+                    case '9':{
                         running = false;
                         UIController.CloseApplication();
                         break;

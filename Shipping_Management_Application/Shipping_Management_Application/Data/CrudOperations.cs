@@ -39,11 +39,20 @@ namespace Shipping_Management_Application.Data{
             context.SaveChanges();
             return admin;
         }
+        public static Admin CreateAdmin(string username, string password){
 
-        public static User GetUserById(long id){
+            using DataContext context = new();
+
+            Admin admin = new(username, password);
+            context.Add(admin);
+            context.SaveChanges();
+            return admin;
+        }
+
+        public static UserEntity GetUserById(long id){
             using DataContext context = new DataContext();
             
-            User? user = context.Users.FirstOrDefault(u => (u.Id == id));
+            UserEntity? user = context.UserEntities.FirstOrDefault(u => (u.Id == id));
             return user ?? throw new Exception();
             
         }
@@ -100,6 +109,13 @@ namespace Shipping_Management_Application.Data{
             using DataContext context = new DataContext();
             IEnumerable<UserEntity> userEntities = context.UserEntities.ToList();
             return userEntities;
+        }
+        public static void DeleteCustomer(Customer customer) { throw new NotImplementedException(); }
+        public static void DeleteUserEntity(UserEntity user) 
+        {
+            using DataContext context = new DataContext();
+            context.UserEntities.Remove(user);
+            context.SaveChanges();
         }
     }
 }

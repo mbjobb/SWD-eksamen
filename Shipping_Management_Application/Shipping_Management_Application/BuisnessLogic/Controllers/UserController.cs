@@ -24,7 +24,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             CrudOperations.CreateUser(user);
             return user;
         }
-        public UserEntity FindUserByUsernameAndPassword(string username, string password)
+        public UserEntity GetUserEntityByUsernameAndPassword(string username, string password)
         {
             UserEntity user = CrudOperations.GetUserByUserNameAndPassword(username, password);
             return user;
@@ -33,6 +33,19 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         {
             bool matchFound = CrudOperations.CheckIfUserExists(username, password);
             return matchFound;
+        }
+        public UserEntity GetUserEntityById(long id)
+        {
+            return CrudOperations.GetUserById(id);
+        }
+        public void DeleteUserEntity(UserEntity user)
+        {
+            CrudOperations.DeleteUserEntity(user);
+        }
+
+        public UserEntity GetUserEntityByUsername(string username)
+        {
+            throw new NotImplementedException();
         }
     }
 }

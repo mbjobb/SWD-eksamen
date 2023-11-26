@@ -16,5 +16,11 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             //Console.WriteLine(users);
             return users;
         }
+        public UserEntity CreateAdmin(string username, string password)
+        {
+
+            return CrudOperations.CreateAdmin(username, password);
+            
+        }
     }
 }

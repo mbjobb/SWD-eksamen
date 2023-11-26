@@ -15,10 +15,10 @@ namespace Shipping_Management_Application.UI
 
                 Console.WriteLine("Press 1 to manage users");
                 Console.WriteLine("Press 2 to view  orders");
-                Console.WriteLine("Press 9 to sign out");
+                Console.WriteLine("Press 8 to sign out");
                 
                 
-                char input = UIController.ReadASingleKeyPress("12");
+                char input = UIController.ReadASingleKeyPress("128");
 
                 switch (input){
                     case '1':{
@@ -30,7 +30,7 @@ namespace Shipping_Management_Application.UI
                         OrderControllerUI.PrintCurrentUsersOrders(user);
                         break;
                     }
-                    case '9':{
+                    case '8':{
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup(InitializeApp.userController);
