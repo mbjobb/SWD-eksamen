@@ -18,7 +18,7 @@ namespace Shipping_Management_Application.UI
                 Console.WriteLine("Press 2 to order by land");
                 Console.WriteLine("Press 3 to order by sea");
                 
-                char input = UIController.ReadASingleKeyPress("12");
+                char input = UIController.ReadASingleKeyPress("123");
 
                 switch (input){
                     case '1':{

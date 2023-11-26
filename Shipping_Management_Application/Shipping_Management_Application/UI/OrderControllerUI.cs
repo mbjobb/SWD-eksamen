@@ -42,10 +42,9 @@ namespace Shipping_Management_Application.UI
 
                 LogisticsFactory logisticsFactory = new RoadLogistics();
                 ITransport transport = logisticsFactory.CreateTransport();
-
-                //TODO: move the logic part of this into the BI layer
-                int cost = logisticsFactory.DeliveryCost(order.ShippingAddress);
-                order.Price = cost;
+                int price = logisticsFactory.DeliveryCost(order.ShippingAddress);
+                
+                order.Price = price;
                 Console.WriteLine($"Delivery price for Order {order.OrderId}: {order.Price}");
 
                 transport.Deliver();
@@ -71,3 +70,4 @@ namespace Shipping_Management_Application.UI
         }
     }
 }
+// Addresses

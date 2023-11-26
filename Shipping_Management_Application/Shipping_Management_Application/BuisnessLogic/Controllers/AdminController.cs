@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
-    internal class AdminController
+    public class AdminController
     {
         public IEnumerable<UserEntity> GetAllUserEntities()
         {

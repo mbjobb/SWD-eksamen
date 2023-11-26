@@ -2,8 +2,9 @@
 using Shipping_Management_Application.Data.Entities;
 using System.Reflection.Metadata.Ecma335;
 
-namespace Shipping_Management_Application.Data
-{
+namespace Shipping_Management_Application.Data{
+    
+    //TODO: Add try catch blocks into methods
     public static class CrudOperations
     {
         public static UserEntity? GetUserByUserNameAndPassword(string? userName, string? password){
@@ -88,12 +89,12 @@ namespace Shipping_Management_Application.Data
             context.Customers.Add(customer);
             context.SaveChanges();
         }
-        public static void CreateUser(UserEntity user)
-        {
+        public static void CreateUser(UserEntity user){
             using DataContext context = new DataContext();
             context.UserEntities.Add(user);
             context.SaveChanges();
         }
+        
         public static IEnumerable<UserEntity> GetAllUserEntities()
         {
             using DataContext context = new DataContext();
