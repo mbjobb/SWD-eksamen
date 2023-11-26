@@ -72,10 +72,10 @@ namespace Shipping_Management_Application.IntegrationTests{
         [Test]
         public void AdminGetsAllUsers_AdminShouldGetAllUsers(){
 
-            User user = new("User1", "password123");
+            User user = new User("User1", "password123");
             CrudOperations.CreateUser(user);
             
-            var userEntities = _adminController.GetAllUserEntities();
+            IEnumerable<UserEntity> userEntities = _adminController.GetAllUserEntities();
             
             Assert.IsNotNull(userEntities);
             Console.WriteLine(userEntities);
@@ -83,11 +83,11 @@ namespace Shipping_Management_Application.IntegrationTests{
         
         [Test]
         public void AddingDuplicatedUser_ShouldFail(){
-            User user = new("User1", "password123");
-            User user1 = new("User1", "password123"); 
+            User user = new User("User1", "password123");
+            User user1 = new User("User1", "password123"); 
             CrudOperations.CreateUser(user);
             
-            Assert.Throws<InvalidOperationException>(() => CrudOperations.CreateUser(user1));
+            Assert.Throws<DbUpdateException>(() => CrudOperations.CreateUser(user1));
         }
         
         [Test]
