@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.UI;
 using Shipping_Management_Application.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shipping_Management_Application.IntegrationTests{
     
@@ -75,6 +76,30 @@ namespace Shipping_Management_Application.IntegrationTests{
                 Console.WriteLine("Failed to add user " + e.Message);
             }
         }
+                        public static IUserController userController = new UserController();
+        [Test]
+        public void CreatingDuplicateUser_ShouldFailAndThrowException(){
+        Exception exception = null;
+            try
+            {
+                string username = "username";
+                string password = "password";
+                var user1= userController.CreateUser(username, password);
+                var user2= userController.CreateUser(username, password);
+                
+
+            }
+            catch (Exception e)
+            {
+
+                exception = e;
+            }
+            finally
+            {
+                Assert.IsNotNull(exception);
+                Assert.IsInstanceOf<DbUpdateException>(exception);
+            }
+        }
     }
 
     public class OrderTest{
@@ -83,9 +108,9 @@ namespace Shipping_Management_Application.IntegrationTests{
         public void Setup(){
             
         }
-        
         [Test]
         public void CreatingOrder_ShouldCreateOrder(){
+
             User user = new("Customer", "password123");
             CrudOperations.CreateUser(user);
             
@@ -97,6 +122,7 @@ namespace Shipping_Management_Application.IntegrationTests{
             
             Assert.IsNotNull(order);
         }
+        
     }
 }
 

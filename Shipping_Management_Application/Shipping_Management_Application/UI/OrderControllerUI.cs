@@ -8,16 +8,15 @@ namespace Shipping_Management_Application.UI
 {
 
     public class OrderControllerUI{
-
+        public static IOrderController orderController = new OrderController();
         //TODO: make constructor instance an interface
-        public static OrderController orderController = new OrderController();
         public static void PlaceOrder(UserEntity user){
             
             Customer customer = orderController.GetCustomer(user);
 
             if (customer == null){
                 Console.WriteLine("You need to register as a customer to proceed");
-                UserControllerUI.RegisterCustomer(user);
+                UserControllerUI.RegisterCustomer(InitializeApp.userController,user);
             }
             //TODO: decide on how we are handling exceptions so it's consistant throughout the code base
             try

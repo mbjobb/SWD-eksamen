@@ -3,6 +3,13 @@ using System.Diagnostics.CodeAnalysis;
 
 public class Admin : UserEntity
 {
+    /// <summary>
+    /// Dependancy injection continued. 2/x
+    /// The Admin object is a derived type of the UserEntity, but does not
+    /// contain any meaningfull differences to its base type.
+    /// It is still required since the UserEntity type is abstract and thus
+    /// cannot be instansiated.
+    /// </summary>
 
 
 

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
-    public class UserController
+    public class UserController : IUserController
     {
         public Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode)
         {
             Customer customer = new Customer(id, name, email, address, postCode);
             CrudOperations.CreateCustomer(customer);
             return customer;
-            
+
         }
 
         public UserEntity CreateUser(string username, string password)

@@ -7,10 +7,15 @@ using System.Security.AccessControl;
 namespace Shipping_Management_Application.UI
 {
     internal class UserControllerUI{
-        public static UserController userController = new UserController();
-        public static void Login(){
-            
+        /// <summary>
+        /// Dependancy injection continued 4/x
+        /// This is where the actual dependency injection starts to happen.
+        /// Login() creates a 
+        /// </summary>
 
+        public static void Login(IUserController userController){
+            
+            
             
             Console.Write("Enter Username:");
             string username = Console.ReadLine();
@@ -33,7 +38,7 @@ namespace Shipping_Management_Application.UI
             }
         }
 
-        public static UserEntity RegisterUser(){
+        public static UserEntity RegisterUser(IUserController userController){
             Console.Write("Enter Username:");
             string username = Console.ReadLine();
             Console.Write("Enter Password:");
@@ -47,13 +52,13 @@ namespace Shipping_Management_Application.UI
             {
 
                 UIController.ClearConsole();
-                Console.WriteLine("Username already in use, try a different username");
-                RegisterUser();
+                Console.WriteLine("Username already in use, try a different username" + ex);
+                RegisterUser(userController);
             }
             return user;
         }
 
-        public static void RegisterCustomer(UserEntity user){
+        public static void RegisterCustomer(IUserController userController, UserEntity user){
             
             Console.WriteLine("Enter first name");
             string? name = Console.ReadLine();

@@ -7,10 +7,23 @@ namespace Shipping_Management_Application.Data.Entities
     {
 
         /// <summary>
-        /// Base class for all user entities.
-        /// This makkes easier to manage all users at the same time and 
-        /// creates a baseline for all future user entities.
+        /// Dependancy injection start. 1/x
+        /// Here we have UserEntity as the base/parent/super- class for all
+        /// current and future "user" objects.(ps, maybe we should change the
+        /// name of the User class)
+        /// 
+        /// We use this to define the minimum necessities of a user object that
+        /// all derived members need to have.
+        /// In this case we have an id, used as primary key in the database, as
+        /// well as a foreign key for the customer object; username and 
+        /// password which is needed for logging in; and lastly a role which
+        /// can be used to manage permissions.
         /// </summary>
+
+        public long Id { get; set; }
+        public required string UserName { get; set; }
+        public required string Password { get; set; }
+        public string Role { get; set; } = "Customer";//sets default value to "Customer"
 
         //default constuctor
         [SetsRequiredMembers]
@@ -32,11 +45,6 @@ namespace Shipping_Management_Application.Data.Entities
         }
 
         
-        public long Id { get; set; }
-        public required string UserName { get; set; }
-        public required string Password { get; set; }
-        public string Role { get; set; } = "Customer";//sets default value to "Customer"
-
         public override bool Equals(object? obj)
         {
             return base.Equals(obj);
