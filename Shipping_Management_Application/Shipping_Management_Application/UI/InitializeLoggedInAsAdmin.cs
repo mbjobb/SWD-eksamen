@@ -27,7 +27,7 @@ namespace Shipping_Management_Application.UI
                             //Console.WriteLine(AdminController.GetAllUserEntities());
                             break;
                     }case '2':{
-                        OrderControllerUI.PrintCurrentUsersOrders(user);
+                            OrderControllerUI.PrintAllOrders();
                         break;
                     }
                     case '8':{

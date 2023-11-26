@@ -37,28 +37,28 @@ namespace Shipping_Management_Application.UI
                     {
                         Console.WriteLine("select a user by username or id");
                         Console.Write("username or id: ");
-                        string filterChoice = Console.ReadLine().ToLower();
-
-                        if (filterChoice == "username") 
+                        string idOrUsername = Console.ReadLine();
+                        long id = 0;
+                        //TODO: unfuck this
+                        try
                         {
-                            Console.Write("Enter username of the user you want to manage:");
-                            string username = Console.ReadLine();
-                            ManageUserByUsername(username);
+                            id = (long)Convert.ToInt64(idOrUsername);
+                            idOrUsername = null;
+
+                        }
+                        catch (FormatException)
+                        {
+                            //This is fine
                         }
 
-                        if (filterChoice == "id")
-                        {
-                            
-                            Console.Write("Enter the ID of the user you want to manage:");
-                            string id = Console.ReadLine();
-                            //Converts the string to long, since thats the datatype of the ids in the db
-                            long longId = (long)Convert.ToInt64(id);
+                        UserEntity user = InitializeApp.userController.GetUserEntityByIdOrUsername(id, idOrUsername);
+                        Console.WriteLine($"user found :{user}");
+                        Console.WriteLine($"would you like to delete {user.UserName}");
+                        Console.WriteLine("(y/n)");
+                        char yesNo = UIController.ReadASingleKeyPress("yn");
+                        if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(user); else ManageUsers();
 
-                            //and here it is in a oneliner, but its less readable
-                            //long longId = (long)Convert.ToInt64((string)Console.ReadLine());
-                            ManageUserById(longId);
-                        }
-                        
+                       
                         break;
                     }
                 case '3':
@@ -83,26 +83,5 @@ namespace Shipping_Management_Application.UI
             }
         }
 
-        //TODO: dry this
-        private static void ManageUserByUsername(string username)
-        {
-            UserEntity user = InitializeApp.userController.GetUserEntityByUsername(username);
-            Console.WriteLine($"user found :{user}");
-            Console.WriteLine($"would you like to delete {user.UserName}");
-            Console.WriteLine("(y/n");
-            char yesNo = UIController.ReadASingleKeyPress("yn");
-            if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(user); else ManageUsers();
-        }
-
-        public static void ManageUserById(long id)
-        {
-            UserEntity user = InitializeApp.userController.GetUserEntityById(id);
-            Console.WriteLine($"user found :{user}");
-            Console.WriteLine($"would you like to delete {user.UserName}");
-            Console.WriteLine("(y/n");
-            char yesNo = UIController.ReadASingleKeyPress("yn");
-            if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(user); else ManageUsers();
-
-        }
     }
 }

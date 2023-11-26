@@ -49,10 +49,17 @@ namespace Shipping_Management_Application.Data{
             return admin;
         }
 
-        public static UserEntity GetUserById(long id){
+        public static UserEntity GetUserEntityById(long id){
             using DataContext context = new DataContext();
             
             UserEntity? user = context.UserEntities.FirstOrDefault(u => (u.Id == id));
+            return user ?? throw new Exception();
+            
+        }
+        public static UserEntity GetUserEntityByUsername(string username){
+            using DataContext context = new DataContext();
+            
+            UserEntity? user = context.UserEntities.FirstOrDefault(u => (u.UserName == username));
             return user ?? throw new Exception();
             
         }
@@ -110,6 +117,13 @@ namespace Shipping_Management_Application.Data{
             IEnumerable<UserEntity> userEntities = context.UserEntities.ToList();
             return userEntities;
         }
+
+        public static IEnumerable<Order> GetAllOrders()
+        {
+            using DataContext context = new DataContext();
+            IEnumerable<Order> orders = context.Orders.ToList();
+            return orders;
+        }
         public static void DeleteCustomer(Customer customer) { throw new NotImplementedException(); }
         public static void DeleteUserEntity(UserEntity user) 
         {
@@ -117,5 +131,6 @@ namespace Shipping_Management_Application.Data{
             context.UserEntities.Remove(user);
             context.SaveChanges();
         }
+
     }
 }

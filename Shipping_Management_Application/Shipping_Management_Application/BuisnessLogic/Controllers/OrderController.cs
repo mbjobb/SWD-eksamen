@@ -37,5 +37,10 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             IEnumerable<Order> orders = CrudOperations.GetOrdersByUserId(user.Id);
             return orders;
         }
+        public IEnumerable<Order> GetAllOrders()
+        {
+            IEnumerable<Order> orders = CrudOperations.GetAllOrders();
+            return orders;
+        }
     }
 }

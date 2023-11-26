@@ -34,18 +34,17 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             bool matchFound = CrudOperations.CheckIfUserExists(username, password);
             return matchFound;
         }
-        public UserEntity GetUserEntityById(long id)
+        public UserEntity GetUserEntityByIdOrUsername(long id = 0, string? username = null)
         {
-            return CrudOperations.GetUserById(id);
+            if (id != 0) { return CrudOperations.GetUserEntityById((long)id); }
+            if (username is not null) { return CrudOperations.GetUserEntityByUsername(username); }
+            else return null;
         }
         public void DeleteUserEntity(UserEntity user)
         {
             CrudOperations.DeleteUserEntity(user);
         }
 
-        public UserEntity GetUserEntityByUsername(string username)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
