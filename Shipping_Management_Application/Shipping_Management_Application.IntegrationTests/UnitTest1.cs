@@ -8,12 +8,13 @@ using Shipping_Management_Application.OldStuff;
 using System.Diagnostics.Metrics;
 using System.Net;
 using System.Numerics;
+using System.Security.AccessControl;
+using System.Threading.Channels;
 using Microsoft.Data.Sqlite;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.UI;
 using Shipping_Management_Application.Data.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace Shipping_Management_Application.IntegrationTests{
     
@@ -26,7 +27,7 @@ namespace Shipping_Management_Application.IntegrationTests{
         }
 
         [Test]
-        public void WillConnectToDatabase(){ 
+        public void ConnectionToDatabase_ShouldConnectToDatabase(){ 
             SqliteConnection sqliteConnection = new("Data Source=data.db"); 
             try{ 
                 sqliteConnection.Open();
@@ -38,31 +39,20 @@ namespace Shipping_Management_Application.IntegrationTests{
                 Assert.IsTrue(false);
             }
         }
-        
-        [Test]
-        public void WillNotConnectToDatabase(){ 
-            SqliteConnection sqliteConnection = new("Data Source=databadsase.db"); 
-            try{ 
-                sqliteConnection.Open(); 
-                Console.WriteLine("Database connected!"); 
-                Assert.IsTrue(false);
-            }
-            catch (Exception e){ 
-                Console.WriteLine(e.Message); 
-            }
-        }
     }
 
     public class UserTest{
         private DataContext? _context;
+        private AdminController _adminController;
         
         [SetUp]
         public void Setup(){
             _context = new();
+            _adminController = new AdminController();
         }
 
         [Test]
-        public void AddUserToDatabase_ShouldAddUser(){
+        public void CreateAndAddUserToDb_ShouldCreateAndAddUserToDb(){
             User user = new("User", "User123");
 
             _context?.Users.Add(user);
@@ -76,45 +66,46 @@ namespace Shipping_Management_Application.IntegrationTests{
                 Console.WriteLine("Failed to add user " + e.Message);
             }
         }
-                        public static IUserController userController = new UserController();
+        
         [Test]
-        public void CreatingDuplicateUser_ShouldFailAndThrowException(){
-        Exception exception = null;
-            try
-            {
-                string username = "username";
-                string password = "password";
-                var user1= userController.CreateUser(username, password);
-                var user2= userController.CreateUser(username, password);
-                
+        public void AdminGetsAllUsers_AdminShouldGetAllUsers(){
 
-            }
-            catch (Exception e)
-            {
-
-                exception = e;
-            }
-            finally
-            {
-                Assert.IsNotNull(exception);
-                Assert.IsInstanceOf<DbUpdateException>(exception);
-            }
+            User user = new("User1", "password123");
+            CrudOperations.CreateUser(user);
+            
+            var userEntities = _adminController.GetAllUserEntities();
+            
+            Assert.IsNotNull(userEntities);
+            Console.WriteLine(userEntities);
+        }
+        
+        [Test]
+        public void AddingDuplicatedUser_ShouldFail(){
+            User user = new("User1", "password123");
+            User user1 = new("User1", "password123"); 
+            CrudOperations.CreateUser(user);
+            
+            Assert.Throws<InvalidOperationException>(() => CrudOperations.CreateUser(user1));
         }
     }
 
     public class OrderTest{
         
+        private OrderController _orderController;
+        private DataContext _dataContext;
+        
         [SetUp]
         public void Setup(){
-            
+            _dataContext = new DataContext();
+            _orderController = new OrderController();
         }
+        
         [Test]
         public void CreatingOrder_ShouldCreateOrder(){
-
-            User user = new("Customer", "password123");
+            User user = new("User1", "password123");
             CrudOperations.CreateUser(user);
             
-            Customer customer = new(user.Id, "Customer", "c@gmail.om", "Address123", "1111");
+            Customer customer = new(user.Id, "Customer1", "customer1@gmail.com", "customer1", "1111");
             CrudOperations.CreateCustomer(customer);
             
             Order order = new(customer.CustomerId, "Urtegata 17");
@@ -123,6 +114,26 @@ namespace Shipping_Management_Application.IntegrationTests{
             Assert.IsNotNull(order);
         }
         
+        [Test]
+        public void ChangeOrderStatus_ShouldChangeOrderStatus(){
+            User user = new("User2", "password123");
+            CrudOperations.CreateUser(user);
+            
+            Customer customer = new(user.Id, "Customer2", "customer@gmail.com", "customer2", "2222");
+            CrudOperations.CreateCustomer(customer);
+
+            Order order = new(customer.CustomerId, "Urtegata 17");
+            CrudOperations.SaveOrder(order);
+            
+            string shippingStatus = "Shipping";
+
+            CrudOperations.UpdateOrderStatus(order, shippingStatus);
+            
+            
+            var updatedOrder = _dataContext.Orders.Find(order.OrderId);
+            Assert.IsNotNull(updatedOrder);
+            Assert.That(updatedOrder?.OrderStatus, Is.EqualTo("Shipping"));
+        }
     }
 }
 

@@ -5,6 +5,5 @@ namespace Shipping_Management_Application.Factories.Transport
         public void Deliver(){
             Console.WriteLine("Delivering by truck");
         }
-        
     }
 }

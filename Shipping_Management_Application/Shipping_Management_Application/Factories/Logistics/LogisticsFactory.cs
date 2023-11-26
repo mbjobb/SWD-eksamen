@@ -5,12 +5,8 @@ namespace Shipping_Management_Application.Factories.Logistics
     public abstract class LogisticsFactory{
         public abstract ITransport CreateTransport();
         
-        public virtual void PlanDelivery(){
-            ITransport transport = CreateTransport();
-            transport.Deliver();
-        }
-        
         public int DeliveryCost(string address){
+            
             if (string.IsNullOrEmpty(address)){
                 throw new ArgumentException("You need an address to calculate the delivery price");
             }
