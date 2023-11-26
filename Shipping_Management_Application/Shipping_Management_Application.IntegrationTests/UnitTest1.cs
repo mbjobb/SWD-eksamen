@@ -15,6 +15,7 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.UI;
 using Shipping_Management_Application.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shipping_Management_Application.IntegrationTests{
     
@@ -44,12 +45,13 @@ namespace Shipping_Management_Application.IntegrationTests{
     public class UserTest{
         private DataContext? _context;
         private AdminController _adminController;
+        public static IUserController userController = new UserController();
         
         [SetUp]
         public void Setup(){
             _context = new();
             _adminController = new AdminController();
-        }
+    }
 
         [Test]
         public void CreateAndAddUserToDb_ShouldCreateAndAddUserToDb(){
@@ -86,6 +88,31 @@ namespace Shipping_Management_Application.IntegrationTests{
             CrudOperations.CreateUser(user);
             
             Assert.Throws<InvalidOperationException>(() => CrudOperations.CreateUser(user1));
+        }
+        
+        [Test]
+        public void CreatingDuplicateUser_ShouldFailAndThrowException()
+        {
+            Exception exception = null;
+            try
+            {
+                string username = "username";
+                string password = "password";
+                var user1 = userController.CreateUser(username, password);
+                var user2 = userController.CreateUser(username, password);
+
+
+            }
+            catch (Exception e)
+            {
+
+                exception = e;
+            }
+            finally
+            {
+                Assert.IsNotNull(exception);
+                Assert.IsInstanceOf<DbUpdateException>(exception);
+            }
         }
     }
 
