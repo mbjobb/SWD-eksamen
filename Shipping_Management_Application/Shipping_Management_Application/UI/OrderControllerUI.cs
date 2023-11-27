@@ -55,7 +55,7 @@ namespace Shipping_Management_Application.UI{
 
             try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
-                ITransport transport = logisticsFactory.CreateTransport();
+                ITransport transport = logisticsFactory.CreateTransport(order);
                 int deliveryPrice = logisticsFactory.DeliveryCost(order.ShippingAddress);
 
                 order.Price = deliveryPrice;
