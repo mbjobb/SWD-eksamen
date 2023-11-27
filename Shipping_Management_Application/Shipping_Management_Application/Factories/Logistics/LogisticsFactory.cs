@@ -35,6 +35,5 @@ namespace Shipping_Management_Application.Factories.Logistics
             }
             return number;
         }
-        
     }
 }

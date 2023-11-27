@@ -5,6 +5,8 @@ using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.UI;
 using System;
+using EventDispatcher;
+using Shipping_Management_Application.Factories.Transport;
 
 namespace Shipping_Management_Application
 {
@@ -25,10 +27,10 @@ namespace Shipping_Management_Application
             /// </summary>
             
             new InitializeApp();
-            
-        }
 
-        
+            
+
+        }
     }
 }
 

@@ -91,8 +91,7 @@ namespace Shipping_Management_Application.Data{
             context.SaveChanges();
             return order;
         }
-        public static Order UpdateOrderStatus(Order order, string status) 
-        {
+        public static Order UpdateOrderStatus(Order order, string status){
             using DataContext context = new DataContext();
             order.OrderStatus = status;
             context.Orders.Update(order);

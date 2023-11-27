@@ -26,7 +26,7 @@ namespace Shipping_Management_Application.IntegrationTests{
         public void Setup(){
             _dbConnectionString = "Data Source=data.db";
         }
-
+        
         [Test]
         public void ConnectionToDatabase_ShouldConnectToDatabase(){ 
             SqliteConnection sqliteConnection = new("Data Source=data.db"); 
