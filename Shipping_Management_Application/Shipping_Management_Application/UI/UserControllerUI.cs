@@ -17,9 +17,6 @@ namespace Shipping_Management_Application.UI
         /// </summary>
 
         public static void Login(IUserController userController){
-            
-            
-            
             Console.Write("Enter Username:");
             string? username = Console.ReadLine();
             Console.Write("Enter Password:");
@@ -40,19 +37,17 @@ namespace Shipping_Management_Application.UI
                 Console.WriteLine("User does not exist in our database");
             }
         }
-
         public static UserEntity RegisterUser(IUserController userController){
             Console.Write("Enter Username:");
             string? username = Console.ReadLine();
             Console.Write("Enter Password:");
             string? password = Console.ReadLine();
             User user = new(username, password);
-            try
-            {
+            
+            try{
             userController.CreateUser(username,password);
 
-            }catch (Exception ex)
-            {
+            }catch (Exception ex){
 
                 UIController.ClearConsole();
                 Console.WriteLine("Username already in use, try a different username" + ex.Message);

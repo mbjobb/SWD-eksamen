@@ -6,11 +6,9 @@ using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.Factories.Logistics;
 using ITransport = Shipping_Management_Application.Factories.Transport.ITransport;
 
-namespace Shipping_Management_Application.UI
-{
+namespace Shipping_Management_Application.UI{
 
-    public class OrderControllerUI
-    {
+    public class OrderControllerUI{
 
         /// <summary>
         /// Dependancy injection continued. 6/6
@@ -23,8 +21,7 @@ namespace Shipping_Management_Application.UI
 
         public static Order order;
         //TODO: make constructor instance an interface
-        public static void PlaceOrder(UserEntity user)
-        {
+        public static void PlaceOrder(UserEntity user){
 
             Customer customer = orderController.GetCustomer(user);
 
@@ -49,17 +46,14 @@ namespace Shipping_Management_Application.UI
             }
         }
 
-        public static void ProcessOrder(Order order)
-        {
+        public static void ProcessOrder(Order order){
             Console.WriteLine("Choose your delivery method");
             Console.WriteLine("1. Truck");
             Console.WriteLine("2. Van");
             Console.WriteLine("3. Bike");
-
             char deliveryMethodChoice = UIController.ReadASingleKeyPress("123");
 
-            try
-            {
+            try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
                 ITransport transport = logisticsFactory.CreateTransport();
                 int deliveryPrice = logisticsFactory.DeliveryCost(order.ShippingAddress);
@@ -69,19 +63,15 @@ namespace Shipping_Management_Application.UI
                 transport.Deliver(order.ShippingAddress);
 
                 //Logic for updating status in db, function takes Order order and string status as arguments
-                orderController.UpdateOrderStatus(order, "Delivered");
                 Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 Console.WriteLine("Error: " + ex.ToString());
             }
         }
 
-        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice)
-        {
-            switch (deliveryMethodChoice)
-            {
+        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice){
+            switch (deliveryMethodChoice){
                 case '1':
                     return new RoadLogistics();
                 case '2':
@@ -93,8 +83,7 @@ namespace Shipping_Management_Application.UI
             }
         }
 
-        public static void PrintCurrentUsersOrders(UserEntity user)
-        {
+        public static void PrintCurrentUsersOrders(UserEntity user){
 
             IEnumerable<Order> Orders = orderController.GetAllCustomerOrders(user);
             foreach (Order Order in Orders)
@@ -105,11 +94,9 @@ namespace Shipping_Management_Application.UI
 
         }
         //TODO: figgure out how to combine these? alternativly clean up crudoperations
-        public static void PrintAllOrders()
-        {
+        public static void PrintAllOrders(){
             IEnumerable<Order> Orders = CrudOperations.GetAllOrders();
-            foreach (Order Order in Orders)
-            {
+            foreach (Order Order in Orders){
                 Console.WriteLine(Order);
             }
 
