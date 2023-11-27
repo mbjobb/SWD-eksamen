@@ -1,7 +1,15 @@
 ﻿using System.Data;
+using EventDispatcher;
+using Shipping_Management_Application.BuisnessLogic.Controllers;
+using Shipping_Management_Application.Data.Entities;
+
 namespace Shipping_Management_Application.Factories.Transport
 {
-    public class Truck : ITransport {
+    public class Truck : ITransport{
+        private OrderController _orderController = new();
+        private Order _order;
+        private int _dispatchCount = 0;
+        private int _numberOfDeliveryMessages;
         public void Deliver(string shippingAddress){
 
         }
@@ -23,7 +31,7 @@ namespace Shipping_Management_Application.Factories.Transport
             _numberOfDeliveryMessages = deliveryStatus.Count;
             Console.WriteLine(deliveryStatus[_dispatchCount]);
             _dispatchCount++;
-            _orderController.UpdateOrderStatus(_order, deliveryStatus[3]);
+            _orderController.UpdateOrderStatus(_order,deliveryStatus[_dispatchCount]);
             Console.WriteLine(_order);
             
         }
