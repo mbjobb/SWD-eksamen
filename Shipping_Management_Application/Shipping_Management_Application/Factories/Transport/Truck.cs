@@ -1,16 +1,7 @@
 ﻿using System.Data;
-using System.Threading.Channels;
-using EventDispatcher;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.Data.Entities;
-
-namespace Shipping_Management_Application.Factories.Transport{
-    public class Truck : ITransport{
-        private OrderController _orderController = new();
-        private Order _order;
-        private int _dispatchCount = 0;
-        private int _numberOfDeliveryMessages;
-
+namespace Shipping_Management_Application.Factories.Transport
+{
+    public class Truck : ITransport {
         public void Deliver(string shippingAddress){
 
         }

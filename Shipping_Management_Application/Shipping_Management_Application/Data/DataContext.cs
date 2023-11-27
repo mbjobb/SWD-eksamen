@@ -4,6 +4,10 @@ using Shipping_Management_Application.OldStuff;
 
 namespace Shipping_Management_Application.Data
 {
+    /// <summary>
+    /// Class that inherits from DbContext to create a database context object.
+    /// and a DbSet for each entity class.
+    ///  </summary>
     public class DataContext : DbContext
     {
 

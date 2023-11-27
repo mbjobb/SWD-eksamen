@@ -18,9 +18,9 @@ namespace Shipping_Management_Application.UI
 
         public static void Login(IUserController userController){
             Console.Write("Enter Username:");
-            string username = Console.ReadLine();
+            string? username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string password = Console.ReadLine();
+            string? password = Console.ReadLine();
 
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
             LoginAuthentication loginAuthentication = new LoginAuthentication();
@@ -39,9 +39,9 @@ namespace Shipping_Management_Application.UI
         }
         public static UserEntity RegisterUser(IUserController userController){
             Console.Write("Enter Username:");
-            string username = Console.ReadLine();
+            string? username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string password = Console.ReadLine();
+            string? password = Console.ReadLine();
             User user = new(username, password);
             
             try{
@@ -50,7 +50,7 @@ namespace Shipping_Management_Application.UI
             }catch (Exception ex){
 
                 UIController.ClearConsole();
-                Console.WriteLine("Username already in use, try a different username" + ex);
+                Console.WriteLine("Username already in use, try a different username" + ex.Message);
                 RegisterUser(userController);
             }
             return user;
@@ -67,7 +67,8 @@ namespace Shipping_Management_Application.UI
             Console.WriteLine("Enter first post code");
             string? postCode = Console.ReadLine();
 
-            Customer customer = userController.CreateCustomer(user.Id, name, email, address, postCode);
+            userController.CreateCustomer(user.Id, name, email, address, postCode);
+            Console.WriteLine("Customer created");
 
         }
     }

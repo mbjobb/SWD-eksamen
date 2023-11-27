@@ -10,6 +10,7 @@ namespace Shipping_Management_Application.UI
     {
         /// <summary>
         /// Controller for console input and output
+        /// that can be used in the UI. 
         /// </summary>
         
         public static void SetTitle( string title )

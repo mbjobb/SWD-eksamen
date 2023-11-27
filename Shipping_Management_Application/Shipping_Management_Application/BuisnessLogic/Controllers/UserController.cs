@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
+    /// <summary>
+    /// UserController class with the methods that are used in the UI.
+    /// </summary>
     public class UserController : IUserController
     {
         public Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode)

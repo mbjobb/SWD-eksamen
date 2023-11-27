@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Shipping_Management_Application.Data.Entities
 {
+    /// <summary>
+    ///customer class with the properties that are used to create a customer object.
+    /// </summary>
     public class Customer
     {
 

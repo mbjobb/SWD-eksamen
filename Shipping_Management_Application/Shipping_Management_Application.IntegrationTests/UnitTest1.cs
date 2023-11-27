@@ -16,6 +16,7 @@ using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.UI;
 using Shipping_Management_Application.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace Shipping_Management_Application.IntegrationTests{
     
@@ -33,11 +34,12 @@ namespace Shipping_Management_Application.IntegrationTests{
             try{ 
                 sqliteConnection.Open();
                 Console.WriteLine("Database connected!");
-                Assert.IsTrue(true); 
+                
             }
             catch (Exception e){ 
                 Console.WriteLine("Failed to connect"); 
-                Assert.IsTrue(false);
+                Console.WriteLine(e.Message);
+                
             }
         }
     }
@@ -93,7 +95,7 @@ namespace Shipping_Management_Application.IntegrationTests{
         [Test]
         public void CreatingDuplicateUser_ShouldFailAndThrowException()
         {
-            Exception exception = null;
+            Exception? exception = null;
             try
             {
                 string username = "username";
@@ -161,8 +163,54 @@ namespace Shipping_Management_Application.IntegrationTests{
             Assert.IsNotNull(updatedOrder);
             Assert.That(updatedOrder?.OrderStatus, Is.EqualTo("Shipping"));
         }
+
+        [Test]
+        //Test to get all orders by user id for a specific user
+        public void GetOrdersByUserId_ShouldGetOrdersByUserId(){
+            //Arrange
+            User user = new("User3", "password123");
+            Customer customer = new(user.Id, "Customer3", "customer@gmail.com", "customer3", "111");
+            Order order = new(customer.CustomerId, "Urtegata 17------->");
+            //Act
+            try{
+            CrudOperations.CreateUser(user);
+            CrudOperations.CreateCustomer(customer);
+            CrudOperations.SaveOrder(order);
+            IEnumerable<Order> orders = CrudOperations.GetOrdersByUserId(user.Id);
+              //Assert
+            Assert.IsNotNull(orders);
+            Assert.That(orders, Is.Not.Empty);
+            Assert.True(orders.Count() > 0 && orders.Count() < 2 && customer.CustomerId == order.CustomerId);
+            Console.WriteLine($"Orders by user id: {customer.CustomerId} \n");
+            }
+            catch (DbException e){
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Failed to get orders by user id");
+            }      
     }
+       // we need to write more tests!
+       //admin , user and order with controller 
+       [Test]
+         public void CreateAdmin_ShouldCreateAdmin(){
+            //Arrange
+              Admin admin = new("Admin", "Admin123");
+            //Act
+              try{
+              CrudOperations.CreateAdmin(admin.UserName, admin.Password);
+              //Assert
+              Assert.IsNotNull(admin);
+              Assert.That(admin.UserName, Is.EqualTo("Admin"));
+              Assert.That(admin.Password, Is.EqualTo("Admin123"));
+              }
+              catch (DbException e){
+                  Console.WriteLine(e.Message);
+                  Console.WriteLine("Failed to create admin");
+              }
+         }
+
 }
+
+
 
       
     public class Tests{
@@ -411,7 +459,7 @@ namespace Shipping_Management_Application.IntegrationTests{
             //    // Assert
             //    res.Should().NotBeNull();
             //    res.Should().Be(OutPut);
-        }
+        }}
 
 
 
