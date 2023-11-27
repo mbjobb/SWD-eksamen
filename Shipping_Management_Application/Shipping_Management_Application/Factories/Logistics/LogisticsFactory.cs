@@ -2,9 +2,13 @@
 
 namespace Shipping_Management_Application.Factories.Logistics
 {
+    /// <summary>
+    ///    Abstract class for the LogisticsFactory class with the methods that are used in the UI.
+    /// </summary>
     public abstract class LogisticsFactory{
         public abstract ITransport CreateTransport();
         
+        // Calculates the delivery cost based on the address and returns the price
         public int DeliveryCost(string address){
             
             if (string.IsNullOrEmpty(address)){
@@ -21,7 +25,7 @@ namespace Shipping_Management_Application.Factories.Logistics
             int price = 100;
             return convertAddressNumber * price;
         }
-
+        // Fetches the numbers from the address and takes the number from address and returns it as a string
         public string FetchNumberFromAddress(string address){
             string number = "";
 

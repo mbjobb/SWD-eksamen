@@ -1,5 +1,9 @@
 ﻿namespace Shipping_Management_Application.Data.Entities
 {
+    /// <summary>
+    /// Order class with the properties that are used to create an order object. 
+    /// with a 3 overrided methods to make it easier to print the order.
+    /// </summary>
     public class Order
     {
         public long OrderId { get; set; }
@@ -27,7 +31,7 @@
         {
             return base.GetHashCode();
         }
-
+      
         public override string? ToString()
         {
             return string.Format($"Order number:{OrderId}  Shipping address:{ShippingAddress}  Order status:{OrderStatus}  Price:{Price}");

@@ -10,10 +10,13 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.UI
 {
+    /// <summary>
+    /// AdminControllerUi class with the methods that are used in the UI. 
+    /// </summary>
     public static class AdminControllerUi
     {
         internal static AdminController AdminController = new AdminController();
-
+         // manages the admin menu and calls the methods from the AdminController class.
         public static void ManageUsers()
         {
             Console.WriteLine("Press 1 for a list of all users");
@@ -37,7 +40,7 @@ namespace Shipping_Management_Application.UI
                     {
                         Console.WriteLine("select a user by username or id");
                         Console.Write("username or id: ");
-                        string idOrUsername = Console.ReadLine();
+                        string? idOrUsername = Console.ReadLine();
                         long id = 0;
                         //TODO: unfuck this
                         try
@@ -64,9 +67,9 @@ namespace Shipping_Management_Application.UI
                 case '3':
                     {
                         Console.Write("Username for new admin:");
-                        string username = Console.ReadLine();
+                        string? username = Console.ReadLine();
                         Console.Write("Password for new admin:");
-                        string password = Console.ReadLine();
+                        string? password = Console.ReadLine();
                         try
                         {
                             UserEntity admin = AdminController.CreateAdmin(username, password);
@@ -77,6 +80,7 @@ namespace Shipping_Management_Application.UI
                         {
 
                             Console.WriteLine("username already exists, please try a different username");
+                            Console.WriteLine(e.Message);
                         }
                         break;
                     }

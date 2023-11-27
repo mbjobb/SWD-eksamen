@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.UI
 {
+    /// <summary>
+    /// Class for the FirstStart class with the methods that are used in the UI.
+    /// </summary>
     public static class FirstStart
     {
-        
+        // checks if the user entity table is empty and creates an admin account if it is
         public static void ChecksIfUserEntityTableIsEmpty()
         {
             /// Here be documentation

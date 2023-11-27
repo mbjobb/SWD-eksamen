@@ -3,6 +3,9 @@ using Shipping_Management_Application.Data.Entities;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Shipping_Management_Application.Data{
+    /// <summary>
+    /// Class with the methods that are used to create, read, update and delete data from the database.
+    /// </summary>
     
     //TODO: Add try catch blocks into methods
     public static class CrudOperations

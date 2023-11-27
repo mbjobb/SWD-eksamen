@@ -4,10 +4,13 @@ using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.UI
 {
+    /// <summary>
+    /// Class for the InitializeLoggedInAsAdmin class with the methods that are used in the UI.
+    /// </summary>
     public class InitializeLoggedInAsAdmin{
         internal static AdminController AdminController = new AdminController();
         public static OrderController orderController = new OrderController();
-
+         // onloggedin method for admin, this is where the admin can manage users and view orders
         public static void OnLoggedIn(UserEntity user)
         {
             bool running = true;
