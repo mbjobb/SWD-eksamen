@@ -58,8 +58,8 @@ namespace Shipping_Management_Application.UI{
 
             try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
-                ITransport transport = _roadLogisitcs.CreateTransport(order);
-                int deliveryPrice = _roadLogisitcs.DeliveryCost(order.ShippingAddress);
+                ITransport transport = logisticsFactory.CreateTransport(order);
+                int deliveryPrice = logisticsFactory.DeliveryCost(order.ShippingAddress);
 
                 order.Price = deliveryPrice;
                 Console.WriteLine($"Delivery price for Order {order.OrderId}: {order.Price}");
@@ -73,21 +73,20 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        private static LogisticsFactory? ChooseLogisticsFactory(char deliveryMethodChoice){
+        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice){
             switch (deliveryMethodChoice){
                 case '1':
-                    _roadLogisitcs.CreateTransport(order);
-                    return null;
-                    break;
+                    return new RoadLogistics();
+                    
                 case '2':
                     throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
-                    return null;
+                    
                 case '3':
                     throw new NotImplementedException("Car delivery is not implemented yet, maybe for future development");
-                    return null;
+                    
                 default:
                     throw new ArgumentException("Error, invalid choice");
-                    return null;
+                    
             }
         }
 

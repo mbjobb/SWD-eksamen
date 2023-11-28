@@ -16,9 +16,11 @@ namespace Shipping_Management_Application.UI
         {
             bool running = true;
             while (running){
+                Console.WriteLine("*******************************");
                 Console.WriteLine("Press 1 to place an order");
                 Console.WriteLine("Press 2 to view orders");
                 Console.WriteLine("Press 9 to sign out");
+                Console.WriteLine("*******************************");
                 
                 
                 char input = UIController.ReadASingleKeyPress("129");
