@@ -8,7 +8,7 @@ namespace Shipping_Management_Application.Factories.Logistics{
         private Order _order;
         [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
         public override ITransport CreateTransport(Order order){
-           return new Truck(dispatchTerminal, order);
+           return new Truck(order, dispatchTerminal);
         }
         
         DispatchTerminal dispatchTerminal = new();

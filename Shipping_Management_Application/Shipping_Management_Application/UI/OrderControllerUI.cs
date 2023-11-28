@@ -4,6 +4,7 @@ using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.Factories.Logistics;
+using System.Runtime.CompilerServices;
 using ITransport = Shipping_Management_Application.Factories.Transport.ITransport;
 
 namespace Shipping_Management_Application.UI{
@@ -18,7 +19,7 @@ namespace Shipping_Management_Application.UI{
         /// </summary>
 
         public static IOrderController orderController = new OrderController();
-
+        private static LogisticsFactory _roadLogisitcs = new RoadLogistics();
         public static Order order;
         //TODO: make constructor instance an interface
         public static void PlaceOrder(UserEntity user){
@@ -47,20 +48,22 @@ namespace Shipping_Management_Application.UI{
         }
 
         public static void ProcessOrder(Order order){
+            
             Console.WriteLine("Choose your delivery method");
             Console.WriteLine("1. Truck");
             Console.WriteLine("2. Van");
             Console.WriteLine("3. Bike");
             char deliveryMethodChoice = UIController.ReadASingleKeyPress("123");
+            
 
             try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
-                ITransport transport = logisticsFactory.CreateTransport(order);
-                int deliveryPrice = logisticsFactory.DeliveryCost(order.ShippingAddress);
+                ITransport transport = _roadLogisitcs.CreateTransport(order);
+                int deliveryPrice = _roadLogisitcs.DeliveryCost(order.ShippingAddress);
 
                 order.Price = deliveryPrice;
                 Console.WriteLine($"Delivery price for Order {order.OrderId}: {order.Price}");
-                transport.Deliver(order.ShippingAddress);
+                transport.Deliver(order);
 
                 //Logic for updating status in db, function takes Order order and string status as arguments
                 Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
@@ -70,16 +73,21 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice){
+        private static LogisticsFactory? ChooseLogisticsFactory(char deliveryMethodChoice){
             switch (deliveryMethodChoice){
                 case '1':
-                    return new RoadLogistics();
+                    _roadLogisitcs.CreateTransport(order);
+                    return null;
+                    break;
                 case '2':
                     throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
+                    return null;
                 case '3':
                     throw new NotImplementedException("Car delivery is not implemented yet, maybe for future development");
+                    return null;
                 default:
                     throw new ArgumentException("Error, invalid choice");
+                    return null;
             }
         }
 
