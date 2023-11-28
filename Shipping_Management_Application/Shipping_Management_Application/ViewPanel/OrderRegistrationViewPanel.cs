@@ -23,6 +23,8 @@ namespace Shipping_Management_Application.ViewPanel
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("Please place your order by providing package details and delivery information!");
             Console.WriteLine("********************************************************************************");
+            Console.WriteLine("Pleas enter your Full Name");
+            string? SendetFullName = Console.ReadLine();
             Console.WriteLine("Type of Goods (e.g., electronics, perishabel, fragile items, Heavy Items)");
             string? typeOfGoods = Console.ReadLine();
             Console.WriteLine("Weight:");
@@ -48,12 +50,14 @@ namespace Shipping_Management_Application.ViewPanel
 
             try
             {
-                Order _order = new Order(user.Id, typeOfGoods, weight, dimensions, reciverName, reciverAddress, postalCode, country, region);
+                Order _order = new Order(user.Id,SendetFullName, typeOfGoods, weight, dimensions, reciverName, reciverAddress, postalCode, country, region);
                 _dbContext.Orders.Add(_order);
                 _dbContext.SaveChanges();
-
                 Console.WriteLine("Order registered successfully!");
+                _order.PrintOrder(_order);
                 Thread.Sleep(1000);
+                CustomerViewPanel customerViewPanel = new();
+                customerViewPanel.CustomerMainView(user);
             }
             catch (DbUpdateException ex)
             {

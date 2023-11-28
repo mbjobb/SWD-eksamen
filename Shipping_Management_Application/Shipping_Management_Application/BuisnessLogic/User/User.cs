@@ -21,6 +21,7 @@ namespace Shipping_Management_Application.BuisnessLogic.User
 
         public User()
         {
+
         }
     }
 }

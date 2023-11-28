@@ -12,6 +12,22 @@ namespace Shipping_Management_Application.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "PricingModules",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    from_region = table.Column<string>(type: "TEXT", nullable: false),
+                    to_region = table.Column<string>(type: "TEXT", nullable: false),
+                    distance_km = table.Column<int>(type: "INTEGER", nullable: false),
+                    price = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PricingModules", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserEntities",
                 columns: table => new
                 {
@@ -60,15 +76,16 @@ namespace Shipping_Management_Application.Migrations
                 {
                     OrderId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TypeOfGoods = table.Column<string>(type: "TEXT", nullable: true),
+                    TypeOfGoods = table.Column<string>(type: "TEXT", nullable: false),
                     Weight = table.Column<int>(type: "INTEGER", nullable: false),
                     Dimensions = table.Column<double>(type: "REAL", nullable: true),
-                    RecieverAddress = table.Column<string>(type: "TEXT", nullable: true),
-                    PostalCode = table.Column<string>(type: "TEXT", nullable: true),
-                    Country = table.Column<string>(type: "TEXT", nullable: true),
-                    Region = table.Column<string>(type: "TEXT", nullable: true),
-                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderStatus = table.Column<string>(type: "TEXT", nullable: true),
+                    RecieverName = table.Column<string>(type: "TEXT", nullable: true),
+                    RecieverAddress = table.Column<string>(type: "TEXT", nullable: false),
+                    PostalCode = table.Column<string>(type: "TEXT", nullable: false),
+                    Country = table.Column<string>(type: "TEXT", nullable: false),
+                    Region = table.Column<string>(type: "TEXT", nullable: false),
+                    SerialNumber = table.Column<string>(type: "TEXT", nullable: false),
+                    OrderStatus = table.Column<string>(type: "TEXT", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
                     UserId = table.Column<long>(type: "INTEGER", nullable: true)
@@ -111,6 +128,9 @@ namespace Shipping_Management_Application.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "PricingModules");
 
             migrationBuilder.DropTable(
                 name: "Customers");

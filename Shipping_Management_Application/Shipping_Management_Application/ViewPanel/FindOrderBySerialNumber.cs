@@ -2,6 +2,7 @@
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
 using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Factories.Transportt;
 using System;
 using System.Data.Common;
 using System.Linq;
@@ -26,8 +27,9 @@ namespace Shipping_Management_Application.ViewPanel
 
                 // Assuming there is a DbSet<Order> in your DataContext
                 Order? foundOrder = _dbContext.Orders
-                    .Include(o => o.user)
+                    .Include(o => o.User)
                     .FirstOrDefault(o => o.SerialNumber == serialNumber);
+                Truck tr = new();
 
                 if (foundOrder != null)
                 {
@@ -37,16 +39,15 @@ namespace Shipping_Management_Application.ViewPanel
                     Console.WriteLine("*******************************************************");
                     Console.WriteLine();
                     Console.WriteLine($"Order ID:          {foundOrder.OrderId}");
-                    Console.WriteLine($"Reciver name:      {foundOrder.ReciverName}");
+                    Console.WriteLine($"Reciver name:      {foundOrder.RecieverName}");
                     Console.WriteLine($"Reciever Address:  {foundOrder.RecieverAddress}");
                     Console.WriteLine($"Reciever Region:   {foundOrder.Region}");
                     Console.WriteLine($"Reciever Country:  {foundOrder.Country}");
                     Console.WriteLine($"Dimensions:        {foundOrder.Dimensions}");
                     Console.WriteLine($"Order Status:      {foundOrder.OrderStatus}");
                     Console.WriteLine($"SerialNumber:      {foundOrder.SerialNumber}");
-                    Console.WriteLine();
+                    Console.WriteLine($"{tr.DeliverOrderByCountry(foundOrder.Country)}");
                     Console.WriteLine("*******************************************************");
-                    // Display other order details as needed
                 }
                 else
                 {

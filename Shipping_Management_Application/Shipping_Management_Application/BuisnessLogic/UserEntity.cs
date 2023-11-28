@@ -37,43 +37,4 @@ namespace Shipping_Management_Application.BuisnessLogic
         public required string? Password { get; set; }
         public string Role { get; set; } = "Customer";//sets default value to "Customer"
     }
-}//using Microsoft.EntityFrameworkCore;
-//using System.Diagnostics.CodeAnalysis;
-
-//namespace Shipping_Management_Application.BuisnessLogic
-//{
-//    public abstract class UserEntity
-//    {
-
-//        /// <summary>
-//        /// Base class for all user entities.
-//        /// This makes it easier to manage all users at the same time and 
-//        /// creates a baseline for all future user entities.
-//        /// </summary>
-//        /// public long Id { get; set; }
-//        public long UserId { get; set; }
-//        public string UserName { get; set; }
-//        public string Password { get; set; }
-//        public string Role { get; set; } = "Customer";
-
-//        // Default constructor
-//        protected UserEntity(string userName, string password)
-//        {
-//            UserName = userName;
-//            Password = password;
-//        }
-
-//        // Constructor with role, used for creating admins
-//        protected UserEntity(string userName, string password, string role) : this(userName, password)
-//        {
-//            Role = role;
-//        }
-
-//        // Empty constructor
-//        protected UserEntity()
-//        {
-
-//        }
-
-//    }
-//}
+}

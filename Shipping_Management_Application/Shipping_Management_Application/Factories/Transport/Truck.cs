@@ -11,7 +11,7 @@ namespace Shipping_Management_Application.Factories.Transportt;
 public class Truck //ITransportFactory 
 {
     private readonly int _truckId;
-    Order _order = new();
+   // Order _order = new();
     /// <summary>
     /// status of vehicle, ie "ready", "in transit", "returning" etc
     /// </summary>

@@ -43,7 +43,7 @@ namespace Shipping_Management_Application.ViewPanel
                             Console.WriteLine("2");
                             Console.WriteLine("Sign Up Please");
                             CustomerRegistration _customerRegistration = new();
-                            _customerRegistration.RegisterCustomer(user);
+                            _customerRegistration.RegisterCustomer();
                             break;
                         }
                     case "3":

@@ -1,6 +1,7 @@
 ﻿using Shipping_Management_Application.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,15 @@ namespace Shipping_Management_Application.ViewPanel
 {
     public class PricingModule
     {
-        
+
 
         //Fields 
-        private int Id {get; set;}
-        private string from_region { get; set; }
-        private string to_region{ get; set; }
-        private int distance_km { get; set; }
-        private int price { get; set; }
+        
+        public long Id { get; set; }
+        public string from_region { get; set; }
+        public string to_region{ get; set; }
+        public int distance_km { get; set; }
+        public int price { get; set; }
 
         // Connection for db
         private readonly DataContext _dbContext;

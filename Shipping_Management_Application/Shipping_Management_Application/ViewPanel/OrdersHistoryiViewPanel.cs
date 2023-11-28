@@ -36,7 +36,7 @@ namespace Shipping_Management_Application.ViewPanel
                     {
                         Console.WriteLine($"Order ID: {order.OrderId}, Dimensions: {order.Dimensions}, Status: {order.OrderStatus}");
                         // You can display other order details as needed
-                        //order.PrintOrder();
+                        //order.PrintOrder(order.CustomerId,order.TypeOfGoods, order.OrderStatus, order.ReciverName, order.RecieverAddress, order.OrderDate);
                         Thread.Sleep(1000);
                         Console.WriteLine();
                     }

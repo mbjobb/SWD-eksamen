@@ -1,7 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.User;
+using Shipping_Management_Application.ViewPanel;
+
 namespace Shipping_Management_Application.Data
 {
     public class DataContext : DbContext
@@ -15,6 +18,8 @@ namespace Shipping_Management_Application.Data
         // tabel for orders
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<Customer> Customers => Set<Customer>();
+        //tabel for price module by distens
+        public DbSet<PricingModule> PricingModules => Set<PricingModule>();
 
 
 
@@ -60,6 +65,8 @@ namespace Shipping_Management_Application.Data
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders) // Assuming Orders is a navigation property in Customer pointing to a collection of orders
                 .HasForeignKey(o => o.CustomerId);
+            modelBuilder.Entity<PricingModule>().HasKey(p => p.Id);
+                
             //modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
             //modelBuilder.Entity<Order>().HasKey(u => u.CustomerId);
             //modelBuilder.Entity<User>()

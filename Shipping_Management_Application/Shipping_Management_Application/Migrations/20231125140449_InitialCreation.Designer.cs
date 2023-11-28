@@ -12,7 +12,7 @@ using ModelBuilder = Microsoft.EntityFrameworkCore.ModelBuilder;
 namespace Shipping_Management_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231118221645_InitialCreation")]
+    [Migration("20231125140449_InitialCreation")]
     partial class InitialCreation
     {
         /// <inheritdoc />
@@ -21,13 +21,14 @@ namespace Shipping_Management_Application.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Country")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("CustomerId")
@@ -40,21 +41,30 @@ namespace Shipping_Management_Application.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("OrderStatus")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostalCode")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RecieverAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RecieverName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Region")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SerialNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TypeOfGoods")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long?>("UserId")
@@ -157,6 +167,31 @@ namespace Shipping_Management_Application.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Shipping_Management_Application.ViewPanel.PricingModule", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("distance_km")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("from_region")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("price")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("to_region")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PricingModules");
+                });
+
             modelBuilder.Entity("Admin", b =>
                 {
                     b.HasBaseType("Shipping_Management_Application.BuisnessLogic.UserEntity");
@@ -171,7 +206,7 @@ namespace Shipping_Management_Application.Migrations
                     b.HasDiscriminator().HasValue("User");
                 });
 
-            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.Order", b =>
+            modelBuilder.Entity("Shipping_Management_Application.BuisnessLogic.User.Order", b =>
                 {
                     b.HasOne("Shipping_Management_Application.Data.Customer", "Customer")
                         .WithMany("Orders")
@@ -179,7 +214,7 @@ namespace Shipping_Management_Application.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Shipping_Management_Application.BuisnessLogic.UserEntity", "user")
+                    b.HasOne("Shipping_Management_Application.BuisnessLogic.UserEntity", "User")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -191,7 +226,7 @@ namespace Shipping_Management_Application.Migrations
 
                     b.Navigation("Customer");
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Shipping_Management_Application.Data.Customer", b =>

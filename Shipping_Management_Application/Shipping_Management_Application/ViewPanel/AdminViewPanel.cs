@@ -33,8 +33,9 @@ namespace Shipping_Management_Application.ViewPanel
                 Console.WriteLine("----------- Enter your Choice! 1, 2, 3 or 4");
                 Console.WriteLine("----------- 1. Manage Order");// CURD needs ManageObjectViewPanel(UserEntity user)
                 Console.WriteLine("----------- 2. Manage Customer");//Have an method to view customers GetAllCustomer(), and Viewpanel();   
-                Console.WriteLine("----------- 3. Find Order / Search Order by SerialNumber"); //crate method 
-                Console.WriteLine("----------- 4. HomePage"); // go back to MainPanelViewPanel()
+                Console.WriteLine("----------- 3. Find Order / Search Order by SerialNumber"); //crate method
+                Console.WriteLine("----------- 4. Create newAdmin");                                                                              
+                Console.WriteLine("----------- 5. HomePage"); // go back to MainPanelViewPanel()
 
                 var userInput = Console.ReadLine();
 
@@ -60,26 +61,32 @@ namespace Shipping_Management_Application.ViewPanel
                         }
                     case "3":
                         {
-                            Console.WriteLine("Component -> FindOrderBySerialNumber()");
+                            Console.WriteLine(" FindOrderBySerialNumber....");
                             FindOrderBySerialNumber findOrderBySerialNumber = new(_dataContext);
                             findOrderBySerialNumber.GetOrderBySerialNumber(user);
                             break;
 
                         }
+                        case "4":
+                        {
+                            Console.WriteLine("Creating newAdmin....");
+                            UserRegistration userRegistration = new();
+                            userRegistration.CreateAdminFromAdmin();
+                            break;
+                        }
 
-                    case "4":
+                    case "5":
                         while (true)
                         {
                             Console.WriteLine("Do you want to Exit Program? (yes/no)");
-                            string? input = Console.ReadLine().ToLower();
+                            string? input = Console.ReadLine();
                             if (input.ToLower() == "yes")
                             {
                                 Console.WriteLine("Exiting....\n HomePage");
                                 //infoAboutOurApp.EndProgram();
-                                MainViewPanel mainViewPanel = new();
-                                mainViewPanel.MainView();
-
                                 Thread.Sleep(1000);
+                                return;
+                                
                                 
                             }
                             else if (input.ToLower() == "no")
@@ -95,7 +102,7 @@ namespace Shipping_Management_Application.ViewPanel
                         break;
 
                     default:
-                        Console.WriteLine("Invalid option. Please enter 1, 2, or 3.");
+                        Console.WriteLine("Invalid option. Please enter 1, 2, 3, 4 or 5.");
                         break;
                 }
             }
@@ -105,7 +112,7 @@ namespace Shipping_Management_Application.ViewPanel
         // Method to check Is user Input is valid or not 
         public bool IsValidInput(string input)
         {
-            return input == "1" || input == "2" || input == "3" || input == "4";
+            return input == "1" || input == "2" || input == "3" || input == "4" || input == "5";
         }
     }
     }
