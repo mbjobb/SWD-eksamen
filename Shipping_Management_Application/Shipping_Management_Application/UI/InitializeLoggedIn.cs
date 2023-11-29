@@ -19,11 +19,12 @@ namespace Shipping_Management_Application.UI
                 Console.WriteLine("*******************************");
                 Console.WriteLine("Press 1 to place an order");
                 Console.WriteLine("Press 2 to view orders");
+                Console.WriteLine("Press 3 to update user or customer");
                 Console.WriteLine("Press 9 to sign out");
                 Console.WriteLine("*******************************");
                 
                 
-                char input = UIController.ReadASingleKeyPress("129");
+                char input = UIController.ReadASingleKeyPress("1239");
 
                 switch (input){
                     case '1':{
@@ -31,6 +32,10 @@ namespace Shipping_Management_Application.UI
                         break;
                     }case '2':{
                         OrderControllerUI.PrintCurrentUsersOrders(user);
+                        break;
+                    }
+                    case '3':{
+                        InitializeApp.userController.UpdateCustomer(user);
                         break;
                     }
                     case '9':{

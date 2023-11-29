@@ -10,7 +10,7 @@
   <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.OrderController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="30.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\OrderController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.1" />
@@ -18,10 +18,9 @@
   <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.UserController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="30" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\UserController.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Left" Position="0.258" />
   </Class>
   <Class Name="Admin" Collapsed="true">
     <Position X="18.25" Y="2.25" Width="1.5" />
@@ -70,7 +69,7 @@
   <Class Name="Shipping_Management_Application.Data.CrudOperations" Collapsed="true">
     <Position X="31" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACQgQAggAACFAEAAAQAAAAAAAAAgAAEIQAAAAg=</HashCode>
+      <HashCode>AAAACACQgQAggAQCFAEAAAQAAAAAAAAAgAAEIQAAAEg=</HashCode>
       <FileName>Data\CrudOperations.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -207,7 +206,7 @@
   <Interface Name="Shipping_Management_Application.BuisnessLogic.Controllers.IUserController" Collapsed="true">
     <Position X="27.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\IUserController.cs</FileName>
     </TypeIdentifier>
   </Interface>

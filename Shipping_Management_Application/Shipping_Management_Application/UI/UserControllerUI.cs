@@ -71,5 +71,7 @@ namespace Shipping_Management_Application.UI
             Console.WriteLine("Customer created");
 
         }
+
+        
     }
 }

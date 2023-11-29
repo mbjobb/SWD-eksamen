@@ -14,6 +14,9 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         bool UsernameAndPasswordMatchFoundInDB(string username, string password);
         public UserEntity GetUserEntityByIdOrUsername(long id = 0, string? username = null);
         public void DeleteUserEntity(UserEntity user);
+        public Customer GetCustomer(UserEntity user);
 
+        Customer UpdateCustomer(Customer customer);
+        void UpdateCustomer(UserEntity user);
     }
 }

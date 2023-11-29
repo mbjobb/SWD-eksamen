@@ -1,5 +1,7 @@
-﻿using Shipping_Management_Application.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
+using Shipping_Management_Application.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +49,77 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         {
             CrudOperations.DeleteUserEntity(user);
         }
+        public Customer GetCustomer(UserEntity user)
+        {
+            return CrudOperations.GetCustomerById(user.Id);
 
-        
+        }
+        public Customer UpdateCustomer(Customer customer)
+        {
+            return CrudOperations.UdateCustomer(customer);
+        }
+        public void UpdateCustomer(UserEntity user)
+        {
+            Customer customer = InitializeApp.userController.GetCustomer(user);
+            Console.WriteLine("You can update your profile");
+            Console.WriteLine("What do you want to update? (Email, Address, PostCode, Password)");
+            string? res = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(res))
+            {
+                Console.WriteLine("Invalid input, please try again");
+                return;
+            }
+            try
+            {
+                //TODO: se if we can dry this off
+                //if (res is "email" or "address" or "postcode" ) 
+                //{
+                //    using DataContext context = new DataContext();
+                //    Console.WriteLine($"enter new {res}");
+                //    string input = Console.ReadLine();
+                //    context.Customers.First(c => c.Id == customer.Id).Valueof(res) = input;
+                //}
+                switch (res.ToLower())
+                {
+
+                    case "email":
+                        Console.WriteLine("Enter the new email:");
+                        string? newEmail = Console.ReadLine();
+                        customer.Email = newEmail;
+                        Console.WriteLine("Email updated successfully");
+                        break;
+                    case "address":
+                        Console.WriteLine("Enter the new address:");
+                        string? newAddress = Console.ReadLine();
+                        customer.Adress = newAddress;
+                        Console.WriteLine("Address updated successfully");
+                        break;
+                    case "postcode":
+                        Console.WriteLine("Enter the new postcode:");
+                        string? newPostCode = Console.ReadLine();
+                        customer.PostCode = newPostCode;
+                        Console.WriteLine("Postcode updated successfully");
+                        break;
+                    case "password":
+                        Console.WriteLine("Enter the new postcode:");
+                        string? newPassword = Console.ReadLine();
+                        user.Password = newPassword;
+                        Console.WriteLine("Postcode updated successfully");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
+                }
+
+            }
+            catch (DbUpdateException)
+            {
+
+                Console.WriteLine("something went wrong");
+            }
+        }
+
+
     }
 }

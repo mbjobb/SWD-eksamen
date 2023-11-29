@@ -101,6 +101,21 @@ namespace Shipping_Management_Application.Data{
             context.SaveChanges();
             return order;
         }
+        public static void UdateUserEntity(UserEntity user)
+        {
+            using DataContext context = new DataContext();
+            context.UserEntities.Update(user);
+            context.SaveChanges();
+
+        }
+        public static Customer UdateCustomer(Customer customer)
+        {
+            using DataContext context = new DataContext();
+            context.Customers.Update(customer);
+            context.SaveChanges();
+            return context.Customers.First(c => c.Id == customer.Id);
+
+        }
         public static void CreateCustomer(Customer customer)
         {
             using DataContext context = new DataContext();
