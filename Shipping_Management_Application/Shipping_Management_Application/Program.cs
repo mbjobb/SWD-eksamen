@@ -20,12 +20,15 @@ namespace Shipping_Management_Application
             //TestingThings.Testing();
 
             /// <summary>
-            /// Facade pattern start. 1/2
+            /// 
+            /// Facade pattern start. 1/2 <see cref="UI.InitializeApp"/>
             /// Used to define the flow of the program without
             /// dictating the actual implimentation
-            /// <see cref="UI.InitializeApp"/>
+            /// 
+            /// Refactoring start 1/x <see cref="UI.UIController.MenuFacade"/>
+            /// 
             /// </summary>
-            
+
             new InitializeApp();
 
             

@@ -77,6 +77,11 @@ namespace Shipping_Management_Application.UI
             }
             Console.WriteLine("*******************************");
         }
+
+        /// <summary>
+        /// Refactoring  2/x <see cref=""/>
+        /// </summary>
+
         //TODO: better name
         public static string MenuFacade(List<string> options, List<string>? validInput) 
         {
