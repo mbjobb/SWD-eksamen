@@ -1,6 +1,7 @@
 ﻿using EventDispatcher;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
+using Shipping_Management_Application.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,19 @@ namespace Shipping_Management_Application.Factories.Transport
 
         public void OnDispatchReceived(object? sender, EventArgs? arguments)
         {
-            string derp = "You will recieve your confirmation soon! | Press 1 - To place a New Order | Press 2 - View Order History | Press 9 - Exit ";
+            
             if (_dispatchCount == _numberOfDeliveryMessages)
             {
                 _terminal.TruckReceivedHandler -= OnDispatchReceived;
-                Console.WriteLine(derp);
+                List<string> options = new List<string>()
+                {
+                    "place an order",
+                    "view orders",
+                    "update user or customer profile",
+                    "sign out",
+                    "exit program"
+                };
+                UIController.MenuFacade(options);
                 return;
             }
             try

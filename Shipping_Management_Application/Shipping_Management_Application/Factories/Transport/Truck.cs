@@ -10,9 +10,9 @@ namespace Shipping_Management_Application.Factories.Transport
         private OrderController _orderController = new();
 
         private DispatchTerminal _dispatcher;
+
         public Truck(Order order, DispatchTerminal dispatchTerminal)
         {
-            
             _dispatcher = dispatchTerminal;
         }
 

@@ -26,7 +26,7 @@ namespace Shipping_Management_Application.UI
                 switch (input){
                     case '1':{
 
-                            AdminControllerUi.ManageUsers();
+                            AdminControllerUi.ManageUsers(user);
                             //Console.WriteLine(AdminController.GetAllUserEntities());
                             break;
                     }case '2':{

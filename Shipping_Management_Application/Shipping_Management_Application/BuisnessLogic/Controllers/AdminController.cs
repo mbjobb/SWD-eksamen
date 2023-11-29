@@ -12,9 +12,8 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
     {
         public IEnumerable<UserEntity> GetAllUserEntities()
         {
-            IEnumerable<UserEntity> users = CrudOperations.GetAllUserEntities();
-            //Console.WriteLine(users);
-            return users;
+            return CrudOperations.GetAllUserEntities();
+            
         }
         public UserEntity CreateAdmin(string username, string password)
         {

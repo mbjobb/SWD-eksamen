@@ -14,20 +14,28 @@ namespace Shipping_Management_Application.UI
 
         public static void OnLoggedIn(UserEntity user)
         {
+            /// <summary>
+            /// Refactoring  4/x <see cref="Factories.Transport.DispatchListener"/>
+            /// Removed manual printing of menu
+            /// </summary>
             bool running = true;
             while (running){
-                Console.WriteLine("*******************************");
-                Console.WriteLine("Press 1 to place an order");
-                Console.WriteLine("Press 2 to view orders");
-                Console.WriteLine("Press 3 to update user or customer");
-                Console.WriteLine("Press 9 to sign out");
-                Console.WriteLine("*******************************");
+                List<string> options = new List<string>()
+                {
+                    "place an order",
+                    "view orders",
+                    "update user or customer profile",
+                    "sign out",
+                    "exit program"
+                };
+                UIController.MenuFacade(options);
                 
                 
-                char input = UIController.ReadASingleKeyPress("1239");
+                char input = UIController.ReadASingleKeyPress("12345");
 
                 switch (input){
                     case '1':{
+                            running = false;
                         OrderControllerUI.PlaceOrder(user);
                         break;
                     }case '2':{
@@ -35,10 +43,10 @@ namespace Shipping_Management_Application.UI
                         break;
                     }
                     case '3':{
-                        InitializeApp.userController.UpdateCustomer(user);
+                        UserControllerUI.UpdateCustomer(InitializeApp.userController, user);
                         break;
                     }
-                    case '9':{
+                    case '4':{
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup(InitializeApp.userController);

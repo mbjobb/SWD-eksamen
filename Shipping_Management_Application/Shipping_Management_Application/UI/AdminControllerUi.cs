@@ -17,13 +17,19 @@ namespace Shipping_Management_Application.UI
     {
         internal static AdminController AdminController = new AdminController();
          // manages the admin menu and calls the methods from the AdminController class.
-        public static void ManageUsers()
+        public static void ManageUsers(UserEntity user)
         {
-            Console.WriteLine("Press 1 for a list of all users");
-            Console.WriteLine("Press 2 to alter a user");
-            Console.WriteLine("Press 3 create a new admin account");
+            List<string> options = new List<string>()
+            {
+                "list all registerd users",
+                "alter a user",
+                "create a new admin account",
+                "manage user profile"
+            };
+            UIController.DrawMenu(options);
 
-            char input = UIController.ReadASingleKeyPress("123");
+
+            char input = UIController.ReadASingleKeyPress("1234");
 
             switch (input)
             {
@@ -54,12 +60,12 @@ namespace Shipping_Management_Application.UI
                             //This is fine
                         }
 
-                        UserEntity user = InitializeApp.userController.GetUserEntityByIdOrUsername(id, idOrUsername);
-                        Console.WriteLine($"user found :{user}");
-                        Console.WriteLine($"would you like to delete {user.UserName}");
+                        UserEntity userToManage = InitializeApp.userController.GetUserEntityByIdOrUsername(id, idOrUsername);
+                        Console.WriteLine($"user found :{userToManage}");
+                        Console.WriteLine($"would you like to delete {userToManage.UserName}");
                         Console.WriteLine("(y/n)");
                         char yesNo = UIController.ReadASingleKeyPress("yn");
-                        if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(user); else ManageUsers();
+                        if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(userToManage); else ManageUsers(user);
 
                        
                         break;
@@ -82,6 +88,13 @@ namespace Shipping_Management_Application.UI
                             Console.WriteLine("username already exists, please try a different username");
                             Console.WriteLine(e.Message);
                         }
+                        break;
+                    }
+                case '4':
+                    {
+                        Console.WriteLine("enter new pasword");
+                        string value = UIController.ReadAStringInput();
+                        InitializeApp.userController.UpdateUserEntityPassword(user, value);
                         break;
                     }
             }

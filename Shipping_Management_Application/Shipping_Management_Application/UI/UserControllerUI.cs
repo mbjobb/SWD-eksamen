@@ -17,15 +17,18 @@ namespace Shipping_Management_Application.UI
         /// </summary>
 
         public static void Login(IUserController userController){
+
+            
             Console.Write("Enter Username:");
             string username = UIController.ReadAStringInput();
-            //string? username = Console.ReadLine();
             Console.Write("Enter Password:");
-            string? password = Console.ReadLine();
+            string password = UIController.ReadAStringInput();
 
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
             LoginAuthentication loginAuthentication = new LoginAuthentication();
             bool isAuthenticated = loginAuthentication.Authentication(username, password);
+
+            //Checks database for match
             bool matchFound = userController.UsernameAndPasswordMatchFoundInDB(username, password);
 
             if (matchFound && isAuthenticated)
@@ -40,13 +43,14 @@ namespace Shipping_Management_Application.UI
         }
         public static UserEntity RegisterUser(IUserController userController){
             Console.Write("Enter Username:");
-            string? username = Console.ReadLine();
+            string? username = UIController.ReadAStringInput();
             Console.Write("Enter Password:");
-            string? password = Console.ReadLine();
+            string password = UIController.ReadAStringInput();
             User user = new(username, password);
             
             try{
-            userController.CreateUser(username,password);
+                userController.CreateUser(username,password);
+                InitializeApp.OnStartup(userController);
 
             }catch (Exception ex){
 
@@ -60,19 +64,56 @@ namespace Shipping_Management_Application.UI
         public static Customer RegisterCustomer(IUserController userController, UserEntity user){
             
             Console.WriteLine("Enter name");
-            string? name = Console.ReadLine();
+            string? name = UIController.ReadAStringInput();
             Console.WriteLine("Enter email");
-            string? email = Console.ReadLine();
+            string? email = UIController.ReadAStringInput();
             Console.WriteLine("Enter adress");
-            string? address = Console.ReadLine();
+            string? address = UIController.ReadAStringInput();
             Console.WriteLine("Enter post code");
-            string? postCode = Console.ReadLine();
+            string? postCode = UIController.ReadAStringInput();
 
-            return userController.CreateCustomer(user.Id, name, email, address, postCode);
-            Console.WriteLine("Customer created");
+            Customer customer = userController.CreateCustomer(user.Id, name, email, address, postCode);
+            if (customer is not null) { Console.WriteLine($"Customer created \n {customer}"); }
+            return customer;
 
         }
 
-        
+        public static void UpdateCustomer(IUserController userController, UserEntity user)
+        {
+            Customer customer = InitializeApp.userController.GetCustomer(user);
+
+            List<string> options = new List<string>()
+            {
+                "You can update your profile",
+                "What do you want to update? (Email, Address, PostCode, Password)"
+
+            };
+            List<string> validInput = new List<string>()
+            {
+                "Email",
+                "Address",
+                "PostCode",
+                "Password"
+            };
+            string inputOption = UIController.MenuFacade(options, validInput);
+            Console.WriteLine($"please enter new {inputOption}");
+            string inputValueToChange = UIController.ReadAStringInput();
+            if (inputOption == "Password")
+            {
+                userController.UpdateUserEntityPassword(user, inputValueToChange);
+            }
+            else
+            {
+                userController.UpdateCustomerWithValues(customer, inputOption, inputValueToChange);
+
+            }
+
+
+
+
+
+
+        }
+
     }
 }

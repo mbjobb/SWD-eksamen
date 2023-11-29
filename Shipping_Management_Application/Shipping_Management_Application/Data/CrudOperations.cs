@@ -148,6 +148,11 @@ namespace Shipping_Management_Application.Data{
             context.UserEntities.Remove(user);
             context.SaveChanges();
         }
+        public static void UpdateUserentity(UserEntity user)
+        {
+            using DataContext context = new DataContext();
+            context.UserEntities.Update(user);
+        }
 
     }
 }

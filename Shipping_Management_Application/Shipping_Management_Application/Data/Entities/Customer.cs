@@ -35,6 +35,20 @@ namespace Shipping_Management_Application.Data.Entities
         [Required]
         public string? PostCode { get; set; }
 
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string? ToString()
+        {
+            return $"Customer name:{Name} Adress:{Adress} Email:{Email}";
+        }
     }
 
 

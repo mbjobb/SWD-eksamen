@@ -42,12 +42,12 @@ namespace Shipping_Management_Application.UI
             string input = Console.ReadLine().ToLower();
             string allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ01234567890@.#/*";
             bool isValid = input.ToUpper().All(c => allowedCharacters.Contains(c));
-            validInput = validInput.ConvertAll(v => v.ToLower());
 
             
             if (validInput is not null && validInput.Contains(input) && isValid) 
             {
-                    return input ?? throw new NullReferenceException();
+                validInput = validInput.ConvertAll(v => v.ToLower());
+                return input ?? throw new NullReferenceException();
                 
 
             } else if(isValid)
@@ -69,26 +69,32 @@ namespace Shipping_Management_Application.UI
         }
         public static void DrawMenu(List<string> options)
         {
-            Console.WriteLine("*******************************");
+            Console.WriteLine("************* Menu *************");
+
             for (int i = 0; i < options.Count; i++)
             {
                 Console.WriteLine($"Press {i+1} to {options[i]}");
 
             }
-            Console.WriteLine("*******************************");
+            Console.WriteLine("********************************");
         }
 
         /// <summary>
-        /// Refactoring  2/x <see cref=""/>
+        /// Refactoring  2/x <see cref="InitializeApp"/>
+        /// We had a lot of repitition in the code to display menues and handle inputs,
+        /// so we wrote ReadAStringInput() and DrawMenu(), as well as a facade to run both
+        /// to reduce the repition of the code. This let us handle all the input sanitization
+        /// in one place.
+        /// also added null check on valid input so it doesnt auto run if not called
         /// </summary>
 
-        //TODO: better name
-        public static string MenuFacade(List<string> options, List<string>? validInput) 
+        public static string MenuFacade(List<string> options, List<string>? validInput = null) 
         {
             DrawMenu(options);
             try
             {
-                return ReadAStringInput(validInput);
+                if (validInput is not null) { return ReadAStringInput(validInput); }
+                return null;
             }
             catch (NullReferenceException)
             {

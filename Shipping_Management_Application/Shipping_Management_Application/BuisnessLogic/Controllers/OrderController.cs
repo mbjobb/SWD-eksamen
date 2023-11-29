@@ -29,18 +29,15 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         }
         public Order UpdateOrderStatus(Order order, string status)
         {
-            Order updatedOrder = CrudOperations.UpdateOrderStatus(order, status);
-            return updatedOrder;
+            return CrudOperations.UpdateOrderStatus(order, status);
         }
         public IEnumerable<Order> GetAllCustomerOrders(UserEntity user)
         {
-            IEnumerable<Order> orders = CrudOperations.GetOrdersByUserId(user.Id);
-            return orders;
+            return CrudOperations.GetOrdersByUserId(user.Id);
         }
         public IEnumerable<Order> GetAllOrders()
         {
-            IEnumerable<Order> orders = CrudOperations.GetAllOrders();
-            return orders;
+            return CrudOperations.GetAllOrders();
         }
     }
 }

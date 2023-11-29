@@ -19,7 +19,7 @@ namespace Shipping_Management_Application.UI{
         /// </summary>
 
         public static IOrderController orderController = new OrderController();
-        private static LogisticsFactory _roadLogisitcs = new RoadLogistics();
+
         //public static Order order;
         //private string _shippingAddress;
 
@@ -40,7 +40,7 @@ namespace Shipping_Management_Application.UI{
             {
                 Console.Write("Please enter shipping address:");
                 string shippingAddress = Console.ReadLine();
-                ProcessOrder(shippingAddress, customer);
+                ProcessOrder(shippingAddress, customer, user);
             }
             catch (ArgumentException e)
             {
@@ -49,12 +49,17 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        public static void ProcessOrder(string shippingAddress, Customer customer){
+        public static void ProcessOrder(string shippingAddress, Customer customer, UserEntity user){
+            List<string> options = new List<string>()
+            {
+                "Choose your delivery method",
+                "Truck",
+                "Van",
+                "Bike"
+            };
+            UIController.MenuFacade(options);
             
-            Console.WriteLine("Choose your delivery method");
-            Console.WriteLine("1. Truck");
-            Console.WriteLine("2. Van");
-            Console.WriteLine("3. Bike");
+
             char deliveryMethodChoice = UIController.ReadASingleKeyPress("123");
             
 
@@ -64,6 +69,7 @@ namespace Shipping_Management_Application.UI{
                 Order order = orderController.CreateOrder(customer,shippingAddress, deliveryPrice );
                 ITransport transport = logisticsFactory.CreateTransport(order);
 
+                UIController.ClearConsole();
                 order.Price = deliveryPrice;
                 Console.WriteLine($"Delivery price for Order {order.Id}: {order.Price}");
                 transport.Deliver(order);

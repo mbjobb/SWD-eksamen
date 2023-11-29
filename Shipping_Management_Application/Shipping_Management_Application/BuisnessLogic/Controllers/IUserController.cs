@@ -2,7 +2,7 @@
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
-    public interface IUserController
+    public interface IUserController 
     {
         /// <summary>
         /// Interface for the UserController class with the methods that are used in the UI.
@@ -17,6 +17,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         public Customer GetCustomer(UserEntity user);
 
         Customer UpdateCustomer(Customer customer);
-        void UpdateCustomer(UserEntity user);
+        void UpdateUserEntityPassword(UserEntity user, string value);
+        void UpdateCustomerWithValues(Customer customer, string option, string value);
     }
 }

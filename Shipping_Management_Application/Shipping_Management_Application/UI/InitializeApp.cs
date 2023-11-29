@@ -28,34 +28,38 @@ namespace Shipping_Management_Application.UI{
         }
         
         public static void OnStartup(IUserController userController)
-        {
+        { /// <summary>
+          /// Refactoring  3/x <see cref="UserControllerUI.Login"/>
+          /// Removed manual printing of the menu
+          /// </summary>
 
             bool running = true;
             while (running){
 
-                //List<string> list = new List<string>()
-                //{
-                //    "Sign In",
-                //    "Sign Up",
-                //    "Exit"
+                List<string> list = new List<string>()
+                {
+                    "Sign In",
+                    "Sign Up",
+                    "Exit"
 
-                //};
-                //UIController.DrawMenu(list);
+                };
                 Console.WriteLine("Welcome");
-                Console.WriteLine("Press 1 to login to an existing user");
-                Console.WriteLine("Press 2 to sign up if you don't have a user");
-                Console.WriteLine("Press 9 to exit");
+                UIController.DrawMenu(list);
+                
 
-                char input = UIController.ReadASingleKeyPress("12");
+                char input = UIController.ReadASingleKeyPress("129");
                 // TODO: check and fix switch case formatting
 
-                switch (input){
-                    case '1':{
+                switch (input)
+                {
+                    case '1':
+                    {
+
                         UserControllerUI.Login(userController);
                         break;
                     }
-
-                    case '2':{
+                    case '2':
+                    { 
                         UserControllerUI.RegisterUser(userController);
                         break;
                     }
