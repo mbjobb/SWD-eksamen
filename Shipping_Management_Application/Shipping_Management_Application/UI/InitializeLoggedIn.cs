@@ -20,6 +20,7 @@ namespace Shipping_Management_Application.UI
             /// </summary>
             bool running = true;
             while (running){
+                Console.WriteLine($"Welcome {user?.UserName}");
                 List<string> options = new List<string>()
                 {
                     "place an order",
@@ -28,14 +29,14 @@ namespace Shipping_Management_Application.UI
                     "sign out",
                     "exit program"
                 };
-                UIController.MenuFacade(options);
+                UIController.DrawMenu(options);
                 
                 
-                char input = UIController.ReadASingleKeyPress("12345");
+                char input = UIController.ReadASingleKeyPress("1234");
 
                 switch (input){
                     case '1':{
-                            running = false;
+                            
                         OrderControllerUI.PlaceOrder(user);
                         break;
                     }case '2':{

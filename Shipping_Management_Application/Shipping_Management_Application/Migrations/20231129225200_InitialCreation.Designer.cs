@@ -10,7 +10,7 @@ using Shipping_Management_Application.Data;
 namespace Shipping_Management_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231129004748_InitialCreation")]
+    [Migration("20231129225200_InitialCreation")]
     partial class InitialCreation
     {
         /// <inheritdoc />

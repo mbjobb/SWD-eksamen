@@ -13,13 +13,13 @@ namespace Shipping_Management_Application.Data{
         public static UserEntity? GetUserByUserNameAndPassword(string? userName, string? password){
 
             using DataContext context = new DataContext();
-
+            //TODO: fix crash
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)){
                 throw new ArgumentNullException("userName");
             }
 
             UserEntity? user = context.UserEntities.FirstOrDefault(u => u.UserName == userName && u.Password == password);
-            Console.WriteLine($"Welcome {user?.UserName}");
+            
             return user;
         }
        

@@ -1,29 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.AdminController" Collapsed="true">
-    <Position X="25.75" Y="1.25" Width="1.5" />
+  <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.AdminController">
+    <Position X="25.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\AdminController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.OrderController" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30.75" Y="7.75" Width="1.5" />
+    <Position X="29.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAABAQg=</HashCode>
       <FileName>BuisnessLogic\Controllers\OrderController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.1" />
   </Class>
   <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.UserController" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="30" Y="6.5" Width="1.5" />
+    <Position X="26" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAACAAAQBQAgAAAAAABAAAAIAAAAAAAAAAAABAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\UserController.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Admin" Collapsed="true">
-    <Position X="18.25" Y="2.25" Width="1.5" />
+  <Class Name="Admin">
+    <Position X="17.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Entities\Admin.cs</FileName>
@@ -32,7 +33,7 @@
   <Class Name="Shipping_Management_Application.Data.Entities.Customer">
     <Position X="21.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEDAAAAACAAAAAAAAAAAAQAAAgAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEDAAAAACAAAAAEgAAAAAQAAAgAAIAAAAAAgAAAAAA=</HashCode>
       <FileName>Data\Entities\Customer.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -50,52 +51,52 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.Data.Entities.User">
-    <Position X="21.75" Y="2.5" Width="1.5" />
+    <Position X="21.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Entities\User.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Customer" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Shipping_Management_Application.Data.Entities.UserEntity" Collapsed="true">
-    <Position X="20.5" Y="1.25" Width="1.5" />
+  <Class Name="Shipping_Management_Application.Data.Entities.UserEntity">
+    <Position X="20" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAEkAAAAAAAAAAAAIACAQAAAAAAAAA=</HashCode>
       <FileName>Data\Entities\UserEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.Data.CrudOperations" Collapsed="true">
-    <Position X="31" Y="8.75" Width="1.5" />
+  <Class Name="Shipping_Management_Application.Data.CrudOperations">
+    <Position X="28.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACQgQAggAQCFAEAAAQAAAAAAAAAgAAEIQAAAEg=</HashCode>
+      <HashCode>AAAACACQgQAggAQCFIEAAAQAAAAAAAAAgAAEIQAAAEg=</HashCode>
       <FileName>Data\CrudOperations.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Data.DataContext">
-    <Position X="31.25" Y="3.25" Width="1.5" />
+    <Position X="28.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAACAAAQBAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\DataContext.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Logistics.LogisticsFactory" Collapsed="true">
-    <Position X="19.25" Y="4.25" Width="1.5" />
+    <Position X="19.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Logistics\LogisticsFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Logistics.RoadLogistics">
-    <Position X="19.25" Y="5.5" Width="1.5" />
+    <Position X="19.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Logistics\RoadLogistics.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Transport.DispatchListener">
-    <Position X="15.25" Y="7.75" Width="1.5" />
+    <Position X="18" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAIAAAAAAQAAACAAgAACAACAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\DispatchListener.cs</FileName>
@@ -105,7 +106,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Transport.Truck" BaseTypeListCollapsed="true">
-    <Position X="28.75" Y="8.75" Width="1.5" />
+    <Position X="26" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\Truck.cs</FileName>
@@ -113,28 +114,21 @@
     <Lollipop Orientation="Left" Position="0.258" />
   </Class>
   <Class Name="EventDispatcher.DispatchTerminal">
-    <Position X="17.5" Y="7.25" Width="1.5" />
+    <Position X="18" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAgAAQAAAABAAACAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\EvenDispatch.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.UI.AdminControllerUi" Collapsed="true">
-    <Position X="27.5" Y="1.25" Width="1.5" />
+  <Class Name="Shipping_Management_Application.UI.AdminControllerUi">
+    <Position X="25.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>UI\AdminControllerUi.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.UI.FirstStart" Collapsed="true">
-    <Position X="31" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UI\FirstStart.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Shipping_Management_Application.UI.InitializeApp">
-    <Position X="24.25" Y="6" Width="1.5" />
+    <Position X="23.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\InitializeApp.cs</FileName>
@@ -144,81 +138,66 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.UI.InitializeLoggedIn">
-    <Position X="23.75" Y="1.5" Width="1.5" />
+    <Position X="23.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\InitializeLoggedIn.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.UI.InitializeLoggedInAsAdmin" Collapsed="true">
-    <Position X="27.5" Y="3.25" Width="1.5" />
+  <Class Name="Shipping_Management_Application.UI.InitializeLoggedInAsAdmin">
+    <Position X="27" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>UI\InitializeLoggedInAsAdmin.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.UI.LoginAuthentication" Collapsed="true">
-    <Position X="29.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAIAAAAA=</HashCode>
-      <FileName>UI\LoginAuthentication.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Shipping_Management_Application.UI.OrderControllerUI">
-    <Position X="25.75" Y="4.25" Width="1.5" />
+    <Position X="24" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAECAAAIAAAAAAAAEAAAAEAAACAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAECAAAIAAAAAAAAAAAAAEAAACAAAAAAAAAI=</HashCode>
       <FileName>UI\OrderControllerUI.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="orderController" />
-      <Field Name="_roadLogisitcs" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.UI.UIController" Collapsed="true">
-    <Position X="24" Y="3.5" Width="1.5" />
+    <Position X="23.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAA=</HashCode>
+      <HashCode>EQAAAAQEAAAAAAAAAAAAIAAAAAAAAAAAEAAAAgAAAAA=</HashCode>
       <FileName>UI\UIController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.UI.UserControllerUI" Collapsed="true">
-    <Position X="27.5" Y="5.25" Width="1.5" />
+  <Class Name="Shipping_Management_Application.UI.UserControllerUI">
+    <Position X="27" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>EAAAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>UI\UserControllerUI.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shipping_Management_Application.Program" Collapsed="true">
-    <Position X="27.5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Interface Name="Shipping_Management_Application.BuisnessLogic.Controllers.IOrderController" Collapsed="true">
-    <Position X="28.25" Y="7.5" Width="1.5" />
+    <Position X="27" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAABAQA=</HashCode>
       <FileName>BuisnessLogic\Controllers\IOrderController.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Shipping_Management_Application.BuisnessLogic.Controllers.IUserController" Collapsed="true">
-    <Position X="27.5" Y="6.5" Width="1.5" />
+    <Position X="26" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAQAQAgAAAAAABAAAAIAAAAAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAACAAAQBQAgAAAAAABAAAAIAAAAAAAAAAAABAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\IUserController.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Shipping_Management_Application.Factories.Transport.ITransport">
-    <Position X="26.5" Y="8.75" Width="1.5" />
+    <Position X="24.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\ITransport.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Delegate Name="EventDispatcher.Eventhandler" Collapsed="true">
-    <Position X="24" Y="7.5" Width="1.5" />
+  <Delegate Name="EventDispatcher.Eventhandler">
+    <Position X="16" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\EvenDispatch.cs</FileName>

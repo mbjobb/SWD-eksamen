@@ -34,6 +34,7 @@ namespace Shipping_Management_Application.UI
             if (matchFound && isAuthenticated)
             {
                 UserEntity user = userController.GetUserEntityByUsernameAndPassword(username, password);
+                UIController.ClearConsole();
                 if (user.Role == "Admin") { InitializeLoggedInAsAdmin.OnLoggedIn(user); }
                 InitializeLoggedIn.OnLoggedIn(user);
             }

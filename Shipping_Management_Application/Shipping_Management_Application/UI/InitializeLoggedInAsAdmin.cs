@@ -16,23 +16,38 @@ namespace Shipping_Management_Application.UI
             bool running = true;
             while (running){
 
-                Console.WriteLine("Press 1 to manage users");
-                Console.WriteLine("Press 2 to view  orders");
-                Console.WriteLine("Press 8 to sign out");
+                List<string> options = new List<string>()
+                {
+                    "manage users",
+                    "view orders",
+                    "update user profile",
+                    "sign out",
+                    
+                };
+                Console.WriteLine($"Welcome {user.UserName}");
+                UIController.MenuFacade(options);
                 
                 
-                char input = UIController.ReadASingleKeyPress("128");
+                char input = UIController.ReadASingleKeyPress("1238");
 
                 switch (input){
                     case '1':{
 
                             AdminControllerUi.ManageUsers(user);
-                            //Console.WriteLine(AdminController.GetAllUserEntities());
+                            running = false;
+;
                             break;
-                    }case '2':{
+                    }
+                    case '2':{
                             OrderControllerUI.PrintAllOrders();
                         break;
                     }
+                    case '3':
+                        {
+                            string inputValueToChange = UIController.ReadAStringInput();
+                            InitializeApp.userController.UpdateUserEntityPassword(user, inputValueToChange);
+                            break;
+                        }
                     case '8':{
                         running = false;
                         UIController.ClearConsole();

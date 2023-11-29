@@ -39,14 +39,14 @@ namespace Shipping_Management_Application.UI
         public static string ReadAStringInput(List<string>?  validInput = null) 
         {
             
-            string input = Console.ReadLine().ToLower();
+            string input = Console.ReadLine();
             string allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ01234567890@.#/*";
             bool isValid = input.ToUpper().All(c => allowedCharacters.Contains(c));
 
             
             if (validInput is not null && validInput.Contains(input) && isValid) 
             {
-                validInput = validInput.ConvertAll(v => v.ToLower());
+                
                 return input ?? throw new NullReferenceException();
                 
 

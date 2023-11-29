@@ -35,6 +35,10 @@ namespace Shipping_Management_Application.UI{
 
             bool running = true;
             while (running){
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Console.BackgroundColor = ConsoleColor.Blue;
+            //Console.WriteLine("Welcome to Shipping Management Application");
+            //Console.ResetColor();
 
                 List<string> list = new List<string>()
                 {
@@ -43,18 +47,19 @@ namespace Shipping_Management_Application.UI{
                     "Exit"
 
                 };
-                Console.WriteLine("Welcome");
+                
                 UIController.DrawMenu(list);
                 
 
-                char input = UIController.ReadASingleKeyPress("129");
+                char menuInput = UIController.ReadASingleKeyPress("129");
                 // TODO: check and fix switch case formatting
 
-                switch (input)
+                switch (menuInput)
                 {
                     case '1':
                     {
 
+                            running = false;
                         UserControllerUI.Login(userController);
                         break;
                     }
