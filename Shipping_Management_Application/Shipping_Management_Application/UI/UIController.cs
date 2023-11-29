@@ -31,30 +31,36 @@ namespace Shipping_Management_Application.UI
             while (true){
                 ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(intercept: true);
                 input = consoleKeyInfo.KeyChar;
+                Console.WriteLine(input);
                 return input;
             }
         }
         
-        public static string? ReadAStringInput(List<string>?  validInput = null) 
+        public static string ReadAStringInput(List<string>?  validInput = null) 
         {
             
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().ToLower();
             string allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ01234567890@.#/*";
             bool isValid = input.ToUpper().All(c => allowedCharacters.Contains(c));
+            validInput = validInput.ConvertAll(v => v.ToLower());
 
-            if (validInput is not null ) 
+            
+            if (validInput is not null && validInput.Contains(input) && isValid) 
             {
-                if (validInput.Contains(input) && isValid) 
-                {
-                    return input;
-                }
+                    return input ?? throw new NullReferenceException();
+                
+
+            } else if(isValid)
+            {
+                return input ?? throw new NullReferenceException();
 
             }
-            if (isValid)
+            else
             {
-                return input;
+                return null;
+
             }
-            return null;
+
             
         }
 
@@ -75,7 +81,17 @@ namespace Shipping_Management_Application.UI
         public static string MenuFacade(List<string> options, List<string>? validInput) 
         {
             DrawMenu(options);
-            return ReadAStringInput(validInput);
+            try
+            {
+                return ReadAStringInput(validInput);
+            }
+            catch (NullReferenceException)
+            {
+
+                Console.WriteLine("one or more fields were empty, try again");
+                MenuFacade(options, validInput);
+                return null;
+            }
         }
     }
 }
