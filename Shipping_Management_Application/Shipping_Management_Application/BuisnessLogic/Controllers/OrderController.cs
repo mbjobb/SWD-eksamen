@@ -18,12 +18,12 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         //TODO: move to UserController?
         public Customer GetCustomer(UserEntity user)
         {
-            Customer customer = CrudOperations.GetCustomerById(user.Id);
-            return customer;
+            return CrudOperations.GetCustomerById(user.Id);
+            
         }
-        public Order CreateOrder(UserEntity user, string shippingAddress)
+        public Order CreateOrder(Customer customer, string shippingAdress, int price )
         {
-            Order order = new(user.Id, shippingAddress);
+            Order order = new(customer.Id, shippingAdress, price);
             CrudOperations.SaveOrder(order);
             return order;
         }

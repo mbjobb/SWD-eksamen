@@ -27,13 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="data.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Folder Include="BuisnessLogic\AdminFolder\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BuisnessLogic\AdminFolder\" />
+    <None Update="data.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -6,21 +6,20 @@
     /// </summary>
     public class Order
     {
-        public long OrderId { get; set; }
+        public Order(long customerId, string shippingAddress, int price)
+        {
+            CustomerId = customerId;
+            ShippingAddress = shippingAddress;
+            Price = price;
+        }
+
+        public long Id { get; set; }
         public long CustomerId { get; set; }
         public Customer Customer { get; set; }
         public string ShippingAddress { get; set; }
         public string OrderStatus { get; set; } = "Order placed";
         public int Price { get; set; }
-        public Order(long customerId)
-        {
-            CustomerId = customerId;
-        }
-
-        public Order(long customerId, string shippingAddress) : this(customerId)
-        {
-            ShippingAddress = shippingAddress;
-        }
+        
 
         public override bool Equals(object? obj)
         {
@@ -34,7 +33,7 @@
       
         public override string? ToString()
         {
-            return string.Format($"Order number:{OrderId}  Shipping address:{ShippingAddress}  Order status:{OrderStatus}  Price:{Price}");
+            return string.Format($"Order number:{Id}  Shipping address:{ShippingAddress}  Order status:{OrderStatus}  Price:{Price}");
         }
     }
 }

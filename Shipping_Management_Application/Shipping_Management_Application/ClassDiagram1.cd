@@ -10,7 +10,7 @@
   <Class Name="Shipping_Management_Application.BuisnessLogic.Controllers.OrderController" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="30.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAABAQg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\OrderController.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.1" />
@@ -33,7 +33,7 @@
   <Class Name="Shipping_Management_Application.Data.Entities.Customer">
     <Position X="21.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEBAAAAACAAAAAAAAAAAAQAAAgAABAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAEDAAAAACAAAAAAAAAAAAQAAAgAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Data\Entities\Customer.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -43,7 +43,7 @@
   <Class Name="Shipping_Management_Application.Data.Entities.Order">
     <Position X="21.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAEAAAAAQQACAAAEgAAAAAAAAAAAAJAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAECAAAAQQACAAAEgAAAAAAAAAAAAJAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Entities\Order.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -91,13 +91,9 @@
   <Class Name="Shipping_Management_Application.Factories.Logistics.RoadLogistics">
     <Position X="19.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Factories\Logistics\RoadLogistics.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="dispatchTerminal" />
-      <Field Name="_order" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Transport.DispatchListener">
     <Position X="15.25" Y="7.75" Width="1.5" />
@@ -172,13 +168,12 @@
   <Class Name="Shipping_Management_Application.UI.OrderControllerUI">
     <Position X="25.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAECAAAIAAAAAAAAEAAAAEAAACAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAECAAAIAAAAAAAAEAAAAEAAACAAAAAAAAAI=</HashCode>
       <FileName>UI\OrderControllerUI.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_roadLogisitcs" />
-      <Field Name="order" />
       <Field Name="orderController" />
+      <Field Name="_roadLogisitcs" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Shipping_Management_Application.UI.UIController" Collapsed="true">

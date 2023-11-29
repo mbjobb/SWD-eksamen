@@ -5,7 +5,7 @@
 namespace Shipping_Management_Application.Migrations
 {
     /// <inheritdoc />
-    public partial class _2InitialCreation2 : Migration
+    public partial class InitialCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,18 +30,18 @@ namespace Shipping_Management_Application.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Adress = table.Column<string>(type: "TEXT", nullable: true),
-                    PostCode = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Adress = table.Column<string>(type: "TEXT", nullable: false),
+                    PostCode = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Customers_UserEntities_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Customers_UserEntities_Id",
+                        column: x => x.Id,
                         principalTable: "UserEntities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -51,21 +51,21 @@ namespace Shipping_Management_Application.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<long>(type: "INTEGER", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CustomerId = table.Column<long>(type: "INTEGER", nullable: false),
-                    ShippingAdress = table.Column<string>(type: "TEXT", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "TEXT", nullable: false),
                     OrderStatus = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "CustomerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -73,6 +73,12 @@ namespace Shipping_Management_Application.Migrations
                 name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEntities_UserName",
+                table: "UserEntities",
+                column: "UserName",
+                unique: true);
         }
 
         /// <inheritdoc />

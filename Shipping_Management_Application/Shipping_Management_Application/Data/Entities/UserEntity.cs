@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.Data.Entities
@@ -22,8 +23,11 @@ namespace Shipping_Management_Application.Data.Entities
         /// </summary>
 
         public long Id { get; set; }
+        [Required]
         public required string UserName { get; set; }
+        [Required]
         public required string Password { get; set; }
+        [Required]
         public string Role { get; set; } = "Customer";//sets default value to "Customer"
 
         //default constuctor

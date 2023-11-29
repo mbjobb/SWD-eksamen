@@ -20,16 +20,19 @@ namespace Shipping_Management_Application.UI{
 
         public static IOrderController orderController = new OrderController();
         private static LogisticsFactory _roadLogisitcs = new RoadLogistics();
-        public static Order order;
+        //public static Order order;
+        //private string _shippingAddress;
+
         //TODO: make constructor instance an interface
         public static void PlaceOrder(UserEntity user){
-
+            
             Customer customer = orderController.GetCustomer(user);
 
             if (customer == null)
             {
                 Console.WriteLine("You need to register as a customer to proceed");
-                UserControllerUI.RegisterCustomer(InitializeApp.userController, user);
+                customer = UserControllerUI.RegisterCustomer(InitializeApp.userController, user);
+
             }
             //TODO: decide on how we are handling exceptions so it's consistant throughout the code base
 
@@ -37,8 +40,7 @@ namespace Shipping_Management_Application.UI{
             {
                 Console.Write("Please enter shipping address:");
                 string shippingAddress = Console.ReadLine();
-                Order order = orderController.CreateOrder(user, shippingAddress);
-                ProcessOrder(order);
+                ProcessOrder(shippingAddress, customer);
             }
             catch (ArgumentException e)
             {
@@ -47,7 +49,7 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        public static void ProcessOrder(Order order){
+        public static void ProcessOrder(string shippingAddress, Customer customer){
             
             Console.WriteLine("Choose your delivery method");
             Console.WriteLine("1. Truck");
@@ -58,15 +60,16 @@ namespace Shipping_Management_Application.UI{
 
             try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
+                int deliveryPrice = logisticsFactory.DeliveryCost(shippingAddress);
+                Order order = orderController.CreateOrder(customer,shippingAddress, deliveryPrice );
                 ITransport transport = logisticsFactory.CreateTransport(order);
-                int deliveryPrice = logisticsFactory.DeliveryCost(order.ShippingAddress);
 
                 order.Price = deliveryPrice;
-                Console.WriteLine($"Delivery price for Order {order.OrderId}: {order.Price}");
+                Console.WriteLine($"Delivery price for Order {order.Id}: {order.Price}");
                 transport.Deliver(order);
 
                 //Logic for updating status in db, function takes Order order and string status as arguments
-                Console.WriteLine($"Order {order.OrderId} status: {order.OrderStatus}");
+                Console.WriteLine($"Order {order.Id} status: {order.OrderStatus}");
             }
             catch (Exception ex){
                 Console.WriteLine("Error: " + ex.ToString());

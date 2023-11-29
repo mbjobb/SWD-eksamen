@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shipping_Management_Application.Data.Entities;
-using Shipping_Management_Application.OldStuff;
+
 
 namespace Shipping_Management_Application.Data
 {
@@ -36,11 +36,21 @@ namespace Shipping_Management_Application.Data
                 
 
             //Defines relationship between user and customer
-            modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne(u => u.Customer).HasForeignKey<Customer>(c => c.CustomerId);
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.User)
+                .WithOne(u => u.Customer)
+                .HasForeignKey<Customer>(c => c.Id);
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(c =>  c.Orders)
+                .WithOne(o => o.Customer)
+                .HasPrincipalKey(c => c.Id);
 
             //Defines relationship between customer and order
-            modelBuilder.Entity<Order>().HasOne(o =>  o.Customer).WithMany(c => c.Orders)
-                .HasPrincipalKey(c => c.CustomerId);
+            modelBuilder.Entity<Order>()
+                .HasOne(o =>  o.Customer)
+                .WithMany(c => c.Orders)
+                .HasPrincipalKey(c => c.Id);
 
 
 

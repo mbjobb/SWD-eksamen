@@ -56,18 +56,18 @@ namespace Shipping_Management_Application.UI
             return user;
         }
 
-        public static void RegisterCustomer(IUserController userController, UserEntity user){
+        public static Customer RegisterCustomer(IUserController userController, UserEntity user){
             
-            Console.WriteLine("Enter first name");
+            Console.WriteLine("Enter name");
             string? name = Console.ReadLine();
-            Console.WriteLine("Enter first email");
+            Console.WriteLine("Enter email");
             string? email = Console.ReadLine();
-            Console.WriteLine("Enter first adress");
+            Console.WriteLine("Enter adress");
             string? address = Console.ReadLine();
-            Console.WriteLine("Enter first post code");
+            Console.WriteLine("Enter post code");
             string? postCode = Console.ReadLine();
 
-            userController.CreateCustomer(user.Id, name, email, address, postCode);
+            return userController.CreateCustomer(user.Id, name, email, address, postCode);
             Console.WriteLine("Customer created");
 
         }

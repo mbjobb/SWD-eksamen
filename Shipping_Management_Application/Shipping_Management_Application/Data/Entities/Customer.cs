@@ -1,5 +1,4 @@
-﻿using Shipping_Management_Application.OldStuff;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
@@ -11,27 +10,29 @@ namespace Shipping_Management_Application.Data.Entities
     /// </summary>
     public class Customer
     {
-
-        public Customer(long customerId, string? name)
-        {
-            CustomerId = customerId;
-            Name = name;
-        }
         [SetsRequiredMembers]
-        public Customer(long customerId, string? name, string? email, string? address, string? postCode) : this(customerId, email)
+        public Customer(long id, string? email, string? name, string? adress, string? postCode)
         {
-            Name = name;
+            
+            Id = id;
             Email = email;
-            Adress = address;
+            Name = name;
+            Adress = adress;
             PostCode = postCode;
         }
 
-        public long CustomerId { get; set; }
-        public User? User { get; set; }
+        
+        [Required]
+        public long Id   { get; set; }
+        public User User { get; set; }
         public ICollection<Order> Orders { get; set; }
+        [Required]
         public string? Email { get; set; }
+        [Required]
         public string? Name { get; set; }
+        [Required]
         public string? Adress { get; set; }
+        [Required]
         public string? PostCode { get; set; }
 
     }

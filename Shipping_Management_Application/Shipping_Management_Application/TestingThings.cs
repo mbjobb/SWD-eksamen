@@ -1,6 +1,5 @@
 ﻿using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
-using Shipping_Management_Application.OldStuff;
 using System;
 
 
@@ -24,8 +23,8 @@ namespace Shipping_Management_Application
             context.AddRange(users);
             context.SaveChanges();
             
-            Customer customer = new(user.Id, "derp");
-            context.Add(customer);
+            //Customer customer = new(user.Id, "derp");
+            //context.Add(customer);
             context.SaveChanges();
             
             /*@

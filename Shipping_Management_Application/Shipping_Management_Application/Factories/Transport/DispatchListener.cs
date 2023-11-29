@@ -52,7 +52,7 @@ namespace Shipping_Management_Application.Factories.Transport
 
                 //known bug
             }
-                Console.WriteLine($"order:{_order.OrderId} Status:{deliveryStatus[_dispatchCount]}");
+                Console.WriteLine($"order:{_order.Id} Status:{deliveryStatus[_dispatchCount]}");
                 _orderController.UpdateOrderStatus(_order, deliveryStatus[_dispatchCount]);
                 //Interlocked.Increment(ref _dispatchCount);
                 _dispatchCount++;

@@ -7,7 +7,8 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
     /// </summary>
     public interface IOrderController
     {
-        Order CreateOrder(UserEntity user, string shippingAddress);
+        /// <see cref="OrderController"/>
+        Order CreateOrder(Customer customer, string shippingAddress, int delliveryPrice);
         IEnumerable<Order> GetAllCustomerOrders(UserEntity user);
         Customer GetCustomer(UserEntity user);
         Order UpdateOrderStatus(Order order, string status);
