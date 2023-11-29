@@ -26,7 +26,10 @@ namespace Shipping_Management_Application
             /// dictating the actual implimentation
             /// 
             /// Refactoring start 1/x <see cref="UI.UIController.MenuFacade"/>
-            /// 
+            /// Refactoring documetnation, to make it easier to see the 
+            /// refactoring we've forked the project to show a pre-refactored
+            /// version for comparison.
+            /// The navigation link will guide the refactoring journey.
             /// </summary>
 
             new InitializeApp();
