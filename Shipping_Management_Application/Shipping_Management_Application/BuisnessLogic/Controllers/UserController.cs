@@ -61,10 +61,23 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         public void UpdateCustomer(UserEntity user)
         {
             Customer customer = InitializeApp.userController.GetCustomer(user);
-            Console.WriteLine("You can update your profile");
-            Console.WriteLine("What do you want to update? (Email, Address, PostCode, Password)");
-            string? res = Console.ReadLine();
+            //Console.WriteLine("You can update your profile");
+            //Console.WriteLine("What do you want to update? (Email, Address, PostCode, Password)");
+            //string? res = Console.ReadLine();
+            List<string> options = new List<string>()
+            {
+                "You can update your profile",
+                "What do you want to update? (Email, Address, PostCode, Password)"
 
+            };
+            List<string> validInput = new List<string>()
+            {
+                "Email",
+                "Address",
+                "PostCode",
+                "Password"
+            };
+            string res = UIController.MenuFacade(options, validInput);
             if (string.IsNullOrWhiteSpace(res))
             {
                 Console.WriteLine("Invalid input, please try again");

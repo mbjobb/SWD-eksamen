@@ -32,8 +32,15 @@ namespace Shipping_Management_Application.UI{
 
             bool running = true;
             while (running){
-                
 
+                //List<string> list = new List<string>()
+                //{
+                //    "Sign In",
+                //    "Sign Up",
+                //    "Exit"
+
+                //};
+                //UIController.DrawMenu(list);
                 Console.WriteLine("Welcome");
                 Console.WriteLine("Press 1 to login to an existing user");
                 Console.WriteLine("Press 2 to sign up if you don't have a user");

@@ -18,7 +18,8 @@ namespace Shipping_Management_Application.UI
 
         public static void Login(IUserController userController){
             Console.Write("Enter Username:");
-            string? username = Console.ReadLine();
+            string username = UIController.ReadAStringInput();
+            //string? username = Console.ReadLine();
             Console.Write("Enter Password:");
             string? password = Console.ReadLine();
 
