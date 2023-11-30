@@ -7,14 +7,10 @@ namespace Shipping_Management_Application
         static void Main(string[] args)
         {
             new InitializeApp();
-            //Wrapper for testing during development,
-            //Technically a facade pattern
-            //TestingThings.Testing();
-            ///<see cref="TestingThings"/>
-
             /// <summary>
             /// 
             /// Referances are in the readme file
+            /// could also be a good idea to reset the database
             /// 
             /// 
             /// Facade pattern start. 1/2 <see cref="UI.InitializeApp"/>
@@ -36,6 +32,11 @@ namespace Shipping_Management_Application
             /// The event dispatcher may break during debugging sessions with breakpoints.
             /// ShippingAdress seems to sometimes end up as null on the first try
             /// </summary>
+
+            //Wrapper for testing during development,
+            //Technically a facade pattern
+            //TestingThings.Testing();
+            ///<see cref="TestingThings"/>
 
 
 

@@ -1,4 +1,5 @@
-﻿add-migration -StartupProject Shipping_Management_Application -Project Shipping_Management_Application InitialCreation
+﻿Use line 1 and 2
+add-migration -StartupProject Shipping_Management_Application -Project Shipping_Management_Application InitialCreation
 update-database -StartupProject Shipping_Management_Application -Project Shipping_Management_Application
 
 add-migration -Context DataContext -StartupProject Shipping_Management_Application -Project Shipping_Management_Application InitialCreation
