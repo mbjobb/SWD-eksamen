@@ -14,6 +14,7 @@ namespace Shipping_Management_Application
     {
         /// <summary>
         /// Refactoring example.
+        /// Before refactoring
         /// This was a method written late at night, two days before the exam due date, which violated several of our design prinsipals.
         /// We let it stand since it worked, and tech debt can be allowed if it helps with upholding deadlines,
         /// but we ended up having time to refactor, and chose this one of the focus for said refactoring.
@@ -21,7 +22,8 @@ namespace Shipping_Management_Application
         /// the prinicples it violates:
         /// 1. SOLID Single-responsibility principle. This handles input/output from/to user, and the writing to the database.
         /// 2. SOLID Open–closed principle. Expanding the functionality would require changing both the UI drwing as well as the switch case
-        /// 3. 
+        /// 3. Since the user and customer update is intertwined, we couldnt reuse the password update on admin
+        /// <see cref="UserControllerUI.UpdateCustomer"/>
         /// </summary>
         public void UpdateCustomer(UserEntity user)
         {
@@ -36,7 +38,7 @@ namespace Shipping_Management_Application
                 return;
             }
             try
-            {
+            {   
                 //TODO: se if we can dry this off
                 //if (res is "email" or "address" or "postcode" ) 
                 //{
@@ -47,11 +49,11 @@ namespace Shipping_Management_Application
                 //}
                 switch (res.ToLower())
                 {
-
+                    //lots of repeated lines
                     case "email":
-                        Console.WriteLine("Enter the new email:");
+                        Console.WriteLine("Enter the new email:");//this was in the business logic layer, which should not write to the console
                         string? newEmail = Console.ReadLine();
-                        customer.Email = newEmail;
+                        customer.Email = newEmail;//direct access to database, which should only happen in the data layer
                         Console.WriteLine("Email updated successfully");
                         break;
                     case "address":
@@ -66,7 +68,7 @@ namespace Shipping_Management_Application
                         customer.PostCode = newPostCode;
                         Console.WriteLine("Postcode updated successfully");
                         break;
-                    case "password":
+                    case "password"://this should be discrete so we can reuse it for other user entities
                         Console.WriteLine("Enter the new postcode:");
                         string? newPassword = Console.ReadLine();
                         user.Password = newPassword;

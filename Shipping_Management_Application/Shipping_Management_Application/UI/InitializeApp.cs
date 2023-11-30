@@ -28,10 +28,7 @@ namespace Shipping_Management_Application.UI{
         }
         
         public static void OnStartup(IUserController userController)
-        { /// <summary>
-          /// Refactoring  3/x <see cref="UserControllerUI.Login"/>
-          /// Removed manual printing of the menu
-          /// </summary>
+        { 
 
             bool running = true;
             while (running){

@@ -58,6 +58,12 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         {
             return CrudOperations.UdateCustomer(customer);
         }
+        /// <summary>
+        /// after refactorin cont.
+        /// the business logic layer has seperated update customer and update userentity
+        /// this lets us reuse the update userentity method for admin and any future userentities
+        /// <see cref="CrudOperations.UpdateUserentity"/>
+        /// </summary>
 
         public void UpdateCustomerWithValues( Customer customer, string option, string value)
         {

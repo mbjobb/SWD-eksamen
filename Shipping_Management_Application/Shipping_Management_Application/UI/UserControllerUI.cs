@@ -78,6 +78,12 @@ namespace Shipping_Management_Application.UI
             return customer;
 
         }
+        /// <summary>
+        /// After refatoring
+        /// The method has been seperated with multiple methods in their appropriate layers
+        /// this is the UI part, it handles input from user and then sends to the buisness logic layer
+        /// <see cref="UserController.UpdateCustomerWithValues"/>
+        /// </summary>
 
         public static void UpdateCustomer(IUserController userController, UserEntity user)
         {

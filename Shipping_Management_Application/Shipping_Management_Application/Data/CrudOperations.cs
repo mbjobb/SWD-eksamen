@@ -142,6 +142,11 @@ namespace Shipping_Management_Application.Data{
             return orders;
         }
         public static void DeleteCustomer(Customer customer) { throw new NotImplementedException(); }
+        /// <summary>
+        /// refactoring end
+        /// here the database update happens, in the data layer as it should be
+        /// </summary>
+        /// <param name="user"></param>
         public static void DeleteUserEntity(UserEntity user) 
         {
             using DataContext context = new DataContext();

@@ -25,11 +25,13 @@ namespace Shipping_Management_Application
             /// Used to define the flow of the program without
             /// dictating the actual implimentation
             /// 
-            /// Refactoring start 1/x <see cref="UI.UIController.MenuFacade"/>
-            /// Refactoring documetnation, to make it easier to see the 
+            /// Refactoring start
+            /// Refactoring documetnation, 
+            /// too make it easier to see the 
             /// refactoring we've forked the project to show a pre-refactored
             /// version for comparison.
             /// The navigation link will guide the refactoring journey.
+            /// <see cref="PreRefactorUserController"/>
             /// </summary>
 
             new InitializeApp();

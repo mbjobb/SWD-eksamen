@@ -13,13 +13,11 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         public IEnumerable<UserEntity> GetAllUserEntities()
         {
             return CrudOperations.GetAllUserEntities();
-            
         }
+
         public UserEntity CreateAdmin(string username, string password)
         {
-
             return CrudOperations.CreateAdmin(username, password);
-            
         }
     }
 }

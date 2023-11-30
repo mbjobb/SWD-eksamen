@@ -80,13 +80,7 @@ namespace Shipping_Management_Application.UI
         }
 
         /// <summary>
-        /// Refactoring  2/x <see cref="InitializeApp"/>
-        /// We had a lot of repitition in the code to display menues and handle inputs,
-        /// so we wrote ReadAStringInput() and DrawMenu(), as well as a facade to run both
-        /// to reduce the repition of the code. This let us handle all the input sanitization
-        /// in one place.
-        /// also added null check on valid input so it doesnt auto run if not called
-        /// </summary>
+ 
 
         public static string MenuFacade(List<string> options, List<string>? validInput = null) 
         {
