@@ -10,7 +10,6 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         /// <see cref="UserController"/>
         Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode);
         UserEntity CreateUser(string username, string password);
-        UserEntity GetUserEntityByUsernameAndPassword(string username, string password);
         bool UsernameAndPasswordMatchFoundInDB(string username, string password);
         public UserEntity GetUserEntityByIdOrUsername(long id = 0, string? username = null);
         public void DeleteUserEntity(UserEntity user);
@@ -19,5 +18,6 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         Customer UpdateCustomer(Customer customer);
         void UpdateUserEntityPassword(UserEntity user, string value);
         void UpdateCustomerWithValues(Customer customer, string option, string value);
+        UserEntity? GetUserEntityByUsernameAndPassword(string username, string password);
     }
 }

@@ -7,13 +7,11 @@ namespace Shipping_Management_Application.Data{
     /// Class with the methods that are used to create, read, update and delete data from the database.
     /// </summary>
     
-    //TODO: Add try catch blocks into methods
     public static class CrudOperations
     {
         public static UserEntity? GetUserByUserNameAndPassword(string? userName, string? password){
 
             using DataContext context = new DataContext();
-            //TODO: fix crash
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)){
                 throw new ArgumentNullException("userName");
             }
@@ -42,6 +40,7 @@ namespace Shipping_Management_Application.Data{
             context.SaveChanges();
             return admin;
         }
+
         public static Admin CreateAdmin(string username, string password){
 
             using DataContext context = new();
@@ -59,6 +58,7 @@ namespace Shipping_Management_Application.Data{
             return user ?? throw new Exception();
             
         }
+
         public static UserEntity GetUserEntityByUsername(string username){
             using DataContext context = new DataContext();
             
@@ -66,12 +66,12 @@ namespace Shipping_Management_Application.Data{
             return user ?? throw new Exception();
             
         }
-        //Todo: was here
-        public static Customer GetCustomerById(long id){
+
+        public static Customer? GetCustomerById(long id){
             using DataContext context = new DataContext();
             
-            Customer customer = context.Customers.FirstOrDefault(c => (c.Id == id));
-            return customer;
+            Customer? customer = context.Customers.FirstOrDefault(c => c.Id == id);
+            return customer?? null;
             
         }
 
@@ -101,13 +101,7 @@ namespace Shipping_Management_Application.Data{
             context.SaveChanges();
             return order;
         }
-        public static void UdateUserEntity(UserEntity user)
-        {
-            using DataContext context = new DataContext();
-            context.UserEntities.Update(user);
-            context.SaveChanges();
 
-        }
         public static Customer UdateCustomer(Customer customer)
         {
             using DataContext context = new DataContext();

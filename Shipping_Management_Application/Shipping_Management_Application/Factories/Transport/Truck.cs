@@ -7,11 +7,11 @@ namespace Shipping_Management_Application.Factories.Transport
 {
     public class Truck : ITransport
     {
-        private OrderController _orderController = new();
+        private readonly OrderController _orderController = new();
 
-        private DispatchTerminal _dispatcher;
+        private readonly DispatchTerminal _dispatcher;
 
-        public Truck(Order order, DispatchTerminal dispatchTerminal)
+        public Truck(DispatchTerminal dispatchTerminal)
         {
             _dispatcher = dispatchTerminal;
         }

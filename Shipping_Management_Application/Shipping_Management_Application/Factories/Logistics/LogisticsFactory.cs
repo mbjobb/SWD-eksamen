@@ -9,7 +9,8 @@ namespace Shipping_Management_Application.Factories.Logistics
     public abstract class LogisticsFactory{
         public abstract ITransport CreateTransport(Order order);
         
-        // Calculates the delivery cost based on the address and returns the price
+        // Calculates the delivery cost based on the address and returns the price, this was an easy way to simulate
+        // variable cost
         public int DeliveryCost(string address){
             
             if (string.IsNullOrEmpty(address)){

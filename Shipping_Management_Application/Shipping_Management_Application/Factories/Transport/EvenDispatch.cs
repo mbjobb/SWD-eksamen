@@ -8,19 +8,15 @@ namespace EventDispatcher{
 	public class DispatchTerminal{
 
         public event EventHandler? TransportReceivedHandler;
-        private Timer _transportSendTimer;
-		private Random _randomGenerator;
+        private readonly Timer _transportSendTimer;
+		private readonly Random _randomGenerator;
 
-		// Constructor.
-        
-        // Ready, in transit, delivered, returning
         public DispatchTerminal(){
             _randomGenerator = new Random();
             _transportSendTimer = new Timer();
 
             _transportSendTimer.Elapsed += SendMessageByEvent;
             SetupNextMessage();
-            
         }
 		protected virtual void InvokeSubscribersCallbackMethods() {
 			TransportReceivedHandler?.Invoke(this, EventArgs.Empty);

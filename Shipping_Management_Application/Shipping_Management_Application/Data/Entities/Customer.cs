@@ -24,8 +24,8 @@ namespace Shipping_Management_Application.Data.Entities
         
         [Required]
         public long Id   { get; set; }
-        public User User { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public User? User { get; set; }
+        public ICollection<Order>? Orders { get; set; }
         [Required]
         public string? Email { get; set; }
         [Required]

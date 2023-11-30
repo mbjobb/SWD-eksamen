@@ -24,13 +24,13 @@ namespace Shipping_Management_Application.UI
             {
 
                 List<string> options = new List<string>()
-            {
+                {
                 "List all registerd users",
                 "Delete a user",
                 "Create a new admin account",
                 "Account settings",
                 "Return"
-            };
+                };
                 UIController.DrawMenu(options);
 
 
@@ -53,7 +53,7 @@ namespace Shipping_Management_Application.UI
                             Console.Write("username or id: ");
                             string? idOrUsername = Console.ReadLine();
                             long id = 0;
-                            //TODO: unfuck this
+
                             try
                             {
                                 id = (long)Convert.ToInt64(idOrUsername);
@@ -71,7 +71,6 @@ namespace Shipping_Management_Application.UI
                             Console.WriteLine("(y/n)");
                             char yesNo = UIController.ReadASingleKeyPress("yn");
                             if (yesNo == 'y') InitializeApp.userController.DeleteUserEntity(userToManage); else ManageUsers(user);
-
 
                             break;
                         }

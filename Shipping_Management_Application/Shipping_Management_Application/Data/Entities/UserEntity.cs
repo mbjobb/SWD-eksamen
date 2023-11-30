@@ -24,7 +24,7 @@ namespace Shipping_Management_Application.Data.Entities
 
         public long Id { get; set; }
         [Required]
-        public required string UserName { get; set; }
+        public required string UserName { get; init; }
         [Required]
         public required string Password { get; set; }
         [Required]

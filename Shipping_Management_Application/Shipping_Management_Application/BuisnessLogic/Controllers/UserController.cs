@@ -20,7 +20,6 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             Customer customer = new Customer(id, name, email, address, postCode);
             CrudOperations.CreateCustomer(customer);
             return customer;
-
         }
 
         public UserEntity CreateUser(string username, string password)
@@ -29,35 +28,41 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             CrudOperations.CreateUser(user);
             return user;
         }
-        public UserEntity GetUserEntityByUsernameAndPassword(string username, string password)
+
+        public UserEntity? GetUserEntityByUsernameAndPassword(string username, string password)
         {
-            UserEntity user = CrudOperations.GetUserByUserNameAndPassword(username, password);
-            return user;
+            UserEntity? user = CrudOperations.GetUserByUserNameAndPassword(username, password);
+            return user ?? null;
         }
+
         public bool UsernameAndPasswordMatchFoundInDB(string username, string password)
         {
             bool matchFound = CrudOperations.CheckIfUserExists(username, password);
             return matchFound;
         }
-        public UserEntity GetUserEntityByIdOrUsername(long id = 0, string? username = null)
+
+        public UserEntity? GetUserEntityByIdOrUsername(long id = 0, string? username = null)
         {
             if (id != 0) { return CrudOperations.GetUserEntityById((long)id); }
             if (username is not null) { return CrudOperations.GetUserEntityByUsername(username); }
             else return null;
         }
+
         public void DeleteUserEntity(UserEntity user)
         {
             CrudOperations.DeleteUserEntity(user);
         }
+
         public Customer GetCustomer(UserEntity user)
         {
             return CrudOperations.GetCustomerById(user.Id);
-
         }
+
         public Customer UpdateCustomer(Customer customer)
         {
             return CrudOperations.UdateCustomer(customer);
         }
+
         /// <summary>
         /// after refactorin cont.
         /// the business logic layer has seperated update customer and update userentity
@@ -71,14 +76,20 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
             {
 
                 case "email":
-                    customer.Email = value;
-                    break;
+                    {
+                        customer.Email = value;
+                        break;
+                    }
                 case "address":
-                    customer.Adress = value;
-                    break;
+                    {
+                        customer.Adress = value;
+                        break;
+                    }
                 case "postcode":
-                    customer.PostCode = value;
-                    break;
+                    {
+                        customer.PostCode = value;
+                        break;
+                    }
             }
             UpdateCustomer(customer);
         }

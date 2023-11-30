@@ -12,7 +12,7 @@ namespace Shipping_Management_Application.Data.Entities
         /// <see cref="UI.UserControllerUI"/>
         /// </summary>
 
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
 
         [SetsRequiredMembers]
         public User(string userName, string password) : base(userName, password)

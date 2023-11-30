@@ -15,7 +15,7 @@
 
         public long Id { get; set; }
         public long CustomerId { get; set; }
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
         public string ShippingAddress { get; set; }
         public string OrderStatus { get; set; } = "Order placed";
         public int Price { get; set; }
