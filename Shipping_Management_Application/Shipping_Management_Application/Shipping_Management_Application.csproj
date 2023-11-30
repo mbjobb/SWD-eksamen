@@ -28,4 +28,10 @@
     <Folder Include="BuisnessLogic\AdminFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="data.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
