@@ -5,12 +5,13 @@ using Shipping_Management_Application.Factories.Transport;
 
 namespace Shipping_Management_Application.Factories.Logistics{
     public class RoadLogistics : LogisticsFactory{
+        private Order? _order;
 
         public override ITransport CreateTransport(Order order){
-           return new Truck( _dispatchTerminal);
+           return new Truck(order, _dispatchTerminal);
         }
-
-        readonly DispatchTerminal _dispatchTerminal = new();
+        
+        DispatchTerminal _dispatchTerminal = new();
        
     }
 }

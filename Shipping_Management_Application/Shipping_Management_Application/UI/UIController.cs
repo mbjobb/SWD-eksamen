@@ -57,7 +57,7 @@ namespace Shipping_Management_Application.UI
             }
             else
             {
-                throw new NullReferenceException();
+                return null;
 
             }
 

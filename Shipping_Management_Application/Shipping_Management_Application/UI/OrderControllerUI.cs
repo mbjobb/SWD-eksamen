@@ -36,7 +36,7 @@ namespace Shipping_Management_Application.UI
             try
             {
                 Console.Write("Please enter shipping address:");
-                string? shippingAddress = UIController.ReadAStringInput();
+                string shippingAddress = Console.ReadLine();
                 ProcessOrder(shippingAddress, customer, user);
             }
             catch (ArgumentException)

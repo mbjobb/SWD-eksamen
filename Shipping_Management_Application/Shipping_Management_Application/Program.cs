@@ -21,6 +21,9 @@ namespace Shipping_Management_Application
 
             /// <summary>
             /// 
+            /// Referances are in the readme file
+            /// 
+            /// 
             /// Facade pattern start. 1/2 <see cref="UI.InitializeApp"/>
             /// Used to define the flow of the program without
             /// dictating the actual implimentation
@@ -32,6 +35,12 @@ namespace Shipping_Management_Application
             /// version for comparison.
             /// The navigation link will guide the refactoring journey.
             /// <see cref="PreRefactorUserController"/>
+            /// 
+            /// 
+            /// Known issues
+            /// The following method sometimes produces buggy behaviour
+            /// <see cref="UIController.ReadAStringInput"/>
+            /// The event dispatcher may break during debugging sessions with breakpoints
             /// </summary>
 
             new InitializeApp();
