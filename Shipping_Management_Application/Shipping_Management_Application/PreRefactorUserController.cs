@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application
 {
@@ -38,7 +32,7 @@ namespace Shipping_Management_Application
                 return;
             }
             try
-            {   
+            {
                 //TODO: se if we can dry this off
                 //if (res is "email" or "address" or "postcode" ) 
                 //{

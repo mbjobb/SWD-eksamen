@@ -1,12 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.Data;
+﻿using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
-using System.Security.AccessControl;
 
 namespace Shipping_Management_Application.UI
 {
-    internal class UserControllerUI{
+    internal class UserControllerUI
+    {
         /// <summary>
         /// Dependancy injection continued 4/6
         /// This is where the actual dependency injection starts to happen.
@@ -16,16 +14,17 @@ namespace Shipping_Management_Application.UI
         /// <see cref="InitializeLoggedIn"/>
         /// </summary>
 
-        public static void Login(IUserController userController){
+        public static void Login(IUserController userController)
+        {
 
-            
+
             Console.Write("Enter Username:");
             string username = UIController.ReadAStringInput();
             Console.Write("Enter Password:");
             string password = UIController.ReadAStringInput();
 
             //Placeholder for proper authentication since actual implimentation of something like OAuth is outside the scope of this subject.
-            LoginAuthentication loginAuthentication = new LoginAuthentication();
+            LoginAuthentication loginAuthentication = new();
             bool isAuthenticated = loginAuthentication.Authentication(username, password);
 
             //Checks database for match
@@ -38,22 +37,27 @@ namespace Shipping_Management_Application.UI
                 if (user.Role == "Admin") { InitializeLoggedInAsAdmin.OnLoggedIn(user); }
                 InitializeLoggedIn.OnLoggedIn(user);
             }
-            else{
+            else
+            {
                 Console.WriteLine("User does not exist in our database");
             }
         }
-        public static UserEntity RegisterUser(IUserController userController){
+        public static UserEntity RegisterUser(IUserController userController)
+        {
             Console.Write("Enter Username:");
             string? username = UIController.ReadAStringInput();
             Console.Write("Enter Password:");
             string password = UIController.ReadAStringInput();
             User user = new(username, password);
-            
-            try{
-                userController.CreateUser(username,password);
+
+            try
+            {
+                userController.CreateUser(username, password);
                 InitializeApp.OnStartup(userController);
 
-            }catch (Exception ex){
+            }
+            catch (Exception ex)
+            {
 
                 UIController.ClearConsole();
                 Console.WriteLine("Username already in use, try a different username" + ex.Message);
@@ -62,8 +66,9 @@ namespace Shipping_Management_Application.UI
             return user;
         }
 
-        public static Customer RegisterCustomer(IUserController userController, UserEntity user){
-            
+        public static Customer RegisterCustomer(IUserController userController, UserEntity user)
+        {
+
             Console.WriteLine("Enter name");
             string? name = UIController.ReadAStringInput();
             Console.WriteLine("Enter email");
@@ -89,13 +94,13 @@ namespace Shipping_Management_Application.UI
         {
             Customer customer = InitializeApp.userController.GetCustomer(user);
 
-            List<string> options = new List<string>()
+            List<string> options = new()
             {
-                
+
                 "What do you want to update? (Email, Home Address, Post code, Password)"
 
             };
-            List<string> validInput = new List<string>()
+            List<string> validInput = new()
             {
                 "Email",
                 "Address",
@@ -105,7 +110,7 @@ namespace Shipping_Management_Application.UI
             string? inputOption = UIController.MenuFacade(options, validInput);
             Console.WriteLine($"please enter new {inputOption}");
             string inputValueToChange = UIController.ReadAStringInput();
-            if(inputOption is not "Password" && customer is null)
+            if (inputOption is not "Password" && customer is null)
             {
                 Console.WriteLine("You need to register as a customer to manage customer profile");
                 return;

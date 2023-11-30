@@ -22,7 +22,7 @@ namespace Shipping_Management_Application.Data.Entities
         public required string ShippingAddress { get; set; }
         public string OrderStatus { get; set; } = "Order placed";
         public int Price { get; set; }
-        
+
 
         public override bool Equals(object? obj)
         {
@@ -33,7 +33,7 @@ namespace Shipping_Management_Application.Data.Entities
         {
             return base.GetHashCode();
         }
-      
+
         public override string? ToString()
         {
             return string.Format($"Order number:{Id}  Shipping address:{ShippingAddress}  Order status:{OrderStatus}  Price:{Price}");

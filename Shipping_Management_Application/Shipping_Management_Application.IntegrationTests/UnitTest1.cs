@@ -1,23 +1,9 @@
-
-using FluentAssertions;
-using FluentAssertions.Execution;
-
-using Shipping_Management_Application.Data;
-using Shipping_Management_Application.Factories.Transport;
-
-using System.Diagnostics.Metrics;
-using System.Net;
-using System.Numerics;
-using System.Security.AccessControl;
-using System.Threading.Channels;
 using Microsoft.Data.Sqlite;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.UI;
-using Shipping_Management_Application.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Shipping_Management_Application.BuisnessLogic.Controllers;
+using Shipping_Management_Application.Data;
+using Shipping_Management_Application.Data.Entities;
 using System.Data.Common;
-using System.Diagnostics;
 
 namespace Shipping_Management_Application.IntegrationTests
 {
@@ -87,7 +73,7 @@ namespace Shipping_Management_Application.IntegrationTests
         public void AdminGetsAllUsers_AdminShouldGetAllUsers()
         {
 
-            User user = new User("User1", "password123");
+            User user = new("User1", "password123");
             CrudOperations.CreateUser(user);
 
             IEnumerable<UserEntity> userEntities = _adminController.GetAllUserEntities();
@@ -99,8 +85,8 @@ namespace Shipping_Management_Application.IntegrationTests
         [Test]
         public void AddingDuplicatedUser_ShouldFail()
         {
-            User user = new User("User1", "password123");
-            User user1 = new User("User1", "password123");
+            User user = new("User1", "password123");
+            User user1 = new("User1", "password123");
             CrudOperations.CreateUser(user);
 
             Assert.Throws<DbUpdateException>(() => CrudOperations.CreateUser(user1));

@@ -3,7 +3,6 @@ using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.Factories.Logistics;
-using System.Runtime.CompilerServices;
 using ITransport = Shipping_Management_Application.Factories.Transport.ITransport;
 
 namespace Shipping_Management_Application.UI
@@ -23,7 +22,7 @@ namespace Shipping_Management_Application.UI
 
         public static void PlaceOrder(UserEntity user)
         {
-            
+
             Customer customer = orderController.GetCustomer(user);
 
             if (customer == null)
@@ -48,7 +47,7 @@ namespace Shipping_Management_Application.UI
 
         public static void ProcessOrder(string shippingAddress, Customer customer, UserEntity user)
         {
-            Console.WriteLine("Choose your delivery method"); 
+            Console.WriteLine("Choose your delivery method");
             List<string> options = new()
             {
                 "Truck",
@@ -59,12 +58,13 @@ namespace Shipping_Management_Application.UI
 
             char deliveryMethodChoice = UIController.ReadASingleKeyPress("123");
 
-            try{
+            try
+            {
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
                 int deliveryPrice = logisticsFactory.DeliveryCost(shippingAddress);
 
-                Order order = orderController.CreateOrder(customer,shippingAddress, deliveryPrice );
-                
+                Order order = orderController.CreateOrder(customer, shippingAddress, deliveryPrice);
+
                 ITransport transport = logisticsFactory.CreateTransport(order);
 
                 UIController.ClearConsole();
@@ -75,34 +75,36 @@ namespace Shipping_Management_Application.UI
                 //Logic for updating status in db, function takes Order order and string status as arguments
                 Console.WriteLine($"Order {order.Id} status: {order.OrderStatus}");
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 Console.WriteLine("Error: " + ex.ToString());
             }
         }
 
         private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice)
         {
-            switch (deliveryMethodChoice){
+            switch (deliveryMethodChoice)
+            {
                 case '1':
                     {
-                    return new RoadLogistics();
+                        return new RoadLogistics();
                     }
-                    
+
                 case '2':
-                {
-                    throw new NotImplementedException("Van delivery is not implemented yet, maybe for future development");
-                }
-                    
+                    {
+                        throw new NotImplementedException("Van delivery is not implemented yet, maybe for future development");
+                    }
+
                 case '3':
-                {
-                    throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
-                }
-                    
+                    {
+                        throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
+                    }
+
                 default:
-                {
-                    throw new ArgumentException("Error, invalid choice");
-                }
-                    
+                    {
+                        throw new ArgumentException("Error, invalid choice");
+                    }
+
             }
         }
 

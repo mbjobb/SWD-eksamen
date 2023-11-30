@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Shipping_Management_Application.Data.Entities
@@ -49,7 +48,7 @@ namespace Shipping_Management_Application.Data.Entities
             Role = role;
         }
 
-        
+
         public override bool Equals(object? obj)
         {
             return base.Equals(obj);

@@ -21,6 +21,7 @@
       <HashCode>AAACAAAQBQAgAAAAAABAAAAIAAAAAAAAAAAABAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\UserController.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Admin">
     <Position X="17.5" Y="1.5" Width="1.5" />
@@ -90,7 +91,7 @@
   <Class Name="Shipping_Management_Application.Factories.Logistics.RoadLogistics">
     <Position X="19.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Factories\Logistics\RoadLogistics.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -112,7 +113,7 @@
     </TypeIdentifier>
     <Lollipop Orientation="Left" Position="0.258" />
   </Class>
-  <Class Name="EventDispatcher.DispatchTerminal">
+  <Class Name="Shipping_Management_Application.Factories.Transport.DispatchTerminal">
     <Position X="18" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEgAAQAAAABAAAAAAAAgAAAAAAAAAAAAAAQAAAAA=</HashCode>
@@ -195,7 +196,7 @@
       <FileName>Factories\Transport\ITransport.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Delegate Name="EventDispatcher.Eventhandler">
+  <Delegate Name="Shipping_Management_Application.Factories.Transport.Eventhandler">
     <Position X="16" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>

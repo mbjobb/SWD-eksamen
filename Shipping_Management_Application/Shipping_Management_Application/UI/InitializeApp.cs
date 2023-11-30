@@ -1,18 +1,12 @@
-﻿
-using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shipping_Management_Application.BuisnessLogic.Controllers;
 
-namespace Shipping_Management_Application.UI{
-    public class InitializeApp{
+namespace Shipping_Management_Application.UI
+{
+    public class InitializeApp
+    {
         public static IUserController userController = new UserController();
-        public InitializeApp(){
+        public InitializeApp()
+        {
             /// <summary>
             /// Facade pattern continued. 2/2
             /// This is essentially a wrapper, allowing us to initialize the 
@@ -26,17 +20,18 @@ namespace Shipping_Management_Application.UI{
             FirstStart.ChecksIfUserEntityTableIsEmpty();
             OnStartup(userController);
         }
-        
+
         public static void OnStartup(IUserController userController)
-        { 
+        {
 
             bool running = true;
-            while (running){
+            while (running)
+            {
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Welcome to Shipping Management Application");
-            Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Welcome to Shipping Management Application");
+                Console.ResetColor();
 
                 List<string> list = new()
                 {
@@ -44,7 +39,7 @@ namespace Shipping_Management_Application.UI{
                     "Sign Up",
                     "Exit"
                 };
-                
+
                 UIController.DrawMenu(list);
 
                 char loginInput = UIController.ReadASingleKeyPress("129");
@@ -53,21 +48,22 @@ namespace Shipping_Management_Application.UI{
                 switch (loginInput)
                 {
                     case '1':
-                    {
-                        running = false;
-                        UserControllerUI.Login(userController);
-                        break;
-                    }
+                        {
+                            running = false;
+                            UserControllerUI.Login(userController);
+                            break;
+                        }
                     case '2':
-                    { 
-                        UserControllerUI.RegisterUser(userController);
-                        break;
-                    }
-                    case '9':{
-                        running = false;
-                        UIController.CloseApplication();
-                        break;
-                    }
+                        {
+                            UserControllerUI.RegisterUser(userController);
+                            break;
+                        }
+                    case '9':
+                        {
+                            running = false;
+                            UIController.CloseApplication();
+                            break;
+                        }
                 }
             }
         }

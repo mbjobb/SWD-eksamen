@@ -1,12 +1,6 @@
-﻿using EventDispatcher;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
+﻿using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.Factories.Transport
 {
@@ -35,11 +29,11 @@ namespace Shipping_Management_Application.Factories.Transport
 
         public void OnDispatchReceived(object? sender, EventArgs? arguments)
         {
-            
+
             if (_dispatchCount == _numberOfStatusUpdates)
             {
                 _terminal.TransportReceivedHandler -= OnDispatchReceived;
-                List<string> options = new List<string>()
+                List<string> options = new()
                 {
                     "place an order",
                     "view orders",
@@ -50,11 +44,11 @@ namespace Shipping_Management_Application.Factories.Transport
                 UIController.MenuFacade(options);
                 return;
             }
-         
-                Console.WriteLine($"order:{_order.Id} Status:{_deliveryStatus[_dispatchCount]}");
-                _orderController.UpdateOrderStatus(_order, _deliveryStatus[_dispatchCount]);
 
-                _dispatchCount++;
+            Console.WriteLine($"order:{_order.Id} Status:{_deliveryStatus[_dispatchCount]}");
+            _orderController.UpdateOrderStatus(_order, _deliveryStatus[_dispatchCount]);
+
+            _dispatchCount++;
 
 
         }

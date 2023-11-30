@@ -1,10 +1,5 @@
 ﻿using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
@@ -13,13 +8,13 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         /// <summary>
         /// The implimentation here has been made easily replaceable since we are only doing a partial simulation of the shipping and ordering process.
         /// </summary>
-        
+
         public Customer GetCustomer(UserEntity user)
         {
             return CrudOperations.GetCustomerById(user.Id);
         }
 
-        public Order CreateOrder(Customer customer, string shippingAdress, int price )
+        public Order CreateOrder(Customer customer, string shippingAdress, int price)
         {
             Order order = new(customer.Id, shippingAdress, price);
             CrudOperations.SaveOrder(order);

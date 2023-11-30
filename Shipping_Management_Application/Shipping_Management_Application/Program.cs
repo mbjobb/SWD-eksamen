@@ -1,12 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-
-using Shipping_Management_Application.BuisnessLogic;
-using Shipping_Management_Application.Data;
-using Shipping_Management_Application.Data.Entities;
-using Shipping_Management_Application.UI;
-using System;
-using EventDispatcher;
-using Shipping_Management_Application.Factories.Transport;
+﻿using Shipping_Management_Application.UI;
 
 namespace Shipping_Management_Application
 {
@@ -38,14 +30,15 @@ namespace Shipping_Management_Application
             /// 
             /// 
             /// Known issues
-            /// The following method sometimes produces buggy behaviour
+            /// The following method sometimes produces buggy behaviour.
             /// <see cref="UIController.ReadAStringInput"/>
-            /// The event dispatcher may break during debugging sessions with breakpoints
+            /// The event dispatcher may break during debugging sessions with breakpoints.
+            /// ShippingAdress seems to sometimes end up as null on the first try
             /// </summary>
 
             new InitializeApp();
 
-            
+
 
         }
     }

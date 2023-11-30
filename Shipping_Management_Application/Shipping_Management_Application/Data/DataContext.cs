@@ -18,7 +18,7 @@ namespace Shipping_Management_Application.Data
         public DbSet<Customer> Customers => Set<Customer>();
 
 
-        
+
         //Override OnConfiguring from DbContextClass to get optionsBuilder object to create connection_string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,8 +32,8 @@ namespace Shipping_Management_Application.Data
             modelBuilder.Entity<UserEntity>()
                 .HasIndex(u => u.UserName)
                 .IsUnique();
-                
-                
+
+
 
             //Defines relationship between user and customer
             modelBuilder.Entity<Customer>()
@@ -42,13 +42,13 @@ namespace Shipping_Management_Application.Data
                 .HasForeignKey<Customer>(c => c.Id);
 
             modelBuilder.Entity<Customer>()
-                .HasMany(c =>  c.Orders)
+                .HasMany(c => c.Orders)
                 .WithOne(o => o.Customer)
                 .HasPrincipalKey(c => c.Id);
 
             //Defines relationship between customer and order
             modelBuilder.Entity<Order>()
-                .HasOne(o =>  o.Customer)
+                .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
                 .HasPrincipalKey(c => c.Id);
 

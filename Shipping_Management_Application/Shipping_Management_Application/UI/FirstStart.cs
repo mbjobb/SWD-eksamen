@@ -1,10 +1,4 @@
 ﻿using Shipping_Management_Application.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.UI
 {
@@ -19,7 +13,7 @@ namespace Shipping_Management_Application.UI
         // checks if the user entity table is empty and creates an admin account if it is
         public static void ChecksIfUserEntityTableIsEmpty()
         {
-            
+
 
             bool IsUserEntitiesTableEmpty = CrudOperations.IsUserEntitiesTableEmpty();
 
@@ -34,7 +28,7 @@ namespace Shipping_Management_Application.UI
                 Console.WriteLine("Please log in and change the password");
             }
 
-            
+
         }
     }
 }

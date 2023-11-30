@@ -2,11 +2,6 @@
 
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.UI
 {
@@ -101,7 +96,7 @@ namespace Shipping_Management_Application.UI
                             InitializeApp.userController.UpdateUserEntityPassword(user, value);
                             break;
                         }
-                    case '5': 
+                    case '5':
                         {
                             running = false;
                             InitializeLoggedInAsAdmin.OnLoggedIn(user);

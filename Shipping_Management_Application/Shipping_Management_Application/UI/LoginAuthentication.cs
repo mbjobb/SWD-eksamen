@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shipping_Management_Application.UI
+﻿namespace Shipping_Management_Application.UI
 {
     /// <summary>
     /// LoginAuthentication class with the methods that are used in the UI.

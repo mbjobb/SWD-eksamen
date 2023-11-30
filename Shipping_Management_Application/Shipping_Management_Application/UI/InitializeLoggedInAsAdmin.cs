@@ -1,5 +1,4 @@
 using Shipping_Management_Application.BuisnessLogic.Controllers;
-using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.UI
@@ -7,15 +6,17 @@ namespace Shipping_Management_Application.UI
     /// <summary>
     /// Class for the InitializeLoggedInAsAdmin class with the methods that are used in the UI.
     /// </summary>
-    public class InitializeLoggedInAsAdmin{
-        internal static AdminController AdminController = new AdminController();
-        public static OrderController orderController = new OrderController();
+    public class InitializeLoggedInAsAdmin
+    {
+        internal static AdminController AdminController = new();
+        public static OrderController orderController = new();
 
         public static void OnLoggedIn(UserEntity user)
         {
             bool running = true;
-            while (running){
-                List<string> options = new List<string>()
+            while (running)
+            {
+                List<string> options = new()
                 {
                     "Manage users",
                     "View orders",
@@ -30,23 +31,23 @@ namespace Shipping_Management_Application.UI
                 switch (adminInput)
                 {
                     case '1':
-                    {
-                        AdminControllerUi.ManageUsers(user);
-                        running = false;
-                        break;
-                    }
+                        {
+                            AdminControllerUi.ManageUsers(user);
+                            running = false;
+                            break;
+                        }
                     case '2':
-                    {
-                        OrderControllerUI.PrintAllOrders();
-                        break;
-                    }
+                        {
+                            OrderControllerUI.PrintAllOrders();
+                            break;
+                        }
                     case '3':
-                    {
-                        running = false;
-                        UIController.ClearConsole();
-                        InitializeApp.OnStartup(InitializeApp.userController);
-                        break;
-                    }
+                        {
+                            running = false;
+                            UIController.ClearConsole();
+                            InitializeApp.OnStartup(InitializeApp.userController);
+                            break;
+                        }
                 }
             }
         }

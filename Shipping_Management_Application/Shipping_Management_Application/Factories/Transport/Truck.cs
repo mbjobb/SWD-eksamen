@@ -1,6 +1,4 @@
-﻿using System.Data;
-using EventDispatcher;
-using Shipping_Management_Application.BuisnessLogic.Controllers;
+﻿using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
 
 namespace Shipping_Management_Application.Factories.Transport
@@ -18,7 +16,7 @@ namespace Shipping_Management_Application.Factories.Transport
 
         public void Deliver(Order order)
         {
-            DispatchListener listener = new DispatchListener(_orderController, order, _dispatcher);
+            DispatchListener listener = new(_orderController, order, _dispatcher);
 
         }
     }

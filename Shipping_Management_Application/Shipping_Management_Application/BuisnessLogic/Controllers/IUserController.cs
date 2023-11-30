@@ -2,7 +2,7 @@
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
-    public interface IUserController 
+    public interface IUserController
     {
         /// <summary>
         /// Interface for the UserController class with the methods that are used in the UI.

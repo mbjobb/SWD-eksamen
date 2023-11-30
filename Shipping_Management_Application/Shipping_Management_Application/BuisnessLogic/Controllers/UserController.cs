@@ -1,13 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-using Shipping_Management_Application.Data;
+﻿using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
-using Shipping_Management_Application.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.BuisnessLogic.Controllers
 {
@@ -18,7 +10,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
     {
         public Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode)
         {
-            Customer customer = new Customer(id, name, email, address, postCode);
+            Customer customer = new(id, name, email, address, postCode);
             CrudOperations.CreateCustomer(customer);
             return customer;
         }
@@ -71,7 +63,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         /// <see cref="CrudOperations.UpdateUserentity"/>
         /// </summary>
 
-        public void UpdateCustomerWithValues( Customer customer, string option, string value)
+        public void UpdateCustomerWithValues(Customer customer, string option, string value)
         {
             switch (option.ToLower())
             {

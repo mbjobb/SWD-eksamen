@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
 
 namespace Shipping_Management_Application.Data.Entities
 {
@@ -13,7 +11,7 @@ namespace Shipping_Management_Application.Data.Entities
         [SetsRequiredMembers]
         public Customer(long id, string? email, string? name, string? adress, string? postCode)
         {
-            
+
             Id = id;
             Email = email;
             Name = name;
@@ -21,9 +19,9 @@ namespace Shipping_Management_Application.Data.Entities
             PostCode = postCode;
         }
 
-        
+
         [Required]
-        public long Id   { get; set; }
+        public long Id { get; set; }
         public User? User { get; set; }
         public ICollection<Order>? Orders { get; set; }
         [Required]

@@ -1,6 +1,5 @@
 ﻿using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
-using System;
 
 
 namespace Shipping_Management_Application
@@ -13,7 +12,7 @@ namespace Shipping_Management_Application
     {
         public static void Testing()
         {
-            using DataContext context = new DataContext();
+            using DataContext context = new();
             List<User> users = new()
             {
                 new User("derp1", "derp"),
@@ -26,11 +25,11 @@ namespace Shipping_Management_Application
             users.Add(user);
             context.AddRange(users);
             context.SaveChanges();
-            
+
             //Customer customer = new(user.Id, "derp");
             //context.Add(customer);
             context.SaveChanges();
-            
+
             /*@
             OldOrder order = new(customer.CustomerId);
             context.Add(order);
@@ -41,129 +40,129 @@ namespace Shipping_Management_Application
             Console.WriteLine("derp");
             Console.ReadLine();
             **/
-            
+
         }
     }
 }
 
 
-    //        using (var dataContext = new DataContext())
-    //        {
-    //            var customers = new List<Customer>
-    //            {
-    //                new Customer
-    //                {
-    //                    FirstName = "John",
-    //                    LastName = "Doe",
-    //                    Address = "123 Main Street",
-    //                    City = "Anytown",
-    //                    Region = "Someregion",
-    //                    PostalCode = "54321",
-    //                    Country = "Somecountry",
-    //                    Phone = "555-1234",
-    //                    Email = "john@example.com"
-    //                },
-    //                new Customer
-    //                {
-    //                    FirstName = "Alice",
-    //                    LastName = "Smith",
-    //                    Address = "456 Oak Avenue",
-    //                    City = "Sometown",
-    //                    Region = "Anotherregion",
-    //                    PostalCode = "12345",
-    //                    Country = "Othercountry",
-    //                    Phone = "555-5678",
-    //                    Email = "alice@example.com"
-    //                }
-    //            };
+//        using (var dataContext = new DataContext())
+//        {
+//            var customers = new List<Customer>
+//            {
+//                new Customer
+//                {
+//                    FirstName = "John",
+//                    LastName = "Doe",
+//                    Address = "123 Main Street",
+//                    City = "Anytown",
+//                    Region = "Someregion",
+//                    PostalCode = "54321",
+//                    Country = "Somecountry",
+//                    Phone = "555-1234",
+//                    Email = "john@example.com"
+//                },
+//                new Customer
+//                {
+//                    FirstName = "Alice",
+//                    LastName = "Smith",
+//                    Address = "456 Oak Avenue",
+//                    City = "Sometown",
+//                    Region = "Anotherregion",
+//                    PostalCode = "12345",
+//                    Country = "Othercountry",
+//                    Phone = "555-5678",
+//                    Email = "alice@example.com"
+//                }
+//            };
 
-    //            try
-    //            {
-    //                dataContext.AddRange(customers);
-    //                Console.WriteLine("Added");
-    //                int affectedRows = dataContext.SaveChanges();
-    //                Console.WriteLine($"saved {affectedRows} changes");
-    //                Console.WriteLine("Saved");
+//            try
+//            {
+//                dataContext.AddRange(customers);
+//                Console.WriteLine("Added");
+//                int affectedRows = dataContext.SaveChanges();
+//                Console.WriteLine($"saved {affectedRows} changes");
+//                Console.WriteLine("Saved");
 
-    //                IList<string?> customerNames = dataContext.Users.Select(s => s.FirstName).ToList();
+//                IList<string?> customerNames = dataContext.Users.Select(s => s.FirstName).ToList();
 
-    //                foreach (string customerName in customerNames)
-    //                {
-    //                    Console.WriteLine(customerName);
-    //                }
-    //            }
-    //            catch (DbUpdateException ex)
-    //            {
-    //                Console.WriteLine($"Failed to save changes: {ex.InnerException?.Message}");
-    //            }
-    //            catch (Exception ex)
-    //            {
-    //                Console.WriteLine($"An error occurred: {ex.Message}");
-    //            }
-    //        }
-    /**  public class Program
+//                foreach (string customerName in customerNames)
+//                {
+//                    Console.WriteLine(customerName);
+//                }
+//            }
+//            catch (DbUpdateException ex)
+//            {
+//                Console.WriteLine($"Failed to save changes: {ex.InnerException?.Message}");
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine($"An error occurred: {ex.Message}");
+//            }
+//        }
+/**  public class Program
+{
+  static async Task Main(string[] args)
+     {
+     // await DataToDb();
+      await DataFromDb();
+   
+      
+
+  }
+  //Get Data from Database
+  static async Task DataFromDb()
   {
-      static async Task Main(string[] args)
-         {
-         // await DataToDb();
-          await DataFromDb();
-       
-          
+      DatabaseConnection db = new DatabaseConnection();
 
+      using var dbContext = new DatabaseConnection();
+      var admins = dbContext.Admins.ToList(); // Henter alle Admins fra databasen
+
+      if (admins.Any())
+      {
+          Console.WriteLine("Admins hentet fra databasen:");
+          foreach (var admin in admins)
+          {
+              Console.WriteLine($"ID: {admin.AdminId}, Navn: {admin.UserName}, Passord: {admin.Password}");
+          }
       }
-      //Get Data from Database
-      static async Task DataFromDb()
+      else
+      {
+          Console.WriteLine("Ingen Admins ble funnet i databasen.");
+      }
+      Console.ReadLine();
+  }
+  //push Data to Database
+  static async Task DataToDb()
       {
           DatabaseConnection db = new DatabaseConnection();
+          var dbName = "sqlitedb1.db";
 
-          using var dbContext = new DatabaseConnection();
-          var admins = dbContext.Admins.ToList(); // Henter alle Admins fra databasen
+          if (File.Exists(dbName))
+          {
+              File.Delete(dbName);
+          }
 
-          if (admins.Any())
+          await using var dbContext = new DatabaseConnection();
+          await dbContext.Database.EnsureCreatedAsync();
+          await dbContext.Admins.AddRangeAsync(new Admin[]
           {
-              Console.WriteLine("Admins hentet fra databasen:");
-              foreach (var admin in admins)
-              {
-                  Console.WriteLine($"ID: {admin.AdminId}, Navn: {admin.UserName}, Passord: {admin.Password}");
-              }
-          }
-          else
+          new Admin { UserName = "saro", Password = "1234" },
+          new Admin { UserName = "henrik", Password = "123444" },
+          });
+          await dbContext.SaveChangesAsync();
+
+          // Getting database data
+          Console.WriteLine("Getting database data");
+          dbContext.Admins?.ToList().ForEach(admin =>
           {
-              Console.WriteLine("Ingen Admins ble funnet i databasen.");
-          }
-          Console.ReadLine();
+              Console.WriteLine($"{admin.AdminId} {admin.UserName} {admin.Password}");
+          });
       }
-      //push Data to Database
-      static async Task DataToDb()
-          {
-              DatabaseConnection db = new DatabaseConnection();
-              var dbName = "sqlitedb1.db";
+     
+  }
 
-              if (File.Exists(dbName))
-              {
-                  File.Delete(dbName);
-              }
-
-              await using var dbContext = new DatabaseConnection();
-              await dbContext.Database.EnsureCreatedAsync();
-              await dbContext.Admins.AddRangeAsync(new Admin[]
-              {
-              new Admin { UserName = "saro", Password = "1234" },
-              new Admin { UserName = "henrik", Password = "123444" },
-              });
-              await dbContext.SaveChangesAsync();
-
-              // Getting database data
-              Console.WriteLine("Getting database data");
-              dbContext.Admins?.ToList().ForEach(admin =>
-              {
-                  Console.WriteLine($"{admin.AdminId} {admin.UserName} {admin.Password}");
-              });
-          }
-         
-      }
-
-  }**/
+}**/
 /**
  Admin admin = new("saro", "saro");
  Admin admin1 = new("henrik", "henrik");
@@ -202,4 +201,3 @@ namespace Shipping_Management_Application
  }**/
 
 
-    
