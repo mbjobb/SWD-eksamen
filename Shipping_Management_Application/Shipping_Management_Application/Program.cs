@@ -1,5 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
-using NUnit.Framework;
+
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
@@ -15,9 +15,9 @@ namespace Shipping_Management_Application
         static void Main(string[] args)
         {
             //Wrapper for testing during development,
-            //should be removed in final version.
             //Technically a facade pattern
             //TestingThings.Testing();
+            ///<see cref="TestingThings"/>
 
             /// <summary>
             /// 

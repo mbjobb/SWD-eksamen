@@ -5,6 +5,10 @@ using System;
 
 namespace Shipping_Management_Application
 {
+    /// <summary>
+    /// Used for testing during development
+    /// In hindsight, we should probably just have wtritten proper unit tests instead
+    /// </summary>
     public static class TestingThings
     {
         public static void Testing()

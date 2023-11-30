@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data.Entities;
 using System;
@@ -15,7 +15,7 @@ namespace Shipping_Management_Application.UI
     /// </summary>
     public static class AdminControllerUi
     {
-        internal static AdminController AdminController = new AdminController();
+        internal static AdminController AdminController = new();
         // manages the admin menu and calls the methods from the AdminController class.
         public static void ManageUsers(UserEntity user)
         {
@@ -23,7 +23,7 @@ namespace Shipping_Management_Application.UI
             while (running)
             {
 
-                List<string> options = new List<string>()
+                List<string> options = new()
                 {
                 "List all registerd users",
                 "Delete a user",
@@ -77,9 +77,9 @@ namespace Shipping_Management_Application.UI
                     case '3':
                         {
                             Console.Write("Username for new admin:");
-                            string? username = Console.ReadLine();
+                            string? username = UIController.ReadAStringInput();
                             Console.Write("Password for new admin:");
-                            string? password = Console.ReadLine();
+                            string? password = UIController.ReadAStringInput();
                             try
                             {
                                 UserEntity admin = AdminController.CreateAdmin(username, password);

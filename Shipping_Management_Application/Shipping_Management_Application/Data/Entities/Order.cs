@@ -1,4 +1,6 @@
-﻿namespace Shipping_Management_Application.Data.Entities
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Shipping_Management_Application.Data.Entities
 {
     /// <summary>
     /// Order class with the properties that are used to create an order object. 
@@ -6,6 +8,7 @@
     /// </summary>
     public class Order
     {
+        [SetsRequiredMembers]
         public Order(long customerId, string shippingAddress, int price)
         {
             CustomerId = customerId;
@@ -16,7 +19,7 @@
         public long Id { get; set; }
         public long CustomerId { get; set; }
         public Customer? Customer { get; set; }
-        public string ShippingAddress { get; set; }
+        public required string ShippingAddress { get; set; }
         public string OrderStatus { get; set; } = "Order placed";
         public int Price { get; set; }
         

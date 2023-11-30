@@ -10,7 +10,7 @@ namespace Shipping_Management_Application.UI
     public class InitializeLoggedInAsAdmin{
         internal static AdminController AdminController = new AdminController();
         public static OrderController orderController = new OrderController();
-         // onloggedin method for admin, this is where the admin can manage users and view orders
+
         public static void OnLoggedIn(UserEntity user)
         {
             bool running = true;
@@ -20,30 +20,26 @@ namespace Shipping_Management_Application.UI
                     "Manage users",
                     "View orders",
                     "Sign out",
-                    
                 };
+
                 Console.WriteLine($"Welcome {user.UserName}");
                 UIController.DrawMenu(options);
-                
-                
+
                 char adminInput = UIController.ReadASingleKeyPress("1234");
 
                 switch (adminInput)
                 {
                     case '1':
                     {
-
-                            AdminControllerUi.ManageUsers(user);
-                            running = false;
-;
-                            break;
+                        AdminControllerUi.ManageUsers(user);
+                        running = false;
+                        break;
                     }
                     case '2':
                     {
-                            OrderControllerUI.PrintAllOrders();
+                        OrderControllerUI.PrintAllOrders();
                         break;
                     }
-                    
                     case '3':
                     {
                         running = false;

@@ -1,5 +1,4 @@
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Interfaces;
-using Newtonsoft.Json.Schema;
+
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
@@ -7,9 +6,11 @@ using Shipping_Management_Application.Factories.Logistics;
 using System.Runtime.CompilerServices;
 using ITransport = Shipping_Management_Application.Factories.Transport.ITransport;
 
-namespace Shipping_Management_Application.UI{
+namespace Shipping_Management_Application.UI
+{
 
-    public class OrderControllerUI{
+    public class OrderControllerUI
+    {
 
         /// <summary>
         /// Dependancy injection continued. 6/6
@@ -20,11 +21,8 @@ namespace Shipping_Management_Application.UI{
 
         public static IOrderController orderController = new OrderController();
 
-        //public static Order order;
-        //private string _shippingAddress;
-
-        //TODO: make constructor instance an interface
-        public static void PlaceOrder(UserEntity user){
+        public static void PlaceOrder(UserEntity user)
+        {
             
             Customer customer = orderController.GetCustomer(user);
 
@@ -34,39 +32,39 @@ namespace Shipping_Management_Application.UI{
                 customer = UserControllerUI.RegisterCustomer(InitializeApp.userController, user);
 
             }
-            //TODO: decide on how we are handling exceptions so it's consistant throughout the code base
 
             try
             {
                 Console.Write("Please enter shipping address:");
-                string shippingAddress = Console.ReadLine();
+                string? shippingAddress = UIController.ReadAStringInput();
                 ProcessOrder(shippingAddress, customer, user);
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 Console.WriteLine("You must enter a shipping address, please try again");
                 InitializeLoggedIn.OnLoggedIn(user);
             }
         }
 
-        public static void ProcessOrder(string shippingAddress, Customer customer, UserEntity user){
+        public static void ProcessOrder(string shippingAddress, Customer customer, UserEntity user)
+        {
             Console.WriteLine("Choose your delivery method"); 
-            List<string> options = new List<string>()
+            List<string> options = new()
             {
                 "Truck",
                 "Van",
                 "Bike"
             };
             UIController.MenuFacade(options);
-            
 
             char deliveryMethodChoice = UIController.ReadASingleKeyPress("123");
-            
 
             try{
                 LogisticsFactory logisticsFactory = ChooseLogisticsFactory(deliveryMethodChoice);
                 int deliveryPrice = logisticsFactory.DeliveryCost(shippingAddress);
+
                 Order order = orderController.CreateOrder(customer,shippingAddress, deliveryPrice );
+                
                 ITransport transport = logisticsFactory.CreateTransport(order);
 
                 UIController.ClearConsole();
@@ -82,24 +80,34 @@ namespace Shipping_Management_Application.UI{
             }
         }
 
-        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice){
+        private static LogisticsFactory ChooseLogisticsFactory(char deliveryMethodChoice)
+        {
             switch (deliveryMethodChoice){
                 case '1':
+                    {
                     return new RoadLogistics();
+                    }
                     
                 case '2':
+                {
                     throw new NotImplementedException("Van delivery is not implemented yet, maybe for future development");
+                }
                     
                 case '3':
+                {
                     throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
+                }
                     
                 default:
+                {
                     throw new ArgumentException("Error, invalid choice");
+                }
                     
             }
         }
 
-        public static void PrintCurrentUsersOrders(UserEntity user){
+        public static void PrintCurrentUsersOrders(UserEntity user)
+        {
 
             IEnumerable<Order> Orders = orderController.GetAllCustomerOrders(user);
             foreach (Order Order in Orders)
@@ -109,10 +117,12 @@ namespace Shipping_Management_Application.UI{
 
 
         }
-        //TODO: figgure out how to combine these? alternativly clean up crudoperations
-        public static void PrintAllOrders(){
+
+        public static void PrintAllOrders()
+        {
             IEnumerable<Order> Orders = CrudOperations.GetAllOrders();
-            foreach (Order Order in Orders){
+            foreach (Order Order in Orders)
+            {
                 Console.WriteLine(Order);
             }
 

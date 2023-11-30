@@ -21,7 +21,6 @@
       <HashCode>AAACAAAQBQAgAAAAAABAAAAIAAAAAAAAAAAABAABAAA=</HashCode>
       <FileName>BuisnessLogic\Controllers\UserController.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Admin">
     <Position X="17.5" Y="1.5" Width="1.5" />
@@ -70,7 +69,7 @@
   <Class Name="Shipping_Management_Application.Data.CrudOperations">
     <Position X="28.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACQgQAggAQCFIEAAAQAAAAAAAAAgAAEIQAAAEg=</HashCode>
+      <HashCode>AAAACACQgQAggAQCFIEAAAQAAAAAAAAAgAAEIQAAAAg=</HashCode>
       <FileName>Data\CrudOperations.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -91,14 +90,14 @@
   <Class Name="Shipping_Management_Application.Factories.Logistics.RoadLogistics">
     <Position X="19.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Factories\Logistics\RoadLogistics.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Shipping_Management_Application.Factories.Transport.DispatchListener">
     <Position X="18" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAIAAAAAAQAAACAAgAACAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAACAAAAIAAAAAAAACASAAAAACAACAAAAAAAAAA=</HashCode>
       <FileName>Factories\Transport\DispatchListener.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -116,7 +115,7 @@
   <Class Name="EventDispatcher.DispatchTerminal">
     <Position X="18" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAgAAQAAAABAAACAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAEgAAQAAAABAAAAAAAAgAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Factories\Transport\EvenDispatch.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -67,11 +67,11 @@ namespace Shipping_Management_Application.Data{
             
         }
 
-        public static Customer? GetCustomerById(long id){
+        public static Customer GetCustomerById(long id){
             using DataContext context = new DataContext();
             
             Customer? customer = context.Customers.FirstOrDefault(c => c.Id == id);
-            return customer?? null;
+            return customer?? throw new NullReferenceException();
             
         }
 

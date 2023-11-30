@@ -28,7 +28,7 @@ namespace Shipping_Management_Application.Data.Entities
         [Required]
         public required string Password { get; set; }
         [Required]
-        public string Role { get; set; } = "Customer";//sets default value to "Customer"
+        public required string Role { get; set; } = "Customer";//sets default value to "Customer"
 
         //default constuctor
         [SetsRequiredMembers]

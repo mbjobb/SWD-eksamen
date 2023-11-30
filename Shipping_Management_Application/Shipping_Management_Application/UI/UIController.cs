@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +57,7 @@ namespace Shipping_Management_Application.UI
             }
             else
             {
-                return null;
+                throw new NullReferenceException();
 
             }
 
@@ -82,7 +82,7 @@ namespace Shipping_Management_Application.UI
         /// <summary>
  
 
-        public static string MenuFacade(List<string> options, List<string>? validInput = null) 
+        public static string? MenuFacade(List<string> options, List<string>? validInput = null) 
         {
             DrawMenu(options);
             try

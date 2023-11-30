@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Constraints;
+﻿
 using Shipping_Management_Application.BuisnessLogic;
 using Shipping_Management_Application.BuisnessLogic.Controllers;
 using Shipping_Management_Application.Data;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Shipping_Management_Application.UI{
     public class InitializeApp{
-            public static IUserController userController = new UserController();
+        public static IUserController userController = new UserController();
         public InitializeApp(){
             /// <summary>
             /// Facade pattern continued. 2/2
@@ -32,31 +32,29 @@ namespace Shipping_Management_Application.UI{
 
             bool running = true;
             while (running){
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.BackgroundColor = ConsoleColor.Blue;
-            //Console.WriteLine("Welcome to Shipping Management Application");
-            //Console.ResetColor();
 
-                List<string> list = new List<string>()
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Welcome to Shipping Management Application");
+            Console.ResetColor();
+
+                List<string> list = new()
                 {
                     "Sign In",
                     "Sign Up",
                     "Exit"
-
                 };
                 
                 UIController.DrawMenu(list);
-                
 
                 char loginInput = UIController.ReadASingleKeyPress("129");
-                // TODO: check and fix switch case formatting
+
 
                 switch (loginInput)
                 {
                     case '1':
                     {
-
-                            running = false;
+                        running = false;
                         UserControllerUI.Login(userController);
                         break;
                     }

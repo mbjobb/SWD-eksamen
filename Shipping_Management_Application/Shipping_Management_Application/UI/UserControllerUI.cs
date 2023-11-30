@@ -33,7 +33,7 @@ namespace Shipping_Management_Application.UI
 
             if (matchFound && isAuthenticated)
             {
-                UserEntity user = userController.GetUserEntityByUsernameAndPassword(username, password);
+                UserEntity? user = userController.GetUserEntityByUsernameAndPassword(username, password);
                 UIController.ClearConsole();
                 if (user.Role == "Admin") { InitializeLoggedInAsAdmin.OnLoggedIn(user); }
                 InitializeLoggedIn.OnLoggedIn(user);
@@ -73,9 +73,9 @@ namespace Shipping_Management_Application.UI
             Console.WriteLine("Enter post code");
             string? postCode = UIController.ReadAStringInput();
 
-            Customer customer = userController.CreateCustomer(user.Id, name, email, address, postCode);
+            Customer? customer = userController.CreateCustomer(user.Id, name, email, address, postCode);
             if (customer is not null) { Console.WriteLine($"Customer created \n {customer}"); }
-            return customer;
+            return customer ?? throw new NullReferenceException();
 
         }
         /// <summary>
@@ -102,7 +102,7 @@ namespace Shipping_Management_Application.UI
                 "PostCode",
                 "Password"
             };
-            string inputOption = UIController.MenuFacade(options, validInput);
+            string? inputOption = UIController.MenuFacade(options, validInput);
             Console.WriteLine($"please enter new {inputOption}");
             string inputValueToChange = UIController.ReadAStringInput();
             if(inputOption is not "Password" && customer is null)

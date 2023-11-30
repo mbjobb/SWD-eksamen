@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping_Management_Application", "Shipping_Management_Application\Shipping_Management_Application.csproj", "{E0FA8024-DF99-42FF-ABBD-5C07408FE43A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shipping_Management_Application", "Shipping_Management_Application\Shipping_Management_Application.csproj", "{E0FA8024-DF99-42FF-ABBD-5C07408FE43A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping_Management_Application.UnitTests", "Shipping_Management_Application.UnitTests\Shipping_Management_Application.UnitTests.csproj", "{EED4EDDF-AC17-4E48-8049-C6C471567A54}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipping_Management_Application.IntegrationTests", "Shipping_Management_Application.IntegrationTests\Shipping_Management_Application.IntegrationTests.csproj", "{4EA1AB10-1326-4EC2-8CA4-99F4294D03D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shipping_Management_Application.IntegrationTests", "Shipping_Management_Application.IntegrationTests\Shipping_Management_Application.IntegrationTests.csproj", "{4EA1AB10-1326-4EC2-8CA4-99F4294D03D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{E0FA8024-DF99-42FF-ABBD-5C07408FE43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0FA8024-DF99-42FF-ABBD-5C07408FE43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0FA8024-DF99-42FF-ABBD-5C07408FE43A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EED4EDDF-AC17-4E48-8049-C6C471567A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EED4EDDF-AC17-4E48-8049-C6C471567A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EED4EDDF-AC17-4E48-8049-C6C471567A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EED4EDDF-AC17-4E48-8049-C6C471567A54}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EA1AB10-1326-4EC2-8CA4-99F4294D03D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EA1AB10-1326-4EC2-8CA4-99F4294D03D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA1AB10-1326-4EC2-8CA4-99F4294D03D5}.Release|Any CPU.ActiveCfg = Release|Any CPU

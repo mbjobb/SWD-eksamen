@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Shipping_Management_Application.Data;
 using Shipping_Management_Application.Data.Entities;
 using Shipping_Management_Application.UI;
@@ -45,7 +46,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         {
             if (id != 0) { return CrudOperations.GetUserEntityById((long)id); }
             if (username is not null) { return CrudOperations.GetUserEntityByUsername(username); }
-            else return null;
+            return null;
         }
 
         public void DeleteUserEntity(UserEntity user)

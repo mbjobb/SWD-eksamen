@@ -31,33 +31,38 @@ namespace Shipping_Management_Application.UI
                 };
                 UIController.DrawMenu(options);
                 
+                if ( user is null) { throw new NullReferenceException(); }
                 
                 char userInput = UIController.ReadASingleKeyPress("1234");
 
                 switch (userInput){
-                    case '1':{
-                            
+                    case '1':
+                    {
                         OrderControllerUI.PlaceOrder(user);
                         break;
-                    }case '2':{
+                    }
+                    case '2':
+                    {
                         OrderControllerUI.PrintCurrentUsersOrders(user);
                         break;
                     }
-                    case '3':{
+                    case '3':
+                    {
                         UserControllerUI.UpdateCustomer(InitializeApp.userController, user);
                         break;
                     }
-                    case '4':{
+                    case '4':
+                    {
                         running = false;
                         UIController.ClearConsole();
                         InitializeApp.OnStartup(InitializeApp.userController);
                         break;
                     }
                     case '5':
-                        {
-                            UIController.CloseApplication();
-                            break;
-                        }
+                    {
+                        UIController.CloseApplication();
+                        break;
+                    }
                 }
             }
         }
