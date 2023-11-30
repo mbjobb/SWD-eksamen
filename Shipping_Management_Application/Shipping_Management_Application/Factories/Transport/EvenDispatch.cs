@@ -7,8 +7,8 @@ namespace EventDispatcher{
     
 	public class DispatchTerminal{
 
-        public event EventHandler? TruckReceivedHandler;
-        private Timer _truckSendTimer;
+        public event EventHandler? TransportReceivedHandler;
+        private Timer _transportSendTimer;
 		private Random _randomGenerator;
 
 		// Constructor.
@@ -16,14 +16,14 @@ namespace EventDispatcher{
         // Ready, in transit, delivered, returning
         public DispatchTerminal(){
             _randomGenerator = new Random();
-            _truckSendTimer = new Timer();
+            _transportSendTimer = new Timer();
 
-            _truckSendTimer.Elapsed += SendMessageByEvent;
+            _transportSendTimer.Elapsed += SendMessageByEvent;
             SetupNextMessage();
             
         }
 		protected virtual void InvokeSubscribersCallbackMethods() {
-			TruckReceivedHandler?.Invoke(this, EventArgs.Empty);
+			TransportReceivedHandler?.Invoke(this, EventArgs.Empty);
 		}
 		private void SendMessageByEvent(object? sender, ElapsedEventArgs? arguments) {
 			InvokeSubscribersCallbackMethods();
@@ -31,8 +31,8 @@ namespace EventDispatcher{
 		}
         
 		private void SetupNextMessage() {
-			_truckSendTimer.Interval = _randomGenerator.Next(1000, 5000);
-			_truckSendTimer.Start();
+			_transportSendTimer.Interval = _randomGenerator.Next(1000, 5000);
+			_transportSendTimer.Start();
 		}
 	}
 }
