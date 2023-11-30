@@ -50,9 +50,9 @@ namespace Shipping_Management_Application.UI{
         }
 
         public static void ProcessOrder(string shippingAddress, Customer customer, UserEntity user){
+            Console.WriteLine("Choose your delivery method"); 
             List<string> options = new List<string>()
             {
-                "Choose your delivery method",
                 "Truck",
                 "Van",
                 "Bike"
@@ -88,10 +88,10 @@ namespace Shipping_Management_Application.UI{
                     return new RoadLogistics();
                     
                 case '2':
-                    throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
+                    throw new NotImplementedException("Van delivery is not implemented yet, maybe for future development");
                     
                 case '3':
-                    throw new NotImplementedException("Car delivery is not implemented yet, maybe for future development");
+                    throw new NotImplementedException("Bike delivery is not implemented yet, maybe for future development");
                     
                 default:
                     throw new ArgumentException("Error, invalid choice");

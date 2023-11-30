@@ -51,10 +51,10 @@ namespace Shipping_Management_Application.UI{
                 UIController.DrawMenu(list);
                 
 
-                char menuInput = UIController.ReadASingleKeyPress("129");
+                char loginInput = UIController.ReadASingleKeyPress("129");
                 // TODO: check and fix switch case formatting
 
-                switch (menuInput)
+                switch (loginInput)
                 {
                     case '1':
                     {

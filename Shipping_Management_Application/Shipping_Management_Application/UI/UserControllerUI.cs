@@ -85,8 +85,8 @@ namespace Shipping_Management_Application.UI
 
             List<string> options = new List<string>()
             {
-                "You can update your profile",
-                "What do you want to update? (Email, Address, PostCode, Password)"
+                
+                "What do you want to update? (Email, Home Address, Post code, Password)"
 
             };
             List<string> validInput = new List<string>()
@@ -99,7 +99,12 @@ namespace Shipping_Management_Application.UI
             string inputOption = UIController.MenuFacade(options, validInput);
             Console.WriteLine($"please enter new {inputOption}");
             string inputValueToChange = UIController.ReadAStringInput();
-            if (inputOption == "Password")
+            if(inputOption is not "Password" && customer is null)
+            {
+                Console.WriteLine("You need to register as a customer to manage customer profile");
+                return;
+            }
+            else if (inputOption == "Password")
             {
                 userController.UpdateUserEntityPassword(user, inputValueToChange);
             }

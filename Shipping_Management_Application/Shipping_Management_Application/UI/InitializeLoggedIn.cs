@@ -23,18 +23,18 @@ namespace Shipping_Management_Application.UI
                 Console.WriteLine($"Welcome {user?.UserName}");
                 List<string> options = new List<string>()
                 {
-                    "place an order",
-                    "view orders",
-                    "update user or customer profile",
-                    "sign out",
-                    "exit program"
+                    "Place delivery order",
+                    "View order history",
+                    "Manage Account",
+                    "Sign out",
+                    "Exit program"
                 };
                 UIController.DrawMenu(options);
                 
                 
-                char input = UIController.ReadASingleKeyPress("1234");
+                char userInput = UIController.ReadASingleKeyPress("1234");
 
-                switch (input){
+                switch (userInput){
                     case '1':{
                             
                         OrderControllerUI.PlaceOrder(user);
@@ -53,6 +53,11 @@ namespace Shipping_Management_Application.UI
                         InitializeApp.OnStartup(InitializeApp.userController);
                         break;
                     }
+                    case '5':
+                        {
+                            UIController.CloseApplication();
+                            break;
+                        }
                 }
             }
         }

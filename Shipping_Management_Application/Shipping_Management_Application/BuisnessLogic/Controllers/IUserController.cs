@@ -7,7 +7,7 @@ namespace Shipping_Management_Application.BuisnessLogic.Controllers
         /// <summary>
         /// Interface for the UserController class with the methods that are used in the UI.
         /// </summary>
-        /// <see cref="PreRefactorUserController"/>
+        /// <see cref="UserController"/>
         Customer CreateCustomer(long id, string? name, string? email, string? address, string? postCode);
         UserEntity CreateUser(string username, string password);
         UserEntity GetUserEntityByUsernameAndPassword(string username, string password);

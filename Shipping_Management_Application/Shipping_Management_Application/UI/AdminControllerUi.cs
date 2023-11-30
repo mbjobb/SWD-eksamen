@@ -28,12 +28,13 @@ namespace Shipping_Management_Application.UI
                 "List all registerd users",
                 "Delete a user",
                 "Create a new admin account",
-                "Account settings"
+                "Account settings",
+                "Return"
             };
                 UIController.DrawMenu(options);
 
 
-                char input = UIController.ReadASingleKeyPress("1234");
+                char input = UIController.ReadASingleKeyPress("12345");
 
                 switch (input)
                 {
@@ -99,6 +100,12 @@ namespace Shipping_Management_Application.UI
                             Console.WriteLine("enter new pasword");
                             string value = UIController.ReadAStringInput();
                             InitializeApp.userController.UpdateUserEntityPassword(user, value);
+                            break;
+                        }
+                    case '5': 
+                        {
+                            running = false;
+                            InitializeLoggedInAsAdmin.OnLoggedIn(user);
                             break;
                         }
                 }
