@@ -14,12 +14,12 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
-            //Wrapper for testing during development,
-            //should be removed in final version.
-            //Technically a facade pattern
-            //TestingThings.Testing();
 
+            new InitializeApp();
             /// <summary>
+            /// 
+            /// Referances are in the readme file
+            /// could also be a good idea to reset the database
             /// 
             /// Facade pattern start. 1/2 <see cref="UI.InitializeApp"/>
             /// Used to define the flow of the program without
@@ -34,9 +34,12 @@ namespace Shipping_Management_Application
             /// <see cref="PreRefactorUserController"/>
             /// </summary>
 
-            new InitializeApp();
+            //Wrapper for testing during development,
+            //Technically a facade pattern
+            //TestingThings.Testing();
+            ///<see cref="TestingThings"/>
 
-            
+
 
         }
     }

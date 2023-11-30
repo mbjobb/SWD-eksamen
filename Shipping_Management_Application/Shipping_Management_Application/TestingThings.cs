@@ -7,6 +7,10 @@ namespace Shipping_Management_Application
 {
     public static class TestingThings
     {
+        /// <summary>
+        /// Used for testing during development
+        /// In hindsight, we should probably just have wtritten proper unit tests instead
+        /// </summary>
         public static void Testing()
         {
             using DataContext context = new DataContext();
