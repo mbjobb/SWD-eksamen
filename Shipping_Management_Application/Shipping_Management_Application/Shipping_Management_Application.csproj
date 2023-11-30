@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	<PlatformTarget>AnyCPU</PlatformTarget>
+	<StartupObject>Shipping_Management_Application.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

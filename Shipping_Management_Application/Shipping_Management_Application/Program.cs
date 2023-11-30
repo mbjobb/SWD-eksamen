@@ -6,6 +6,7 @@ namespace Shipping_Management_Application
     {
         static void Main(string[] args)
         {
+            new InitializeApp();
             //Wrapper for testing during development,
             //Technically a facade pattern
             //TestingThings.Testing();
@@ -36,7 +37,6 @@ namespace Shipping_Management_Application
             /// ShippingAdress seems to sometimes end up as null on the first try
             /// </summary>
 
-            new InitializeApp();
 
 
 
